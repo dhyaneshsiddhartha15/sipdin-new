@@ -1,0 +1,284 @@
+{
+  "screenshot": {
+    "name": "projects/14861028082325285600/files/7257ad3a3b1f46b0b8b69086ec202d6c",
+    "downloadUrl": "https://lh3.googleusercontent.com/aida/AP1WRLupNehXn4swJZpRPVkNy87OrV0Mpb4ok2dhc6p_5HIm74TidGbODUyq8Hk9bbTt6i0AC_X28mFT1mW5H8JzHdEEMUIys85Gn0TSWRvJ91SehN30BKDV2f98WGgX2umLgmy90xzQJY_IJhHJWA1PSQwH4WN_1Z3DkLF8dQsA-XyMOj7VvxfvTL_UlOjTXqmu89BYgrWrr8a7qQ3DxT69C7o0cEReTVkpF72WSTKcyzfMmUH1cOJfhgA2LILF"
+  },
+  "htmlCode": {
+    "name": "projects/14861028082325285600/files/7db28041338647ffb1e71e86e81531b8",
+    "downloadUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2JkOWE0OGMxYzdjMzQwOGNhNDZlOWJjNzExODQ3MWRjEgsSBxC5rdD1ix8YAZIBJAoKcHJvamVjdF9pZBIWQhQxNDg2MTAyODA4MjMyNTI4NTYwMA&filename=&opi=89354086",
+    "mimeType": "text/html"
+  },
+  "id": "e277d48746c548f9a3c91a75ef0fe7c0",
+  "generatedBy": "figaro_agent",
+  "width": "2560",
+  "height": "10490",
+  "title": "SIDPIN | Solutions Built Around Your Growth (Services)",
+  "prompt": "Create a premium 'Services' page for SIDPIN in a dark cinematic aesthetic. \n\nNavigation: Include 'Services' in the navigation.\n\nHero:\n- Headline: 'Solutions Built Around Your Growth.'\n- Subheadline: 'From cinematic content production to custom business systems, every solution is designed to help your business attract attention, build trust, and grow.'\n- Buttons: 'View Work', 'Start A Project'\n\nService Explorer Section:\n- Title: 'Choose What You Need'\n- Interactive horizontal/grid cards for: Content Production, Photography, Website Development, CRM Software, App Development, Growth Marketing, AI & Automation, Video Editing.\n- Clicking a card reveals detailed info below (Headline, Included Services list, Starting Investment/Packages, Best For/Industries, and a specific CTA button).\n- Detail sections should use premium pricing cards and glassmorphism.\n\nCustom Solutions Section:\n- Headline: 'Need Something Custom?'\n- Subheadline: 'Every business is different... tailored to your goals, industry, and growth stage.'\n- List examples: Custom Software, ERP, Booking Platforms, etc.\n- Button: 'Request Custom Solution'\n\nWorkflow Section:\n- 'How We Work'\n- Apple-style horizontal timeline: Discovery -\u003e Strategy -\u003e Production -\u003e Development -\u003e Launch -\u003e Growth.\n\nFinal CTA:\n- Headline: 'Let’s Build The Right Solution For Your Business.'\n- Subheadline: 'Whether you need content, software, marketing, or a complete business ecosystem, we’ll help you create a solution that fits your goals.'\n- Buttons: 'Book A Discovery Call', 'Request A Proposal'\n\nDesign Requirements:\n- Use design system {{DATA:DESIGN_SYSTEM:DESIGN_SYSTEM_1}}.\n- Apple-inspired storytelling layout.\n- Large cinematic visuals.\n- Smooth transitions and interactive elements.\n- Luxury studio feel.",
+  "name": "projects/14861028082325285600/screens/e277d48746c548f9a3c91a75ef0fe7c0",
+  "theme": {
+    "colorMode": "DARK",
+    "font": "HANKEN_GROTESK",
+    "roundness": "ROUND_FOUR",
+    "customColor": "#000000",
+    "headlineFont": "HANKEN_GROTESK",
+    "bodyFont": "INTER",
+    "labelFont": "GEIST",
+    "namedColors": {
+      "primary_fixed_dim": "#c6c6c6",
+      "primary_fixed": "#e2e2e2",
+      "on_primary_container": "#757575",
+      "surface_container_highest": "#333537",
+      "tertiary": "#c8c6c5",
+      "surface_container_low": "#1a1c1d",
+      "inverse_surface": "#e2e2e4",
+      "secondary": "#e9c349",
+      "on_tertiary": "#313030",
+      "background": "#111415",
+      "on_tertiary_fixed": "#1c1b1b",
+      "surface_container_high": "#282a2c",
+      "on_surface": "#e2e2e4",
+      "inverse_on_surface": "#2f3132",
+      "on_surface_variant": "#cfc4c5",
+      "on_secondary": "#3c2f00",
+      "on_background": "#e2e2e4",
+      "on_primary_fixed": "#1b1b1b",
+      "tertiary_container": "#000000",
+      "on_secondary_fixed": "#241a00",
+      "secondary_container": "#af8d11",
+      "surface_container_lowest": "#0c0e10",
+      "on_error": "#690005",
+      "secondary_fixed_dim": "#e9c349",
+      "outline_variant": "#4c4546",
+      "surface_variant": "#333537",
+      "on_tertiary_fixed_variant": "#474646",
+      "secondary_fixed": "#ffe088",
+      "surface_tint": "#c6c6c6",
+      "primary": "#c6c6c6",
+      "surface_container": "#1e2021",
+      "on_secondary_container": "#342800",
+      "error": "#ffb4ab",
+      "on_secondary_fixed_variant": "#574500",
+      "inverse_primary": "#5e5e5e",
+      "surface_dim": "#111415",
+      "tertiary_fixed": "#e5e2e1",
+      "on_primary_fixed_variant": "#474747",
+      "surface_bright": "#37393b",
+      "error_container": "#93000a",
+      "on_tertiary_container": "#767575",
+      "primary_container": "#000000",
+      "surface": "#111415",
+      "tertiary_fixed_dim": "#c8c6c5",
+      "on_error_container": "#ffdad6",
+      "on_primary": "#303030",
+      "outline": "#988e90"
+    },
+    "designMd": "---\nname: Cinematic Precision\ncolors:\n  surface: '#111415'\n  surface-dim: '#111415'\n  surface-bright: '#37393b'\n  surface-container-lowest: '#0c0e10'\n  surface-container-low: '#1a1c1d'\n  surface-container: '#1e2021'\n  surface-container-high: '#282a2c'\n  surface-container-highest: '#333537'\n  on-surface: '#e2e2e4'\n  on-surface-variant: '#cfc4c5'\n  inverse-surface: '#e2e2e4'\n  inverse-on-surface: '#2f3132'\n  outline: '#988e90'\n  outline-variant: '#4c4546'\n  surface-tint: '#c6c6c6'\n  primary: '#c6c6c6'\n  on-primary: '#303030'\n  primary-container: '#000000'\n  on-primary-container: '#757575'\n  inverse-primary: '#5e5e5e'\n  secondary: '#e9c349'\n  on-secondary: '#3c2f00'\n  secondary-container: '#af8d11'\n  on-secondary-container: '#342800'\n  tertiary: '#c8c6c5'\n  on-tertiary: '#313030'\n  tertiary-container: '#000000'\n  on-tertiary-container: '#767575'\n  error: '#ffb4ab'\n  on-error: '#690005'\n  error-container: '#93000a'\n  on-error-container: '#ffdad6'\n  primary-fixed: '#e2e2e2'\n  primary-fixed-dim: '#c6c6c6'\n  on-primary-fixed: '#1b1b1b'\n  on-primary-fixed-variant: '#474747'\n  secondary-fixed: '#ffe088'\n  secondary-fixed-dim: '#e9c349'\n  on-secondary-fixed: '#241a00'\n  on-secondary-fixed-variant: '#574500'\n  tertiary-fixed: '#e5e2e1'\n  tertiary-fixed-dim: '#c8c6c5'\n  on-tertiary-fixed: '#1c1b1b'\n  on-tertiary-fixed-variant: '#474646'\n  background: '#111415'\n  on-background: '#e2e2e4'\n  surface-variant: '#333537'\ntypography:\n  display-lg:\n    fontFamily: Hanken Grotesk\n    fontSize: 80px\n    fontWeight: '600'\n    lineHeight: '1.1'\n    letterSpacing: -0.02em\n  display-lg-mobile:\n    fontFamily: Hanken Grotesk\n    fontSize: 48px\n    fontWeight: '600'\n    lineHeight: '1.1'\n    letterSpacing: -0.01em\n  headline-xl:\n    fontFamily: Hanken Grotesk\n    fontSize: 48px\n    fontWeight: '500'\n    lineHeight: '1.2'\n    letterSpacing: 0.05em\n  headline-lg:\n    fontFamily: Hanken Grotesk\n    fontSize: 32px\n    fontWeight: '500'\n    lineHeight: '1.3'\n    letterSpacing: 0.03em\n  body-lg:\n    fontFamily: Inter\n    fontSize: 18px\n    fontWeight: '400'\n    lineHeight: '1.6'\n    letterSpacing: 0em\n  body-md:\n    fontFamily: Inter\n    fontSize: 16px\n    fontWeight: '400'\n    lineHeight: '1.6'\n    letterSpacing: 0em\n  label-sm:\n    fontFamily: Geist\n    fontSize: 12px\n    fontWeight: '500'\n    lineHeight: '1.0'\n    letterSpacing: 0.1em\nrounded:\n  sm: 0.125rem\n  DEFAULT: 0.25rem\n  md: 0.375rem\n  lg: 0.5rem\n  xl: 0.75rem\n  full: 9999px\nspacing:\n  unit: 8px\n  container-max: 1440px\n  gutter: 32px\n  margin-desktop: 80px\n  margin-mobile: 24px\n---\n\n## Brand & Style\n\nThe design system is engineered to evoke the gravitas of a film production studio combined with the technical rigor of a high-end hardware manufacturer. It targets elite creators and enterprise partners who value discretion, quality, and narrative depth.\n\nThe aesthetic is **Cinematic Minimalism**. It leverages heavy atmospheric depth, high-contrast visual storytelling, and expansive whitespace to allow creative work to breathe. The emotional response is one of \"quiet power\"—a sophisticated, dark-mode environment that feels premium, curated, and indestructible.\n\n## Colors\n\nThe palette is strictly nocturnal, designed to make imagery and cinematography the focal point.\n\n- **Primary & Tertiary:** Deep Black (#000000) serves as the infinite canvas, while Charcoal Grey (#121212) provides structural containment for cards and navigation.\n- **Accent:** Warm Gold (#D4AF37) is used sparingly for high-value interactions, status indicators, and subtle decorative elements, reminiscent of film award prestige.\n- **Neutral:** Soft White (#F5F5F7) is the primary color for typography and icons, providing a crisp, legible contrast against the dark background without the harshness of pure white.\n\n## Typography\n\nTypography in this design system follows a highly structured, technical scale. \n\n- **Headlines:** Use Hanken Grotesk for its sharp, contemporary geometry. Large headlines should utilize generous letter spacing (tracking) to achieve a \"luxury editorial\" feel.\n- **Body:** Inter provides maximum legibility for long-form descriptions and project details.\n- **Technical/Labels:** Geist is used for metadata, labels, and technical specs, nodding to the precision of developer tools and camera equipment.\n\n## Layout & Spacing\n\nThe layout philosophy is based on a **Fluid Grid with Massive Margins**. \n\n- **Whitespace:** Use whitespace as a structural element rather than a void. Section vertical padding should default to 160px on desktop to create a rhythmic, slow-paced browsing experience.\n- **Grid:** A 12-column grid with wide 32px gutters. Content is often center-aligned or offset to create an asymmetrical, cinematic composition.\n- **Mobile:** On mobile devices, margins compress to 24px, and vertical spacing reduces to 80px, maintaining the \"breathable\" feel without sacrificing screen real estate.\n\n## Elevation & Depth\n\nDepth is achieved through **Glassmorphism** and **Tonal Layering** rather than traditional drop shadows.\n\n- **Surface Tiers:** The base layer is #000000. Elevated cards use #121212 with a 1px border of Soft White at 10% opacity.\n- **Glass Effects:** Overlays, navigation bars, and floating menus use a backdrop blur of 20px and a background color of #000000 at 60% opacity.\n- **Shadows:** When used for extreme emphasis, shadows should be large, ultra-diffused, and have 0% spread to mimic the natural falloff of studio lighting.\n\n## Shapes\n\nThe shape language is **Technical and Sharp**. Elements use subtle rounding (4px to 8px) to feel modern and engineered rather than \"bubbly.\"\n\n- **Buttons:** Hard edges or very small radii (4px) convey precision.\n- **Media:** Video thumbnails and project imagery should maintain sharp 90-degree corners to mimic a cinema screen.\n- **Decorative Elements:** Use thin 1px lines (Soft White at 15% opacity) to separate content sections, reinforcing a sense of architectural structure.\n\n## Components\n\n### Buttons\n- **Primary:** Warm Gold background, Black text. No border. High-gloss finish on hover.\n- **Secondary:** Ghost style. 1px Soft White border (20% opacity), Soft White text.\n- **Interaction:** On hover, primary buttons should have a subtle outer glow of the accent color.\n\n### Cards & Overlays\n- Use the glassmorphism spec: Backdrop-blur (20px), Background (#121212 at 70%), and a 1px top-light border to simulate a \"beveled glass\" edge.\n\n### Inputs & Forms\n- Minimalist underline style or fully enclosed dark fields (#000000). \n- Active state: The underline or border transitions to Warm Gold with a subtle 2px glow.\n\n### Lists & Navigation\n- Navigation items should use the `label-sm` spec with wide tracking.\n- Hover states for list items should involve a slight horizontal shift (4px) and an increase in text opacity from 60% to 100%.\n\n### Media Players\n- Custom-skinned video controls. Seek bars should be ultra-thin (2px) using Warm Gold for the progress fill. All icons are monochrome Soft White.",
+    "colorVariant": "FIDELITY",
+    "overridePrimaryColor": "#000000",
+    "overrideSecondaryColor": "#d4af37",
+    "overrideTertiaryColor": "#121212",
+    "overrideNeutralColor": "#f5f5f7",
+    "spacingScale": 2,
+    "typography": {
+      "body-md": {
+        "fontFamily": "Inter",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "1.6",
+        "letterSpacing": "0em"
+      },
+      "headline-xl": {
+        "fontFamily": "Hanken Grotesk",
+        "fontSize": "48px",
+        "fontWeight": "500",
+        "lineHeight": "1.2",
+        "letterSpacing": "0.05em"
+      },
+      "label-sm": {
+        "fontFamily": "Geist",
+        "fontSize": "12px",
+        "fontWeight": "500",
+        "lineHeight": "1.0",
+        "letterSpacing": "0.1em"
+      },
+      "display-lg-mobile": {
+        "fontFamily": "Hanken Grotesk",
+        "fontSize": "48px",
+        "fontWeight": "600",
+        "lineHeight": "1.1",
+        "letterSpacing": "-0.01em"
+      },
+      "body-lg": {
+        "fontFamily": "Inter",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "1.6",
+        "letterSpacing": "0em"
+      },
+      "display-lg": {
+        "fontFamily": "Hanken Grotesk",
+        "fontSize": "80px",
+        "fontWeight": "600",
+        "lineHeight": "1.1",
+        "letterSpacing": "-0.02em"
+      },
+      "headline-lg": {
+        "fontFamily": "Hanken Grotesk",
+        "fontSize": "32px",
+        "fontWeight": "500",
+        "lineHeight": "1.3",
+        "letterSpacing": "0.03em"
+      }
+    },
+    "spacing": {
+      "margin-mobile": "24px",
+      "container-max": "1440px",
+      "gutter": "32px",
+      "unit": "8px",
+      "margin-desktop": "80px"
+    },
+    "headlineFontFamily": "Hanken Grotesk",
+    "bodyFontFamily": "Inter",
+    "labelFontFamily": "Geist"
+  },
+  "deviceType": "DESKTOP",
+  "screenType": "DESIGN",
+  "screenMetadata": {
+    "agentType": "PRO_AGENT",
+    "status": "COMPLETE"
+  },
+  "designSystem": {
+    "name": "assets/bb6c5e98b36b4a9abf45c1f2437d3be2",
+    "designSystem": {
+      "displayName": "Cinematic Precision",
+      "styleGuidelines": "## Brand & Style\n\nThe design system is engineered to evoke the gravitas of a film production studio combined with the technical rigor of a high-end hardware manufacturer. It targets elite creators and enterprise partners who value discretion, quality, and narrative depth.\n\nThe aesthetic is **Cinematic Minimalism**. It leverages heavy atmospheric depth, high-contrast visual storytelling, and expansive whitespace to allow creative work to breathe. The emotional response is one of \"quiet power\"—a sophisticated, dark-mode environment that feels premium, curated, and indestructible.\n\n## Layout & Spacing\n\nThe layout philosophy is based on a **Fluid Grid with Massive Margins**. \n\n- **Whitespace:** Use whitespace as a structural element rather than a void. Section vertical padding should default to 160px on desktop to create a rhythmic, slow-paced browsing experience.\n- **Grid:** A 12-column grid with wide 32px gutters. Content is often center-aligned or offset to create an asymmetrical, cinematic composition.\n- **Mobile:** On mobile devices, margins compress to 24px, and vertical spacing reduces to 80px, maintaining the \"breathable\" feel without sacrificing screen real estate.\n\n## Elevation & Depth\n\nDepth is achieved through **Glassmorphism** and **Tonal Layering** rather than traditional drop shadows.\n\n- **Surface Tiers:** The base layer is #000000. Elevated cards use #121212 with a 1px border of Soft White at 10% opacity.\n- **Glass Effects:** Overlays, navigation bars, and floating menus use a backdrop blur of 20px and a background color of #000000 at 60% opacity.\n- **Shadows:** When used for extreme emphasis, shadows should be large, ultra-diffused, and have 0% spread to mimic the natural falloff of studio lighting.\n\n## Components\n\n### Buttons\n- **Primary:** Warm Gold background, Black text. No border. High-gloss finish on hover.\n- **Secondary:** Ghost style. 1px Soft White border (20% opacity), Soft White text.\n- **Interaction:** On hover, primary buttons should have a subtle outer glow of the accent color.\n\n### Cards & Overlays\n- Use the glassmorphism spec: Backdrop-blur (20px), Background (#121212 at 70%), and a 1px top-light border to simulate a \"beveled glass\" edge.\n\n### Inputs & Forms\n- Minimalist underline style or fully enclosed dark fields (#000000). \n- Active state: The underline or border transitions to Warm Gold with a subtle 2px glow.\n\n### Lists & Navigation\n- Navigation items should use the `label-sm` spec with wide tracking.\n- Hover states for list items should involve a slight horizontal shift (4px) and an increase in text opacity from 60% to 100%.\n\n### Media Players\n- Custom-skinned video controls. Seek bars should be ultra-thin (2px) using Warm Gold for the progress fill. All icons are monochrome Soft White.",
+      "theme": {
+        "colorMode": "DARK",
+        "font": "HANKEN_GROTESK",
+        "roundness": "ROUND_FOUR",
+        "customColor": "#000000",
+        "headlineFont": "HANKEN_GROTESK",
+        "bodyFont": "INTER",
+        "labelFont": "GEIST",
+        "namedColors": {
+          "surface_tint": "#c6c6c6",
+          "secondary_fixed": "#ffe088",
+          "on_tertiary_fixed_variant": "#474646",
+          "surface_container": "#1e2021",
+          "primary": "#c6c6c6",
+          "on_secondary_fixed_variant": "#574500",
+          "error": "#ffb4ab",
+          "on_secondary_container": "#342800",
+          "inverse_primary": "#5e5e5e",
+          "surface_dim": "#111415",
+          "tertiary_fixed": "#e5e2e1",
+          "on_primary_fixed_variant": "#474747",
+          "surface_bright": "#37393b",
+          "primary_container": "#000000",
+          "on_tertiary_container": "#767575",
+          "error_container": "#93000a",
+          "surface": "#111415",
+          "tertiary_fixed_dim": "#c8c6c5",
+          "outline": "#988e90",
+          "on_primary": "#303030",
+          "on_error_container": "#ffdad6",
+          "primary_fixed_dim": "#c6c6c6",
+          "on_primary_container": "#757575",
+          "primary_fixed": "#e2e2e2",
+          "surface_container_highest": "#333537",
+          "tertiary": "#c8c6c5",
+          "inverse_surface": "#e2e2e4",
+          "surface_container_low": "#1a1c1d",
+          "secondary": "#e9c349",
+          "on_tertiary_fixed": "#1c1b1b",
+          "background": "#111415",
+          "on_tertiary": "#313030",
+          "on_surface_variant": "#cfc4c5",
+          "inverse_on_surface": "#2f3132",
+          "on_surface": "#e2e2e4",
+          "surface_container_high": "#282a2c",
+          "on_secondary": "#3c2f00",
+          "tertiary_container": "#000000",
+          "on_background": "#e2e2e4",
+          "on_primary_fixed": "#1b1b1b",
+          "on_secondary_fixed": "#241a00",
+          "surface_container_lowest": "#0c0e10",
+          "secondary_container": "#af8d11",
+          "on_error": "#690005",
+          "outline_variant": "#4c4546",
+          "surface_variant": "#333537",
+          "secondary_fixed_dim": "#e9c349"
+        },
+        "designMd": "---\nname: Cinematic Precision\ncolors:\n  surface: '#111415'\n  surface-dim: '#111415'\n  surface-bright: '#37393b'\n  surface-container-lowest: '#0c0e10'\n  surface-container-low: '#1a1c1d'\n  surface-container: '#1e2021'\n  surface-container-high: '#282a2c'\n  surface-container-highest: '#333537'\n  on-surface: '#e2e2e4'\n  on-surface-variant: '#cfc4c5'\n  inverse-surface: '#e2e2e4'\n  inverse-on-surface: '#2f3132'\n  outline: '#988e90'\n  outline-variant: '#4c4546'\n  surface-tint: '#c6c6c6'\n  primary: '#c6c6c6'\n  on-primary: '#303030'\n  primary-container: '#000000'\n  on-primary-container: '#757575'\n  inverse-primary: '#5e5e5e'\n  secondary: '#e9c349'\n  on-secondary: '#3c2f00'\n  secondary-container: '#af8d11'\n  on-secondary-container: '#342800'\n  tertiary: '#c8c6c5'\n  on-tertiary: '#313030'\n  tertiary-container: '#000000'\n  on-tertiary-container: '#767575'\n  error: '#ffb4ab'\n  on-error: '#690005'\n  error-container: '#93000a'\n  on-error-container: '#ffdad6'\n  primary-fixed: '#e2e2e2'\n  primary-fixed-dim: '#c6c6c6'\n  on-primary-fixed: '#1b1b1b'\n  on-primary-fixed-variant: '#474747'\n  secondary-fixed: '#ffe088'\n  secondary-fixed-dim: '#e9c349'\n  on-secondary-fixed: '#241a00'\n  on-secondary-fixed-variant: '#574500'\n  tertiary-fixed: '#e5e2e1'\n  tertiary-fixed-dim: '#c8c6c5'\n  on-tertiary-fixed: '#1c1b1b'\n  on-tertiary-fixed-variant: '#474646'\n  background: '#111415'\n  on-background: '#e2e2e4'\n  surface-variant: '#333537'\ntypography:\n  display-lg:\n    fontFamily: Hanken Grotesk\n    fontSize: 80px\n    fontWeight: '600'\n    lineHeight: '1.1'\n    letterSpacing: -0.02em\n  display-lg-mobile:\n    fontFamily: Hanken Grotesk\n    fontSize: 48px\n    fontWeight: '600'\n    lineHeight: '1.1'\n    letterSpacing: -0.01em\n  headline-xl:\n    fontFamily: Hanken Grotesk\n    fontSize: 48px\n    fontWeight: '500'\n    lineHeight: '1.2'\n    letterSpacing: 0.05em\n  headline-lg:\n    fontFamily: Hanken Grotesk\n    fontSize: 32px\n    fontWeight: '500'\n    lineHeight: '1.3'\n    letterSpacing: 0.03em\n  body-lg:\n    fontFamily: Inter\n    fontSize: 18px\n    fontWeight: '400'\n    lineHeight: '1.6'\n    letterSpacing: 0em\n  body-md:\n    fontFamily: Inter\n    fontSize: 16px\n    fontWeight: '400'\n    lineHeight: '1.6'\n    letterSpacing: 0em\n  label-sm:\n    fontFamily: Geist\n    fontSize: 12px\n    fontWeight: '500'\n    lineHeight: '1.0'\n    letterSpacing: 0.1em\nrounded:\n  sm: 0.125rem\n  DEFAULT: 0.25rem\n  md: 0.375rem\n  lg: 0.5rem\n  xl: 0.75rem\n  full: 9999px\nspacing:\n  unit: 8px\n  container-max: 1440px\n  gutter: 32px\n  margin-desktop: 80px\n  margin-mobile: 24px\n---\n\n## Brand & Style\n\nThe design system is engineered to evoke the gravitas of a film production studio combined with the technical rigor of a high-end hardware manufacturer. It targets elite creators and enterprise partners who value discretion, quality, and narrative depth.\n\nThe aesthetic is **Cinematic Minimalism**. It leverages heavy atmospheric depth, high-contrast visual storytelling, and expansive whitespace to allow creative work to breathe. The emotional response is one of \"quiet power\"—a sophisticated, dark-mode environment that feels premium, curated, and indestructible.\n\n## Colors\n\nThe palette is strictly nocturnal, designed to make imagery and cinematography the focal point.\n\n- **Primary & Tertiary:** Deep Black (#000000) serves as the infinite canvas, while Charcoal Grey (#121212) provides structural containment for cards and navigation.\n- **Accent:** Warm Gold (#D4AF37) is used sparingly for high-value interactions, status indicators, and subtle decorative elements, reminiscent of film award prestige.\n- **Neutral:** Soft White (#F5F5F7) is the primary color for typography and icons, providing a crisp, legible contrast against the dark background without the harshness of pure white.\n\n## Typography\n\nTypography in this design system follows a highly structured, technical scale. \n\n- **Headlines:** Use Hanken Grotesk for its sharp, contemporary geometry. Large headlines should utilize generous letter spacing (tracking) to achieve a \"luxury editorial\" feel.\n- **Body:** Inter provides maximum legibility for long-form descriptions and project details.\n- **Technical/Labels:** Geist is used for metadata, labels, and technical specs, nodding to the precision of developer tools and camera equipment.\n\n## Layout & Spacing\n\nThe layout philosophy is based on a **Fluid Grid with Massive Margins**. \n\n- **Whitespace:** Use whitespace as a structural element rather than a void. Section vertical padding should default to 160px on desktop to create a rhythmic, slow-paced browsing experience.\n- **Grid:** A 12-column grid with wide 32px gutters. Content is often center-aligned or offset to create an asymmetrical, cinematic composition.\n- **Mobile:** On mobile devices, margins compress to 24px, and vertical spacing reduces to 80px, maintaining the \"breathable\" feel without sacrificing screen real estate.\n\n## Elevation & Depth\n\nDepth is achieved through **Glassmorphism** and **Tonal Layering** rather than traditional drop shadows.\n\n- **Surface Tiers:** The base layer is #000000. Elevated cards use #121212 with a 1px border of Soft White at 10% opacity.\n- **Glass Effects:** Overlays, navigation bars, and floating menus use a backdrop blur of 20px and a background color of #000000 at 60% opacity.\n- **Shadows:** When used for extreme emphasis, shadows should be large, ultra-diffused, and have 0% spread to mimic the natural falloff of studio lighting.\n\n## Shapes\n\nThe shape language is **Technical and Sharp**. Elements use subtle rounding (4px to 8px) to feel modern and engineered rather than \"bubbly.\"\n\n- **Buttons:** Hard edges or very small radii (4px) convey precision.\n- **Media:** Video thumbnails and project imagery should maintain sharp 90-degree corners to mimic a cinema screen.\n- **Decorative Elements:** Use thin 1px lines (Soft White at 15% opacity) to separate content sections, reinforcing a sense of architectural structure.\n\n## Components\n\n### Buttons\n- **Primary:** Warm Gold background, Black text. No border. High-gloss finish on hover.\n- **Secondary:** Ghost style. 1px Soft White border (20% opacity), Soft White text.\n- **Interaction:** On hover, primary buttons should have a subtle outer glow of the accent color.\n\n### Cards & Overlays\n- Use the glassmorphism spec: Backdrop-blur (20px), Background (#121212 at 70%), and a 1px top-light border to simulate a \"beveled glass\" edge.\n\n### Inputs & Forms\n- Minimalist underline style or fully enclosed dark fields (#000000). \n- Active state: The underline or border transitions to Warm Gold with a subtle 2px glow.\n\n### Lists & Navigation\n- Navigation items should use the `label-sm` spec with wide tracking.\n- Hover states for list items should involve a slight horizontal shift (4px) and an increase in text opacity from 60% to 100%.\n\n### Media Players\n- Custom-skinned video controls. Seek bars should be ultra-thin (2px) using Warm Gold for the progress fill. All icons are monochrome Soft White.",
+        "colorVariant": "FIDELITY",
+        "overridePrimaryColor": "#000000",
+        "overrideSecondaryColor": "#d4af37",
+        "overrideTertiaryColor": "#121212",
+        "overrideNeutralColor": "#f5f5f7",
+        "spacingScale": 2,
+        "typography": {
+          "headline-xl": {
+            "fontFamily": "Hanken Grotesk",
+            "fontSize": "48px",
+            "fontWeight": "500",
+            "lineHeight": "1.2",
+            "letterSpacing": "0.05em"
+          },
+          "label-sm": {
+            "fontFamily": "Geist",
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "1.0",
+            "letterSpacing": "0.1em"
+          },
+          "body-md": {
+            "fontFamily": "Inter",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "lineHeight": "1.6",
+            "letterSpacing": "0em"
+          },
+          "display-lg-mobile": {
+            "fontFamily": "Hanken Grotesk",
+            "fontSize": "48px",
+            "fontWeight": "600",
+            "lineHeight": "1.1",
+            "letterSpacing": "-0.01em"
+          },
+          "body-lg": {
+            "fontFamily": "Inter",
+            "fontSize": "18px",
+            "fontWeight": "400",
+            "lineHeight": "1.6",
+            "letterSpacing": "0em"
+          },
+          "display-lg": {
+            "fontFamily": "Hanken Grotesk",
+            "fontSize": "80px",
+            "fontWeight": "600",
+            "lineHeight": "1.1",
+            "letterSpacing": "-0.02em"
+          },
+          "headline-lg": {
+            "fontFamily": "Hanken Grotesk",
+            "fontSize": "32px",
+            "fontWeight": "500",
+            "lineHeight": "1.3",
+            "letterSpacing": "0.03em"
+          }
+        },
+        "spacing": {
+          "margin-mobile": "24px",
+          "container-max": "1440px",
+          "gutter": "32px",
+          "unit": "8px",
+          "margin-desktop": "80px"
+        },
+        "headlineFontFamily": "Hanken Grotesk",
+        "bodyFontFamily": "Inter",
+        "labelFontFamily": "Geist"
+      }
+    },
+    "version": "1"
+  }
+}

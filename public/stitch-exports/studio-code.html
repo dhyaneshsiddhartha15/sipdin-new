@@ -1,0 +1,478 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>About | SIDPIN - Cinematic Precision</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500&amp;family=Geist:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Hanken+Grotesk:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+<style>
+        body {
+            background-color: #111415;
+            color: #e2e2e4;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        .glass-card {
+            background: rgba(18, 18, 18, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .parallax-bg {
+            transition: transform 0.1s ease-out;
+        }
+        .horizontal-scroll-container {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .horizontal-scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+        .gold-glow:hover {
+            box-shadow: 0 0 20px rgba(233, 195, 73, 0.3);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "surface": "#111415",
+                        "on-secondary-fixed": "#241a00",
+                        "on-tertiary": "#313030",
+                        "on-primary-fixed-variant": "#474747",
+                        "inverse-surface": "#e2e2e4",
+                        "tertiary-container": "#000000",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed-variant": "#574500",
+                        "inverse-primary": "#5e5e5e",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "surface-variant": "#333537",
+                        "secondary-fixed": "#ffe088",
+                        "background": "#111415",
+                        "surface-container-highest": "#333537",
+                        "on-tertiary-container": "#767575",
+                        "surface-container-low": "#1a1c1d",
+                        "secondary": "#e9c349",
+                        "outline-variant": "#4c4546",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-container": "#757575",
+                        "on-error": "#690005",
+                        "on-surface": "#e2e2e4",
+                        "surface-dim": "#111415",
+                        "surface-tint": "#c6c6c6",
+                        "secondary-container": "#af8d11",
+                        "primary-fixed": "#e2e2e2",
+                        "on-primary": "#303030",
+                        "on-surface-variant": "#cfc4c5",
+                        "on-background": "#e2e2e4",
+                        "error-container": "#93000a",
+                        "outline": "#988e90",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "on-secondary": "#3c2f00",
+                        "on-secondary-container": "#342800",
+                        "tertiary-fixed": "#e5e2e1",
+                        "on-primary-fixed": "#1b1b1b",
+                        "surface-container": "#1e2021",
+                        "surface-container-high": "#282a2c",
+                        "tertiary": "#c8c6c5",
+                        "secondary-fixed-dim": "#e9c349",
+                        "primary-container": "#000000",
+                        "primary": "#c6c6c6",
+                        "surface-container-lowest": "#0c0e10",
+                        "inverse-on-surface": "#2f3132",
+                        "surface-bright": "#37393b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "gutter": "32px",
+                        "margin-mobile": "24px",
+                        "container-max": "1440px",
+                        "margin-desktop": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "label-sm": ["Geist"],
+                        "body-lg": ["Inter"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "1.3", "letterSpacing": "0.03em", "fontWeight": "500"}],
+                        "display-lg-mobile": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg": ["80px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-background/60 backdrop-blur-xl border-b border-on-surface/10 flex justify-between items-center px-margin-desktop h-24">
+<div class="font-headline-lg text-headline-lg tracking-tighter text-on-surface">SIDPIN</div>
+<div class="hidden md:flex gap-12 font-label-sm text-label-sm tracking-[0.2em] uppercase">
+<a class="text-on-surface/60 hover:text-on-surface transition-colors duration-300" href="#">Process</a>
+<a class="text-on-surface/60 hover:text-on-surface transition-colors duration-300" href="#">Work</a>
+<a class="text-on-surface/60 hover:text-on-surface transition-colors duration-300" href="#">Intelligence</a>
+<a class="text-secondary font-medium border-b border-secondary pb-1" href="#">Studio</a>
+<a class="text-on-surface/60 hover:text-on-surface transition-colors duration-300" href="#">Contact</a></div>
+<button class="bg-secondary text-on-secondary-fixed px-6 py-3 rounded-full font-label-sm text-label-sm tracking-wider uppercase transition-all duration-300 hover:opacity-80 gold-glow">
+            Start a Project
+        </button>
+</nav>
+<main>
+<!-- Section 1: Hero -->
+<section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<div class="relative z-10 text-center max-w-4xl px-margin-mobile md:px-0">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-6 leading-tight">We Build Brands That People Remember.</h1>
+<p class="font-body-lg text-body-lg text-on-surface/70 max-w-2xl mx-auto">SIDPIN is a Creative Growth &amp; Production Company helping businesses stand out through filmmaking, storytelling, digital experiences, and growth systems.</p>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+<span class="material-symbols-outlined text-secondary opacity-50">keyboard_double_arrow_down</span>
+</div>
+</section>
+<!-- Section 2: Our Story -->
+<section class="py-40 px-margin-desktop max-w-container-max mx-auto overflow-hidden">
+<div class="grid grid-cols-12 gap-gutter">
+<div class="col-span-12 md:col-span-8">
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-[0.3em] mb-12">The Genesis</p>
+<h2 class="font-display-lg text-headline-xl md:text-display-lg leading-none mb-24 reveal-on-scroll active">From filmmaking passion to architectural business growth.</h2>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-gutter items-center">
+<div class="col-span-12 md:col-span-6 reveal-on-scroll active">
+<div class="aspect-video glass-card rounded-xl overflow-hidden relative group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A professional high-end cinema camera mounted on a complex stabilizer rig in a dark, atmospheric studio. Warm amber lighting catches the metallic edges of the lens, reflecting a high-contrast cinematic mood. The background is a blurred artistic space with soft bokeh, emphasizing precision and creative power." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCPS_-ARN5qGIvttn3ePTrDD4vGrGPfrmif0c4vTREUn8zgq8Q-N0fs8VYXFqLsWzD4hoMM3ZoJ-w9hrNPEgE_ah4WOswXrhPn-71fDhu8qwk-95zMJvNmIu1gW03sZNVWoQIumkr5_-rhacX1sLzLl3hQvIA61D8waybgPypHOQdpOiqiqpwQzr4mv12VcKHkHUvs1WMdBxjqstE5UtmMI6cCEI4adpgJTwwnfTbV_XYs2jQHzBRyvFol0Z07blvIag-mCqc8RfwgW')"></div>
+</div>
+</div>
+<div class="col-span-12 md:col-span-5 md:col-start-8 font-body-lg text-body-lg text-on-surface/60 space-y-8 reveal-on-scroll active">
+<p class="">We didn't start as an agency. We started as storytellers with a camera and an obsession for the perfect frame. We realized that beautiful images weren't enough if they didn't lead to meaningful results.</p>
+<p class="">That realization evolved into SIDPIN—a studio where cinematic artistry meets rigorous business strategy. We don't just capture moments; we architect growth systems that use narrative as their core engine.</p>
+</div>
+</div>
+</section>
+<!-- Section 3: What We Believe -->
+<section class="py-40 bg-surface-container-lowest">
+<div class="px-margin-desktop max-w-container-max mx-auto mb-20">
+<h2 class="font-headline-xl text-headline-xl text-center">Core Philosophy</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-margin-desktop max-w-container-max mx-auto gap-gutter">
+<!-- Card 1 -->
+<div class="glass-card p-10 rounded-xl flex flex-col justify-between h-[450px] transition-all duration-500 hover:scale-[1.02] hover:border-secondary/30 group reveal-on-scroll active">
+<span class="material-symbols-outlined text-4xl text-secondary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<div>
+<h3 class="font-headline-lg text-headline-lg mb-4">Stories Create Connection</h3>
+<p class="text-on-surface/60">The human brain is wired for narrative. We build brands that resonate emotionally.</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-card p-10 rounded-xl flex flex-col justify-between h-[450px] transition-all duration-500 hover:scale-[1.02] hover:border-secondary/30 group reveal-on-scroll active" style="transition-delay: 100ms;">
+<span class="material-symbols-outlined text-4xl text-secondary" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<div>
+<h3 class="font-headline-lg text-headline-lg mb-4">Creativity Has A Purpose</h3>
+<p class="text-on-surface/60">Aesthetic without utility is art. Aesthetic with utility is growth. We focus on the latter.</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-card p-10 rounded-xl flex flex-col justify-between h-[450px] transition-all duration-500 hover:scale-[1.02] hover:border-secondary/30 group reveal-on-scroll active" style="transition-delay: 200ms;">
+<span class="material-symbols-outlined text-4xl text-secondary" style="font-variation-settings: 'FILL' 1;">hub</span>
+<div>
+<h3 class="font-headline-lg text-headline-lg mb-4">Growth Requires Systems</h3>
+<p class="text-on-surface/60">Inspiration is the spark, but sustainable growth is the engine. We build the machinery.</p>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="glass-card p-10 rounded-xl flex flex-col justify-between h-[450px] transition-all duration-500 hover:scale-[1.02] hover:border-secondary/30 group reveal-on-scroll active" style="transition-delay: 300ms;">
+<span class="material-symbols-outlined text-4xl text-secondary" style="font-variation-settings: 'FILL' 1;">zoom_in</span>
+<div>
+<h3 class="font-headline-lg text-headline-lg mb-4">Every Detail Matters</h3>
+<p class="text-on-surface/60">From the color grade of a video to the load time of a landing page—precision is non-negotiable.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Why We Are Different -->
+<section class="py-40 px-margin-desktop max-w-container-max mx-auto">
+<div class="text-center mb-32 reveal-on-scroll active">
+<h2 class="font-display-lg text-headline-xl md:text-display-lg mb-6">Redefining the Model</h2>
+<p class="font-body-lg text-body-lg text-on-surface/60">Why settle for campaigns when you can build an ecosystem?</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="p-12 border border-outline/20 rounded-2xl reveal-on-scroll active">
+<h3 class="font-headline-lg text-headline-lg mb-8 text-on-surface/40">Traditional Agency</h3>
+<ul class="space-y-6">
+<li class="flex items-center gap-4 text-on-surface/40">
+<span class="material-symbols-outlined text-error">close</span>
+                            One-off Campaigns
+                        </li>
+<li class="flex items-center gap-4 text-on-surface/40">
+<span class="material-symbols-outlined text-error">close</span>
+                            Vanity Metrics Focus
+                        </li>
+<li class="flex items-center gap-4 text-on-surface/40">
+<span class="material-symbols-outlined text-error">close</span>
+                            Generic Content Pieces
+                        </li>
+<li class="flex items-center gap-4 text-on-surface/40">
+<span class="material-symbols-outlined text-error">close</span>
+                            Surface-level Engagement
+                        </li>
+</ul>
+</div>
+<div class="p-12 glass-card border-secondary/40 border-2 rounded-2xl shadow-2xl reveal-on-scroll active">
+<h3 class="font-headline-lg text-headline-lg mb-8 text-secondary">The SIDPIN Approach</h3>
+<ul class="space-y-6">
+<li class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            End-to-End Story Systems
+                        </li>
+<li class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Growth &amp; Revenue Architecture
+                        </li>
+<li class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            High-Fidelity Cinematic Experiences
+                        </li>
+<li class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Omnichannel Digital Mastery
+                        </li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Section 5: Meet The Team -->
+<section class="py-40 bg-background overflow-hidden">
+<div class="px-margin-desktop max-w-container-max mx-auto mb-20">
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-[0.3em] mb-4">The Collective</p>
+<h2 class="font-headline-xl text-headline-xl">Expertise in Every Frame.</h2>
+</div>
+<div class="flex horizontal-scroll-container overflow-x-auto px-margin-desktop gap-gutter pb-10">
+<!-- Team Member -->
+<div class="flex-shrink-0 w-[320px] reveal-on-scroll active">
+<div class="h-[450px] w-full bg-cover bg-center rounded-xl grayscale hover:grayscale-0 transition-all duration-700" data-alt="A portrait of a male creative director in a minimalist black outfit, set against a dark architectural background with subtle gold lighting. He has a focused, professional expression. The photo style is premium editorial with deep shadows and cinematic clarity." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDRybxOEpvOOupYwJKq46oBOauK5auCLITt77MkfZhw53btcsZGxom5ptYvkSapHukpCFNAHCgEP1QNaubqpIPJ1mV0TQuWsWWRO1cbxo9JsK5_EdoWtKnMtkq_DpwKHznGSv3vanua6CoA1K0cO9-PskAMm42LwzCEdwIvvKUmvMrnLA1ijbHgl3FIrBbgY3BzgRkG3ZxuM5vYgVrU65OE40mvh2JJlzTfkgloHaK61pXdy9wzPauHESMy78JQQ_3jbrRF0A9ziwun')"></div>
+<div class="mt-6">
+<p class="font-headline-lg text-headline-lg">Anand Siddhartha</p>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mt-1">Founder &amp; Creative Director</p>
+</div>
+</div>
+<div class="flex-shrink-0 w-[320px] reveal-on-scroll active" style="transition-delay: 50ms;">
+<div class="h-[450px] w-full bg-cover bg-center rounded-xl grayscale hover:grayscale-0 transition-all duration-700" data-alt="A portrait of a young male software developer looking intently at the camera. He is in a modern tech-studio environment with soft blue and gold neon highlights in the background. High-end portrait photography style, dark mode aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAkBGts20x5SpkXyGTSRycRU9jvgd59tBHmJH4xnGC16xyl-SxRZ4AX1uYYY00ptOCG_hqqwOMOxipd9NoiwHOKwPUc0X3rW-Vo3FpBLZ-4LWxkDSdDesqgBRRwfKeqrb_aSzPK22SnXMC81EGuoU0TnItH0cZWqNEN4461k9GhuJvvccRlX90OW9D2rV5Uf8u7ONEeXHNt1vE5qomw96YSuQEP2FxGzR684EH2-3Lx1KKJY1pR0DkF_A78-bguAX83bUVEYQeENU85')"></div>
+<div class="mt-6">
+<p class="font-headline-lg text-headline-lg">Priyanshu</p>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mt-1">Website Development</p>
+</div>
+</div>
+<div class="flex-shrink-0 w-[320px] reveal-on-scroll active" style="transition-delay: 100ms;">
+<div class="h-[450px] w-full bg-cover bg-center rounded-xl grayscale hover:grayscale-0 transition-all duration-700" data-alt="A professional portrait of a woman in a smart business suit, posed in a sleek, dark glass-walled office boardroom. The lighting is sophisticated, with a warm rim light highlighting her silhouette. Professional, authoritative, and cinematic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAqI9v1l8EtAFHjQfJPfTDIxSThoufUPMX9OwYgs0Hb4tg3bYZ4asuferqJjwiPTRTdcoWpE09cRWuPu1JGXwPv9N6qL5hyeVkJKUeOw6nGXP6q2vEySKvU3iYRDea9THhaH2SahFjRbRhIM74k7ifyMiF_k2yTjuqftM8L9lx9rMxdjTJjgHAUK_pzGYz4g_ePOEApog8SJgRMlarLcDWBc8rGzaCXMBxuCTbKZ4r-ppF-RoqFXRkN1OiICohlZfq9vhXbR9WNqJG0')"></div>
+<div class="mt-6">
+<p class="font-headline-lg text-headline-lg">Preeti</p>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mt-1">Operations &amp; Strategy</p>
+</div>
+</div>
+<div class="flex-shrink-0 w-[320px] reveal-on-scroll active" style="transition-delay: 150ms;">
+<div class="h-[450px] w-full bg-cover bg-center rounded-xl grayscale hover:grayscale-0 transition-all duration-700" data-alt="Portrait of a young man with a confident look, sitting in front of a multi-monitor digital setup showing data visualizations. Dark, high-contrast lighting with golden accents. Focus on expertise and performance." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDA7whMOrfBfFCcpSYZoGcltNNobw1Bv5xgkaVEhBVQC2D_hH1i7W2F4dsvp3kstULfg3i7zOE2EgcoqJCcwXV-9UtyGKtQE_tKPTpsUaKp81lz2vQz2Ac3HU06Jmwm9ltvqJSfaup4mslL6pB73bpQyrh0NFn6V0QJBONU1_d0GIFmnu64QkgnXkytN_sBfbVx6vocXr3Sn04vNzGs41lX-kyXVyIfpuy0qTj4K3rpvv81g_OO_pm53jepAOryRaBGSZd0USIaeMEy')"></div>
+<div class="mt-6">
+<p class="font-headline-lg text-headline-lg">Vivek</p>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mt-1">Advertising &amp; Performance</p>
+</div>
+</div>
+<!-- Additional team members omitted for brevity but would follow same pattern -->
+</div>
+</section>
+<!-- Section 6: Our Vision -->
+<section class="relative h-[80vh] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-fixed bg-center" data-alt="A wide cinematic shot of a futuristic cityscape at night, featuring minimalist architectural lines and subtle gold glowing elements. The atmosphere is dense with fog, creating deep atmospheric perspective. A sense of grand scale and future-focused ambition." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDGbC_ApRZi_PH7VjX-wZIk6AlZJ6a5p-zC2sEXqNIA8kpFgyHUIeaaW_nGVh6q8sdJaBjISE7vPHVkjIqf94B8V_jj5QNo4YckfYXghhtC89RvaNAkqcb0G5vwRAANdsKE8m3G7gLgPfjhlX7_9zuydpH9zXI4C-wDDPrN7W7kDQKYVG29vldW7GiJmLyytVum-MkdHzxzXhufi1ADZuJem5bxQo9J8MX_k9cVj5kp16F_YoPnztY_ehc6yWvYlHUn_rxS5O0hNEst')"></div>
+<div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+<div class="relative z-10 text-center px-margin-mobile reveal-on-scroll active">
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg leading-tight mb-8">Building The Future <br> Of Brand Growth</h2>
+<div class="w-24 h-1 bg-secondary mx-auto"></div>
+</div>
+</section>
+<!-- Section 7: Inside SIDPIN (Timeline) -->
+<section class="py-40 px-margin-desktop bg-surface-container-low">
+<div class="max-w-container-max mx-auto">
+<h2 class="font-headline-xl text-headline-xl mb-24 reveal-on-scroll active">The SIDPIN Journey</h2>
+<div class="relative">
+<div class="absolute top-1/2 left-0 w-full h-[1px] bg-outline-variant hidden md:block"></div>
+<div class="grid grid-cols-1 md:grid-cols-7 gap-8 relative">
+<!-- Step 1 -->
+<div class="reveal-on-scroll active">
+<div class="w-12 h-12 rounded-full bg-secondary text-on-secondary-fixed flex items-center justify-center font-bold mb-6 relative z-10 mx-auto md:mx-0">1</div>
+<h4 class="font-headline-lg text-body-lg font-bold mb-2">Idea</h4>
+<p class="text-on-surface/60 text-sm">Conceptualization of the core narrative.</p>
+</div>
+<!-- Step 2 -->
+<div class="reveal-on-scroll active" style="transition-delay: 100ms;">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest border border-outline/20 flex items-center justify-center font-bold mb-6 relative z-10 mx-auto md:mx-0">2</div>
+<h4 class="font-headline-lg text-body-lg font-bold mb-2">Strategy</h4>
+<p class="text-on-surface/60 text-sm">Architecting the growth funnel.</p>
+</div>
+<!-- Step 3 -->
+<div class="reveal-on-scroll active" style="transition-delay: 200ms;">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest border border-outline/20 flex items-center justify-center font-bold mb-6 relative z-10 mx-auto md:mx-0">3</div>
+<h4 class="font-headline-lg text-body-lg font-bold mb-2">Production</h4>
+<p class="text-on-surface/60 text-sm">Cinematic capture with precision.</p>
+</div>
+<!-- Step 4 -->
+<div class="reveal-on-scroll active" style="transition-delay: 300ms;">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest border border-outline/20 flex items-center justify-center font-bold mb-6 relative z-10 mx-auto md:mx-0">4</div>
+<h4 class="font-headline-lg text-body-lg font-bold mb-2">Editing</h4>
+<p class="text-on-surface/60 text-sm">Polishing the storytelling rhythm.</p>
+</div>
+<!-- Step 5 -->
+<div class="reveal-on-scroll active" style="transition-delay: 400ms;">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest border border-outline/20 flex items-center justify-center font-bold mb-6 relative z-10 mx-auto md:mx-0">5</div>
+<h4 class="font-headline-lg text-body-lg font-bold mb-2">Experience</h4>
+<p class="text-on-surface/60 text-sm">Deploying digital environments.</p>
+</div>
+<!-- Step 6 -->
+<div class="reveal-on-scroll active" style="transition-delay: 500ms;">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest border border-outline/20 flex items-center justify-center font-bold mb-6 relative z-10 mx-auto md:mx-0">6</div>
+<h4 class="font-headline-lg text-body-lg font-bold mb-2">System</h4>
+<p class="text-on-surface/60 text-sm">Implementing the growth engine.</p>
+</div>
+<!-- Step 7 -->
+<div class="reveal-on-scroll active" style="transition-delay: 600ms;">
+<div class="w-12 h-12 rounded-full bg-secondary text-on-secondary-fixed flex items-center justify-center font-bold mb-6 relative z-10 mx-auto md:mx-0">
+<span class="material-symbols-outlined text-sm">rocket_launch</span>
+</div>
+<h4 class="font-headline-lg text-body-lg font-bold mb-2">Impact</h4>
+<p class="text-on-surface/60 text-sm">Measurable business transformation.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 8: Industries We Serve -->
+<section class="py-40 px-margin-desktop max-w-container-max mx-auto">
+<h2 class="font-headline-xl text-headline-xl mb-24 text-center reveal-on-scroll active">Specialized Impact</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="h-40 glass-card flex flex-col items-center justify-center gap-4 group cursor-pointer hover:bg-secondary/10 transition-colors reveal-on-scroll active">
+<span class="material-symbols-outlined text-3xl group-hover:scale-110 transition-transform">hotel</span>
+<span class="font-label-sm text-label-sm tracking-widest uppercase">Hotels</span>
+</div>
+<div class="h-40 glass-card flex flex-col items-center justify-center gap-4 group cursor-pointer hover:bg-secondary/10 transition-colors reveal-on-scroll active">
+<span class="material-symbols-outlined text-3xl group-hover:scale-110 transition-transform">restaurant</span>
+<span class="font-label-sm text-label-sm tracking-widest uppercase">Dining</span>
+</div>
+<div class="h-40 glass-card flex flex-col items-center justify-center gap-4 group cursor-pointer hover:bg-secondary/10 transition-colors reveal-on-scroll active">
+<span class="material-symbols-outlined text-3xl group-hover:scale-110 transition-transform">flight</span>
+<span class="font-label-sm text-label-sm tracking-widest uppercase">Travel</span>
+</div>
+<div class="h-40 glass-card flex flex-col items-center justify-center gap-4 group cursor-pointer hover:bg-secondary/10 transition-colors reveal-on-scroll active">
+<span class="material-symbols-outlined text-3xl group-hover:scale-110 transition-transform">spa</span>
+<span class="font-label-sm text-label-sm tracking-widest uppercase">Wellness</span>
+</div>
+<div class="h-40 glass-card flex flex-col items-center justify-center gap-4 group cursor-pointer hover:bg-secondary/10 transition-colors reveal-on-scroll active">
+<span class="material-symbols-outlined text-3xl group-hover:scale-110 transition-transform">school</span>
+<span class="font-label-sm text-label-sm tracking-widest uppercase">Education</span>
+</div>
+<div class="h-40 glass-card flex flex-col items-center justify-center gap-4 group cursor-pointer hover:bg-secondary/10 transition-colors reveal-on-scroll active">
+<span class="material-symbols-outlined text-3xl group-hover:scale-110 transition-transform">volunteer_activism</span>
+<span class="font-label-sm text-label-sm tracking-widest uppercase">NGOs</span>
+</div>
+<div class="h-40 glass-card flex flex-col items-center justify-center gap-4 group cursor-pointer hover:bg-secondary/10 transition-colors reveal-on-scroll active">
+<span class="material-symbols-outlined text-3xl group-hover:scale-110 transition-transform">person</span>
+<span class="font-label-sm text-label-sm tracking-widest uppercase">Brands</span>
+</div>
+<div class="h-40 glass-card flex flex-col items-center justify-center gap-4 group cursor-pointer hover:bg-secondary/10 transition-colors reveal-on-scroll active">
+<span class="material-symbols-outlined text-3xl group-hover:scale-110 transition-transform">trending_up</span>
+<span class="font-label-sm text-label-sm tracking-widest uppercase">Growth</span>
+</div>
+</div>
+</section>
+<!-- Section 9: Final CTA -->
+<section class="relative h-screen flex flex-col items-center justify-center overflow-hidden">
+
+<div class="relative z-10 text-center px-margin-mobile">
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg leading-tight mb-12 reveal-on-scroll active">Let's Build Something <br> Worth Remembering.</h2>
+<div class="flex flex-col md:flex-row gap-6 justify-center reveal-on-scroll active">
+<button class="bg-secondary text-on-secondary-fixed px-12 py-5 rounded-full font-label-sm text-label-sm tracking-wider uppercase transition-all duration-300 hover:opacity-80 gold-glow">
+                        Start A Project
+                    </button>
+<button class="border border-on-surface/20 hover:border-on-surface text-on-surface px-12 py-5 rounded-full font-label-sm text-label-sm tracking-wider uppercase transition-all duration-300">
+                        View Our Work
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant py-margin-desktop px-margin-desktop">
+<div class="grid grid-cols-12 gap-gutter w-full max-w-container-max mx-auto mb-20">
+<div class="col-span-12 md:col-span-6">
+<div class="font-display-lg text-display-lg text-on-surface opacity-10 leading-none">SIDPIN</div>
+</div>
+<div class="col-span-12 md:col-span-6 flex flex-col md:flex-row justify-end gap-12 font-body-md text-body-md">
+<a class="text-on-surface-variant hover:text-on-surface hover:translate-x-1 transition-all duration-300" href="#">Instagram</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:translate-x-1 transition-all duration-300" href="#">LinkedIn</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:translate-x-1 transition-all duration-300" href="#">Vimeo</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:translate-x-1 transition-all duration-300" href="#">Contact</a>
+</div>
+</div>
+<div class="max-w-container-max mx-auto text-on-surface/30 text-xs tracking-widest uppercase text-center border-t border-on-surface/5 pt-10">
+            © 2024 SIDPIN. ALL RIGHTS RESERVED. CINEMATIC PRECISION.
+        </div>
+</footer>
+<script>
+        // Simple Intersection Observer for scroll reveals
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+
+        // Subtle parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            document.querySelectorAll('.parallax-bg').forEach(el => {
+                const limit = el.offsetHeight;
+                if (scrolled <= limit) {
+                    el.style.transform = `translateY(${scrolled * 0.3}px)`;
+                }
+            });
+        });
+    </script>
+
+
+</body></html>
