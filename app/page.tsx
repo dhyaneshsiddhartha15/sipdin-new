@@ -3,6 +3,9 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import EcosystemTabs from "@/components/home/EcosystemTabs";
+import WordCycleHero from "@/components/home/WordCycleHero";
+import BuildPipeline from "@/components/home/BuildPipeline";
+import IntegrationFlow from "@/components/home/IntegrationFlow";
 
 export default function HomePage() {
   return (
@@ -104,7 +107,42 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 4. CRM SOFTWARE SHOWCASE */}
+        {/* 4. WORD CYCLE HERO */}
+        <section className="py-[160px] px-[80px] bg-[#0c0e10]">
+          <div className="max-w-[1440px] mx-auto">
+            <WordCycleHero />
+          </div>
+        </section>
+
+        {/* 5. BUILD PIPELINE */}
+        <section className="py-[160px] px-[80px] bg-[#111415]">
+          <div className="max-w-[1440px] mx-auto">
+            <BuildPipeline />
+          </div>
+        </section>
+
+        {/* 6. INTEGRATION FLOW */}
+        <section className="py-[160px] px-[80px] bg-[#0c0e10]">
+          <div className="max-w-[1440px] mx-auto text-center">
+            <div className="mb-16">
+              <span className="font-['Geist'] text-xs font-medium text-[#e9c349] tracking-[0.4em] uppercase mb-8 block">
+                Seamless Connectivity
+              </span>
+              <h2 className="font-['Hanken_Grotesk'] text-[48px] md:text-[64px] font-semibold leading-[1.1] tracking-tight mb-8">
+                Everything Connected. <br />
+                <span className="text-[#e9c349]">Nothing Left Behind.</span>
+              </h2>
+              <p className="font-['Inter'] text-lg text-[#cfc4c5] max-w-3xl mx-auto">
+                Our AI-powered engine integrates with your entire stack — from
+                communication tools to payment systems — creating one unified
+                operating system for your business.
+              </p>
+            </div>
+            <IntegrationFlow />
+          </div>
+        </section>
+
+        {/* 7. CRM SOFTWARE SHOWCASE */}
         <section className="py-[160px] px-[80px] bg-[#0c0e10] overflow-hidden">
           <div className="max-w-[1440px] mx-auto text-center">
             <div className="max-w-4xl mx-auto mb-20">
@@ -180,7 +218,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 5. INDUSTRY CRM CAROUSEL */}
+        {/* 8. INDUSTRY CRM CAROUSEL */}
         <section className="py-[160px] bg-[#111415]">
           <div className="px-[80px] max-w-[1440px] mx-auto">
             <div className="flex justify-between items-end mb-16">
@@ -304,7 +342,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 6. BRAND GROWTH ECOSYSTEM */}
+        {/* 9. BRAND GROWTH ECOSYSTEM */}
         <section className="py-[160px] px-[80px] bg-[#0c0e10] border-t border-b border-[#988e90]/10">
           <div className="max-w-[1440px] mx-auto text-center">
             <div className="mb-24">
@@ -393,7 +431,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 7. THE BUSINESS OPERATING SYSTEM (Bento Grid) */}
+        {/* 10. THE BUSINESS OPERATING SYSTEM (Bento Grid) */}
         <section className="py-[160px] px-[80px] bg-[#111415]">
           <div className="max-w-[1440px] mx-auto">
             <div className="mb-24">
@@ -477,7 +515,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 8. WHY CHOOSE SIDPIN */}
+        {/* 11. WHY CHOOSE SIDPIN */}
         <section className="py-[160px] bg-[#111415] overflow-hidden">
           <div className="px-[80px] max-w-[1440px] mx-auto mb-20">
             <span className="font-['Geist'] text-xs font-medium text-[#e9c349] tracking-[0.4em] uppercase mb-4 block">
