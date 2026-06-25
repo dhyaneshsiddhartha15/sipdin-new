@@ -38,10 +38,10 @@ export default function FounderPortrait() {
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
       <div className="absolute bottom-8 left-8">
-        <p className="font-['Geist'] text-xs font-medium text-[#e9c349] tracking-[0.2em] uppercase mb-2">
+        <p className="font-['Geist'] text-xs font-medium text-[#4169E1] tracking-[0.2em] uppercase mb-2">
           The Visionary
         </p>
-        <h3 className="font-['Hanken_Grotesk'] text-[32px] font-medium text-[#e2e2e4]">
+        <h3 className="font-['Hanken_Grotesk'] text-[32px] font-medium text-fg">
           Anand Siddhartha
         </h3>
       </div>

@@ -61,20 +61,20 @@ export default function EcosystemTabs() {
           <button
             key={index}
             onClick={() => setActiveTab(index)}
-            className={`text-left p-6 border-l-2 border-[#4c4546] hover:border-[#e9c349] transition-all group ${
+            className={`text-left p-6 border-l-2 border-line hover:border-[#4169E1] transition-all group ${
               activeTab === index ? "tab-active" : ""
             }`}
           >
             <h3 className="font-['Hanken_Grotesk'] text-2xl font-medium group-hover:pl-4 transition-all">
               {tab.name}
             </h3>
-            <p className="text-[#cfc4c5] mt-2 text-sm opacity-60">{tab.desc}</p>
+            <p className="text-fg-2 mt-2 text-sm opacity-60">{tab.desc}</p>
           </button>
         ))}
       </div>
 
       {/* Right: Large Visual Canvas */}
-      <div className="w-full lg:w-2/3 relative h-[600px] overflow-hidden rounded-xl border border-[#4c4546]/30">
+      <div className="w-full lg:w-2/3 relative h-[600px] overflow-hidden rounded-xl border border-line/30">
         <div
           className="h-full w-full relative transition-all duration-700 ease-in-out"
           key={activeTab}
@@ -84,12 +84,12 @@ export default function EcosystemTabs() {
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url('${ecosystemData[activeTab].img}')` }}
           />
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-[#0a1230]/40" />
           <div className="absolute bottom-0 left-0 p-12 w-full glass-card border-none">
-            <h4 className="font-['Hanken_Grotesk'] text-3xl font-medium text-[#e2e2e4] mb-4">
+            <h4 className="font-['Hanken_Grotesk'] text-3xl font-medium text-fg mb-4">
               {ecosystemData[activeTab].title}
             </h4>
-            <p className="font-['Inter'] text-lg text-[#cfc4c5] max-w-xl">
+            <p className="font-['Inter'] text-lg text-fg-2 max-w-xl">
               {ecosystemData[activeTab].desc}
             </p>
           </div>

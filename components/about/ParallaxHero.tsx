@@ -27,14 +27,14 @@ export default function ParallaxHero() {
           className="w-full h-full parallax-section will-change-transform"
           style={{ backgroundImage: `url('${HERO_IMAGE}')` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#111415] via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/75 to-transparent" />
       </div>
       <div className="relative z-10 px-[24px] md:px-[80px] pb-32 max-w-[1440px] mx-auto w-full">
         <div className="max-w-4xl">
-          <span className="font-['Geist'] text-xs font-medium tracking-[0.4em] uppercase text-[#e9c349] mb-6 block">
+          <span className="font-['Geist'] text-xs font-medium tracking-[0.4em] uppercase text-[#4169E1] mb-6 block">
             The Vision Behind SIDPIN
           </span>
-          <h1 className="font-['Hanken_Grotesk'] text-[48px] md:text-[80px] font-semibold leading-[1.1] tracking-tight text-[#e2e2e4]">
+          <h1 className="font-['Hanken_Grotesk'] text-[48px] md:text-[80px] font-semibold leading-[1.1] tracking-tight text-fg">
             Beyond the Lens: <br />
             The Architecture of Growth.
           </h1>

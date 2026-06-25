@@ -90,7 +90,7 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
-      <main className="bg-black">
+      <main className="bg-bg">
         {/* Hero */}
         <header className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
           <div
@@ -102,19 +102,19 @@ export default function ContactPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black z-0" />
           <div className="relative z-10 text-center px-[24px] max-w-4xl mx-auto space-y-12">
-            <h1 className="font-['Hanken_Grotesk'] text-[48px] md:text-[80px] font-semibold leading-[1.1] tracking-tight text-[#e2e2e4]">
+            <h1 className="font-['Hanken_Grotesk'] text-[48px] md:text-[80px] font-semibold leading-[1.1] tracking-tight text-fg">
               Let&apos;s Build Something Worth Remembering.
             </h1>
             <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
               <button
                 type="button"
-                className="w-full md:w-auto bg-[#e9c349] text-[#3c2f00] px-12 py-5 font-['Geist'] text-xs font-medium tracking-[0.2em] uppercase hover:shadow-[0_0_20px_rgba(233,195,73,0.3)] transition-all duration-500"
+                className="w-full md:w-auto bg-[#4169E1] text-[#FFFFFF] px-12 py-5 font-['Geist'] text-xs font-medium tracking-[0.2em] uppercase hover:shadow-[0_0_20px_rgba(65, 105, 225,0.3)] transition-all duration-500"
               >
                 Book A Discovery Call
               </button>
               <button
                 type="button"
-                className="w-full md:w-auto border border-[#e2e2e4]/20 text-[#e2e2e4] px-12 py-5 font-['Geist'] text-xs font-medium tracking-[0.2em] uppercase hover:bg-[#e2e2e4]/5 transition-all duration-500"
+                className="w-full md:w-auto border border-fg/20 text-fg px-12 py-5 font-['Geist'] text-xs font-medium tracking-[0.2em] uppercase hover:bg-fg/5 transition-all duration-500"
               >
                 Start A Project
               </button>
@@ -123,13 +123,13 @@ export default function ContactPage() {
         </header>
 
         {/* Intro */}
-        <section className="py-40 bg-black">
+        <section className="py-40 bg-bg">
           <div className="max-w-[1440px] mx-auto px-[24px] md:px-[80px]">
             <div className="max-w-4xl">
-              <p className="font-['Geist'] text-xs font-medium text-[#e9c349] tracking-[0.3em] uppercase mb-8">
+              <p className="font-['Geist'] text-xs font-medium text-[#4169E1] tracking-[0.3em] uppercase mb-8">
                 Introduction
               </p>
-              <h2 className="font-['Hanken_Grotesk'] text-[32px] md:text-[64px] font-semibold leading-tight text-[#e2e2e4]">
+              <h2 className="font-['Hanken_Grotesk'] text-[32px] md:text-[64px] font-semibold leading-tight text-fg">
                 Every Great Project Starts With A Conversation.
               </h2>
             </div>
@@ -137,16 +137,16 @@ export default function ContactPage() {
         </section>
 
         {/* Services Grid */}
-        <section className="py-40 bg-[#0c0e10]">
+        <section className="py-40 bg-surface-2">
           <div className="max-w-[1440px] mx-auto px-[24px] md:px-[80px]">
-            <h3 className="font-['Geist'] text-xs font-medium text-[#e2e2e4]/40 tracking-[0.3em] uppercase mb-16">
+            <h3 className="font-['Geist'] text-xs font-medium text-fg/40 tracking-[0.3em] uppercase mb-16">
               How Can We Help?
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-[32px]">
               {serviceCards.map((card) => (
                 <div
                   key={card.title}
-                  className="group relative aspect-square md:aspect-[4/5] overflow-hidden bg-black beveled-glass reveal-on-hover"
+                  className="group relative aspect-square md:aspect-[4/5] overflow-hidden bg-bg beveled-glass reveal-on-hover"
                 >
                   <div
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-60"
@@ -156,10 +156,10 @@ export default function ContactPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
                   <div className="absolute bottom-12 left-12 right-12">
-                    <h4 className="font-['Hanken_Grotesk'] text-[32px] md:text-[48px] font-medium tracking-[0.05em] text-[#e2e2e4] mb-4">
+                    <h4 className="font-['Hanken_Grotesk'] text-[32px] md:text-[48px] font-medium tracking-[0.05em] text-fg mb-4">
                       {card.title}
                     </h4>
-                    <div className="hidden-content font-['Inter'] text-[#e2e2e4]/70">
+                    <div className="hidden-content font-['Inter'] text-fg/70">
                       {card.desc}
                     </div>
                   </div>
@@ -173,18 +173,18 @@ export default function ContactPage() {
         <ContactForm />
 
         {/* Metrics */}
-        <section className="py-40 bg-black">
+        <section className="py-40 bg-bg">
           <div className="max-w-[1440px] mx-auto px-[24px] md:px-[80px]">
-            <h3 className="font-['Geist'] text-xs font-medium text-[#e2e2e4]/40 tracking-[0.3em] uppercase text-center mb-24">
+            <h3 className="font-['Geist'] text-xs font-medium text-fg/40 tracking-[0.3em] uppercase text-center mb-24">
               Why Brands Work With SIDPIN
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               {metrics.map((metric) => (
                 <div key={metric.label} className="text-center space-y-4 group">
-                  <span className="block font-['Hanken_Grotesk'] text-[80px] md:text-[100px] text-[#e2e2e4] leading-none group-hover:text-[#e9c349] transition-colors duration-500">
+                  <span className="block font-['Hanken_Grotesk'] text-[80px] md:text-[100px] text-fg leading-none group-hover:text-[#4169E1] transition-colors duration-500">
                     {metric.value}
                   </span>
-                  <span className="block font-['Geist'] text-xs font-medium text-[#e2e2e4]/60 tracking-widest uppercase">
+                  <span className="block font-['Geist'] text-xs font-medium text-fg/60 tracking-widest uppercase">
                     {metric.label}
                   </span>
                 </div>
@@ -194,9 +194,9 @@ export default function ContactPage() {
         </section>
 
         {/* Ways To Connect */}
-        <section className="py-40 bg-[#0c0e10]">
+        <section className="py-40 bg-surface-2">
           <div className="max-w-[1440px] mx-auto px-[24px] md:px-[80px]">
-            <h3 className="font-['Geist'] text-xs font-medium text-[#e2e2e4]/40 tracking-[0.3em] uppercase mb-16 text-center">
+            <h3 className="font-['Geist'] text-xs font-medium text-fg/40 tracking-[0.3em] uppercase mb-16 text-center">
               Ways To Connect
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[32px]">
@@ -204,15 +204,15 @@ export default function ContactPage() {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="glass-card group p-12 text-center hover:bg-[#e2e2e4]/5 transition-all"
+                  className="glass-card group p-12 text-center hover:bg-fg/5 transition-all"
                 >
-                  <span className="material-symbols-outlined text-4xl mb-6 block text-[#e9c349]">
+                  <span className="material-symbols-outlined text-4xl mb-6 block text-[#4169E1]">
                     {link.icon}
                   </span>
-                  <span className="block font-['Hanken_Grotesk'] text-[32px] font-medium text-[#e2e2e4] mb-2">
+                  <span className="block font-['Hanken_Grotesk'] text-[32px] font-medium text-fg mb-2">
                     {link.title}
                   </span>
-                  <span className="block font-['Geist'] text-xs font-medium text-[#e2e2e4]/40 tracking-widest uppercase">
+                  <span className="block font-['Geist'] text-xs font-medium text-fg/40 tracking-widest uppercase">
                     {link.label}
                   </span>
                 </a>
@@ -233,13 +233,13 @@ export default function ContactPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
           <div className="relative z-10 max-w-[1440px] mx-auto px-[24px] md:px-[80px]">
             <div className="max-w-2xl space-y-8">
-              <p className="font-['Geist'] text-xs font-medium text-[#e9c349] tracking-[0.3em] uppercase">
+              <p className="font-['Geist'] text-xs font-medium text-[#4169E1] tracking-[0.3em] uppercase">
                 The Vision
               </p>
-              <h2 className="font-['Hanken_Grotesk'] text-[32px] md:text-[72px] font-semibold leading-tight text-[#e2e2e4]">
+              <h2 className="font-['Hanken_Grotesk'] text-[32px] md:text-[72px] font-semibold leading-tight text-fg">
                 Where Creativity Meets Growth.
               </h2>
-              <p className="font-['Inter'] text-lg text-[#e2e2e4]/70 leading-relaxed max-w-lg">
+              <p className="font-['Inter'] text-lg text-fg/70 leading-relaxed max-w-lg">
                 We don&apos;t just make content; we engineer legacies. Your brand
                 is a story waiting to be told with precision, depth, and
                 unwavering quality.
@@ -249,21 +249,21 @@ export default function ContactPage() {
         </section>
 
         {/* Final CTA */}
-        <section className="min-h-screen flex flex-col items-center justify-center bg-black px-[24px] text-center relative overflow-hidden">
+        <section className="min-h-screen flex flex-col items-center justify-center bg-bg px-[24px] text-center relative overflow-hidden">
           <div className="relative z-10 space-y-16">
-            <h2 className="font-['Hanken_Grotesk'] text-[48px] md:text-[80px] font-semibold leading-[1.1] tracking-tight text-[#e2e2e4]">
+            <h2 className="font-['Hanken_Grotesk'] text-[48px] md:text-[80px] font-semibold leading-[1.1] tracking-tight text-fg">
               Your Next Chapter Starts Here.
             </h2>
             <div className="flex flex-col md:flex-row gap-8 justify-center">
               <button
                 type="button"
-                className="bg-[#e9c349] text-[#3c2f00] px-16 py-6 font-['Geist'] text-xs font-medium tracking-[0.2em] uppercase hover:scale-105 transition-all duration-500"
+                className="bg-[#4169E1] text-[#FFFFFF] px-16 py-6 font-['Geist'] text-xs font-medium tracking-[0.2em] uppercase hover:scale-105 transition-all duration-500"
               >
                 Book A Discovery Call
               </button>
               <button
                 type="button"
-                className="border border-[#e2e2e4]/40 text-[#e2e2e4] px-16 py-6 font-['Geist'] text-xs font-medium tracking-[0.2em] uppercase hover:bg-[#e2e2e4] hover:text-black transition-all duration-500"
+                className="border border-fg/40 text-fg px-16 py-6 font-['Geist'] text-xs font-medium tracking-[0.2em] uppercase hover:bg-fg hover:text-bg transition-all duration-500"
               >
                 Start Your Project
               </button>

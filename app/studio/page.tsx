@@ -120,20 +120,20 @@ export default function StudioPage() {
                 backgroundImage: "url('/stitch-exports/studio-screenshot.png')",
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#111415] via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent" />
           </div>
           <div className="relative z-10 text-center max-w-4xl px-[24px] md:px-0">
-            <h1 className="font-['Hanken_Grotesk'] text-[48px] md:text-[80px] font-semibold leading-[1.1] tracking-tight text-[#e2e2e4] mb-6">
+            <h1 className="font-['Hanken_Grotesk'] text-[48px] md:text-[80px] font-semibold leading-[1.1] tracking-tight text-fg mb-6">
               We Build Brands That People Remember.
             </h1>
-            <p className="font-['Inter'] text-lg leading-[1.6] text-[#e2e2e4]/70 max-w-2xl mx-auto">
+            <p className="font-['Inter'] text-lg leading-[1.6] text-fg/70 max-w-2xl mx-auto">
               SIDPIN is a Creative Growth &amp; Production Company helping
               businesses stand out through filmmaking, storytelling, digital
               experiences, and growth systems.
             </p>
           </div>
           <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-            <span className="material-symbols-outlined text-[#e9c349] opacity-50">
+            <span className="material-symbols-outlined text-[#4169E1] opacity-50">
               keyboard_double_arrow_down
             </span>
           </div>
@@ -143,11 +143,11 @@ export default function StudioPage() {
         <section className="py-40 px-[24px] md:px-[80px] max-w-[1440px] mx-auto overflow-hidden">
           <div className="grid grid-cols-12 gap-[32px]">
             <div className="col-span-12 md:col-span-8">
-              <p className="font-['Geist'] text-xs font-medium text-[#e9c349] uppercase tracking-[0.3em] mb-12">
+              <p className="font-['Geist'] text-xs font-medium text-[#4169E1] uppercase tracking-[0.3em] mb-12">
                 The Genesis
               </p>
               <Reveal>
-                <h2 className="font-['Hanken_Grotesk'] text-[32px] md:text-[80px] font-semibold leading-none mb-24 text-[#e2e2e4]">
+                <h2 className="font-['Hanken_Grotesk'] text-[32px] md:text-[80px] font-semibold leading-none mb-24 text-fg">
                   From filmmaking passion to architectural business growth.
                 </h2>
               </Reveal>
@@ -171,7 +171,7 @@ export default function StudioPage() {
             </div>
             <div className="col-span-12 md:col-span-5 md:col-start-8">
               <Reveal>
-                <div className="font-['Inter'] text-lg leading-[1.6] text-[#e2e2e4]/60 space-y-8">
+                <div className="font-['Inter'] text-lg leading-[1.6] text-fg/60 space-y-8">
                   <p>
                     We didn&apos;t start as an agency. We started as
                     storytellers with a camera and an obsession for the perfect
@@ -191,27 +191,27 @@ export default function StudioPage() {
         </section>
 
         {/* Core Philosophy */}
-        <section className="py-40 bg-[#0c0e10]">
+        <section className="py-40 bg-surface-2">
           <div className="px-[24px] md:px-[80px] max-w-[1440px] mx-auto mb-20">
-            <h2 className="font-['Hanken_Grotesk'] text-[32px] md:text-[48px] font-medium tracking-[0.05em] text-[#e2e2e4] text-center">
+            <h2 className="font-['Hanken_Grotesk'] text-[32px] md:text-[48px] font-medium tracking-[0.05em] text-fg text-center">
               Core Philosophy
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-[24px] md:px-[80px] max-w-[1440px] mx-auto gap-[32px]">
             {philosophyCards.map((card) => (
               <Reveal key={card.title} delay={card.delay}>
-                <div className="glass-card p-10 rounded-xl flex flex-col justify-between h-[450px] transition-all duration-500 hover:scale-[1.02] hover:border-[#e9c349]/30 group">
+                <div className="glass-card p-10 rounded-xl flex flex-col justify-between h-[450px] transition-all duration-500 hover:scale-[1.02] hover:border-[#4169E1]/30 group">
                   <span
-                    className="material-symbols-outlined text-4xl text-[#e9c349]"
+                    className="material-symbols-outlined text-4xl text-[#4169E1]"
                     style={{ fontVariationSettings: "'FILL' 1" }}
                   >
                     {card.icon}
                   </span>
                   <div>
-                    <h3 className="font-['Hanken_Grotesk'] text-[32px] font-medium text-[#e2e2e4] mb-4">
+                    <h3 className="font-['Hanken_Grotesk'] text-[32px] font-medium text-fg mb-4">
                       {card.title}
                     </h3>
-                    <p className="text-[#e2e2e4]/60 font-['Inter']">
+                    <p className="text-fg/60 font-['Inter']">
                       {card.desc}
                     </p>
                   </div>
@@ -225,25 +225,25 @@ export default function StudioPage() {
         <section className="py-40 px-[24px] md:px-[80px] max-w-[1440px] mx-auto">
           <Reveal>
             <div className="text-center mb-32">
-              <h2 className="font-['Hanken_Grotesk'] text-[32px] md:text-[80px] font-semibold text-[#e2e2e4] mb-6">
+              <h2 className="font-['Hanken_Grotesk'] text-[32px] md:text-[80px] font-semibold text-fg mb-6">
                 Redefining the Model
               </h2>
-              <p className="font-['Inter'] text-lg text-[#e2e2e4]/60">
+              <p className="font-['Inter'] text-lg text-fg/60">
                 Why settle for campaigns when you can build an ecosystem?
               </p>
             </div>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[32px]">
             <Reveal>
-              <div className="p-12 border border-[#988e90]/20 rounded-2xl">
-                <h3 className="font-['Hanken_Grotesk'] text-[32px] font-medium text-[#e2e2e4]/40 mb-8">
+              <div className="p-12 border border-line/20 rounded-2xl">
+                <h3 className="font-['Hanken_Grotesk'] text-[32px] font-medium text-fg/40 mb-8">
                   Traditional Agency
                 </h3>
                 <ul className="space-y-6">
                   {traditionalItems.map((item) => (
                     <li
                       key={item}
-                      className="flex items-center gap-4 text-[#e2e2e4]/40"
+                      className="flex items-center gap-4 text-fg/40"
                     >
                       <span className="material-symbols-outlined text-[#ffb4ab]">
                         close
@@ -255,15 +255,15 @@ export default function StudioPage() {
               </div>
             </Reveal>
             <Reveal>
-              <div className="p-12 glass-card border-2 border-[#e9c349]/40 rounded-2xl shadow-2xl">
-                <h3 className="font-['Hanken_Grotesk'] text-[32px] font-medium text-[#e9c349] mb-8">
+              <div className="p-12 glass-card border-2 border-[#4169E1]/40 rounded-2xl shadow-2xl">
+                <h3 className="font-['Hanken_Grotesk'] text-[32px] font-medium text-[#4169E1] mb-8">
                   The SIDPIN Approach
                 </h3>
                 <ul className="space-y-6">
                   {sidpinItems.map((item) => (
                     <li key={item} className="flex items-center gap-4">
                       <span
-                        className="material-symbols-outlined text-[#e9c349]"
+                        className="material-symbols-outlined text-[#4169E1]"
                         style={{ fontVariationSettings: "'FILL' 1" }}
                       >
                         check_circle
@@ -278,12 +278,12 @@ export default function StudioPage() {
         </section>
 
         {/* Meet The Team */}
-        <section className="py-40 bg-[#111415] overflow-hidden">
+        <section className="py-40 bg-surface overflow-hidden">
           <div className="px-[24px] md:px-[80px] max-w-[1440px] mx-auto mb-20">
-            <p className="font-['Geist'] text-xs font-medium text-[#e9c349] uppercase tracking-[0.3em] mb-4">
+            <p className="font-['Geist'] text-xs font-medium text-[#4169E1] uppercase tracking-[0.3em] mb-4">
               The Collective
             </p>
-            <h2 className="font-['Hanken_Grotesk'] text-[32px] md:text-[48px] font-medium tracking-[0.05em] text-[#e2e2e4]">
+            <h2 className="font-['Hanken_Grotesk'] text-[32px] md:text-[48px] font-medium tracking-[0.05em] text-fg">
               Expertise in Every Frame.
             </h2>
           </div>
@@ -301,10 +301,10 @@ export default function StudioPage() {
                   aria-label={member.alt}
                 />
                 <div className="mt-6">
-                  <p className="font-['Hanken_Grotesk'] text-[32px] font-medium text-[#e2e2e4]">
+                  <p className="font-['Hanken_Grotesk'] text-[32px] font-medium text-fg">
                     {member.name}
                   </p>
-                  <p className="font-['Geist'] text-xs font-medium text-[#e9c349] uppercase tracking-widest mt-1">
+                  <p className="font-['Geist'] text-xs font-medium text-[#4169E1] uppercase tracking-widest mt-1">
                     {member.role}
                   </p>
                 </div>
@@ -322,27 +322,27 @@ export default function StudioPage() {
                 "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDGbC_ApRZi_PH7VjX-wZIk6AlZJ6a5p-zC2sEXqNIA8kpFgyHUIeaaW_nGVh6q8sdJaBjISE7vPHVkjIqf94B8V_jj5QNo4YckfYXghhtC89RvaNAkqcb0G5vwRAANdsKE8m3G7gLgPfjhlX7_9zuydpH9zXI4C-wDDPrN7W7kDQKYVG29vldW7GiJmLyytVum-MkdHzxzXhufi1ADZuJem5bxQo9J8MX_k9cVj5kp16F_YoPnztY_ehc6yWvYlHUn_rxS5O0hNEst')",
             }}
           />
-          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-surface/70 backdrop-blur-sm" />
           <Reveal>
             <div className="relative z-10 text-center px-[24px]">
-              <h2 className="font-['Hanken_Grotesk'] text-[48px] md:text-[80px] font-semibold leading-tight text-[#e2e2e4] mb-8">
+              <h2 className="font-['Hanken_Grotesk'] text-[48px] md:text-[80px] font-semibold leading-tight text-fg mb-8">
                 Building The Future <br /> Of Brand Growth
               </h2>
-              <div className="w-24 h-1 bg-[#e9c349] mx-auto" />
+              <div className="w-24 h-1 bg-[#4169E1] mx-auto" />
             </div>
           </Reveal>
         </section>
 
         {/* The SIDPIN Journey */}
-        <section className="py-40 px-[24px] md:px-[80px] bg-[#1a1c1d]">
+        <section className="py-40 px-[24px] md:px-[80px] bg-surface-2">
           <div className="max-w-[1440px] mx-auto">
             <Reveal>
-              <h2 className="font-['Hanken_Grotesk'] text-[32px] md:text-[48px] font-medium tracking-[0.05em] text-[#e2e2e4] mb-24">
+              <h2 className="font-['Hanken_Grotesk'] text-[32px] md:text-[48px] font-medium tracking-[0.05em] text-fg mb-24">
                 The SIDPIN Journey
               </h2>
             </Reveal>
             <div className="relative">
-              <div className="absolute top-6 left-0 w-full h-px bg-[#4c4546] hidden md:block" />
+              <div className="absolute top-6 left-0 w-full h-px bg-[#D6DAE4] hidden md:block" />
               <div className="grid grid-cols-1 md:grid-cols-7 gap-8 relative">
                 {journeySteps.map((step, i) => (
                   <Reveal key={step.title} delay={i * 100}>
@@ -350,8 +350,8 @@ export default function StudioPage() {
                       <div
                         className={`w-12 h-12 rounded-full flex items-center justify-center font-bold mb-6 relative z-10 mx-auto md:mx-0 ${
                           step.active
-                            ? "bg-[#e9c349] text-[#241a00]"
-                            : "bg-[#333537] border border-[#988e90]/20 text-[#e2e2e4]"
+                            ? "bg-[#4169E1] text-[#FFFFFF]"
+                            : "bg-surface-2 border border-line/20 text-fg"
                         }`}
                       >
                         {step.icon ? (
@@ -362,10 +362,10 @@ export default function StudioPage() {
                           step.num
                         )}
                       </div>
-                      <h4 className="font-['Hanken_Grotesk'] text-lg font-bold text-[#e2e2e4] mb-2">
+                      <h4 className="font-['Hanken_Grotesk'] text-lg font-bold text-fg mb-2">
                         {step.title}
                       </h4>
-                      <p className="text-[#e2e2e4]/60 text-sm font-['Inter']">
+                      <p className="text-fg/60 text-sm font-['Inter']">
                         {step.desc}
                       </p>
                     </div>
@@ -379,18 +379,18 @@ export default function StudioPage() {
         {/* Industries */}
         <section className="py-40 px-[24px] md:px-[80px] max-w-[1440px] mx-auto">
           <Reveal>
-            <h2 className="font-['Hanken_Grotesk'] text-[32px] md:text-[48px] font-medium tracking-[0.05em] text-[#e2e2e4] mb-24 text-center">
+            <h2 className="font-['Hanken_Grotesk'] text-[32px] md:text-[48px] font-medium tracking-[0.05em] text-fg mb-24 text-center">
               Specialized Impact
             </h2>
           </Reveal>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {industries.map((industry) => (
               <Reveal key={industry.label}>
-                <div className="h-40 glass-card flex flex-col items-center justify-center gap-4 group cursor-pointer hover:bg-[#e9c349]/10 transition-colors">
-                  <span className="material-symbols-outlined text-3xl text-[#e2e2e4] group-hover:scale-110 transition-transform">
+                <div className="h-40 glass-card flex flex-col items-center justify-center gap-4 group cursor-pointer hover:bg-[#4169E1]/10 transition-colors">
+                  <span className="material-symbols-outlined text-3xl text-fg group-hover:scale-110 transition-transform">
                     {industry.icon}
                   </span>
-                  <span className="font-['Geist'] text-xs font-medium tracking-widest uppercase text-[#e2e2e4]">
+                  <span className="font-['Geist'] text-xs font-medium tracking-widest uppercase text-fg">
                     {industry.label}
                   </span>
                 </div>
@@ -408,10 +408,10 @@ export default function StudioPage() {
                 "url('https://lh3.googleusercontent.com/aida-public/AB6AXuC4BDiwOQVwvXqT4bA27sfv9dYjbLzrbjB9HGr6A87UtAWbDBFIw1etwSyURKA2uc5y9d9XLKfiJ3SCWR0kkGA--E_w_9aTFy2I5Xd6HKO4Lf5xUwSEIrKFkqYyVYgUAHA8GEd69FY-W_eFCkDvSpAiV9IyAQhTIdtE48fjfgepC2sQpv-279fsYr7vrYWrq8ZSOYMIPtuxQRlIvtkoiMQLyyJiIh4zkJq2KYWyPgBrU1R201LLZjJmfOFn1grCqfQoryWsPvWt04dh')",
             }}
           />
-          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-surface/70" />
           <div className="relative z-10 text-center px-[24px]">
             <Reveal>
-              <h2 className="font-['Hanken_Grotesk'] text-[48px] md:text-[80px] font-semibold leading-tight text-[#e2e2e4] mb-12">
+              <h2 className="font-['Hanken_Grotesk'] text-[48px] md:text-[80px] font-semibold leading-tight text-fg mb-12">
                 Let&apos;s Build Something <br /> Worth Remembering.
               </h2>
             </Reveal>
@@ -419,13 +419,13 @@ export default function StudioPage() {
               <div className="flex flex-col md:flex-row gap-6 justify-center">
                 <a
                   href="/contact"
-                  className="bg-[#e9c349] text-[#241a00] px-12 py-5 rounded-full font-['Geist'] text-xs font-medium tracking-wider uppercase transition-all duration-300 hover:opacity-80 gold-glow"
+                  className="bg-[#4169E1] text-[#FFFFFF] px-12 py-5 rounded-full font-['Geist'] text-xs font-medium tracking-wider uppercase transition-all duration-300 hover:opacity-80 royal-blue-glow"
                 >
                   Start A Project
                 </a>
                 <a
                   href="/work"
-                  className="border border-[#e2e2e4]/20 hover:border-[#e2e2e4] text-[#e2e2e4] px-12 py-5 rounded-full font-['Geist'] text-xs font-medium tracking-wider uppercase transition-all duration-300"
+                  className="border border-fg/20 hover:border-fg text-fg px-12 py-5 rounded-full font-['Geist'] text-xs font-medium tracking-wider uppercase transition-all duration-300"
                 >
                   View Our Work
                 </a>

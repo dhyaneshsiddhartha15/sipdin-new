@@ -143,18 +143,18 @@ export default function ServiceExplorer() {
   const current = services[active];
 
   return (
-    <section className="py-[160px] bg-[#111415] relative" id="explorer">
+    <section className="py-[160px] bg-surface relative" id="explorer">
       <div className="max-w-[1440px] mx-auto px-[24px] md:px-[80px]">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div>
-            <span className="font-['Geist'] text-xs font-medium text-[#e9c349] tracking-[0.2em] uppercase mb-4 block">
+            <span className="font-['Geist'] text-xs font-medium text-[#4169E1] tracking-[0.2em] uppercase mb-4 block">
               Our Expertise
             </span>
-            <h2 className="font-['Hanken_Grotesk'] text-[32px] md:text-[48px] font-medium tracking-[0.05em] text-[#e2e2e4]">
+            <h2 className="font-['Hanken_Grotesk'] text-[32px] md:text-[48px] font-medium tracking-[0.05em] text-fg">
               Choose What You Need
             </h2>
           </div>
-          <p className="font-['Inter'] text-[#cfc4c5] max-w-sm opacity-60">
+          <p className="font-['Inter'] text-fg-2 max-w-sm opacity-60">
             Browse our core specialized pillars of creative and technical
             excellence.
           </p>
@@ -170,13 +170,13 @@ export default function ServiceExplorer() {
                 type="button"
                 onClick={() => switchService(key)}
                 className={`group glass-card p-8 aspect-square flex flex-col justify-between text-left transition-all duration-500 cursor-pointer ${
-                  isActive ? "service-active" : "hover:border-[#e9c349]/50"
+                  isActive ? "service-active" : "hover:border-[#4169E1]/50"
                 }`}
               >
-                <span className="material-symbols-outlined text-[#e9c349] text-4xl group-hover:scale-110 transition-transform">
+                <span className="material-symbols-outlined text-[#4169E1] text-4xl group-hover:scale-110 transition-transform">
                   {service.icon}
                 </span>
-                <h3 className="font-['Hanken_Grotesk'] text-xl md:text-2xl font-medium text-[#e2e2e4]">
+                <h3 className="font-['Hanken_Grotesk'] text-xl md:text-2xl font-medium text-fg">
                   {service.title}
                 </h3>
               </button>
@@ -193,23 +193,23 @@ export default function ServiceExplorer() {
         >
           <div className="glass-card p-8 md:p-12 lg:p-20 grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="space-y-8">
-              <h3 className="font-['Hanken_Grotesk'] text-[32px] md:text-[48px] font-medium tracking-[0.05em] text-[#e2e2e4]">
+              <h3 className="font-['Hanken_Grotesk'] text-[32px] md:text-[48px] font-medium tracking-[0.05em] text-fg">
                 {current.title}
               </h3>
-              <p className="font-['Inter'] text-lg leading-[1.6] text-[#cfc4c5]">
+              <p className="font-['Inter'] text-lg leading-[1.6] text-fg-2">
                 {current.desc}
               </p>
               <div className="space-y-4">
-                <span className="font-['Geist'] text-xs font-medium uppercase tracking-[0.2em] text-[#e9c349] block">
+                <span className="font-['Geist'] text-xs font-medium uppercase tracking-[0.2em] text-[#4169E1] block">
                   What&apos;s Included
                 </span>
                 <ul className="space-y-3">
                   {current.list.map((item) => (
                     <li key={item} className="flex items-center gap-3">
-                      <span className="material-symbols-outlined text-[#e9c349] text-sm">
+                      <span className="material-symbols-outlined text-[#4169E1] text-sm">
                         check_circle
                       </span>
-                      <span className="font-['Inter'] text-[#e2e2e4]">
+                      <span className="font-['Inter'] text-fg">
                         {item}
                       </span>
                     </li>
@@ -217,27 +217,27 @@ export default function ServiceExplorer() {
                 </ul>
               </div>
             </div>
-            <div className="bg-[#111415] p-8 md:p-10 border border-white/5 space-y-8 flex flex-col justify-center">
+            <div className="bg-surface p-8 md:p-10 border border-white/5 space-y-8 flex flex-col justify-center">
               <div>
-                <span className="font-['Geist'] text-xs text-[#cfc4c5] uppercase block mb-2">
+                <span className="font-['Geist'] text-xs text-fg-2 uppercase block mb-2">
                   Starting Investment
                 </span>
-                <div className="font-['Hanken_Grotesk'] text-[32px] md:text-[48px] font-medium text-[#e9c349]">
+                <div className="font-['Hanken_Grotesk'] text-[32px] md:text-[48px] font-medium text-[#4169E1]">
                   {current.price}{" "}
-                  <span className="font-['Inter'] text-base text-[#cfc4c5]">
+                  <span className="font-['Inter'] text-base text-fg-2">
                     / Project
                   </span>
                 </div>
               </div>
               <div>
-                <span className="font-['Geist'] text-xs text-[#cfc4c5] uppercase block mb-2">
+                <span className="font-['Geist'] text-xs text-fg-2 uppercase block mb-2">
                   Best For
                 </span>
-                <p className="font-['Inter'] text-[#e2e2e4]">{current.best}</p>
+                <p className="font-['Inter'] text-fg">{current.best}</p>
               </div>
               <button
                 type="button"
-                className="w-full bg-[#e9c349] text-[#342800] py-5 font-['Geist'] text-xs font-medium uppercase tracking-[0.2em] hover:brightness-110 transition-all"
+                className="w-full bg-[#4169E1] text-[#FFFFFF] py-5 font-['Geist'] text-xs font-medium uppercase tracking-[0.2em] hover:brightness-110 transition-all"
               >
                 Enquire Now
               </button>
