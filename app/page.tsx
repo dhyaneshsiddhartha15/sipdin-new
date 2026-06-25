@@ -9,69 +9,15 @@ import IntegrationFlow from "@/components/home/IntegrationFlow";
 import TechnologyCore from "@/components/home/TechnologyCore";
 import ParticleWave from "@/components/ui/ParticleWave";
 import VideoShowcase from "@/components/home/VideoShowcase";
+import IntegrationHero from "@/components/home/IntegrationHero";
 
 export default function HomePage() {
   return (
     <>
       <Navbar />
       <main>
-        {/* 1. HERO EXPERIENCE */}
-        <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-          {/* Cinematic aurora background (brand royal-blue, theme-aware) */}
-          <div className="absolute inset-0 z-0 overflow-hidden bg-bg">
-            {/* drifting aurora blobs */}
-            <div className="absolute -top-1/4 -left-24 h-[65vh] w-[65vh] rounded-full bg-[#4169E1]/35 blur-[130px] animate-float" />
-            <div
-              className="absolute top-1/4 -right-16 h-[60vh] w-[60vh] rounded-full bg-[#6E8CFF]/30 blur-[140px] animate-float"
-              style={{ animationDelay: "1.5s" }}
-            />
-            <div
-              className="absolute bottom-[-15%] left-1/3 h-[55vh] w-[55vh] rounded-full bg-[#8FB0FF]/25 blur-[150px] animate-float"
-              style={{ animationDelay: "0.8s" }}
-            />
-            {/* conic light sweep */}
-            <div
-              className="absolute left-1/2 top-1/2 h-[120vh] w-[120vh] -translate-x-1/2 -translate-y-1/2 opacity-[0.07] animate-[spin_40s_linear_infinite]"
-              style={{
-                background:
-                  "conic-gradient(from 0deg, transparent, #4169E1 25%, transparent 50%, #6E8CFF 75%, transparent)",
-              }}
-            />
-            {/* tech grid + top spotlight */}
-            <div className="ai-grid-bg absolute inset-0 opacity-60" />
-            <div className="ai-spotlight absolute inset-x-0 top-0 h-[40vh]" />
-            {/* center readability scrim + fade into next section */}
-            <div className="absolute inset-0 bg-[radial-gradient(60%_55%_at_50%_45%,var(--color-bg)_0%,transparent_70%)] opacity-80" />
-            <div className="absolute inset-0 bg-gradient-to-b from-bg/40 via-transparent to-bg" />
-            {/* animated particle wave along the bottom edge */}
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-64 opacity-80">
-              <ParticleWave color="99, 132, 255" />
-            </div>
-          </div>
-          <div className="relative z-10 text-center px-[24px] md:px-0 max-w-4xl">
-            <h1 className="font-['Hanken_Grotesk'] text-[48px] md:text-[80px] font-semibold leading-[1.1] tracking-tight text-fg mb-6 opacity-0 translate-y-8 animate-[fadeInUp_1s_ease-out_forwards]">
-              Stories That Move <br />
-              <span className="gradient-text">Brands Forward</span>
-            </h1>
-            <p className="font-['Inter'] text-lg leading-[1.6] text-fg-2 max-w-2xl mx-auto mb-10 opacity-0 translate-y-8 animate-[fadeInUp_1s_ease-out_0.2s_forwards]">
-              We create cinematic content, digital experiences, and growth
-              systems that help modern brands stand out, connect, and grow.
-            </p>
-            <div className="flex flex-col md:flex-row items-center justify-center gap-6 opacity-0 translate-y-8 animate-[fadeInUp_1s_ease-out_0.4s_forwards]">
-              <button className="w-full md:w-auto bg-[#4169E1] text-white px-10 py-5 font-['Geist'] text-xs font-medium tracking-[0.2em] uppercase hover:shadow-[0_0_30px_rgba(65,105,225,0.4)] transition-all">
-                View Our Work
-              </button>
-              <button className="w-full md:w-auto border border-fg/20 text-fg px-10 py-5 font-['Geist'] text-xs font-medium tracking-[0.2em] uppercase hover:bg-fg/5 transition-all">
-                Start A Project
-              </button>
-            </div>
-          </div>
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-            <span className="material-symbols-outlined text-[#4169E1] text-4xl">
-              expand_more
-            </span>
-          </div>
-        </section>
+        {/* 1. HERO EXPERIENCE - Integration Grid */}
+        <IntegrationHero />
 
         {/* 1.5 VIDEO SHOWCASE */}
         <VideoShowcase />
