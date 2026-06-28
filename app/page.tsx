@@ -5,11 +5,15 @@ import Footer from "@/components/layout/Footer";
 import EcosystemTabs from "@/components/home/EcosystemTabs";
 import WordCycleHero from "@/components/home/WordCycleHero";
 import BuildPipeline from "@/components/home/BuildPipeline";
-import IntegrationFlow from "@/components/home/IntegrationFlow";
 import TechnologyCore from "@/components/home/TechnologyCore";
 import ParticleWave from "@/components/ui/ParticleWave";
 import VideoShowcase from "@/components/home/VideoShowcase";
 import IntegrationHero from "@/components/home/IntegrationHero";
+import VisionInfrastructure from "@/components/home/VisionInfrastructure";
+import StatsSection from "@/components/home/StatsSection";
+import TechMarquee from "@/components/home/TechMarquee";
+import CloudDeployment from "@/components/home/CloudDeployment";
+import ClientShowcase from "@/components/home/ClientShowcase";
 
 export default function HomePage() {
   return (
@@ -19,8 +23,20 @@ export default function HomePage() {
         {/* 1. HERO EXPERIENCE - Integration Grid */}
         <IntegrationHero />
 
-        {/* 1.5 VIDEO SHOWCASE */}
-        <VideoShowcase />
+        {/* 1.5 STATS SECTION */}
+        <StatsSection />
+
+        {/* 1.6 WHO WE'RE BUILT FOR */}
+        <VisionInfrastructure />
+
+        {/* 1.7 CLOUD DEPLOYMENT */}
+        <CloudDeployment />
+
+        {/* 1.8 CLIENT SHOWCASE */}
+        <ClientShowcase />
+
+        {/* 1.9 TECH MARQUEE */}
+        <TechMarquee />
 
         {/* 2. THE ATTENTION ECONOMY (Brand Story) */}
         <section className="py-[160px] px-[80px] bg-bg">
@@ -81,21 +97,21 @@ export default function HomePage() {
         </section>
 
         {/* 4. WORD CYCLE HERO */}
-        <section className="py-[160px] px-[80px] bg-bg">
+        <section className="py-[80px] px-[80px] bg-bg">
           <div className="max-w-[1440px] mx-auto">
             <WordCycleHero />
           </div>
         </section>
 
         {/* 5. BUILD PIPELINE */}
-        <section className="py-[160px] px-[80px] bg-surface">
+        <section className="py-[80px] px-[80px] bg-surface">
           <div className="max-w-[1440px] mx-auto">
             <BuildPipeline />
           </div>
         </section>
 
-        {/* 6. INTEGRATION FLOW */}
-        <section className="py-[160px] px-[80px] bg-bg">
+        {/* 6. INTEGRATION FLOW - Moved to VisionInfrastructure section */}
+        {/* <section className="py-[160px] px-[80px] bg-bg">
           <div className="max-w-[1440px] mx-auto text-center">
             <div className="mb-16">
               <span className="font-['Geist'] text-xs font-medium text-[#4169E1] tracking-[0.4em] uppercase mb-8 block">
@@ -113,10 +129,10 @@ export default function HomePage() {
             </div>
             <IntegrationFlow />
           </div>
-        </section>
+        </section> */}
 
         {/* 6.5 TECHNOLOGY CORE */}
-        <TechnologyCore />
+        {/* <TechnologyCore /> */}
 
         {/* 7. CRM SOFTWARE SHOWCASE */}
         <section className="py-[160px] px-[80px] bg-bg overflow-hidden">
@@ -234,85 +250,94 @@ export default function HomePage() {
               className="flex gap-8 overflow-x-auto no-scrollbar scroll-smooth pb-10"
               id="industry-carousel"
             >
-              {/* Card 1 */}
-              <div className="hover-lift min-w-[400px] aspect-[4/5] glass-card rounded-2xl p-10 flex flex-col justify-end group transition-all duration-500 hover:border-[#4169E1]/40">
-                <div className="mb-auto">
-                  <span className="material-symbols-outlined text-4xl text-[#4169E1] mb-6">
-                    self_improvement
-                  </span>
-                  <h3 className="font-['Hanken_Grotesk'] text-3xl font-medium mb-4">
+              {/* Card 1 - Yoga CRM */}
+              <div className="hover-lift min-w-[400px] aspect-[4/5] rounded-2xl flex flex-col justify-end group transition-all duration-500 border border-line/20 relative overflow-hidden bg-[#0f1628]">
+                <img src="/crm/yoga.png" alt="Yoga Studio CRM Dashboard" className="absolute inset-0 w-full h-full object-cover opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a1230] via-[#0a1230]/80 to-transparent" />
+                <div className="relative z-10 p-10">
+                  <div className="w-12 h-12 rounded-xl bg-[#4169E1]/20 border border-[#4169E1]/30 flex items-center justify-center mb-4 backdrop-blur-sm">
+                    <span className="material-symbols-outlined text-2xl text-[#4169E1]">self_improvement</span>
+                  </div>
+                  <h3 className="font-['Hanken_Grotesk'] text-xl font-medium mb-2 text-white">
                     Yoga & TTC Centers
                   </h3>
-                  <p className="text-fg-2 font-['Inter'] text-base">
-                    Manage batch enrolments, automated reminders for renewals,
-                    and student progress tracking in one unified interface.
+                  <p className="text-white/60 font-['Inter'] text-xs leading-relaxed">
+                    Manage batch enrolments, automated reminders, and student progress tracking.
                   </p>
                 </div>
-                <div className="h-px w-0 group-hover:w-full bg-[#4169E1] transition-all duration-700 mt-8" />
+                <div className="relative z-10 h-px w-0 group-hover:w-full bg-[#4169E1] transition-all duration-700" />
               </div>
-              {/* Card 2 */}
-              <div className="hover-lift min-w-[400px] aspect-[4/5] glass-card rounded-2xl p-10 flex flex-col justify-end group transition-all duration-500 hover:border-[#4169E1]/40">
-                <div className="mb-auto">
-                  <span className="material-symbols-outlined text-4xl text-[#4169E1] mb-6">
-                    hotel
-                  </span>
-                  <h3 className="font-['Hanken_Grotesk'] text-3xl font-medium mb-4">
+
+              {/* Card 2 - Hotel CRM */}
+              <div className="hover-lift min-w-[400px] aspect-[4/5] rounded-2xl flex flex-col justify-end group transition-all duration-500 border border-line/20 relative overflow-hidden bg-[#0f1628]">
+                <img src="/crm/hotel.png" alt="Hotel Management CRM Dashboard" className="absolute inset-0 w-full h-full object-cover opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a1230] via-[#0a1230]/80 to-transparent" />
+                <div className="relative z-10 p-10">
+                  <div className="w-12 h-12 rounded-xl bg-[#4169E1]/20 border border-[#4169E1]/30 flex items-center justify-center mb-4 backdrop-blur-sm">
+                    <span className="material-symbols-outlined text-2xl text-[#4169E1]">hotel</span>
+                  </div>
+                  <h3 className="font-['Hanken_Grotesk'] text-xl font-medium mb-2 text-white">
                     Hotels & Resorts
                   </h3>
-                  <p className="text-fg-2 font-['Inter'] text-base">
+                  <p className="text-white/60 font-['Inter'] text-xs leading-relaxed">
                     Seamless guest management from booking to checkout.
-                    Personalize guest experiences with deep data insights.
                   </p>
                 </div>
-                <div className="h-px w-0 group-hover:w-full bg-[#4169E1] transition-all duration-700 mt-8" />
+                <div className="relative z-10 h-px w-0 group-hover:w-full bg-[#4169E1] transition-all duration-700" />
               </div>
-              {/* Card 3 */}
-              <div className="hover-lift min-w-[400px] aspect-[4/5] glass-card rounded-2xl p-10 flex flex-col justify-end group transition-all duration-500 hover:border-[#4169E1]/40">
-                <div className="mb-auto">
-                  <span className="material-symbols-outlined text-4xl text-[#4169E1] mb-6">
-                    restaurant
-                  </span>
-                  <h3 className="font-['Hanken_Grotesk'] text-3xl font-medium mb-4">
+
+              {/* Card 3 - Restaurant CRM */}
+              <div className="hover-lift min-w-[400px] aspect-[4/5] rounded-2xl flex flex-col justify-end group transition-all duration-500 border border-line/20 relative overflow-hidden bg-[#0f1628]">
+                <img src="/crm/resturant.png" alt="Restaurant POS CRM Dashboard" className="absolute inset-0 w-full h-full object-cover opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a1230] via-[#0a1230]/80 to-transparent" />
+                <div className="relative z-10 p-10">
+                  <div className="w-12 h-12 rounded-xl bg-[#4169E1]/20 border border-[#4169E1]/30 flex items-center justify-center mb-4 backdrop-blur-sm">
+                    <span className="material-symbols-outlined text-2xl text-[#4169E1]">restaurant</span>
+                  </div>
+                  <h3 className="font-['Hanken_Grotesk'] text-xl font-medium mb-2 text-white">
                     Restaurants & Cafés
                   </h3>
-                  <p className="text-fg-2 font-['Inter'] text-base">
-                    Reservation systems paired with loyalty programs. Automate
-                    feedback collection and drive repeat visits.
+                  <p className="text-white/60 font-['Inter'] text-xs leading-relaxed">
+                    Reservation systems with loyalty programs.
                   </p>
                 </div>
-                <div className="h-px w-0 group-hover:w-full bg-[#4169E1] transition-all duration-700 mt-8" />
+                <div className="relative z-10 h-px w-0 group-hover:w-full bg-[#4169E1] transition-all duration-700" />
               </div>
-              {/* Card 4 */}
-              <div className="hover-lift min-w-[400px] aspect-[4/5] glass-card rounded-2xl p-10 flex flex-col justify-end group transition-all duration-500 hover:border-[#4169E1]/40">
-                <div className="mb-auto">
-                  <span className="material-symbols-outlined text-4xl text-[#4169E1] mb-6">
-                    flight_takeoff
-                  </span>
-                  <h3 className="font-['Hanken_Grotesk'] text-3xl font-medium mb-4">
+
+              {/* Card 4 - Travel CRM */}
+              <div className="hover-lift min-w-[400px] aspect-[4/5] rounded-2xl flex flex-col justify-end group transition-all duration-500 border border-line/20 relative overflow-hidden bg-[#0f1628]">
+                <img src="/crm/travel.png" alt="Travel Agency CRM Dashboard" className="absolute inset-0 w-full h-full object-cover opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a1230] via-[#0a1230]/80 to-transparent" />
+                <div className="relative z-10 p-10">
+                  <div className="w-12 h-12 rounded-xl bg-[#4169E1]/20 border border-[#4169E1]/30 flex items-center justify-center mb-4 backdrop-blur-sm">
+                    <span className="material-symbols-outlined text-2xl text-[#4169E1]">flight_takeoff</span>
+                  </div>
+                  <h3 className="font-['Hanken_Grotesk'] text-xl font-medium mb-2 text-white">
                     Travel Agencies
                   </h3>
-                  <p className="text-fg-2 font-['Inter'] text-base">
-                    Itinerary builders, visa tracking, and automated documentation.
-                    Manage global clients with local precision.
+                  <p className="text-white/60 font-['Inter'] text-xs leading-relaxed">
+                    Itinerary builders, visa tracking, and documentation.
                   </p>
                 </div>
-                <div className="h-px w-0 group-hover:w-full bg-[#4169E1] transition-all duration-700 mt-8" />
+                <div className="relative z-10 h-px w-0 group-hover:w-full bg-[#4169E1] transition-all duration-700" />
               </div>
-              {/* Card 5 */}
-              <div className="hover-lift min-w-[400px] aspect-[4/5] glass-card rounded-2xl p-10 flex flex-col justify-end group transition-all duration-500 hover:border-[#4169E1]/40">
-                <div className="mb-auto">
-                  <span className="material-symbols-outlined text-4xl text-[#4169E1] mb-6">
-                    school
-                  </span>
-                  <h3 className="font-['Hanken_Grotesk'] text-3xl font-medium mb-4">
+
+              {/* Card 5 - Schools CRM */}
+              <div className="hover-lift min-w-[400px] aspect-[4/5] rounded-2xl flex flex-col justify-end group transition-all duration-500 border border-line/20 relative overflow-hidden bg-[#0f1628]">
+                <img src="/crm/school.png" alt="School Management CRM Dashboard" className="absolute inset-0 w-full h-full object-cover opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a1230] via-[#0a1230]/80 to-transparent" />
+                <div className="relative z-10 p-10">
+                  <div className="w-12 h-12 rounded-xl bg-[#4169E1]/20 border border-[#4169E1]/30 flex items-center justify-center mb-4 backdrop-blur-sm">
+                    <span className="material-symbols-outlined text-2xl text-[#4169E1]">school</span>
+                  </div>
+                  <h3 className="font-['Hanken_Grotesk'] text-xl font-medium mb-2 text-white">
                     Schools & Colleges
                   </h3>
-                  <p className="text-fg-2 font-['Inter'] text-base">
-                    Student lifecycle management from admission inquiries to alumni
-                    relations. Integrated communication hubs.
+                  <p className="text-white/60 font-['Inter'] text-xs leading-relaxed">
+                    Student lifecycle from admission to alumni.
                   </p>
                 </div>
-                <div className="h-px w-0 group-hover:w-full bg-[#4169E1] transition-all duration-700 mt-8" />
+                <div className="relative z-10 h-px w-0 group-hover:w-full bg-[#4169E1] transition-all duration-700" />
               </div>
             </div>
           </div>
@@ -407,83 +432,181 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 10. THE BUSINESS OPERATING SYSTEM (Bento Grid) */}
+        {/* 10. CREATIVE SERVICES (Bento Grid) */}
         <section className="py-[160px] px-[80px] bg-surface">
           <div className="max-w-[1440px] mx-auto">
             <div className="mb-24">
               <span className="font-['Geist'] text-xs font-medium text-[#4169E1] tracking-[0.4em] uppercase mb-4 block">
-                Engineered Features
+                Creative Excellence
               </span>
               <h2 className="font-['Hanken_Grotesk'] text-[48px] md:text-[48px] font-medium">
-                More Than Software. <br />
-                Your Business Operating System.
+                We Create Content <br />
+                That Gets Results.
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 h-[800px]">
-              {/* Lead Management */}
-              <div className="hover-lift md:col-span-2 glass-card rounded-2xl p-10 flex flex-col justify-between group hover:bg-surface-2 transition-all overflow-hidden relative">
-                <div>
-                  <h3 className="font-['Hanken_Grotesk'] text-3xl font-medium mb-4">
-                    Lead Management
-                  </h3>
-                  <p className="text-fg-2 max-w-md">
-                    Capture every inquiry from Meta, Google, and Web directly
-                    into a unified pipeline with instant notification systems.
-                  </p>
-                </div>
-                <div className="absolute -right-10 -bottom-10 opacity-5 group-hover:opacity-20 transition-opacity">
-                  <span className="material-symbols-outlined text-[200px]">
-                    group
-                  </span>
+              {/* Video Production - Large card */}
+              <div className="hover-lift md:col-span-2 glass-card rounded-2xl overflow-hidden relative group hover:bg-surface-2 transition-all">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#4169E1]/20 to-transparent" />
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-40 transition-opacity"
+                >
+                  <source src="/video-showcase.mp4" type="video/mp4" />
+                </video>
+                <div className="relative z-10 p-10 h-full flex flex-col justify-between">
+                  <div>
+                    <div className="w-16 h-16 rounded-2xl bg-[#4169E1]/20 border border-[#4169E1]/30 flex items-center justify-center mb-6 backdrop-blur-sm">
+                      <span className="material-symbols-outlined text-3xl text-[#4169E1]">videocam</span>
+                    </div>
+                    <h3 className="font-['Hanken_Grotesk'] text-3xl font-medium mb-4">
+                      Video Production
+                    </h3>
+                    <p className="text-fg-2 max-w-md text-lg">
+                      Professional video shooting that captures your brand story. From concept to final cut.
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-4 mt-8">
+                    <span className="material-symbols-outlined text-[#4169E1]">check_circle</span>
+                    <span className="text-fg-2">4K Cinematic Quality</span>
+                    <span className="material-symbols-outlined text-[#4169E1]">check_circle</span>
+                    <span className="text-fg-2">Professional Lighting</span>
+                  </div>
                 </div>
               </div>
-              {/* Team Management */}
-              <div className="hover-lift glass-card rounded-2xl p-10 flex flex-col justify-between group hover:bg-surface-2 transition-all">
-                <span className="material-symbols-outlined text-4xl text-[#4169E1]">
-                  badge
-                </span>
-                <div>
+
+              {/* Video Editing / YouTube */}
+              <div className="hover-lift glass-card rounded-2xl p-8 flex flex-col justify-between group hover:bg-surface-2 transition-all relative overflow-hidden">
+                {/* YouTube Video Embed */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#FF0000]/10 to-transparent" />
+                <div className="absolute inset-4 top-16 bottom-20 opacity-40">
+                  <div className="w-full h-full rounded-lg overflow-hidden">
+                    <iframe
+                      className="w-full h-full"
+                      src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ&controls=0&showinfo=0"
+                      title="SIDPIN Video Edit"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                </div>
+
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-xl bg-red-500/20 border border-red-500/30 flex items-center justify-center mb-4 backdrop-blur-sm">
+                    <svg className="w-8 h-8 text-red-500" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                  </div>
                   <h3 className="font-['Hanken_Grotesk'] text-2xl font-medium mb-2">
-                    Team Management
+                    Video Editing
                   </h3>
-                  <p className="text-fg-2 text-sm">
-                    Assign leads, track performance, and monitor KPIs in
-                    real-time.
+                  <p className="text-fg-2 text-sm leading-relaxed mb-6">
+                    Professional editing that turns raw footage into engaging content. See our work on YouTube.
                   </p>
                 </div>
+                <a
+                  href="https://www.youtube.com/@SIDPIN"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative z-10 flex items-center gap-3 text-red-500 font-['Geist'] text-xs font-medium tracking-widest uppercase hover:gap-4 transition-all"
+                >
+                  <span>Watch On YouTube</span>
+                  <span className="material-symbols-outlined text-lg">arrow_forward</span>
+                </a>
               </div>
-              {/* Automated Follow-Ups */}
-              <div className="hover-lift glass-card rounded-2xl p-10 flex flex-col justify-between group hover:bg-surface-2 transition-all">
-                <span className="material-symbols-outlined text-4xl text-[#4169E1]">
-                  auto_awesome
-                </span>
-                <div>
+
+              {/* Social Media Management */}
+              <div className="hover-lift glass-card rounded-2xl p-8 flex flex-col justify-between group hover:bg-surface-2 transition-all relative overflow-hidden">
+                {/* Instagram Profile Mockup Background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#E4405F]/10 to-[#C13584]/10" />
+                <div className="absolute inset-0 opacity-20">
+                  <div className="w-full h-full bg-white rounded-lg overflow-hidden">
+                    <div className="relative w-full h-full">
+                      {/* Instagram profile mockup */}
+                      <div className="absolute top-4 left-4 right-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#E4405F] to-[#C13584] p-0.5">
+                            <div className="w-full h-full rounded-full bg-white/90" />
+                          </div>
+                          <div>
+                            <div className="text-xs font-semibold text-gray-900">SIDPIN</div>
+                            <div className="text-[9px] text-gray-600">@sidpin</div>
+                          </div>
+                          <div className="ml-auto">
+                            <div className="px-3 py-1 bg-[#0095F6] rounded text-[9px] font-semibold text-white">Follow</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="absolute top-20 left-4 right-4 flex justify-around">
+                        <div className="text-center">
+                          <div className="text-sm font-bold text-gray-900">152</div>
+                          <div className="text-[8px] text-gray-600">Posts</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-sm font-bold text-gray-900">8.5K</div>
+                          <div className="text-[8px] text-gray-600">Followers</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-sm font-bold text-gray-900">234</div>
+                          <div className="text-[8px] text-gray-600">Following</div>
+                        </div>
+                      </div>
+                      <div className="absolute bottom-4 left-4 right-4 grid grid-cols-3 gap-1">
+                        <div className="aspect-square bg-gradient-to-br from-[#E4405F]/50 to-[#C13584]/50 rounded" />
+                        <div className="aspect-square bg-gradient-to-br from-[#833AB4]/50 to-[#E4405F]/50 rounded" />
+                        <div className="aspect-square bg-gradient-to-br from-[#405DE6]/50 to-[#833AB4]/50 rounded" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#E4405F]/20 to-[#C13584]/20 border border-[#E4405F]/30 flex items-center justify-center mb-4 backdrop-blur-sm">
+                    <svg className="w-8 h-8 text-[#E4405F]" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                  </div>
                   <h3 className="font-['Hanken_Grotesk'] text-2xl font-medium mb-2">
-                    Automated Follow-Ups
+                    Social Media
                   </h3>
-                  <p className="text-fg-2 text-sm">
-                    Nurture leads while you sleep with intelligent drip
-                    sequences.
+                  <p className="text-fg-2 text-sm leading-relaxed mb-6">
+                    Strategic content, community management, and growth analytics. Follow us for tips.
                   </p>
                 </div>
+                <a
+                  href="https://www.instagram.com/sidpin/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative z-10 flex items-center gap-3 text-[#E4405F] font-['Geist'] text-xs font-medium tracking-widest uppercase hover:gap-4 transition-all"
+                >
+                  <span>Follow On Instagram</span>
+                  <span className="material-symbols-outlined text-lg">arrow_forward</span>
+                </a>
               </div>
-              {/* AI Assistance & Analytics (Spans 2 columns) */}
-              <div className="hover-lift md:col-span-2 glass-card rounded-2xl p-10 flex flex-col md:flex-row gap-10 items-center group hover:bg-surface-2 transition-all">
-                <div className="flex-1">
+
+              {/* Graphic Design - Large card */}
+              <div className="hover-lift md:col-span-2 glass-card rounded-2xl p-10 flex flex-col md:flex-row gap-8 items-center group hover:bg-surface-2 transition-all relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#9333EA]/10 to-[#06b6d4]/10" />
+                <div className="relative z-10 flex-1">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500/20 to-cyan-500/20 border border-purple-500/30 flex items-center justify-center mb-6 backdrop-blur-sm">
+                    <span className="material-symbols-outlined text-3xl text-purple-400">palette</span>
+                  </div>
                   <h3 className="font-['Hanken_Grotesk'] text-3xl font-medium mb-4">
-                    Analytics & AI
+                    Graphic Design
                   </h3>
-                  <p className="text-fg-2">
-                    Predictive modeling for sales and intelligent customer
-                    sentiment analysis to help you make data-driven decisions.
+                  <p className="text-fg-2 text-lg">
+                    From logos to brand identity, social media graphics to print materials. We create visuals that make your brand memorable.
                   </p>
                 </div>
-                <div className="flex-1 flex justify-center">
-                  <div className="w-full h-32 bg-[#4169E1]/10 border border-[#4169E1]/20 rounded-lg flex items-center justify-around p-4">
-                    <div className="h-full w-4 bg-[#4169E1]/40 rounded-t animate-[pulse_2s_infinite]" />
-                    <div className="h-full w-4 bg-[#4169E1]/60 rounded-t animate-[pulse_2.5s_infinite]" />
-                    <div className="h-full w-4 bg-[#4169E1]/80 rounded-t animate-[pulse_3s_infinite]" />
-                    <div className="h-full w-4 bg-[#4169E1]/30 rounded-t animate-[pulse_1.5s_infinite]" />
+                <div className="relative z-10 flex-1 flex justify-center gap-4">
+                  <div className="w-32 h-32 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/20 flex items-center justify-center">
+                    <span className="material-symbols-outlined text-4xl text-purple-400">brush</span>
+                  </div>
+                  <div className="w-32 h-32 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-500/20 flex items-center justify-center">
+                    <span className="material-symbols-outlined text-4xl text-cyan-400">photo_library</span>
                   </div>
                 </div>
               </div>
@@ -604,7 +727,7 @@ export default function HomePage() {
         </section>
 
         {/* FINAL CTA */}
-        <section className="relative h-screen flex items-center justify-center bg-bg overflow-hidden">
+        {/* <section className="relative h-screen flex items-center justify-center bg-bg overflow-hidden">
           <div className="absolute inset-0">
             <div
               className="w-full h-full bg-cover bg-center opacity-40"
@@ -636,7 +759,7 @@ export default function HomePage() {
               </button>
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
       <Footer />
     </>

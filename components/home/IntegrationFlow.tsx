@@ -71,6 +71,9 @@ export default function IntegrationFlow() {
             <stop offset="0%" stopColor="#4169E1" stopOpacity="0.35" />
             <stop offset="100%" stopColor="#4169E1" stopOpacity="0" />
           </radialGradient>
+
+
+
           <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
             <feGaussianBlur stdDeviation="3.5" result="b" />
             <feMerge>

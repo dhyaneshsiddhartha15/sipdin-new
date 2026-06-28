@@ -136,6 +136,17 @@ export default function Hero() {
       };
 
   return (
+    <>
+      <style jsx>{`
+        @keyframes shake {
+          0%, 100% { transform: translateX(0); }
+          10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+          20%, 40%, 60%, 80% { transform: translateX(2px); }
+        }
+        .service-shake:hover {
+          animation: shake 0.5s ease-in-out;
+        }
+      `}</style>
     <section style={{ background: colors.bg, fontFamily: "Hanken Grotesk, -apple-system, sans-serif", paddingTop: "80px" }}>
       <div
         style={{
@@ -159,12 +170,12 @@ export default function Hero() {
               textTransform: "uppercase",
               color: isDark ? "#6E8CFF" : "#4169E1"
             }}>
-              Everything Connected
+              Digital Delivery
             </span>
           </div>
           <h1
             style={{
-              fontSize: "52px",
+              fontSize: "48px",
               fontWeight: 500,
               lineHeight: 1.15,
               color: colors.title,
@@ -172,54 +183,135 @@ export default function Hero() {
               fontFamily: "Hanken Grotesk, sans-serif",
             }}
           >
-            Your Business
+            We Build Digital Products
             <br />
-            Operating System
+            <span style={{ color: isDark ? "#6E8CFF" : "#4169E1" }}>That Actually Get Delivered.</span>
           </h1>
-          <p style={{ fontSize: "17px", color: colors.subtitle, lineHeight: 1.6, maxWidth: "440px", margin: "0 0 40px 0", fontFamily: "Inter, sans-serif" }}>
-            One unified ecosystem that connects your entire stack — from lead
-            generation to payments. Automate workflows and scale without chaos.
+          <p style={{ fontSize: "17px", color: colors.subtitle, lineHeight: 1.6, maxWidth: "480px", margin: "0 0 40px 0", fontFamily: "Inter, sans-serif" }}>
+            Scale your business, agency, or startup with end-to-end{" "}
+            <span
+              className="service-shake"
+              style={{
+                color: colors.subtitle,
+                transition: "color 0.3s ease",
+                cursor: "default"
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = "#EF4444"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = colors.subtitle; }}
+            >Digital Marketing</span>,{" "}
+            <span
+              className="service-shake"
+              style={{
+                color: colors.subtitle,
+                transition: "color 0.3s ease",
+                cursor: "default"
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = "#22C55E"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = colors.subtitle; }}
+            >SEO</span>,{" "}
+            <span
+              className="service-shake"
+              style={{
+                color: colors.subtitle,
+                transition: "color 0.3s ease",
+                cursor: "default"
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = "#3B82F6"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = colors.subtitle; }}
+            >Creative Design</span>,{" "}
+            <span
+              className="service-shake"
+              style={{
+                color: colors.subtitle,
+                transition: "color 0.3s ease",
+                cursor: "default"
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = "#F97316"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = colors.subtitle; }}
+            >Video Production</span>,{" "}
+            <span
+              className="service-shake"
+              style={{
+                color: colors.subtitle,
+                transition: "color 0.3s ease",
+                cursor: "default"
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = "#8B5CF6"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = colors.subtitle; }}
+            >Website Development</span>,{" "}
+            <span
+              className="service-shake"
+              style={{
+                color: colors.subtitle,
+                transition: "color 0.3s ease",
+                cursor: "default"
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = "#EC4899"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = colors.subtitle; }}
+            >AI Automation</span>,{" "}
+            <span
+              className="service-shake"
+              style={{
+                color: colors.subtitle,
+                transition: "color 0.3s ease",
+                cursor: "default"
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = "#14B8A6"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = colors.subtitle; }}
+            >AI Agents</span>,{" "}
+            <span
+              className="service-shake"
+              style={{
+                color: colors.subtitle,
+                transition: "color 0.3s ease",
+                cursor: "default"
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = "#EAB308"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = colors.subtitle; }}
+            >Custom CRM Solutions</span>, and{" "}
+            <span
+              className="service-shake"
+              style={{
+                color: colors.subtitle,
+                transition: "color 0.3s ease",
+                cursor: "default"
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = "#6366F1"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = colors.subtitle; }}
+            >White-Label Services</span> — all from one
+            trusted digital partner.
           </p>
 
-          <div style={{ display: "flex", maxWidth: "520px", border: `1px solid ${colors.border}`, borderRadius: "8px", overflow: "hidden" }}>
-            <input
-              type="email"
-              placeholder="Enter your email address..."
-              style={{
-                flex: 1,
-                border: "none",
-                outline: "none",
-                padding: "18px 20px",
-                fontSize: "14px",
-                background: colors.inputBg,
-                color: colors.inputText,
-                fontFamily: "Inter, sans-serif",
-              }}
-            />
-            <button
-              style={{
-                background: isDark ? "#6E8CFF" : "#4169E1",
-                color: "#fff",
-                border: "none",
-                padding: "18px 28px",
-                fontSize: "13px",
-                fontWeight: 700,
-                letterSpacing: "0.04em",
-                cursor: "pointer",
-                whiteSpace: "nowrap",
-                fontFamily: "Geist, sans-serif",
-                transition: "background 0.3s ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = isDark ? "#8FB0FF" : "#6E8CFF";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = isDark ? "#6E8CFF" : "#4169E1";
-              }}
-            >
-              START FREE ›
-            </button>
-          </div>
+          <a
+            href="#work"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "12px",
+              background: isDark ? "#6E8CFF" : "#4169E1",
+              color: "#fff",
+              border: "none",
+              padding: "18px 32px",
+              fontSize: "13px",
+              fontWeight: 700,
+              letterSpacing: "0.04em",
+              cursor: "pointer",
+              textDecoration: "none",
+              fontFamily: "Geist, sans-serif",
+              transition: "background 0.3s ease, transform 0.3s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = isDark ? "#8FB0FF" : "#6E8CFF";
+              e.currentTarget.style.transform = "scale(1.05)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = isDark ? "#6E8CFF" : "#4169E1";
+              e.currentTarget.style.transform = "scale(1)";
+            }}
+          >
+            See Our Work
+            <span style={{ fontSize: "18px" }}>→</span>
+          </a>
         </div>
 
         {/* RIGHT: integration grid */}
@@ -289,5 +381,6 @@ export default function Hero() {
         </div>
       </div>
     </section>
+    </>
   );
 }

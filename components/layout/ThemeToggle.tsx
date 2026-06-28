@@ -25,6 +25,7 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
       type="button"
       onClick={toggle}
       aria-label="Toggle color theme"
+      suppressHydrationWarning
       className={`relative grid h-10 w-10 place-items-center rounded-full border border-line bg-surface/60 text-fg backdrop-blur-md transition-all duration-300 hover:border-[#4169E1] hover:text-[#4169E1] ${className}`}
     >
       {/* Sun / Moon — only render glyph after mount to avoid hydration mismatch */}
