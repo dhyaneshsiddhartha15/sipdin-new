@@ -74,6 +74,7 @@ export default function StatsSection() {
 
     // Calculate scroll amount
     function getScrollAmount() {
+      if (!track) return 0;
       const trackWidth = track.scrollWidth;
       const viewportWidth = window.innerWidth;
       const lastCard = track.lastElementChild;
