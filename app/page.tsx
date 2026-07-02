@@ -2,7 +2,6 @@
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import EcosystemTabs from "@/components/home/EcosystemTabs";
 import WordCycleHero from "@/components/home/WordCycleHero";
 import BuildPipeline from "@/components/home/BuildPipeline";
 import TechnologyCore from "@/components/home/TechnologyCore";
@@ -14,6 +13,8 @@ import StatsSection from "@/components/home/StatsSection";
 import TechMarquee from "@/components/home/TechMarquee";
 import CloudDeployment from "@/components/home/CloudDeployment";
 import ClientShowcase from "@/components/home/ClientShowcase";
+import ExpertiseGrid from "@/components/home/ExpertiseGrid";
+import WhyChooseSidpin from "@/components/home/WhyChooseSidpin";
 
 export default function HomePage() {
   return (
@@ -38,63 +39,8 @@ export default function HomePage() {
         {/* 1.9 TECH MARQUEE */}
         <TechMarquee />
 
-        {/* 2. THE ATTENTION ECONOMY (Brand Story) */}
-        <section className="py-[160px] px-[80px] bg-bg">
-          <div className="max-w-[1440px] mx-auto text-center">
-            <span className="font-['Geist'] text-xs font-medium text-[#4169E1] tracking-[0.4em] uppercase mb-8 block">
-              The Paradox
-            </span>
-            <h2 className="font-['Hanken_Grotesk'] text-[48px] md:text-[96px] font-semibold leading-[1.05] tracking-tight mb-24 max-w-5xl mx-auto">
-              In A World Full Of Noise, <br />
-              <span className="opacity-20">Attention Is Everything.</span>
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-[32px] text-left items-center">
-              <div className="md:col-span-5">
-                <div className="aspect-[4/5] relative overflow-hidden group">
-                  <img
-                    className="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-110"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhnmJPv3nyYAbqQ4-mBOvXcX8rGO5oIbtE-ZqPcGf5wFler4dpBZvC0hAtX0h75_pCtwRhVXe2UZKhissxDvTNNMhsyDUWKCAJykFI1pSaKPj9n8U7bBroPazthuwL5ToQQjOYH9h4IDZ5PQUuV0YL1slylHezvnsvzAZELxAifWPY83Cz72oo7qO3wPpQnc70Mfq0ej0aIBiEMfJTuXKox9hREIM22JAjy9c1Hhp02kBV3ykBPeI54zh5Wt0CDCN6PfBta_ajidJ-"
-                    alt="Brand imagery"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1230]/80 to-transparent" />
-                </div>
-              </div>
-              <div className="md:col-start-7 md:col-span-6 space-y-12">
-                <p className="font-['Hanken_Grotesk'] text-2xl font-medium text-fg leading-relaxed">
-                  Every day thousands of brands compete for attention. Most
-                  content gets ignored. Most websites get forgotten. Most
-                  marketing gets skipped.
-                </p>
-                <p className="font-['Inter'] text-lg text-fg-2">
-                  The brands that win are the brands people remember. We don't
-                  just add to the noise. We cut through it with surgical precision
-                  and cinematic depth.
-                </p>
-                <div className="pt-8">
-                  <div className="h-px w-32 bg-[#4169E1] mb-4" />
-                  <span className="font-['Geist'] text-xs uppercase tracking-widest text-fg">
-                    Precision Over Volume
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 3. EXPLORE THE ECOSYSTEM */}
-        <section className="py-[160px] px-[80px] bg-surface overflow-hidden">
-          <div className="max-w-[1440px] mx-auto">
-            <div className="mb-24">
-              <span className="font-['Geist'] text-xs font-medium text-[#4169E1] tracking-[0.4em] uppercase mb-4 block">
-                Our Capabilities
-              </span>
-              <h2 className="font-['Hanken_Grotesk'] text-[48px] md:text-[48px] font-medium">
-                Explore The Ecosystem
-              </h2>
-            </div>
-            <EcosystemTabs />
-          </div>
-        </section>
+        {/* 2. OUR EXPERTISE */}
+        <ExpertiseGrid />
 
         {/* 4. WORD CYCLE HERO */}
         <section className="py-[80px] px-[80px] bg-bg">
@@ -615,116 +561,7 @@ export default function HomePage() {
         </section>
 
         {/* 11. WHY CHOOSE SIDPIN */}
-        <section className="py-[160px] bg-surface overflow-hidden">
-          <div className="px-[80px] max-w-[1440px] mx-auto mb-20">
-            <span className="font-['Geist'] text-xs font-medium text-[#4169E1] tracking-[0.4em] uppercase mb-4 block">
-              Why Choose SIDPIN
-            </span>
-            <h2 className="font-['Hanken_Grotesk'] text-[48px] md:text-[48px] font-medium mb-6">
-              Not Another Agency. <br />
-              A Creative Growth Partner.
-            </h2>
-            <p className="font-['Inter'] text-lg text-fg-2 max-w-2xl">
-              Most agencies offer services. We build attention, trust, systems,
-              and growth through one connected ecosystem.
-            </p>
-          </div>
-          <div className="flex gap-8 overflow-x-auto no-scrollbar snap-x snap-mandatory px-[80px] pb-20">
-            {/* Card 1 */}
-            <div className="min-w-[350px] md:min-w-[500px] aspect-[16/10] relative rounded-xl overflow-hidden snap-center group cursor-default">
-              <img
-                alt="Filmmaking First"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdKJvVlOFupyFlwYGG4Kc0Yvax3uW02Q_B6DftqUtYbOeJmw6ZNviE_WkoeztLE8VBFCvQNU5aRfWynV7kk_3wpVCfl4xTRj58O52v-Cobihpl4yNMVA-C9BrHuzWOrqxwXOCnwEUn_-uTPcfnYQBKE6pOnpJsmBhca4tgnWkd6krWImwBnKFxtaQWuLolk1HvEwK9WLrDMzB9EAb27JHfqelyDlv0pxRcjpg1g9ARvX4EjBzyxqzH5zYgUaUN0dsm7b6Bu2jmxay-"
-              />
-              <div className="absolute inset-0 bg-[#0a1230]/40" />
-              <div className="absolute bottom-0 left-0 w-full p-8 glass-card border-none">
-                <h3 className="font-['Hanken_Grotesk'] text-2xl font-medium mb-3">
-                  Filmmaking First
-                </h3>
-                <p className="text-fg-2 text-sm leading-relaxed">
-                  We don't start with marketing. We start with storytelling.
-                  Because great brands are built through stories people remember.
-                </p>
-              </div>
-            </div>
-            {/* Card 2 */}
-            <div className="min-w-[350px] md:min-w-[500px] aspect-[16/10] relative rounded-xl overflow-hidden snap-center group cursor-default">
-              <img
-                alt="Beyond Content"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAl1tkvhHM3qZ4c9A2TEAByFmvBwqY1owqMc-Dst35Fl0eGtCpIP_BvBF0b44hCa4A8s74CkeN_mj5OK1sAHfvLLoDSotxG4agnsILkDT-C0NVgo8a_UFPrtpgmvbnUmCVERUufkGeIIb55vEsFLzvdR3pvIvk9Yl88w7TQI3YDCfM4BmgKEg3BfUzmx4nnrU5KoK8M7slHjvP7r7MUfUbKS1nCkUbwhosIXCHyT2fIqv6wzMF9UE2yZ3Psd9Y1rg0ji2p-6ubWYn-0"
-              />
-              <div className="absolute inset-0 bg-[#0a1230]/40" />
-              <div className="absolute bottom-0 left-0 w-full p-8 glass-card border-none">
-                <h3 className="font-['Hanken_Grotesk'] text-2xl font-medium mb-3">
-                  Beyond Content
-                </h3>
-                <p className="text-fg-2 text-sm leading-relaxed">
-                  Content gets attention. Websites create trust. Systems create
-                  consistency. Marketing creates growth. We connect every piece
-                  together.
-                </p>
-              </div>
-            </div>
-            {/* Card 3 */}
-            <div className="min-w-[350px] md:min-w-[500px] aspect-[16/10] relative rounded-xl overflow-hidden snap-center group cursor-default">
-              <img
-                alt="Built For Real Businesses"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3it1QuiGvijlsnnY-7_fftXi5S3WWBNW7K9r6_PsNKTs6MkmmSOLUd-P4MZHaTrgk_2fn_RSj4wTYV43zJ0GisLVYluHmqvQCI-YnX1RnzMNrSILdBAvar7_jwv5HhbnAq_7mXmWa8z_GfNrGH2bnP-6rnufgXzDr7gRxiU8FqzxVkqyvjFcLhlnNpBAyU9ydjg4jDiF35ZIgTNTSp96phv8J2DqJbxhtGjErI_2avfr6oKJsAiR42zrV_Gzc-uepU5zMSvX7RKdX"
-              />
-              <div className="absolute inset-0 bg-[#0a1230]/40" />
-              <div className="absolute bottom-0 left-0 w-full p-8 glass-card border-none">
-                <h3 className="font-['Hanken_Grotesk'] text-2xl font-medium mb-3">
-                  Built For Real Businesses
-                </h3>
-                <p className="text-fg-2 text-sm leading-relaxed">
-                  Whether it's a hotel, resort, restaurant, travel company, yoga
-                  center, school, NGO, or growing brand, every solution is
-                  tailored around business goals.
-                </p>
-              </div>
-            </div>
-            {/* Card 4 */}
-            <div className="min-w-[350px] md:min-w-[500px] aspect-[16/10] relative rounded-xl overflow-hidden snap-center group cursor-default">
-              <img
-                alt="Growth Focused"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiLmyMG-2YeZXqZgln-YhxSclfsKQrixNTd05Au0ZqNgIuy0zpPGaittoIri2T1v5lOhNQNLc2i_yY2v0xcNAZFmq44zRhG--U_81X9FD45kpUE16D_ZXE7RKqtiD9eXgb5TSBTF4O1LrnTVWsAYTNckaiy8EGQfHjcSHjC1BtoVhpt8_alMBnfd6Oif2AUjBo3SZPCmI2XY0dWQswNCgI5srhnoBGKCAc6e0LRO3EOoOp1jZREf26jm48GDy50Bwkf0BC0RzOX4u4"
-              />
-              <div className="absolute inset-0 bg-[#0a1230]/40" />
-              <div className="absolute bottom-0 left-0 w-full p-8 glass-card border-none">
-                <h3 className="font-['Hanken_Grotesk'] text-2xl font-medium mb-3">
-                  Growth Focused
-                </h3>
-                <p className="text-fg-2 text-sm leading-relaxed">
-                  Views are important. Followers are useful. Growth is what
-                  matters. Every project is designed to create measurable
-                  business impact.
-                </p>
-              </div>
-            </div>
-            {/* Card 5 */}
-            <div className="min-w-[350px] md:min-w-[500px] aspect-[16/10] relative rounded-xl overflow-hidden snap-center group cursor-default">
-              <img
-                alt="Long-Term Partner"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                src="https://lh3.googleusercontent.com/ida-public/AB6AXuByZ5D5bG3-HI4_hegmUnR64F50mrUVCCX1YO4PpBdu_NABZ_VtpHER1LZJah_ol6cYo45ooY2gDdt69ORlH79paJYUMMeuLltkIVaj9-yqvWOHqXvpqFWJIzlnoGxybM2KiTgj3asj7e-iqqmUSsYwy3LRDPQx6atbDeH7GMMvcrTJptAFk5osvivWREJPWdhkN9r0jSaAluzYW2HqfaArbRMtGVwsQXDTkc0hbNbyODM9QIIpytvlgZB_fQPGQCCEo2JhUTkzVNul"
-              />
-              <div className="absolute inset-0 bg-[#0a1230]/40" />
-              <div className="absolute bottom-0 left-0 w-full p-8 glass-card border-none">
-                <h3 className="font-['Hanken_Grotesk'] text-2xl font-medium mb-3">
-                  Long-Term Partner
-                </h3>
-                <p className="text-fg-2 text-sm leading-relaxed">
-                  We don't just deliver projects. We help brands evolve, improve,
-                  and grow over time.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <WhyChooseSidpin />
 
         {/* FINAL CTA */}
         {/* <section className="relative h-screen flex items-center justify-center bg-bg overflow-hidden">
