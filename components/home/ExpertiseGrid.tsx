@@ -5,72 +5,84 @@ import Link from "next/link";
 const services = [
   {
     title: "Search Optimization",
+    slug: "seo",
     description:
       "Technical SEO, authority building, keyword growth strategy, and AI-ready search visibility.",
     color: "#5FE8B5",
   },
   {
     title: "Performance PPC",
+    slug: "ppc",
     description:
       "ROI-focused campaigns across Google Ads and remarketing systems built to convert.",
     color: "#A5AFFB",
   },
   {
     title: "Meta Ads",
+    slug: "social-media-marketing",
     description:
       "Full-funnel Facebook and Instagram ad campaigns engineered for qualified leads and sales.",
     color: "#FFD53D",
   },
   {
     title: "Social Media",
+    slug: "social-media-management",
     description:
       "Content systems that grow followers, generate trust, and drive leads consistently.",
     color: "#FFA9C5",
   },
   {
     title: "Web Engineering",
+    slug: "web-development",
     description:
       "Fast, secure, SEO-ready websites built for conversions and scale.",
     color: "#A5AFFB",
   },
   {
     title: "App Development",
+    slug: "app-development",
     description:
       "Custom mobile applications built for business automation and user growth.",
     color: "#FFD53D",
   },
   {
     title: "Experience Design",
+    slug: "ui-ux-design",
     description:
       "UI/UX interfaces that improve usability, retention, and customer engagement.",
     color: "#FFA9C5",
   },
   {
     title: "E-commerce Architecture",
+    slug: "ecommerce-development",
     description:
       "High-converting stores engineered for repeat purchases and revenue growth.",
     color: "#5FE8B5",
   },
   {
     title: "Marketing Automation",
+    slug: "marketing-automation",
     description:
       "Lead nurturing, CRM flows, email automation, and scalable growth systems.",
     color: "#FFD53D",
   },
   {
     title: "Video Editing",
+    slug: "video-editing",
     description:
       "Cinematic edits, reels, and long-form content that keep audiences watching.",
     color: "#FFA9C5",
   },
   {
     title: "Graphic Designing",
+    slug: "graphic-designing",
     description:
       "Logos, brand identity, and social creatives that make your brand memorable.",
     color: "#5FE8B5",
   },
   {
     title: "Managed Cloud",
+    slug: "managed-cloud",
     description:
       "Deployment and management on AWS and DigitalOcean — secure, scalable, always on.",
     color: "#A5AFFB",
@@ -174,7 +186,7 @@ export default function ExpertiseGrid() {
 
                 <div className="flex items-end justify-between mt-8">
                   <Link
-                    href="/services"
+                    href={`/services/${service.slug}`}
                     className="flex-1 border-2 border-black bg-white text-black text-center font-['Geist'] text-xs font-bold tracking-[0.15em] uppercase py-3 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 hover:bg-black hover:text-white"
                     style={{
                       transition: `all 0.35s ${springEase}`,
