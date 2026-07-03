@@ -73,13 +73,13 @@ export default function StatsSection() {
     if (!section || !track) return;
 
     // Calculate scroll amount
-    function getScrollAmount() {
+    const getScrollAmount = () => {
       const trackWidth = track.scrollWidth;
       const viewportWidth = window.innerWidth;
       const lastCard = track.lastElementChild;
       const lastCardWidth = lastCard ? lastCard.clientWidth : 320;
       return -(trackWidth - viewportWidth * 0.65 - lastCardWidth / 2);
-    }
+    };
 
     // Create horizontal scroll animation
     const tween = gsap.to(track, {

@@ -3,13 +3,42 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import {
+  Clapperboard,
+  Layers,
+  Building2,
   TrendingUp,
-  Users,
-  Target,
-  BarChart3,
+  Handshake,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
+
+const reasons = [
+  {
+    icon: Clapperboard,
+    title: "Filmmaking First",
+    text: "We start with storytelling, because great brands are built through stories people remember.",
+  },
+  {
+    icon: Layers,
+    title: "Beyond Content",
+    text: "Content gets attention, websites create trust, systems create consistency. We connect every piece.",
+  },
+  {
+    icon: Building2,
+    title: "Built For Real Businesses",
+    text: "Hotels, restaurants, travel, yoga centers, schools, NGOs — every solution is tailored to business goals.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Growth Focused",
+    text: "Views are important. Followers are useful. Growth is what matters — every project creates measurable impact.",
+  },
+  {
+    icon: Handshake,
+    title: "Long-Term Partner",
+    text: "We don't just deliver projects. We help brands evolve, improve, and grow over time.",
+  },
+];
 
 const caseStudyImages = [
   { src: "/social/social-case-1.jpeg", alt: "Client social media growth case study 1" },
@@ -104,7 +133,7 @@ export default function ClientShowcase() {
                 marginBottom: "24px",
               }}
             >
-              Social Media Management
+              Why Choose SidPin
             </span>
 
             <h2
@@ -116,9 +145,9 @@ export default function ClientShowcase() {
                 color: colors.title,
               }}
             >
-              We Grow Brands
+              Not Another Agency.
               <br />
-              <span style={{ color: colors.accent }}>Across All Platforms.</span>
+              <span style={{ color: colors.accent }}>A Creative Growth Partner.</span>
             </h2>
 
             <p
@@ -129,19 +158,14 @@ export default function ClientShowcase() {
                 marginBottom: "40px",
               }}
             >
-              Strategic content, community engagement, and data-driven growth. We manage
-              your social presence so you can focus on running your business.
+              Most agencies offer services. We build attention, trust, systems,
+              and growth through one connected ecosystem.
             </p>
 
-            {/* Features List */}
+            {/* Reasons List */}
             <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-              {[
-                { icon: TrendingUp, text: "Organic growth strategies that build real audiences" },
-                { icon: Users, text: "Community management that drives engagement" },
-                { icon: Target, text: "Targeted campaigns that convert followers to customers" },
-                { icon: BarChart3, text: "Analytics and reporting to track what matters" },
-              ].map((feature, index) => (
-                <div key={index} style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+              {reasons.map((reason) => (
+                <div key={reason.title} style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
                   <div
                     style={{
                       width: "48px",
@@ -155,11 +179,23 @@ export default function ClientShowcase() {
                       flexShrink: 0,
                     }}
                   >
-                    <feature.icon size={22} color={colors.accent} />
+                    <reason.icon size={22} color={colors.accent} />
                   </div>
-                  <span style={{ fontSize: "16px", color: colors.subtitle }}>
-                    {feature.text}
-                  </span>
+                  <div>
+                    <div
+                      style={{
+                        fontSize: "16px",
+                        fontWeight: 600,
+                        color: colors.title,
+                        marginBottom: "2px",
+                      }}
+                    >
+                      {reason.title}
+                    </div>
+                    <span style={{ fontSize: "14px", color: colors.subtitle, lineHeight: 1.5 }}>
+                      {reason.text}
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>

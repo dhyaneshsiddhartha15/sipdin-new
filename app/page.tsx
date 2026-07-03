@@ -8,13 +8,12 @@ import TechnologyCore from "@/components/home/TechnologyCore";
 import ParticleWave from "@/components/ui/ParticleWave";
 import VideoShowcase from "@/components/home/VideoShowcase";
 import IntegrationHero from "@/components/home/IntegrationHero";
-import VisionInfrastructure from "@/components/home/VisionInfrastructure";
+import CoreAiExpertise from "@/components/home/CoreAiExpertise";
 import StatsSection from "@/components/home/StatsSection";
 import TechMarquee from "@/components/home/TechMarquee";
 import CloudDeployment from "@/components/home/CloudDeployment";
 import ClientShowcase from "@/components/home/ClientShowcase";
 import ExpertiseGrid from "@/components/home/ExpertiseGrid";
-import WhyChooseSidpin from "@/components/home/WhyChooseSidpin";
 
 export default function HomePage() {
   return (
@@ -27,8 +26,8 @@ export default function HomePage() {
         {/* 1.5 STATS SECTION */}
         <StatsSection />
 
-        {/* 1.6 WHO WE'RE BUILT FOR */}
-        <VisionInfrastructure />
+        {/* 1.6 CORE AI EXPERTISE */}
+        <CoreAiExpertise />
 
         {/* 1.7 CLOUD DEPLOYMENT */}
         <CloudDeployment />
@@ -560,8 +559,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 11. WHY CHOOSE SIDPIN */}
-        <WhyChooseSidpin />
 
         {/* FINAL CTA */}
         {/* <section className="relative h-screen flex items-center justify-center bg-bg overflow-hidden">
