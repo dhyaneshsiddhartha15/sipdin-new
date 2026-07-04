@@ -53,7 +53,7 @@ export default function TechnologyCore() {
         {/* Heading */}
         <h2 className="mx-auto mt-8 max-w-4xl text-center font-['Hanken_Grotesk'] text-[40px] md:text-[72px] font-semibold leading-[1.05] tracking-tight text-fg">
           The <span className="gradient-text">Technology Core</span> <br />
-          Powering SIDPIN
+          Powering SIDPIN Digital
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-center font-['Inter'] text-lg text-fg-2">
           A single, intelligent engine orchestrating every layer of your brand —

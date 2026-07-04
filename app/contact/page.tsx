@@ -4,9 +4,9 @@ import Footer from "@/components/layout/Footer";
 import ContactSplit from "@/components/contact/ContactSplit";
 
 export const metadata: Metadata = {
-  title: "Contact SIDPIN | Have a Project? We Would Love to Help",
+  title: "Contact SIDPIN Digital | Have a Project? We Would Love to Help",
   description:
-    "Tell us about your project — SEO, web and app development, UI/UX, social media, PPC, or AI automation. SIDPIN turns conversations into growth.",
+    "Tell us about your project — SEO, web and app development, UI/UX, social media, PPC, or AI automation. SIDPIN Digital turns conversations into growth.",
 };
 
 export default function ContactPage() {

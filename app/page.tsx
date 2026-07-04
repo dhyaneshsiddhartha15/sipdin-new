@@ -15,6 +15,7 @@ import CloudDeployment from "@/components/home/CloudDeployment";
 import ClientShowcase from "@/components/home/ClientShowcase";
 import ExpertiseGrid from "@/components/home/ExpertiseGrid";
 import CrmSlideshow from "@/components/home/CrmSlideshow";
+import RankOnGoogle from "@/components/home/RankOnGoogle";
 
 export default function HomePage() {
   return (
@@ -41,6 +42,9 @@ export default function HomePage() {
 
         {/* 2. OUR EXPERTISE */}
         <ExpertiseGrid />
+
+        {/* 3. RANK ON GOOGLE — SEO conversion section */}
+        <RankOnGoogle />
 
         {/* 4. WORD CYCLE HERO */}
         <section className="py-[80px] px-[80px] bg-bg">
@@ -240,7 +244,7 @@ export default function HomePage() {
                     <iframe
                       className="w-full h-full"
                       src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ&controls=0&showinfo=0"
-                      title="SIDPIN Video Edit"
+                      title="SIDPIN Digital Video Edit"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                     />
@@ -285,7 +289,7 @@ export default function HomePage() {
                             <div className="w-full h-full rounded-full bg-white/90" />
                           </div>
                           <div>
-                            <div className="text-xs font-semibold text-gray-900">SIDPIN</div>
+                            <div className="text-xs font-semibold text-gray-900">SIDPIN Digital</div>
                             <div className="text-[9px] text-gray-600">@sidpin</div>
                           </div>
                           <div className="ml-auto">

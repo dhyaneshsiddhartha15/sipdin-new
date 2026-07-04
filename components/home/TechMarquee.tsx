@@ -126,7 +126,7 @@ export default function TechMarquee() {
           </span>
         </h2>
         <h2 style={{ fontSize: "clamp(28px, 4vw, 38px)", fontWeight: 700, color: isDark ? "#eef2fb" : "#111", margin: "0 0 8px 0" }}>
-          Powering SIDPIN.
+          Powering SIDPIN Digital.
         </h2>
       </div>
 

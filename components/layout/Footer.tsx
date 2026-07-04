@@ -130,10 +130,10 @@ export default function Footer() {
       <div className="bg-[#0C1424] px-[40px] md:px-[64px] py-5 border-t border-white/10">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
           <span className="font-['Hanken_Grotesk'] text-[18px] font-bold text-white">
-            SIDPIN
+            SIDPIN Digital
           </span>
           <p className="font-['Inter'] text-[13px] text-white/60">
-            © 2026 SIDPIN. All rights reserved. · hello@sidpin.com · +91 074538
+            © 2026 SIDPIN Digital. All rights reserved. · hello@sidpin.com · +91 074538
             69244
           </p>
         </div>

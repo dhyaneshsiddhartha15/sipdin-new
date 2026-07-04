@@ -1,24 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import ThemeToggle from "./ThemeToggle";
 import { serviceCategories } from "@/lib/services";
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const [mobileActiveCategory, setMobileActiveCategory] = useState<string | null>(null);
   const pathname = usePathname();
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 80);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -26,215 +18,162 @@ export default function Navbar() {
     { name: "Services", href: "/services" },
     { name: "Work", href: "/work" },
     { name: "Studio", href: "/studio" },
-    { name: "Contact", href: "/contact" },
   ];
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 border-b border-line bg-surface/80 backdrop-blur-xl transition-all duration-500 ease-out ${
-        isScrolled ? "shadow-[0_8px_30px_-12px_rgba(65,105,225,0.25)]" : ""
-      }`}
-    >
-      {/* faint tech grid */}
-      <div className="ai-grid-bg pointer-events-none absolute inset-0 opacity-60" />
+    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-5 pointer-events-none">
+      <style>{`
+        @keyframes nav-pop {
+          0% { transform: translateY(0); }
+          40% { transform: translateY(-4px); }
+          70% { transform: translateY(1px); }
+          100% { transform: translateY(0); }
+        }
+        .nav-pill-link:hover { animation: nav-pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1); }
+      `}</style>
 
-      <div
-        className={`relative mx-auto flex max-w-[1600px] items-center justify-between px-6 md:px-[80px] transition-all duration-500 ${
-          isScrolled ? "h-[72px]" : "h-24"
-        }`}
-      >
-        {/* Logo lockup */}
-        <a href="/" className="group flex items-center gap-3">
-          <span className="grid h-11 w-11 place-items-center rounded-full border border-line bg-surface/70 font-['Hanken_Grotesk'] text-lg font-bold text-[#4169E1] shadow-sm transition-transform duration-300 group-hover:scale-105">
-            S
-          </span>
-          <span className="leading-none">
-            <span className="font-['Hanken_Grotesk'] text-2xl font-bold tracking-tight">
-              <span className="text-fg">SID</span>
-              <span className="gradient-text">PIN</span>
-            </span>
-            <span className="mt-1 block font-['Geist'] text-[9px] font-medium uppercase tracking-[0.28em] text-fg-3">
-              Cinematic Growth Systems
-            </span>
-          </span>
-        </a>
-
-        {/* Numbered nav links */}
-        <div className="hidden items-center gap-7 xl:flex">
-          {navLinks.map((link, i) => {
-            const isActive =
-              link.href === "/services"
-                ? pathname.startsWith("/services")
-                : pathname === link.href;
-            const isServices = link.href === "/services";
-            return (
-              <div
-                key={link.name}
-                className="relative"
-                onMouseEnter={() => {
-                  if (isServices) setServicesOpen(true);
-                }}
-                onMouseLeave={() => {
-                  if (isServices) {
-                    setServicesOpen(false);
-                    setActiveCategory(null);
-                  }
-                }}
-              >
-                <a
-                  href={link.href}
-                  className="group relative flex items-center gap-1.5 py-2 font-['Geist'] text-xs font-medium uppercase tracking-[0.18em] transition-colors duration-300"
-                >
-                  <span
-                    className={`font-mono text-[10px] ${
-                      isActive ? "text-[#4169E1]" : "text-fg-3"
-                    }`}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span
-                    className={
-                      isActive
-                        ? "font-semibold text-fg"
-                        : "text-fg-2 transition-colors group-hover:text-fg"
-                    }
-                  >
-                    {link.name}
-                  </span>
-                  {isServices && (
-                    <span
-                      className={`material-symbols-outlined text-[16px] transition-transform duration-300 ${
-                        servicesOpen ? "rotate-180 text-[#4169E1]" : "text-fg-3"
-                      }`}
-                    >
-                      expand_more
-                    </span>
-                  )}
-                  {/* active / hover underline */}
-                  <span
-                    className={`absolute -bottom-0.5 left-0 h-px bg-gradient-to-r from-[#4169E1] to-[#8FB0FF] transition-all duration-300 ${
-                      isActive ? "w-full" : "w-0 group-hover:w-full"
-                    }`}
-                  />
-                </a>
-
-                {/* Services mega dropdown */}
-                {isServices && servicesOpen && (
-                  <div className="absolute left-1/2 top-full w-[300px] -translate-x-1/2 pt-3">
-                    <div className="rounded-2xl border border-line bg-surface/95 py-3 shadow-[0_24px_60px_-16px_rgba(65,105,225,0.35)] backdrop-blur-xl">
-                      <a
-                        href="/services"
-                        className="block px-6 py-3 font-['Geist'] text-xs font-medium uppercase tracking-[0.15em] text-fg-3 transition-colors hover:bg-[#4169E1]/10 hover:text-fg"
-                      >
-                        All Services
-                      </a>
-                      <div className="mx-4 my-1 h-px bg-line/50" />
-                      {serviceCategories.map((cat) => (
-                        <div
-                          key={cat.name}
-                          className="relative"
-                          onMouseEnter={() => setActiveCategory(cat.name)}
-                        >
-                          <div
-                            className={`flex cursor-default items-center justify-between px-6 py-3 font-['Geist'] text-xs font-medium uppercase tracking-[0.15em] transition-colors ${
-                              activeCategory === cat.name
-                                ? "bg-[#4169E1]/10 text-[#4169E1]"
-                                : "text-fg-2"
-                            }`}
-                          >
-                            {cat.name}
-                            <span className="material-symbols-outlined text-[16px]">
-                              chevron_right
-                            </span>
-                          </div>
-                          {/* Flyout: services in this category */}
-                          {activeCategory === cat.name && (
-                            <div className="absolute left-full top-0 w-[280px] pl-2">
-                              <div className="rounded-2xl border border-line bg-surface/95 py-3 shadow-[0_24px_60px_-16px_rgba(65,105,225,0.35)] backdrop-blur-xl">
-                                {cat.services.map((service) => (
-                                  <a
-                                    key={service.slug}
-                                    href={`/services/${service.slug}`}
-                                    className="block px-6 py-3 font-['Geist'] text-xs font-medium uppercase tracking-[0.15em] text-fg-2 transition-colors hover:bg-[#4169E1]/10 hover:text-[#4169E1]"
-                                  >
-                                    {service.name}
-                                  </a>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Right cluster */}
-        <div className="flex items-center gap-3">
-          <ThemeToggle />
+      <div className="pointer-events-auto relative w-full max-w-[1080px]">
+        {/* The pill */}
+        <div
+          className="flex items-center justify-between gap-4 rounded-full px-2.5 py-2.5 ring-1 ring-[#4169E1]/70 shadow-[0_0_12px_rgba(65,105,225,0.55),0_0_36px_rgba(65,105,225,0.3),0_18px_45px_-18px_rgba(0,0,0,0.55)]"
+          style={{
+            background: "linear-gradient(120deg, #101A36 0%, #0B1226 100%)",
+          }}
+        >
+          {/* Logo circle — drop the SIDPIN Digital logo image in here */}
           <a
-            href="/contact"
-            className="group relative hidden items-center gap-2 overflow-hidden rounded-full px-6 py-3 font-['Geist'] text-xs font-semibold uppercase tracking-[0.18em] text-white shadow-[0_8px_24px_-8px_rgba(65,105,225,0.6)] transition-all duration-300 hover:shadow-[0_12px_30px_-8px_rgba(65,105,225,0.8)] sm:flex animate-gradient"
-            style={{
-              backgroundImage:
-                "linear-gradient(120deg,#2E4FB8 0%,#4169E1 45%,#6E8CFF 100%)",
-            }}
+            href="/"
+            aria-label="SIDPIN Digital home"
+            className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-white transition-transform duration-300 hover:rotate-[15deg]"
           >
-            <span>Start a Project</span>
-            <span className="font-mono transition-transform duration-300 group-hover:translate-x-1">
-              {">_"}
+            {/* Replace with: <img src="/logo.png" alt="SIDPIN Digital" className="h-7 w-7 object-contain" /> */}
+            <span className="font-['Hanken_Grotesk'] text-xl font-bold text-[#4169E1]">
+              S
             </span>
           </a>
 
-          {/* Mobile menu toggle */}
-          <button
-            type="button"
-            aria-label="Toggle menu"
-            onClick={() => setMenuOpen((v) => !v)}
-            className="grid h-10 w-10 place-items-center rounded-full border border-line bg-surface/60 text-fg backdrop-blur-md xl:hidden"
-          >
-            <span className="material-symbols-outlined text-[22px]">
-              {menuOpen ? "close" : "menu"}
-            </span>
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile dropdown */}
-      {menuOpen && (
-        <div className="relative border-t border-line bg-surface/95 px-6 py-6 backdrop-blur-xl xl:hidden">
-          <div className="flex flex-col gap-1">
-            {navLinks.map((link, i) => {
-              const isActive = pathname === link.href;
+          {/* Center links */}
+          <div className="hidden items-center gap-9 lg:flex">
+            {navLinks.map((link) => {
+              const isActive =
+                link.href === "/services"
+                  ? pathname.startsWith("/services")
+                  : pathname === link.href;
               const isServices = link.href === "/services";
               return (
-                <div key={link.name}>
-                  <div
-                    className={`flex items-center gap-3 rounded-xl px-4 py-3 font-['Geist'] text-sm font-medium uppercase tracking-[0.15em] transition-colors ${
-                      isActive ? "bg-[#4169E1]/10 text-[#4169E1]" : "text-fg-2 hover:bg-surface-2"
+                <div
+                  key={link.name}
+                  className="relative"
+                  onMouseEnter={() => isServices && setServicesOpen(true)}
+                  onMouseLeave={() => {
+                    if (isServices) {
+                      setServicesOpen(false);
+                      setActiveCategory(null);
+                    }
+                  }}
+                >
+                  <a
+                    href={link.href}
+                    className={`nav-pill-link inline-block py-3 font-['Inter'] text-[15.5px] font-medium transition-colors duration-200 ${
+                      isActive ? "text-white" : "text-white/75 hover:text-white"
                     }`}
                   >
-                    <a
-                      href={link.href}
-                      onClick={() => setMenuOpen(false)}
-                      className="flex flex-1 items-center gap-3"
-                    >
-                      <span className="font-mono text-[10px] text-fg-3">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      {link.name}
-                    </a>
-                    {isServices && (
+                    {link.name}
+                  </a>
+
+                  {/* Services dropdown */}
+                  {isServices && servicesOpen && (
+                    <div className="absolute left-1/2 top-full w-[300px] -translate-x-1/2 pt-4">
+                      <div className="rounded-2xl bg-[#0D1530] py-3 ring-1 ring-[#4169E1]/50 shadow-[0_0_16px_rgba(65,105,225,0.35),0_24px_60px_-16px_rgba(0,0,0,0.7)]">
+                        <a
+                          href="/services"
+                          className="block px-6 py-3 font-['Inter'] text-[14px] font-medium text-white/60 transition-colors hover:bg-white/10 hover:text-white"
+                        >
+                          All Services
+                        </a>
+                        <div className="mx-4 my-1 h-px bg-white/10" />
+                        {serviceCategories.map((cat) => (
+                          <div
+                            key={cat.name}
+                            className="relative"
+                            onMouseEnter={() => setActiveCategory(cat.name)}
+                          >
+                            <div
+                              className={`flex cursor-default items-center justify-between px-6 py-3 font-['Inter'] text-[14px] font-medium transition-colors ${
+                                activeCategory === cat.name
+                                  ? "bg-white/10 text-white"
+                                  : "text-white/75"
+                              }`}
+                            >
+                              {cat.name}
+                              <span className="material-symbols-outlined text-[16px]">
+                                chevron_right
+                              </span>
+                            </div>
+                            {activeCategory === cat.name && (
+                              <div className="absolute left-full top-0 w-[280px] pl-2">
+                                <div className="rounded-2xl bg-[#0D1530] py-3 ring-1 ring-[#4169E1]/50 shadow-[0_0_16px_rgba(65,105,225,0.35),0_24px_60px_-16px_rgba(0,0,0,0.7)]">
+                                  {cat.services.map((service) => (
+                                    <a
+                                      key={service.slug}
+                                      href={`/services/${service.slug}`}
+                                      className="block px-6 py-3 font-['Inter'] text-[14px] font-medium text-white/75 transition-colors hover:bg-white/10 hover:text-white"
+                                    >
+                                      {service.name}
+                                    </a>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Right cluster: theme toggle + email pill */}
+          <div className="flex items-center gap-2.5">
+            <ThemeToggle className="!h-12 !w-12 !border-white/15 !bg-white/10 !text-white hover:!border-white/50 hover:!text-white" />
+            <a
+              href="mailto:hello@sidpin.com"
+              className="hidden items-center rounded-full bg-white px-6 py-3 font-['Inter'] text-[15px] font-medium text-[#0B1226] shadow-[0_0_10px_rgba(65,105,225,0.35)] transition-transform duration-300 hover:scale-[1.03] sm:flex"
+            >
+              hello@sidpin.com
+            </a>
+
+            {/* Mobile menu toggle */}
+            <button
+              type="button"
+              aria-label="Toggle menu"
+              onClick={() => setMenuOpen((v) => !v)}
+              className="grid h-12 w-12 place-items-center rounded-full bg-white/10 text-white lg:hidden"
+            >
+              <span className="material-symbols-outlined text-[22px]">
+                {menuOpen ? "close" : "menu"}
+              </span>
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile menu panel */}
+        {menuOpen && (
+          <div className="mt-3 rounded-3xl bg-[#0D1530] p-6 ring-1 ring-[#4169E1]/50 shadow-[0_0_16px_rgba(65,105,225,0.35),0_24px_60px_-16px_rgba(0,0,0,0.7)] lg:hidden">
+            <div className="flex flex-col">
+              {navLinks.map((link) => {
+                const isServices = link.href === "/services";
+                if (isServices) {
+                  return (
+                    <div key={link.name}>
                       <button
                         type="button"
-                        aria-label="Toggle services menu"
                         onClick={() => setMobileServicesOpen((v) => !v)}
-                        className="grid h-8 w-8 place-items-center"
+                        className="flex w-full items-center justify-between py-4 font-['Inter'] text-[16px] font-medium text-white/85"
                       >
+                        Services
                         <span
                           className={`material-symbols-outlined text-[20px] transition-transform duration-300 ${
                             mobileServicesOpen ? "rotate-180" : ""
@@ -243,67 +182,53 @@ export default function Navbar() {
                           expand_more
                         </span>
                       </button>
-                    )}
-                  </div>
-                  {/* Mobile services accordion */}
-                  {isServices && mobileServicesOpen && (
-                    <div className="ml-6 mt-1 flex flex-col gap-1 border-l border-line/50 pl-4">
-                      {serviceCategories.map((cat) => (
-                        <div key={cat.name}>
-                          <button
-                            type="button"
-                            onClick={() =>
-                              setMobileActiveCategory(
-                                mobileActiveCategory === cat.name ? null : cat.name
-                              )
-                            }
-                            className={`flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left font-['Geist'] text-xs font-medium uppercase tracking-[0.12em] transition-colors ${
-                              mobileActiveCategory === cat.name
-                                ? "text-[#4169E1]"
-                                : "text-fg-2"
-                            }`}
+                      {mobileServicesOpen && (
+                        <div className="mb-2 rounded-2xl bg-white/5 p-2">
+                          <a
+                            href="/services"
+                            onClick={() => setMenuOpen(false)}
+                            className="block rounded-xl px-4 py-3 font-['Inter'] text-[14px] text-white/70 hover:bg-white/10"
                           >
-                            {cat.name}
-                            <span
-                              className={`material-symbols-outlined text-[18px] transition-transform duration-300 ${
-                                mobileActiveCategory === cat.name ? "rotate-180" : ""
-                              }`}
-                            >
-                              expand_more
-                            </span>
-                          </button>
-                          {mobileActiveCategory === cat.name && (
-                            <div className="ml-3 flex flex-col border-l border-line/50 pl-3">
-                              {cat.services.map((service) => (
-                                <a
-                                  key={service.slug}
-                                  href={`/services/${service.slug}`}
-                                  onClick={() => setMenuOpen(false)}
-                                  className="rounded-lg px-3 py-2.5 font-['Geist'] text-xs font-medium uppercase tracking-[0.12em] text-fg-2 transition-colors hover:text-[#4169E1]"
-                                >
-                                  {service.name}
-                                </a>
-                              ))}
-                            </div>
+                            All Services
+                          </a>
+                          {serviceCategories.flatMap((cat) =>
+                            cat.services.map((service) => (
+                              <a
+                                key={service.slug}
+                                href={`/services/${service.slug}`}
+                                onClick={() => setMenuOpen(false)}
+                                className="block rounded-xl px-4 py-3 font-['Inter'] text-[14px] text-white/70 hover:bg-white/10"
+                              >
+                                {service.name}
+                              </a>
+                            ))
                           )}
                         </div>
-                      ))}
+                      )}
                     </div>
-                  )}
-                </div>
-              );
-            })}
-            <a
-              href="/contact"
-              onClick={() => setMenuOpen(false)}
-              className="mt-3 flex items-center justify-center gap-2 rounded-full px-6 py-3 font-['Geist'] text-xs font-semibold uppercase tracking-[0.18em] text-white"
-              style={{ backgroundImage: "linear-gradient(120deg,#2E4FB8,#4169E1,#6E8CFF)" }}
-            >
-              Start a Project <span className="font-mono">{">_"}</span>
-            </a>
+                  );
+                }
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="py-4 font-['Inter'] text-[16px] font-medium text-white/85 hover:text-white"
+                  >
+                    {link.name}
+                  </a>
+                );
+              })}
+              <a
+                href="mailto:hello@sidpin.com"
+                className="mt-4 rounded-full bg-white px-6 py-3.5 text-center font-['Inter'] text-[15px] font-medium text-[#0B1226]"
+              >
+                hello@sidpin.com
+              </a>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </nav>
   );
 }

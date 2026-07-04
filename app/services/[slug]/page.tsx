@@ -20,9 +20,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
-  if (!service) return { title: "Service | SIDPIN Creative Co." };
+  if (!service) return { title: "Service | SIDPIN Digital" };
   return {
-    title: `${service.heroTitle} | SIDPIN Creative Co.`,
+    title: `${service.heroTitle} | SIDPIN Digital`,
     description: service.description,
   };
 }

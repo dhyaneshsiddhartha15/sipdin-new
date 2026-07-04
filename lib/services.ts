@@ -400,7 +400,7 @@ export const serviceCategories: ServiceCategory[] = [
         heroTitle: "CRM Software Solutions",
         tagline: "Your business doesn't need more leads. It needs a better system.",
         description:
-          "SIDPIN CRM helps businesses organize operations, automate workflows, and create a seamless customer experience — from first inquiry to repeat purchase.",
+          "SIDPIN Digital CRM helps businesses organize operations, automate workflows, and create a seamless customer experience — from first inquiry to repeat purchase.",
         intro:
           "One system for inquiries, customers, follow-ups, payments, and communication — tailored to how your business actually works.",
         aboutLabel: "CRM Solutions",

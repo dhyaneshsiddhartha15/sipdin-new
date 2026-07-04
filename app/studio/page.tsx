@@ -4,9 +4,9 @@ import Footer from "@/components/layout/Footer";
 import Reveal from "@/components/studio/Reveal";
 
 export const metadata: Metadata = {
-  title: "Studio | SIDPIN - Cinematic Precision",
+  title: "Studio | SIDPIN Digital - Cinematic Precision",
   description:
-    "SIDPIN is a Creative Growth & Production Company helping businesses stand out through filmmaking, storytelling, digital experiences, and growth systems.",
+    "SIDPIN Digital is a Creative Growth & Production Company helping businesses stand out through filmmaking, storytelling, digital experiences, and growth systems.",
 };
 
 const philosophyCards = [
@@ -127,7 +127,7 @@ export default function StudioPage() {
               We Build Brands That People Remember.
             </h1>
             <p className="font-['Inter'] text-lg leading-[1.6] text-fg/70 max-w-2xl mx-auto">
-              SIDPIN is a Creative Growth &amp; Production Company helping
+              SIDPIN Digital is a Creative Growth &amp; Production Company helping
               businesses stand out through filmmaking, storytelling, digital
               experiences, and growth systems.
             </p>
@@ -179,7 +179,7 @@ export default function StudioPage() {
                     if they didn&apos;t lead to meaningful results.
                   </p>
                   <p>
-                    That realization evolved into SIDPIN—a studio where cinematic
+                    That realization evolved into SIDPIN Digital—a studio where cinematic
                     artistry meets rigorous business strategy. We don&apos;t just
                     capture moments; we architect growth systems that use
                     narrative as their core engine.
@@ -257,7 +257,7 @@ export default function StudioPage() {
             <Reveal>
               <div className="p-12 glass-card border-2 border-[#4169E1]/40 rounded-2xl shadow-2xl">
                 <h3 className="font-['Hanken_Grotesk'] text-[32px] font-medium text-[#4169E1] mb-8">
-                  The SIDPIN Approach
+                  The SIDPIN Digital Approach
                 </h3>
                 <ul className="space-y-6">
                   {sidpinItems.map((item) => (
@@ -333,12 +333,12 @@ export default function StudioPage() {
           </Reveal>
         </section>
 
-        {/* The SIDPIN Journey */}
+        {/* The SIDPIN Digital Journey */}
         <section className="py-40 px-[24px] md:px-[80px] bg-surface-2">
           <div className="max-w-[1440px] mx-auto">
             <Reveal>
               <h2 className="font-['Hanken_Grotesk'] text-[32px] md:text-[48px] font-medium tracking-[0.05em] text-fg mb-24">
-                The SIDPIN Journey
+                The SIDPIN Digital Journey
               </h2>
             </Reveal>
             <div className="relative">

@@ -25,7 +25,7 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "SIDPIN | Stories That Move Brands Forward",
+  title: "SIDPIN Digital | Stories That Move Brands Forward",
   description: "We create cinematic content, digital experiences, and growth systems that help modern brands stand out, connect, and grow.",
 };
 

@@ -18,9 +18,9 @@ import Footer from "@/components/layout/Footer";
 import Reveal from "@/components/studio/Reveal";
 
 export const metadata: Metadata = {
-  title: "About Us | SIDPIN — Digital Marketing & IT Partner",
+  title: "About Us | SIDPIN Digital — Digital Marketing & IT Partner",
   description:
-    "Learn about SIDPIN's mission, vision, and core values. We help businesses grow faster with SEO, performance marketing, web engineering, and AI-driven automation.",
+    "Learn about SIDPIN Digital's mission, vision, and core values. We help businesses grow faster with SEO, performance marketing, web engineering, and AI-driven automation.",
 };
 
 const pillars = [
@@ -84,12 +84,12 @@ export default function AboutPage() {
             </Reveal>
             <Reveal delay={100}>
               <h1 className="font-['Hanken_Grotesk'] text-[40px] md:text-[64px] font-semibold leading-tight text-fg mb-8">
-                Why SIDPIN is the <span className="text-[#4169E1]">best in town</span>
+                Why SIDPIN Digital is the <span className="text-[#4169E1]">best in town</span>
               </h1>
             </Reveal>
             <Reveal delay={200}>
               <p className="font-['Inter'] text-lg text-fg-2 max-w-3xl mx-auto">
-                SIDPIN is a results-driven digital marketing and technology
+                SIDPIN Digital is a results-driven digital marketing and technology
                 agency. We don&apos;t sell one-size-fits-all packages — we build
                 customized growth systems that combine performance marketing,
                 engineering, and AI to generate qualified leads and measurable
@@ -171,7 +171,7 @@ export default function AboutPage() {
             <Reveal delay={200}>
               <p className="font-['Inter'] text-lg text-fg-2 leading-relaxed">
                 From startups finding their first customers to established
-                brands scaling to new markets, SIDPIN delivers end-to-end
+                brands scaling to new markets, SIDPIN Digital delivers end-to-end
                 solutions — SEO, paid media, social, websites, apps, e-commerce,
                 cloud, and AI automation. One team, one strategy, one goal:
                 making your brand impossible to ignore.

@@ -32,7 +32,7 @@ export default function ParallaxHero() {
       <div className="relative z-10 px-[24px] md:px-[80px] pb-32 max-w-[1440px] mx-auto w-full">
         <div className="max-w-4xl">
           <span className="font-['Geist'] text-xs font-medium tracking-[0.4em] uppercase text-[#4169E1] mb-6 block">
-            The Vision Behind SIDPIN
+            The Vision Behind SIDPIN Digital
           </span>
           <h1 className="font-['Hanken_Grotesk'] text-[48px] md:text-[80px] font-semibold leading-[1.1] tracking-tight text-fg">
             Beyond the Lens: <br />

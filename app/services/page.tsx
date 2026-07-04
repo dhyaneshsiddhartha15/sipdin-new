@@ -4,7 +4,7 @@ import Footer from "@/components/layout/Footer";
 import ServiceExplorer from "@/components/services/ServiceExplorer";
 
 export const metadata: Metadata = {
-  title: "Services | SIDPIN Creative Co.",
+  title: "Services | SIDPIN Digital",
   description:
     "From cinematic content production to custom business systems, every solution is designed to help your business attract attention, build trust, and grow.",
 };

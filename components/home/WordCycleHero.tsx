@@ -26,7 +26,7 @@ export default function WordCycleHero() {
       {/* pill badge */}
       <div className="inline-flex items-center gap-2 rounded-full border border-[#4169E1]/30 bg-[#4169E1]/10 px-4 py-1.5 font-['Geist'] text-xs font-medium text-[#4169E1]">
         <span className="h-2 w-2 rounded-full bg-[#4169E1] animate-pulse" />
-        SIDPIN — Cinematic Precision in Every Frame
+        SIDPIN Digital — Cinematic Precision in Every Frame
       </div>
 
       {/* word row */}

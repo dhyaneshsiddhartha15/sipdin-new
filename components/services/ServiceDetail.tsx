@@ -3,12 +3,31 @@
 import { useState } from "react";
 import Link from "next/link";
 import type { Service, ServiceCategory } from "@/lib/services";
+import ReviewsAndConnect from "./ReviewsAndConnect";
 
 const stats = [
   { value: "150+", label: "Projects Completed" },
   { value: "100%", label: "Client Retention" },
   { value: "4.9", label: "Client Rating" },
 ];
+
+// Relevant photo for each service, shown in the About block
+const serviceImages: Record<string, string> = {
+  "web-development": "/expertise/web-development.jpg",
+  "app-development": "/expertise/app-development.jpg",
+  "ui-ux-design": "/expertise/ui-ux.jpg",
+  "ecommerce-development": "/expertise/ecommerce.jpg",
+  "social-media-management": "/expertise/social-media.jpg",
+  "social-media-marketing": "/expertise/meta-ads.jpg",
+  seo: "/expertise/seo.jpg",
+  ppc: "/expertise/ppc.jpg",
+  "video-production": "/expertise/video-production.jpg",
+  "video-editing": "/expertise/video-editing.jpg",
+  "graphic-designing": "/expertise/graphic-design.jpg",
+  "crm-solutions": "/crm/crm-1.jpeg",
+  "marketing-automation": "/expertise/automation.jpg",
+  "managed-cloud": "/expertise/cloud.jpg",
+};
 
 export default function ServiceDetail({
   service,
@@ -185,20 +204,30 @@ export default function ServiceDetail({
             </p>
           </div>
           <div className="relative">
-            <div className="glass-card relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-2xl border border-line/30">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#4169E1]/20 via-transparent to-[#6E8CFF]/10" />
-              <div className="ai-grid-bg absolute inset-0 opacity-30" />
-              <div className="relative z-10 px-10 text-center">
-                <div className="font-['Hanken_Grotesk'] mb-4 text-[64px] font-bold leading-none text-[#4169E1]/30 md:text-[96px]">
-                  {service.name
-                    .split(" ")
-                    .map((word) => word[0])
-                    .join("")}
+            <div className="glass-card group relative aspect-[4/3] overflow-hidden rounded-2xl border border-line/30">
+              {serviceImages[service.slug] ? (
+                <>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={serviceImages[service.slug]}
+                    alt={service.name}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#05070f]/80 via-transparent to-transparent" />
+                  <div className="absolute bottom-6 left-7">
+                    <span className="block h-[3px] w-10 rounded-full bg-[#4169E1] mb-3" />
+                    <span className="font-['Geist'] text-xs font-semibold uppercase tracking-[0.3em] text-white">
+                      {service.name}
+                    </span>
+                  </div>
+                </>
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#4169E1]/20 via-transparent to-[#6E8CFF]/10">
+                  <span className="font-['Geist'] text-xs uppercase tracking-[0.3em] text-fg-2">
+                    {service.name}
+                  </span>
                 </div>
-                <div className="font-['Geist'] text-xs uppercase tracking-[0.3em] text-fg-2">
-                  {service.name}
-                </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
@@ -236,6 +265,9 @@ export default function ServiceDetail({
           </div>
         </div>
       </section>
+
+      {/* ============ REVIEWS + CONNECT FORM ============ */}
+      <ReviewsAndConnect currentService={service.name} />
 
       {/* ============ FAQ ============ */}
       <section className="bg-bg px-6 py-[120px] md:px-[80px]">

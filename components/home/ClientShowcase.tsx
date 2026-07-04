@@ -133,7 +133,7 @@ export default function ClientShowcase() {
                 marginBottom: "24px",
               }}
             >
-              Why Choose SidPin
+              Why Choose SIDPIN Digital
             </span>
 
             <h2

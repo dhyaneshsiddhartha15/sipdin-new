@@ -6,7 +6,7 @@ import Footer from "@/components/layout/Footer";
 import Reveal from "@/components/studio/Reveal";
 
 export const metadata: Metadata = {
-  title: "Our Work | SIDPIN Case Studies",
+  title: "Our Work | SIDPIN Digital Case Studies",
   description:
     "Real results across social media growth, CRM platforms, e-commerce, web engineering, video production, and marketing automation.",
 };
@@ -36,7 +36,7 @@ const cases = [
   },
   {
     tag: "Enterprise CRM",
-    title: "SIDPIN CRM Platform",
+    title: "SIDPIN Digital CRM Platform",
     description:
       "A custom CRM that organizes inquiries, follow-ups, payments, and communication into one operational dashboard.",
     image: "/crm/crm-1.jpeg",

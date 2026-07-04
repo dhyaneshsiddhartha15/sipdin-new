@@ -96,7 +96,7 @@ export default function WhyChooseSidpin() {
                 marginBottom: "24px",
               }}
             >
-              Why Choose SidPin
+              Why Choose SIDPIN Digital
             </span>
 
             <h2
