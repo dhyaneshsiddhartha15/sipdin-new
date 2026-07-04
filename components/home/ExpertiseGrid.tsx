@@ -4,92 +4,90 @@ import Link from "next/link";
 
 const services = [
   {
-    title: "Search Optimization",
+    title: "Search Engine Optimization",
     slug: "seo",
+    image: "/expertise/seo.jpg",
     description:
-      "Technical SEO, authority building, keyword growth strategy, and AI-ready search visibility.",
-    color: "#5FE8B5",
+      "Maximize your search traffic and rank higher on Google with our SEO experts.",
   },
   {
-    title: "Performance PPC",
+    title: "Pay-Per-Click Advertising",
     slug: "ppc",
+    image: "/expertise/ppc.jpg",
     description:
-      "ROI-focused campaigns across Google Ads and remarketing systems built to convert.",
-    color: "#A5AFFB",
+      "Drive conversions and traffic to your website and app with our PPC specialists.",
   },
   {
     title: "Meta Ads",
     slug: "social-media-marketing",
+    image: "/expertise/meta-ads.jpg",
     description:
-      "Full-funnel Facebook and Instagram ad campaigns engineered for qualified leads and sales.",
-    color: "#FFD53D",
+      "Full-funnel Facebook and Instagram campaigns engineered for qualified leads.",
   },
   {
-    title: "Social Media",
+    title: "Social Media Marketing",
     slug: "social-media-management",
+    image: "/expertise/social-media.jpg",
     description:
-      "Content systems that grow followers, generate trust, and drive leads consistently.",
-    color: "#FFA9C5",
+      "Build your brand with highly engaging social media campaigns and content.",
   },
   {
-    title: "Web Engineering",
+    title: "Web Development",
     slug: "web-development",
+    image: "/expertise/web-development.jpg",
     description:
-      "Fast, secure, SEO-ready websites built for conversions and scale.",
-    color: "#A5AFFB",
+      "We develop fast, secure, SEO-ready websites that drive conversions.",
   },
   {
     title: "App Development",
     slug: "app-development",
+    image: "/expertise/app-development.jpg",
     description:
-      "Custom mobile applications built for business automation and user growth.",
-    color: "#FFD53D",
+      "Custom mobile apps that help customers connect with your product easily.",
   },
   {
-    title: "Experience Design",
+    title: "UI/UX Design",
     slug: "ui-ux-design",
+    image: "/expertise/ui-ux.jpg",
     description:
-      "UI/UX interfaces that improve usability, retention, and customer engagement.",
-    color: "#FFA9C5",
+      "Enhance customer experience across web and app with better UI and UX.",
   },
   {
-    title: "E-commerce Architecture",
+    title: "E-commerce Development",
     slug: "ecommerce-development",
+    image: "/expertise/ecommerce.jpg",
     description:
-      "High-converting stores engineered for repeat purchases and revenue growth.",
-    color: "#5FE8B5",
+      "High-converting online stores engineered for repeat purchases and growth.",
   },
   {
     title: "Marketing Automation",
     slug: "marketing-automation",
+    image: "/expertise/automation.jpg",
     description:
-      "Lead nurturing, CRM flows, email automation, and scalable growth systems.",
-    color: "#FFD53D",
+      "Lead nurturing, CRM flows, and email automation that scale your growth.",
   },
   {
     title: "Video Editing",
     slug: "video-editing",
+    image: "/expertise/video-editing.jpg",
     description:
       "Cinematic edits, reels, and long-form content that keep audiences watching.",
-    color: "#FFA9C5",
   },
   {
     title: "Graphic Designing",
     slug: "graphic-designing",
+    image: "/expertise/graphic-design.jpg",
     description:
       "Logos, brand identity, and social creatives that make your brand memorable.",
-    color: "#5FE8B5",
   },
   {
     title: "Managed Cloud",
     slug: "managed-cloud",
+    image: "/expertise/cloud.jpg",
     description:
-      "Deployment and management on AWS and DigitalOcean — secure, scalable, always on.",
-    color: "#A5AFFB",
+      "Secure, scalable deployment and management on AWS and DigitalOcean.",
   },
 ];
-
-const springEase = "cubic-bezier(0.34, 1.56, 0.64, 1)";
 
 export default function ExpertiseGrid() {
   return (
@@ -110,96 +108,40 @@ export default function ExpertiseGrid() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10">
-          {services.map((service, index) => (
-            <div key={service.title} className="group relative">
-              {/* Stacked layers revealed on hover */}
-              <div
-                className="absolute inset-0 border-2 border-black opacity-0 group-hover:opacity-100 group-hover:translate-x-[14px] group-hover:translate-y-[14px]"
-                style={{
-                  background: service.color,
-                  transition: `transform 0.45s ${springEase}, opacity 0.25s ease`,
-                }}
-              />
-              <div
-                className="absolute inset-0 border-2 border-black opacity-0 group-hover:opacity-100 group-hover:translate-x-[7px] group-hover:translate-y-[7px]"
-                style={{
-                  background: service.color,
-                  transition: `transform 0.35s ${springEase}, opacity 0.2s ease`,
-                }}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+          {services.map((service) => (
+            <Link
+              key={service.slug + service.title}
+              href={`/services/${service.slug}`}
+              className="group relative block h-[400px] rounded-2xl overflow-hidden border border-white/10 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_24px_60px_rgba(65,105,225,0.25)]"
+            >
+              {/* Photo background */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={service.image}
+                alt={service.title}
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[600ms] ease-out group-hover:scale-[1.06]"
               />
 
-              {/* Main card */}
-              <div
-                className="relative h-full min-h-[340px] border-2 border-black p-8 flex flex-col group-hover:-translate-x-[6px] group-hover:-translate-y-[6px]"
-                style={{
-                  background: service.color,
-                  transition: `transform 0.45s ${springEase}`,
-                }}
-              >
-                {/* Curved LEARN MORE text */}
-                <svg
-                  className="absolute -top-4 -right-4 w-24 h-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                  viewBox="0 0 100 100"
-                  aria-hidden="true"
-                >
-                  <defs>
-                    <path
-                      id={`expertise-arc-${index}`}
-                      d="M 12,60 A 40,40 0 0 1 88,60"
-                      fill="none"
-                    />
-                  </defs>
-                  <text
-                    className="font-['Geist']"
-                    fill="#000000"
-                    fontSize="13"
-                    fontWeight="700"
-                    letterSpacing="2"
-                  >
-                    <textPath href={`#expertise-arc-${index}`}>
-                      LEARN MORE
-                    </textPath>
-                  </text>
-                </svg>
+              {/* Dark gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#05070f] via-[#05070f]/55 to-[#05070f]/15 transition-opacity duration-500 group-hover:from-[#0a1128]" />
 
-                <div className="flex items-baseline gap-3 mb-6">
-                  <span className="font-['Geist'] text-sm font-bold text-black/60">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span className="text-black/60">—</span>
-                </div>
-
-                <h3 className="font-['Hanken_Grotesk'] text-[22px] font-bold text-black uppercase tracking-wide mb-4 flex items-center gap-2">
-                  <span
-                    className="inline-block w-0 overflow-hidden group-hover:w-6"
-                    style={{ transition: `width 0.35s ${springEase}` }}
-                  >
-                    →
-                  </span>
+              {/* Accent line + content pinned to bottom */}
+              <div className="absolute inset-x-0 bottom-0 p-7">
+                <span className="block h-[3px] w-10 rounded-full bg-[#4169E1] mb-5 transition-all duration-500 group-hover:w-16" />
+                <h3 className="font-['Hanken_Grotesk'] text-[24px] font-bold leading-tight text-white mb-3">
                   {service.title}
                 </h3>
-
-                <p className="font-['Inter'] text-[15px] leading-relaxed text-black/80 flex-1">
+                <p className="font-['Inter'] text-[14px] leading-relaxed text-white/80 max-w-[92%]">
                   {service.description}
                 </p>
 
-                <div className="flex items-end justify-between mt-8">
-                  <Link
-                    href={`/services/${service.slug}`}
-                    className="flex-1 border-2 border-black bg-white text-black text-center font-['Geist'] text-xs font-bold tracking-[0.15em] uppercase py-3 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 hover:bg-black hover:text-white"
-                    style={{
-                      transition: `all 0.35s ${springEase}`,
-                    }}
-                  >
-                    Let&apos;s Go
-                  </Link>
-                  <span className="text-2xl text-black ml-4 group-hover:hidden">
-                    ↗
-                  </span>
-                </div>
+                <span className="mt-5 inline-flex items-center gap-2 font-['Geist'] text-xs font-semibold tracking-[0.15em] uppercase text-[#8FA6FF] opacity-0 -translate-x-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
+                  Learn More <span aria-hidden="true">→</span>
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

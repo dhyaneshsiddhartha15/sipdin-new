@@ -25,10 +25,6 @@ const brand = {
     hex: "#7B68EE",
     path: "M2 18.439l3.69-2.828c1.961 2.56 4.044 3.739 6.363 3.739 2.307 0 4.33-1.166 6.203-3.704L22 18.405C19.298 22.065 15.941 24 12.053 24 8.178 24 4.788 22.078 2 18.439zM12.04 6.15l-6.568 5.66-3.036-3.52L12.055 0l9.543 8.296-3.05 3.509z",
   },
-  slack: {
-    hex: "#4A154B",
-    path: "M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z",
-  },
 };
 
 const BrandGlyph = ({
@@ -81,7 +77,6 @@ export default function CoreAiExpertise() {
         connector: "rgba(110, 140, 255, 0.45)",
         accent: "#6E8CFF",
         notionFill: "#eef2fb",
-        slackFill: "#ffffff",
       }
     : {
         bg: "#ffffff",
@@ -99,7 +94,6 @@ export default function CoreAiExpertise() {
         connector: "rgba(65, 105, 225, 0.4)",
         accent: "#4169E1",
         notionFill: "#000000",
-        slackFill: "#4A154B",
       };
 
   // Dotted board — different texture from typical square-grid mockups
@@ -316,84 +310,6 @@ export default function CoreAiExpertise() {
         </div>
       ),
     },
-    {
-      key: "orchestration",
-      title: "AI Infrastructure & Orchestration",
-      description:
-        "We build complex agentic workflows using LangGraph and Kubernetes for reliable enterprise automation.",
-      illustration: (
-        <div
-          style={{
-            ...dotBoard,
-            position: "relative",
-            height: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "18px",
-            padding: "26px",
-          }}
-        >
-          {/* AI AGENT pill — left side, horizontal flow */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              background: "linear-gradient(120deg,#2E4FB8,#4169E1)",
-              borderRadius: "9999px",
-              padding: "13px 20px",
-              boxShadow: "0 12px 32px rgba(65, 105, 225, 0.35)",
-              flexShrink: 0,
-              zIndex: 1,
-            }}
-          >
-            <Sparkles size={16} color="#ffffff" fill="#ffffff" />
-            <span
-              style={{
-                fontFamily: "Geist, sans-serif",
-                fontSize: "12px",
-                fontWeight: 700,
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                color: "#ffffff",
-                whiteSpace: "nowrap",
-              }}
-            >
-              AI Agent
-            </span>
-          </div>
-
-          {/* Branching connectors */}
-          <svg width="90" height="180" viewBox="0 0 90 180" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
-            <path d="M0 90 H28" stroke={c.connector} strokeWidth="1.5" strokeDasharray="5 5" />
-            <path d="M28 90 C56 90 56 30 86 30" stroke={c.connector} strokeWidth="1.5" strokeDasharray="5 5" fill="none" />
-            <path d="M28 90 C56 90 56 150 86 150" stroke={c.connector} strokeWidth="1.5" strokeDasharray="5 5" fill="none" />
-            <circle cx="28" cy="90" r="3.5" fill={c.accent} />
-          </svg>
-
-          {/* Destination nodes */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "48px" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <div style={iconChip()}>
-                <BrandGlyph icon={{ ...brand.slack, hex: c.slackFill }} />
-              </div>
-              <span style={{ fontSize: "12px", fontWeight: 600, color: c.subtitle, fontFamily: "Geist, sans-serif", textTransform: "uppercase", letterSpacing: "0.06em" }}>
-                Notify
-              </span>
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <div style={iconChip()}>
-                <BrandGlyph icon={brand.clickup} />
-              </div>
-              <span style={{ fontSize: "12px", fontWeight: 600, color: c.subtitle, fontFamily: "Geist, sans-serif", textTransform: "uppercase", letterSpacing: "0.06em" }}>
-                Assign
-              </span>
-            </div>
-          </div>
-        </div>
-      ),
-    },
   ];
 
   return (
@@ -442,8 +358,10 @@ export default function CoreAiExpertise() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 340px), 1fr))",
             gap: "28px",
+            maxWidth: "960px",
+            margin: "0 auto",
           }}
         >
           {cards.map((card) => (
