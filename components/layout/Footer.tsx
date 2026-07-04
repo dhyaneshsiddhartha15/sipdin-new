@@ -1,78 +1,140 @@
+import Link from "next/link";
+import { TrendingUp, Code2, Palette, Zap } from "lucide-react";
+
+const columns = [
+  {
+    icon: TrendingUp,
+    title: "Digital Marketing",
+    bgClass: "bg-[#4169E1]",
+    hoverClass: "hover:bg-[#2E4FB8]",
+    links: [
+      { name: "SEO", href: "/services/seo" },
+      { name: "PPC Advertising", href: "/services/ppc" },
+      { name: "Meta Ads", href: "/services/social-media-marketing" },
+      { name: "Social Media Management", href: "/services/social-media-management" },
+    ],
+  },
+  {
+    icon: Code2,
+    title: "Development",
+    bgClass: "bg-[#2E4FB8]",
+    hoverClass: "hover:bg-[#24409A]",
+    links: [
+      { name: "Web Development", href: "/services/web-development" },
+      { name: "App Development", href: "/services/app-development" },
+      { name: "E-commerce Development", href: "/services/ecommerce-development" },
+    ],
+  },
+  {
+    icon: Palette,
+    title: "Design & Content",
+    bgClass: "bg-[#6E8CFF]",
+    hoverClass: "hover:bg-[#5677E8]",
+    links: [
+      { name: "UI/UX Design", href: "/services/ui-ux-design" },
+      { name: "Graphic Designing", href: "/services/graphic-designing" },
+      { name: "Video Editing", href: "/services/video-editing" },
+    ],
+  },
+];
+
+const otherServices = {
+  icon: Zap,
+  title: "Automation & Cloud",
+  links: [
+    { name: "Marketing Automation", href: "/services/marketing-automation" },
+    { name: "CRM Solutions", href: "/services/marketing-automation" },
+    { name: "Managed Cloud", href: "/services/managed-cloud" },
+  ],
+};
+
 export default function Footer() {
-  const contactLinks = [
-    { name: "hello@sidpin.com", href: "mailto:hello@sidpin.com" },
-    { name: "+91 074538 69244", href: "tel:+917453869244" },
-    {
-      name: "First Floor, Birla Farm, Haripur Kalan, Haridwar, Motichur Range, Uttarakhand 249205",
-      href: "https://www.google.com/maps/search/?api=1&query=Birla+Farm+Haripur+Kalan+Haridwar+Uttarakhand+249205",
-    },
-  ];
-
-  const socialLinks = [
-    { name: "Instagram", href: "#" },
-    { name: "LinkedIn", href: "#" },
-    { name: "Vimeo", href: "#" },
-  ];
-
   return (
-    <footer className="w-full py-[80px] bg-surface-2 border-t border-[#4169E1]/20">
-      <div className="grid grid-cols-12 px-[80px] gap-[32px] w-full max-w-[1440px] mx-auto relative overflow-hidden">
-        {/* Brand Column */}
-        <div className="col-span-12 md:col-span-4 mb-16 md:mb-0">
-          <div className="font-['Hanken_Grotesk'] text-[40px] font-medium text-fg mb-8">
+    <footer className="w-full">
+      {/* Top row — three brand-blue link blocks */}
+      <div className="grid grid-cols-1 md:grid-cols-3">
+        {columns.map((col) => (
+          <div
+            key={col.title}
+            className={`${col.bgClass} px-[40px] md:px-[64px] py-[56px] md:py-[72px] min-h-[310px]`}
+          >
+            <div className="flex items-center gap-3 mb-8">
+              <col.icon size={20} color="#ffffff" strokeWidth={2.4} />
+              <h5 className="font-['Hanken_Grotesk'] text-[20px] font-bold text-white">
+                {col.title}
+              </h5>
+            </div>
+            <ul className="space-y-1">
+              {col.links.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className={`${col.hoverClass} inline-block font-['Inter'] text-[14.5px] text-white px-2.5 py-2 -ml-2.5 rounded-[3px] transition-colors duration-200`}
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      {/* Bottom row — soft periwinkle block + deep navy CTA block */}
+      <div className="grid grid-cols-1 md:grid-cols-3">
+        <div className="bg-[#DCE6FF] dark:bg-[#141D33] px-[40px] md:px-[64px] py-[56px] md:py-[72px] min-h-[310px]">
+          <div className="flex items-center gap-3 mb-8">
+            <otherServices.icon
+              size={20}
+              strokeWidth={2.4}
+              className="text-[#16223F] dark:text-[#DBE4FB]"
+            />
+            <h5 className="font-['Hanken_Grotesk'] text-[20px] font-bold text-[#16223F] dark:text-[#DBE4FB]">
+              {otherServices.title}
+            </h5>
+          </div>
+          <ul className="space-y-1">
+            {otherServices.links.map((link) => (
+              <li key={link.name}>
+                <Link
+                  href={link.href}
+                  className="inline-block font-['Inter'] text-[14.5px] text-[#16223F] dark:text-[#DBE4FB] px-2.5 py-2 -ml-2.5 rounded-[3px] hover:bg-[#4169E1]/15 dark:hover:bg-[#6E8CFF]/15 transition-colors duration-200"
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="md:col-span-2 bg-[#0C1424] px-[40px] md:px-[64px] py-[56px] md:py-[72px] min-h-[310px]">
+          <div className="max-w-[420px]">
+            <h4 className="font-['Hanken_Grotesk'] text-[24px] md:text-[27px] font-bold text-white leading-snug mb-5">
+              Do you want to increase your sales and reach your goals?
+            </h4>
+            <p className="font-['Inter'] text-[14.5px] text-white/85 leading-relaxed mb-8">
+              Schedule a free, no-obligation conversation with one of our
+              experts to quickly improve the results of your business.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-block bg-[#4169E1] text-white font-['Inter'] text-[15px] px-7 py-3.5 rounded-[3px] hover:bg-[#2E4FB8] transition-colors duration-200"
+            >
+              Book a conversation
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Slim copyright strip */}
+      <div className="bg-[#0C1424] px-[40px] md:px-[64px] py-5 border-t border-white/10">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+          <span className="font-['Hanken_Grotesk'] text-[18px] font-bold text-white">
             SIDPIN
-          </div>
-          <p className="font-['Inter'] text-base text-fg-2 max-w-xs">
-            Elevating global brands through cinematic precision and strategic
-            innovation.
-          </p>
-        </div>
-
-        {/* Contact Column */}
-        <div className="col-span-6 md:col-span-3">
-          <h5 className="font-['Geist'] text-xs font-medium text-[#4169E1] uppercase tracking-widest mb-8">
-            Contact
-          </h5>
-          <ul className="space-y-4">
-            {contactLinks.map((link) => (
-              <li key={link.name}>
-                <a
-                  href={link.href}
-                  className="text-fg-2 hover:text-fg hover:translate-x-1 transition-all inline-block"
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Social Column */}
-        <div className="col-span-6 md:col-span-2">
-          <h5 className="font-['Geist'] text-xs font-medium text-[#4169E1] uppercase tracking-widest mb-8">
-            Social
-          </h5>
-          <ul className="space-y-4">
-            {socialLinks.map((link) => (
-              <li key={link.name}>
-                <a
-                  href={link.href}
-                  className="text-fg-2 hover:text-fg hover:translate-x-1 transition-all inline-block"
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Copyright Column */}
-        <div className="col-span-12 md:col-span-3 mt-12 md:mt-0 text-left md:text-right flex flex-col justify-between">
-          <div className="font-['Hanken_Grotesk'] text-[80px] font-medium text-[#4169E1] opacity-10 absolute -right-20 -bottom-10 pointer-events-none select-none whitespace-nowrap">
-            CINEMATIC PRECISION
-          </div>
-          <p className="font-['Inter'] text-base text-fg-2 mt-auto">
-            © 2024 SIDPIN. ALL RIGHTS RESERVED. CINEMATIC PRECISION.
+          </span>
+          <p className="font-['Inter'] text-[13px] text-white/60">
+            © 2026 SIDPIN. All rights reserved. · hello@sidpin.com · +91 074538
+            69244
           </p>
         </div>
       </div>

@@ -14,6 +14,7 @@ import TechMarquee from "@/components/home/TechMarquee";
 import CloudDeployment from "@/components/home/CloudDeployment";
 import ClientShowcase from "@/components/home/ClientShowcase";
 import ExpertiseGrid from "@/components/home/ExpertiseGrid";
+import CrmSlideshow from "@/components/home/CrmSlideshow";
 
 export default function HomePage() {
   return (
@@ -79,212 +80,19 @@ export default function HomePage() {
         {/* 6.5 TECHNOLOGY CORE */}
         {/* <TechnologyCore /> */}
 
-        {/* 7. CRM SOFTWARE SHOWCASE */}
-        <section className="py-[160px] px-[80px] bg-bg overflow-hidden">
-          <div className="max-w-[1440px] mx-auto text-center">
-            <div className="max-w-4xl mx-auto mb-20">
-              <span className="font-['Geist'] text-xs font-medium text-[#4169E1] tracking-[0.4em] uppercase mb-8 block">
-                Operational Mastery
-              </span>
-              <h2 className="font-['Hanken_Grotesk'] text-[48px] md:text-[48px] font-medium mb-8">
-                Your Business Doesn't Need More Leads. <br />
-                <span className="gradient-text">
-                  It Needs A Better System.
-                </span>
-              </h2>
-              <p className="font-['Inter'] text-lg text-fg-2 max-w-3xl mx-auto">
-                Most businesses lose opportunities because there is no structured
-                process to manage inquiries, customers, follow-ups, payments, and
-                communication. SIDPIN CRM helps businesses organize operations,
-                automate workflows, and create a seamless customer experience.
-              </p>
-            </div>
-            <div className="relative max-w-6xl mx-auto aspect-video rounded-2xl overflow-hidden border border-line/20 shadow-2xl group">
-              {/* Dashboard Mockup */}
-              <img
-                alt="CRM Dashboard"
-                className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 transition-all duration-700"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3it1QuiGvijlsnnY-7_fftXi5S3WWBNW7K9r6_PsNKTs6MkmmSOLUd-P4MZHaTrgk_2fn_RSj4wTYV43zJ0GisLVYluHmqvQCI-YnX1RnzMNrSILdBAvar7_jwv5HhbnAq_7mXmWa8z_GfNrGH2bnP-6rnufgXzDr7gRxiU8FqzxVkqyvjFcLhlnNpBAyU9ydjg4jDiF35ZIgTNTSp96phv8J2DqJbxhtGjErI_2avfr6oKJsAiR42zrV_Gzc-uepU5zMSvX7RKdX"
-              />
-              {/* Floating Glass Cards */}
-              <div className="absolute top-10 left-10 glass-card p-4 rounded-xl flex items-center gap-4 animate-[fadeInUp_1s_ease-out_0.2s_forwards] hover:scale-105 transition-transform cursor-default">
-                <span className="material-symbols-outlined text-[#4169E1]">
-                  person_add
-                </span>
-                <div className="text-left">
-                  <p className="text-xs font-['Geist'] text-fg-2 uppercase">
-                    Status Update
-                  </p>
-                  <p className="text-sm font-semibold">New Lead Generated</p>
-                </div>
-              </div>
-              <div className="absolute top-1/4 right-10 glass-card p-4 rounded-xl flex items-center gap-4 animate-[fadeInUp_1s_ease-out_0.4s_forwards] hover:scale-105 transition-transform cursor-default">
-                <span className="material-symbols-outlined text-green-400">
-                  payments
-                </span>
-                <div className="text-left">
-                  <p className="text-xs font-['Geist'] text-fg-2 uppercase">
-                    Finance
-                  </p>
-                  <p className="text-sm font-semibold">Payment Received</p>
-                </div>
-              </div>
-              <div className="absolute bottom-20 left-20 glass-card p-4 rounded-xl flex items-center gap-4 animate-[fadeInUp_1s_ease-out_0.6s_forwards] hover:scale-105 transition-transform cursor-default">
-                <span className="material-symbols-outlined text-blue-400">
-                  event_available
-                </span>
-                <div className="text-left">
-                  <p className="text-xs font-['Geist'] text-fg-2 uppercase">
-                    Calendar
-                  </p>
-                  <p className="text-sm font-semibold">Booking Confirmed</p>
-                </div>
-              </div>
-              <div className="absolute bottom-10 right-1/4 glass-card p-4 rounded-xl flex items-center gap-4 animate-[fadeInUp_1s_ease-out_0.8s_forwards] hover:scale-105 transition-transform cursor-default">
-                <span className="material-symbols-outlined text-[#4169E1]">
-                  forward_to_inbox
-                </span>
-                <div className="text-left">
-                  <p className="text-xs font-['Geist'] text-fg-2 uppercase">
-                    Automation
-                  </p>
-                  <p className="text-sm font-semibold">Follow-Up Sent</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* 8. INDUSTRY CRM CAROUSEL */}
         <section className="py-[160px] bg-surface">
           <div className="px-[80px] max-w-[1440px] mx-auto">
-            <div className="flex justify-between items-end mb-16">
-              <div className="max-w-2xl">
-                <span className="font-['Geist'] text-xs font-medium text-[#4169E1] tracking-[0.4em] uppercase mb-4 block">
-                  Vertical Solutions
-                </span>
-                <h2 className="font-['Hanken_Grotesk'] text-[48px] md:text-[48px] font-medium">
-                  One CRM. <br />
-                  Built For Every Business.
-                </h2>
-              </div>
-              <div className="hidden md:flex gap-4">
-                <button
-                  onClick={() =>
-                    document
-                      .getElementById("industry-carousel")
-                      ?.scrollBy({ left: -400, behavior: "smooth" })
-                  }
-                  className="w-12 h-12 rounded-full border border-line flex items-center justify-center hover:bg-fg/5"
-                >
-                  <span className="material-symbols-outlined">arrow_back</span>
-                </button>
-                <button
-                  onClick={() =>
-                    document
-                      .getElementById("industry-carousel")
-                      ?.scrollBy({ left: 400, behavior: "smooth" })
-                  }
-                  className="w-12 h-12 rounded-full border border-line flex items-center justify-center hover:bg-fg/5"
-                >
-                  <span className="material-symbols-outlined">arrow_forward</span>
-                </button>
-              </div>
+            <div className="mb-16 max-w-2xl">
+              <span className="font-['Geist'] text-xs font-medium text-[#4169E1] tracking-[0.4em] uppercase mb-4 block">
+                Vertical Solutions
+              </span>
+              <h2 className="font-['Hanken_Grotesk'] text-[48px] md:text-[48px] font-medium">
+                One CRM. <br />
+                Built For Every Business.
+              </h2>
             </div>
-            <div
-              className="flex gap-8 overflow-x-auto no-scrollbar scroll-smooth pb-10"
-              id="industry-carousel"
-            >
-              {/* Card 1 - Yoga CRM */}
-              <div className="hover-lift min-w-[400px] aspect-[4/5] rounded-2xl flex flex-col justify-end group transition-all duration-500 border border-line/20 relative overflow-hidden bg-[#0f1628]">
-                <img src="/crm/yoga.png" alt="Yoga Studio CRM Dashboard" className="absolute inset-0 w-full h-full object-cover opacity-60" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a1230] via-[#0a1230]/80 to-transparent" />
-                <div className="relative z-10 p-10">
-                  <div className="w-12 h-12 rounded-xl bg-[#4169E1]/20 border border-[#4169E1]/30 flex items-center justify-center mb-4 backdrop-blur-sm">
-                    <span className="material-symbols-outlined text-2xl text-[#4169E1]">self_improvement</span>
-                  </div>
-                  <h3 className="font-['Hanken_Grotesk'] text-xl font-medium mb-2 text-white">
-                    Yoga & TTC Centers
-                  </h3>
-                  <p className="text-white/60 font-['Inter'] text-xs leading-relaxed">
-                    Manage batch enrolments, automated reminders, and student progress tracking.
-                  </p>
-                </div>
-                <div className="relative z-10 h-px w-0 group-hover:w-full bg-[#4169E1] transition-all duration-700" />
-              </div>
-
-              {/* Card 2 - Hotel CRM */}
-              <div className="hover-lift min-w-[400px] aspect-[4/5] rounded-2xl flex flex-col justify-end group transition-all duration-500 border border-line/20 relative overflow-hidden bg-[#0f1628]">
-                <img src="/crm/hotel.png" alt="Hotel Management CRM Dashboard" className="absolute inset-0 w-full h-full object-cover opacity-60" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a1230] via-[#0a1230]/80 to-transparent" />
-                <div className="relative z-10 p-10">
-                  <div className="w-12 h-12 rounded-xl bg-[#4169E1]/20 border border-[#4169E1]/30 flex items-center justify-center mb-4 backdrop-blur-sm">
-                    <span className="material-symbols-outlined text-2xl text-[#4169E1]">hotel</span>
-                  </div>
-                  <h3 className="font-['Hanken_Grotesk'] text-xl font-medium mb-2 text-white">
-                    Hotels & Resorts
-                  </h3>
-                  <p className="text-white/60 font-['Inter'] text-xs leading-relaxed">
-                    Seamless guest management from booking to checkout.
-                  </p>
-                </div>
-                <div className="relative z-10 h-px w-0 group-hover:w-full bg-[#4169E1] transition-all duration-700" />
-              </div>
-
-              {/* Card 3 - Restaurant CRM */}
-              <div className="hover-lift min-w-[400px] aspect-[4/5] rounded-2xl flex flex-col justify-end group transition-all duration-500 border border-line/20 relative overflow-hidden bg-[#0f1628]">
-                <img src="/crm/resturant.png" alt="Restaurant POS CRM Dashboard" className="absolute inset-0 w-full h-full object-cover opacity-60" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a1230] via-[#0a1230]/80 to-transparent" />
-                <div className="relative z-10 p-10">
-                  <div className="w-12 h-12 rounded-xl bg-[#4169E1]/20 border border-[#4169E1]/30 flex items-center justify-center mb-4 backdrop-blur-sm">
-                    <span className="material-symbols-outlined text-2xl text-[#4169E1]">restaurant</span>
-                  </div>
-                  <h3 className="font-['Hanken_Grotesk'] text-xl font-medium mb-2 text-white">
-                    Restaurants & Cafés
-                  </h3>
-                  <p className="text-white/60 font-['Inter'] text-xs leading-relaxed">
-                    Reservation systems with loyalty programs.
-                  </p>
-                </div>
-                <div className="relative z-10 h-px w-0 group-hover:w-full bg-[#4169E1] transition-all duration-700" />
-              </div>
-
-              {/* Card 4 - Travel CRM */}
-              <div className="hover-lift min-w-[400px] aspect-[4/5] rounded-2xl flex flex-col justify-end group transition-all duration-500 border border-line/20 relative overflow-hidden bg-[#0f1628]">
-                <img src="/crm/travel.png" alt="Travel Agency CRM Dashboard" className="absolute inset-0 w-full h-full object-cover opacity-60" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a1230] via-[#0a1230]/80 to-transparent" />
-                <div className="relative z-10 p-10">
-                  <div className="w-12 h-12 rounded-xl bg-[#4169E1]/20 border border-[#4169E1]/30 flex items-center justify-center mb-4 backdrop-blur-sm">
-                    <span className="material-symbols-outlined text-2xl text-[#4169E1]">flight_takeoff</span>
-                  </div>
-                  <h3 className="font-['Hanken_Grotesk'] text-xl font-medium mb-2 text-white">
-                    Travel Agencies
-                  </h3>
-                  <p className="text-white/60 font-['Inter'] text-xs leading-relaxed">
-                    Itinerary builders, visa tracking, and documentation.
-                  </p>
-                </div>
-                <div className="relative z-10 h-px w-0 group-hover:w-full bg-[#4169E1] transition-all duration-700" />
-              </div>
-
-              {/* Card 5 - Schools CRM */}
-              <div className="hover-lift min-w-[400px] aspect-[4/5] rounded-2xl flex flex-col justify-end group transition-all duration-500 border border-line/20 relative overflow-hidden bg-[#0f1628]">
-                <img src="/crm/school.png" alt="School Management CRM Dashboard" className="absolute inset-0 w-full h-full object-cover opacity-60" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a1230] via-[#0a1230]/80 to-transparent" />
-                <div className="relative z-10 p-10">
-                  <div className="w-12 h-12 rounded-xl bg-[#4169E1]/20 border border-[#4169E1]/30 flex items-center justify-center mb-4 backdrop-blur-sm">
-                    <span className="material-symbols-outlined text-2xl text-[#4169E1]">school</span>
-                  </div>
-                  <h3 className="font-['Hanken_Grotesk'] text-xl font-medium mb-2 text-white">
-                    Schools & Colleges
-                  </h3>
-                  <p className="text-white/60 font-['Inter'] text-xs leading-relaxed">
-                    Student lifecycle from admission to alumni.
-                  </p>
-                </div>
-                <div className="relative z-10 h-px w-0 group-hover:w-full bg-[#4169E1] transition-all duration-700" />
-              </div>
-            </div>
+            <CrmSlideshow />
           </div>
         </section>
 

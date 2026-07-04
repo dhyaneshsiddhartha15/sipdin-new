@@ -1,39 +1,71 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import {
+  Target,
+  Eye,
+  Rocket,
+  ShieldCheck,
+  Lightbulb,
+  HeartHandshake,
+  BarChart3,
+  Award,
+  Mail,
+  Phone,
+  ArrowRight,
+} from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Reveal from "@/components/studio/Reveal";
-import ParallaxHero from "@/components/about/ParallaxHero";
 
 export const metadata: Metadata = {
-  title: "The Vision Behind SIDPIN | Cinematic Precision",
+  title: "About Us | SIDPIN — Digital Marketing & IT Partner",
   description:
-    "Beyond the lens: SIDPIN merges cinematic storytelling with technical precision and conversion engineering to help brands become impossible to ignore.",
+    "Learn about SIDPIN's mission, vision, and core values. We help businesses grow faster with SEO, performance marketing, web engineering, and AI-driven automation.",
 };
 
-const originImages = [
+const pillars = [
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuDnncFdFhMOEZGq2ya3CpKADdTKxDlduqpTeT6BKjtW_0LY3spqAbuC3o05usaLU5fAyexjBVUk5W7u4F8691AK5KpBMHsoTOSwnu2zBLL2r-fvL30AcxKHko0YUMeWgL659qJtY2KzBQkNh00A01e-R9dJyd5SjrBBBJeHNfpQOJOthJ0ZmccO0f-s022ptmyfr_E7PxJV7E_f0sMg3eJmzMk4gW1MHvK9NaPoXaRMQ0igCCqNAoG4WaTH8nWoy3VmRfo73NZHivHD",
-    alt: "Behind-the-scenes film crew operating a camera crane",
-    className: "aspect-square",
-    delay: 300,
+    icon: Target,
+    title: "Our Mission",
+    body: "Our mission is to help businesses of all sizes grow their online presence and revenue through search engine optimization, paid advertising, social media, and high-performance web and app engineering. We believe in complete transparency — clear reporting, honest timelines, and strategies built around your goals, not our packages. Every engagement starts with your customer and ends with measurable growth.",
   },
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBr9WpRGrLPThgXtg6OKTbQjAsLjwYzEt8qbqmzDxDBPu3QOJAoiP1gI7OcEHS8UaMrHfdr-Yi832o6OWASIiyAL8_JiCTVnLjDDEUf2yRb7FLtaH53wFX_GQ2WnqZtJzgtO8f7V4wgBxYK0CjnzCXiVl55Ge-tdxKVdgUuvotMn3yp5VnKMQv1g54vTwgQNbhPP5Ju_BuZSCHOQDaD4n68xYLaQhybB_a2C6JUBqtGP2sXbsfNPG3SZo2bwqTVbLxBYPrUfrAVJgin",
-    alt: "Modern editing suite with cinematic color grading monitors",
-    className: "aspect-[4/5]",
-    delay: 500,
+    icon: Eye,
+    title: "Our Vision",
+    body: "Our vision is to empower businesses with cutting-edge digital marketing and AI-driven strategies that create sustainable, compounding growth. We want to be the partner brands think of when they decide to stop experimenting and start scaling — a team that stays ahead of every platform shift so our clients are always first to benefit.",
   },
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBUKhl7WjZztNPlo39vDQLfq1otJburzZ90ppiA3LrnCLVzHx2r1T91KRU5fc3wGmf5HbNfZ9eiNmBwxSHq4G9QykYQUyMIqI4PXSyICBX1_zr6MtvYP7z7E_Zq4hMILWUqwrdeSC1dFfLj3cKMxlJvcBIwZbFfokG3HgkJ2bZUlbvRWwQhjb6IwVTYAIuaZaobPH1DhRyNlBzG1WAHBkTWBwaUnqylvtPq5MqoW-NdRD5n0bzmcMcGRORIyeHQrfOdpDKaJlfN7pwS",
-    alt: "Director's hands on a high-end color grading control surface",
-    className: "aspect-[4/5]",
-    delay: 400,
+    icon: Rocket,
+    title: "Our Specialization",
+    body: "We specialize in SEO, pay-per-click advertising, social media marketing, content creation, and analytics — backed by full-stack expertise in web development, mobile apps, e-commerce, and marketing automation. This blend of marketing and engineering under one roof means your campaigns, your website, and your data all work as one system.",
+  },
+];
+
+const values = [
+  {
+    icon: ShieldCheck,
+    title: "Integrity",
+    tagline: "Honest strategies, real results.",
   },
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCVjLPsSdZrWHr7o9ckdw-IIh-ageXrOjhUilwK8iVNinUdxiNYwhtADkgFUGFi-i5FVXMQ5ibrNMVzlGQ-Xl7Tq9maeLEso3jEuNzmy1EEMZuySdfL2MtLWedN4B4iBSJkiHJGcg8f3ust3etCtNu5EiHGcwKa5TfmPzW4R_xfP1EOLpuoSCxQ-HWQIkQIxolZnaMcnZmSNjEl4Y21IUxYSvAiRHyxUhRoeE6dcY8fTVbRFdtgatYuA9CRa6smLe6G-MituQBfkmMD",
-    alt: "Expansive coastal landscape at dawn captured cinematically",
-    className: "aspect-square",
-    delay: 600,
+    icon: Lightbulb,
+    title: "Innovation",
+    tagline: "Always ahead of trends.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Customer First",
+    tagline: "Your growth is our priority.",
+  },
+  {
+    icon: BarChart3,
+    title: "Data-Driven",
+    tagline: "Every decision backed by numbers.",
+  },
+  {
+    icon: Award,
+    title: "Excellence",
+    tagline: "High-quality execution, every time.",
   },
 ];
 
@@ -42,209 +74,151 @@ export default function AboutPage() {
     <>
       <Navbar />
       <main className="bg-surface">
-        <ParallaxHero />
-
-        {/* The Problem */}
-        <section className="py-40 px-[24px] md:px-[80px] max-w-[1440px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-[32px] items-center">
-            <div className="md:col-span-8">
-              <Reveal>
-                <h2 className="font-['Hanken_Grotesk'] text-[32px] md:text-[48px] font-medium tracking-[0.05em] text-fg mb-12">
-                  Most agencies sell services... <br />
-                  <span className="text-fg-3">
-                    But businesses don&apos;t grow because they bought a
-                    website.
-                  </span>
-                </h2>
-              </Reveal>
-              <Reveal delay={100}>
-                <div className="w-24 h-px bg-[#4169E1] mb-12" />
-              </Reveal>
-              <Reveal delay={300}>
-                <p className="font-['Hanken_Grotesk'] text-[32px] md:text-[48px] font-medium text-[#4169E1] leading-tight">
-                  They grow because they built trust.
-                </p>
-              </Reveal>
-            </div>
-            <div className="md:col-span-4 hidden md:block">
-              <Reveal delay={200}>
-                <div className="aspect-[3/4] glass-panel p-1 relative overflow-hidden">
-                  <img
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC25mw_a5_9lpaXYPWzEChUrRaqmTN-mnr_5RXW2FXFb7NJvirUWwzjnUu3qNvFzVTNlXqOlyPFis7jBmN_PQ61tq3spAJwfGhLIHOeYSO0ncp7RQlWxJa4gsAh8U-YCGWsRemUPNVyjCHzpajq3rV0KbMwVCGkC-BT9kb9GISU7rhuYU2oV3neaIda16o0CcHRjhHO_OZxW9U6XsVLnmpfaZL0cicyakIBlLnPvnzN61-5RtaRAhOiE74F1kTb36gQRP8EKX4NtW84"
-                    alt="Macro close-up of a camera lens aperture with golden light"
-                  />
-                </div>
-              </Reveal>
-            </div>
+        {/* Hero */}
+        <section className="pt-48 pb-32 px-[24px] md:px-[80px]">
+          <div className="max-w-[1440px] mx-auto text-center">
+            <Reveal>
+              <span className="font-['Geist'] text-xs font-medium text-[#4169E1] tracking-[0.4em] uppercase mb-6 block">
+                About Us
+              </span>
+            </Reveal>
+            <Reveal delay={100}>
+              <h1 className="font-['Hanken_Grotesk'] text-[40px] md:text-[64px] font-semibold leading-tight text-fg mb-8">
+                Why SIDPIN is the <span className="text-[#4169E1]">best in town</span>
+              </h1>
+            </Reveal>
+            <Reveal delay={200}>
+              <p className="font-['Inter'] text-lg text-fg-2 max-w-3xl mx-auto">
+                SIDPIN is a results-driven digital marketing and technology
+                agency. We don&apos;t sell one-size-fits-all packages — we build
+                customized growth systems that combine performance marketing,
+                engineering, and AI to generate qualified leads and measurable
+                revenue for your business.
+              </p>
+            </Reveal>
           </div>
         </section>
 
-        {/* The Origin */}
-        <section className="py-40 bg-surface-2">
-          <div className="px-[24px] md:px-[80px] max-w-[1440px] mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-              <div className="space-y-12">
-                <div className="space-y-6">
-                  <Reveal>
-                    <span className="font-['Geist'] text-xs font-medium tracking-[0.2em] uppercase text-[#4169E1] block">
-                      Our Origin
-                    </span>
-                  </Reveal>
-                  <Reveal delay={100}>
-                    <h3 className="font-['Hanken_Grotesk'] text-[32px] md:text-[48px] font-medium tracking-[0.05em] text-fg">
-                      Founded by Anand Siddhartha.
-                    </h3>
-                  </Reveal>
+        {/* Mission / Vision / Specialization */}
+        <section className="py-32 px-[24px] md:px-[80px] bg-surface-2">
+          <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {pillars.map((pillar, i) => (
+              <Reveal key={pillar.title} delay={i * 150}>
+                <div className="glass-panel h-full p-10 md:p-12 border border-white/5 hover:border-[#4169E1]/40 transition-colors duration-500">
+                  <div className="w-14 h-14 rounded-full bg-[#4169E1]/10 border border-[#4169E1]/30 flex items-center justify-center mb-8">
+                    <pillar.icon size={26} className="text-[#4169E1]" />
+                  </div>
+                  <h2 className="font-['Hanken_Grotesk'] text-[26px] font-semibold text-fg mb-5">
+                    {pillar.title}
+                  </h2>
+                  <p className="font-['Inter'] text-[15px] leading-relaxed text-fg-2">
+                    {pillar.body}
+                  </p>
                 </div>
-                <Reveal delay={200}>
-                  <div className="space-y-8 font-['Inter'] text-lg text-fg/80">
-                    <p>
-                      It began on the sets of commercial films. Watching how
-                      light, sound, and narrative structure could shift human
-                      emotion in seconds. But Anand noticed a disconnect: brands
-                      had beautiful visuals, yet their business engines were
-                      stalling.
-                    </p>
-                    <p>
-                      SIDPIN was born from the realization that cinematic
-                      storytelling is the most powerful trust-building tool ever
-                      created, but it must be backed by technical precision and
-                      conversion engineering.
-                    </p>
-                    <p>
-                      We evolved from a production house into a growth partner,
-                      merging the artistry of filmmaking with the data-driven
-                      rigor of high-end business intelligence.
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
+        {/* Core Values */}
+        <section className="py-32 px-[24px] md:px-[80px]">
+          <div className="max-w-[1440px] mx-auto">
+            <div className="text-center mb-20">
+              <Reveal>
+                <span className="font-['Geist'] text-xs font-medium text-[#4169E1] tracking-[0.4em] uppercase mb-4 block">
+                  What We Stand For
+                </span>
+              </Reveal>
+              <Reveal delay={100}>
+                <h2 className="font-['Hanken_Grotesk'] text-[36px] md:text-[48px] font-semibold text-fg">
+                  Our Core Values
+                </h2>
+              </Reveal>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+              {values.map((value, i) => (
+                <Reveal key={value.title} delay={i * 100}>
+                  <div className="glass-panel h-full p-8 text-center border border-white/5 hover:border-[#4169E1]/40 hover:-translate-y-1.5 transition-all duration-500">
+                    <div className="w-12 h-12 mx-auto rounded-full bg-[#4169E1]/10 border border-[#4169E1]/30 flex items-center justify-center mb-6">
+                      <value.icon size={22} className="text-[#4169E1]" />
+                    </div>
+                    <h3 className="font-['Hanken_Grotesk'] text-[18px] font-semibold text-fg mb-3">
+                      {value.title}
+                    </h3>
+                    <p className="font-['Inter'] text-sm text-fg-2">
+                      {value.tagline}
                     </p>
                   </div>
                 </Reveal>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-4 pt-12">
-                  {originImages.slice(0, 2).map((img) => (
-                    <Reveal key={img.src} delay={img.delay}>
-                      <div
-                        className={`${img.className} glass-panel overflow-hidden`}
-                      >
-                        <img
-                          className="w-full h-full object-cover"
-                          src={img.src}
-                          alt={img.alt}
-                        />
-                      </div>
-                    </Reveal>
-                  ))}
-                </div>
-                <div className="space-y-4">
-                  {originImages.slice(2).map((img) => (
-                    <Reveal key={img.src} delay={img.delay}>
-                      <div
-                        className={`${img.className} glass-panel overflow-hidden`}
-                      >
-                        <img
-                          className="w-full h-full object-cover"
-                          src={img.src}
-                          alt={img.alt}
-                        />
-                      </div>
-                    </Reveal>
-                  ))}
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* The Philosophy */}
-        <section className="relative py-60 overflow-hidden">
-          <div
-            className="absolute inset-0 bg-cover bg-center opacity-20"
-            style={{
-              backgroundImage: "url('/stitch-exports/about-screenshot.png')",
-            }}
-          />
-          <div className="relative z-10 px-[24px] md:px-[80px] max-w-4xl mx-auto text-center">
+        {/* Who We Are */}
+        <section className="py-32 px-[24px] md:px-[80px] bg-surface-2">
+          <div className="max-w-4xl mx-auto text-center">
             <Reveal>
-              <span className="font-['Geist'] text-xs font-medium tracking-[0.5em] uppercase text-[#4169E1] mb-12 block">
-                The Philosophy
+              <span className="font-['Geist'] text-xs font-medium text-[#4169E1] tracking-[0.4em] uppercase mb-6 block">
+                Who We Are
               </span>
             </Reveal>
-            <Reveal delay={200}>
-              <h2 className="font-['Hanken_Grotesk'] text-[48px] md:text-[80px] font-semibold leading-tight text-fg">
-                &ldquo;How can we help this brand become{" "}
-                <span className="italic text-[#4169E1]">
-                  impossible to ignore?
-                </span>
-                &rdquo;
+            <Reveal delay={100}>
+              <h2 className="font-['Hanken_Grotesk'] text-[32px] md:text-[44px] font-semibold text-fg mb-8">
+                Your trusted digital marketing &amp; IT partner
               </h2>
             </Reveal>
-            <Reveal delay={400}>
-              <div className="mt-20 flex justify-center">
-                <div className="w-px h-32 bg-gradient-to-b from-[#4169E1] to-transparent" />
-              </div>
-            </Reveal>
-          </div>
-        </section>
-
-        {/* The Partner */}
-        <section className="py-40 px-[24px] md:px-[80px] max-w-[1440px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-[32px] items-stretch">
-            <Reveal>
-              <div className="glass-panel p-12 md:p-16 flex flex-col justify-between h-full min-h-[400px]">
-                <div>
-                  <h3 className="font-['Hanken_Grotesk'] text-[32px] md:text-[48px] font-medium tracking-[0.05em] text-fg mb-8">
-                    The Partner
-                  </h3>
-                  <p className="font-['Inter'] text-lg text-fg/60 mb-12">
-                    Most businesses don&apos;t need another vendor. They need a
-                    growth partner who understands that the soul of a brand is
-                    its narrative, but the skeleton of a brand is its
-                    technology.
-                  </p>
-                </div>
-                <div className="flex items-center gap-6">
-                  <div className="w-12 h-12 rounded-full border border-[#4169E1] flex items-center justify-center">
-                    <span className="material-symbols-outlined text-[#4169E1]">
-                      handshake
-                    </span>
-                  </div>
-                  <span className="font-['Geist'] text-xs font-medium tracking-widest uppercase text-fg">
-                    Embedded Collaboration
-                  </span>
-                </div>
-              </div>
-            </Reveal>
             <Reveal delay={200}>
-              <div className="relative overflow-hidden group min-h-[400px]">
-                <img
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQRzMi-0-Ym508N_RJzO-QqtC8tL7zIC5lYcF3BJntsmS_Dz03XxNZI8aO5MlEa1WPwd6EssvpbrdUnSKebATRqkwtnlNIruLx9S987F2m380AVPzP3m79VjP_zIyzvXwi27b38lktRAZKPbiC8r8p68VAC4zOrZU3i19JfQrLu8a6GuvTlKN6q_mE1IuwZY0Rb7XTHwMs1N2AW_UbcM5Hpmbo0F5BujbZaBXgVdui3a1Et6Mbenox3BAX50tq_AXtt7BXsnowGuSV"
-                  alt="Two professionals in deep conversation overlooking a city skyline"
-                />
-                <div className="absolute inset-0 bg-[#0a1230]/40 group-hover:bg-[#0a1230]/20 transition-all duration-500" />
-              </div>
+              <p className="font-['Inter'] text-lg text-fg-2 leading-relaxed">
+                From startups finding their first customers to established
+                brands scaling to new markets, SIDPIN delivers end-to-end
+                solutions — SEO, paid media, social, websites, apps, e-commerce,
+                cloud, and AI automation. One team, one strategy, one goal:
+                making your brand impossible to ignore.
+              </p>
             </Reveal>
           </div>
         </section>
 
-        {/* Final CTA */}
-        <section className="py-60 px-[24px] md:px-[80px] bg-surface">
+        {/* Connect With Us */}
+        <section className="py-32 px-[24px] md:px-[80px]">
           <div className="max-w-[1440px] mx-auto text-center">
             <Reveal>
-              <h2 className="font-['Hanken_Grotesk'] text-[48px] md:text-[80px] font-semibold leading-tight text-fg mb-16">
-                Great brands create <br />
-                lasting impact.
+              <h2 className="font-['Hanken_Grotesk'] text-[36px] md:text-[48px] font-semibold text-fg mb-16">
+                Connect With Us
               </h2>
             </Reveal>
-            <Reveal delay={200}>
-              <a
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto mb-16">
+              <Reveal delay={100}>
+                <a
+                  href="mailto:hello@sidpin.com"
+                  className="glass-panel flex flex-col items-center gap-4 p-10 border border-white/5 hover:border-[#4169E1]/40 transition-colors duration-500"
+                >
+                  <Mail size={24} className="text-[#4169E1]" />
+                  <span className="font-['Inter'] text-fg">
+                    hello@sidpin.com
+                  </span>
+                </a>
+              </Reveal>
+              <Reveal delay={200}>
+                <a
+                  href="tel:+917453869244"
+                  className="glass-panel flex flex-col items-center gap-4 p-10 border border-white/5 hover:border-[#4169E1]/40 transition-colors duration-500"
+                >
+                  <Phone size={24} className="text-[#4169E1]" />
+                  <span className="font-['Inter'] text-fg">
+                    +91 074538 69244
+                  </span>
+                </a>
+              </Reveal>
+            </div>
+            <Reveal delay={300}>
+              <Link
                 href="/contact"
-                className="inline-flex items-center gap-4 bg-[#4169E1] text-[#FFFFFF] px-12 py-6 font-['Geist'] text-xs font-medium tracking-[0.3em] uppercase royal-blue-glow hover:translate-x-2 transition-all duration-300"
+                className="inline-flex items-center gap-3 bg-[#4169E1] text-white px-12 py-6 font-['Geist'] text-xs font-medium tracking-[0.3em] uppercase royal-blue-glow hover:translate-x-2 transition-all duration-300"
               >
-                Start Your Project
-                <span className="material-symbols-outlined">arrow_right_alt</span>
-              </a>
+                Start Your Project <ArrowRight size={16} />
+              </Link>
             </Reveal>
           </div>
         </section>
