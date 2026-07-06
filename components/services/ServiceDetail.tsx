@@ -37,16 +37,14 @@ export default function ServiceDetail({
   category: ServiceCategory;
 }) {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const [formSubmitted, setFormSubmitted] = useState(false);
 
   return (
     <main className="pt-24">
       {/* ============ HERO ============ */}
       <section className="relative overflow-hidden bg-bg py-[80px] px-6 md:px-[80px]">
         <div className="ai-grid-bg pointer-events-none absolute inset-0 opacity-40" />
-        <div className="relative max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-          {/* Left: copy */}
-          <div className="lg:col-span-7">
+        <div className="relative max-w-[1440px] mx-auto">
+          <div>
             <span className="font-['Geist'] text-xs font-medium text-[#4169E1] tracking-[0.4em] uppercase mb-6 block">
               {category.name} — Our Services
             </span>
@@ -87,86 +85,6 @@ export default function ServiceDetail({
             </div>
           </div>
 
-          {/* Right: contact form */}
-          <div className="lg:col-span-5">
-            <div className="glass-card rounded-2xl border border-line/40 p-8">
-              {formSubmitted ? (
-                <div className="py-16 text-center">
-                  <span className="material-symbols-outlined mb-4 text-5xl text-[#4169E1]">
-                    check_circle
-                  </span>
-                  <h3 className="font-['Hanken_Grotesk'] text-2xl font-semibold mb-3">
-                    Thank you!
-                  </h3>
-                  <p className="font-['Inter'] text-fg-2">
-                    We received your inquiry and will get back to you within 24
-                    hours.
-                  </p>
-                </div>
-              ) : (
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    setFormSubmitted(true);
-                  }}
-                  className="flex flex-col gap-5"
-                >
-                  <h3 className="font-['Hanken_Grotesk'] text-xl font-semibold mb-1">
-                    Get a Free Consultation
-                  </h3>
-                  <div>
-                    <label className="mb-2 block font-['Geist'] text-xs font-medium uppercase tracking-widest text-fg-2">
-                      First Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      className="w-full rounded-lg border border-line bg-surface px-4 py-3 font-['Inter'] text-sm text-fg outline-none transition-colors focus:border-[#4169E1]"
-                    />
-                  </div>
-                  <div>
-                    <label className="mb-2 block font-['Geist'] text-xs font-medium uppercase tracking-widest text-fg-2">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      className="w-full rounded-lg border border-line bg-surface px-4 py-3 font-['Inter'] text-sm text-fg outline-none transition-colors focus:border-[#4169E1]"
-                    />
-                  </div>
-                  <div>
-                    <label className="mb-2 block font-['Geist'] text-xs font-medium uppercase tracking-widest text-fg-2">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      className="w-full rounded-lg border border-line bg-surface px-4 py-3 font-['Inter'] text-sm text-fg outline-none transition-colors focus:border-[#4169E1]"
-                    />
-                  </div>
-                  <div>
-                    <label className="mb-2 block font-['Geist'] text-xs font-medium uppercase tracking-widest text-fg-2">
-                      Message
-                    </label>
-                    <textarea
-                      rows={4}
-                      maxLength={180}
-                      className="w-full resize-none rounded-lg border border-line bg-surface px-4 py-3 font-['Inter'] text-sm text-fg outline-none transition-colors focus:border-[#4169E1]"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="rounded-lg py-4 font-['Geist'] text-xs font-semibold uppercase tracking-[0.18em] text-white transition-transform hover:scale-[1.02]"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(120deg,#2E4FB8 0%,#4169E1 45%,#6E8CFF 100%)",
-                    }}
-                  >
-                    Submit
-                  </button>
-                </form>
-              )}
-            </div>
-          </div>
         </div>
       </section>
 

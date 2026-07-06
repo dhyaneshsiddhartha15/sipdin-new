@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import ServiceExplorer from "@/components/services/ServiceExplorer";
+import ExpertiseGrid from "@/components/home/ExpertiseGrid";
+import CampaignTypes from "@/components/services/CampaignTypes";
+import CustomSolutionForm from "@/components/services/CustomSolutionForm";
 
 export const metadata: Metadata = {
   title: "Services | SIDPIN Digital",
@@ -54,102 +56,93 @@ export default function ServicesPage() {
     <>
       <Navbar />
       <main>
-        {/* Hero */}
-        <section className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <div
-              className="absolute inset-0 bg-cover bg-center opacity-30"
-              style={{
-                backgroundImage:
-                  "url('https://lh3.googleusercontent.com/aida/AP1WRLupNehXn4swJZpRPVkNy87OrV0Mpb4ok2dhc6p_5HIm74TidGbODUyq8Hk9bbTt6i0AC_X28mFT1mW5H8JzHdEEMUIys85Gn0TSWRvJ91SehN30BKDV2f98WGgX2umLgmy90xzQJY_IJhHJWA1PSQwH4WN_1Z3DkLF8dQsA-XyMOj7VvxfvTL_UlOjTXqmu89BYgrWrr8a7qQ3DxT69C7o0cEReTVkpF72WSTKcyzfMmUH1cOJfhgA2LILF')",
-              }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-bg/50 to-bg" />
+        {/* Hero — cream, centered, yellow-underline (brandwitty style) */}
+        <section className="relative bg-[#F2F6FF] pt-[190px] pb-[130px] px-[24px] overflow-hidden">
+          {/* Scattered colored dots */}
+          <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
+            <span className="absolute top-[28%] left-[20%] w-3 h-3 rounded-full bg-[#8FB0FF]" />
+            <span className="absolute top-[25%] left-[22%] w-1.5 h-1.5 rounded-full bg-[#4169E1]" />
+            <span className="absolute top-[52%] left-[15%] w-3 h-3 rounded-full bg-[#2E4FB8]" />
+            <span className="absolute top-[49%] left-[16.5%] w-1.5 h-1.5 rounded-full bg-[#4169E1]" />
+            <span className="absolute top-[36%] right-[22%] w-3 h-3 rounded-full bg-[#8FB0FF]" />
+            <span className="absolute top-[33%] right-[21%] w-1.5 h-1.5 rounded-full bg-[#4169E1]" />
+            <span className="absolute top-[47%] right-[16%] w-3.5 h-3.5 rounded-full bg-[#2E4FB8]" />
+            <span className="absolute top-[44%] right-[15%] w-1.5 h-1.5 rounded-full bg-[#4169E1]" />
           </div>
-          <div className="relative z-10 max-w-[1440px] mx-auto px-[24px] md:px-[80px] text-center">
+
+          <div className="relative z-10 max-w-[900px] mx-auto text-center">
             <span className="font-['Geist'] text-xs font-medium tracking-[0.4em] uppercase text-[#4169E1] mb-6 block">
               Precision Engineered Success
             </span>
-            <h1 className="font-['Hanken_Grotesk'] text-[48px] md:text-[80px] font-semibold leading-[1.1] tracking-tight text-fg mb-8 max-w-4xl mx-auto">
-              Solutions Built Around Your Growth.
+            <h1 className="font-['Hanken_Grotesk'] text-[clamp(40px,5.5vw,68px)] font-semibold leading-[1.15] tracking-tight text-[#1A1A1A] mb-8">
+              Solutions Built Around{" "}
+              <span className="underline decoration-[#4169E1] decoration-[5px] underline-offset-[10px]">
+                Your Growth.
+              </span>
             </h1>
-            <p className="font-['Inter'] text-lg leading-[1.6] text-fg-2 max-w-2xl mx-auto mb-12 opacity-80">
-              From cinematic content production to custom business systems, every
-              solution is designed to help your business attract attention,
-              build trust, and grow.
+            <p className="font-['Inter'] text-[17px] leading-[1.8] text-[#555555] max-w-[620px] mx-auto mb-12">
+              From cinematic content production to{" "}
+              <strong className="text-[#1A1A1A]">custom business systems</strong>,
+              every solution is designed to help your business attract
+              attention, build trust, and grow.
             </p>
-            <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
+            <div className="flex flex-col md:flex-row gap-5 justify-center items-center">
               <a
-                href="/work"
-                className="bg-[#4169E1] text-[#FFFFFF] px-10 py-5 font-['Geist'] text-xs font-medium uppercase tracking-[0.2em] rounded-full hover:scale-105 transition-all duration-500 shadow-xl"
-              >
-                View Work
-              </a>
-              <button
-                type="button"
-                className="border border-white/20 text-fg px-10 py-5 font-['Geist'] text-xs font-medium uppercase tracking-[0.2em] rounded-full hover:bg-surface/5 transition-all duration-500"
+                href="/contact"
+                className="bg-[#4169E1] text-white px-9 py-4 font-['Inter'] text-[15px] font-semibold rounded-[6px] hover:bg-[#2E4FB8] hover:scale-[1.03] transition-all duration-300 shadow-[0_10px_30px_rgba(65,105,225,0.35)]"
               >
                 Start A Project
-              </button>
+              </a>
+              <a
+                href="/work"
+                className="bg-white border border-[#d7e0f7] text-[#1A1A1A] px-9 py-4 font-['Inter'] text-[15px] font-semibold rounded-[6px] hover:border-[#4169E1]/50 transition-all duration-300 inline-flex items-center gap-3"
+              >
+                <span className="material-symbols-outlined text-[20px]">play_circle</span>
+                View Our Work
+              </a>
             </div>
           </div>
         </section>
 
-        <ServiceExplorer />
+        <ExpertiseGrid />
 
-        {/* Custom Solutions */}
-        <section className="py-[160px] relative">
-          <div
-            className="absolute inset-0 bg-cover bg-center opacity-10"
-            style={{
-              backgroundImage:
-                "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCjW1ei3cYG_L0yFA85OvbV9ISSoF5e2Pe39FBbcWZny8CZNOzGYm1uGUIi9faaT1trABG5Z8T21ToYCRAW5nvXFgZYVWVD5H7x6IZKYxHrhsXWC6ycmPdMApLfq6DusrYv5LPHVkK3XjihW8d-mmIotpBOWYRPtt8gKh-AnO1f28hfBFZEsH3C3G5juZRqxwAEU6Y23AzzyQZ-o3WylxtFfK3oSHu7sf6cOMY-J-x-SqJ6zJOKaypGP1jRgZtKFQtQtNwE_5n3B2Am')",
-            }}
-          />
-          <div className="max-w-[1440px] mx-auto px-[24px] md:px-[80px] relative z-10">
+        {/* Campaign types */}
+        <CampaignTypes />
+
+        {/* Custom Solutions — light band with request form */}
+        <section className="py-[140px] bg-[#F2F6FF]">
+          <div className="max-w-[1440px] mx-auto px-[24px] md:px-[80px]">
             <div className="grid md:grid-cols-2 gap-[80px] items-center">
               <div>
                 <span className="font-['Geist'] text-xs font-medium text-[#4169E1] tracking-[0.2em] uppercase mb-4 block">
                   Bespoke Engineering
                 </span>
-                <h2 className="font-['Hanken_Grotesk'] text-[32px] md:text-[48px] font-medium tracking-[0.05em] text-fg mb-8">
+                <h2 className="font-['Hanken_Grotesk'] text-[32px] md:text-[48px] font-medium tracking-[0.05em] text-[#1A1A1A] mb-8">
                   Need Something Custom?
                 </h2>
-                <p className="font-['Inter'] text-lg leading-[1.6] text-fg-2 mb-12">
+                <p className="font-['Inter'] text-lg leading-[1.6] text-[#555555] mb-12">
                   Every business is different. We don&apos;t believe in
                   one-size-fits-all. Our custom solutions are tailored to your
                   specific goals, industry, and growth stage.
                 </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {customSolutions.map((item) => (
                     <div
                       key={item.label}
-                      className="flex items-center gap-4 glass-card p-4"
+                      className="flex items-center gap-4 bg-white border border-[#dfe6f7] rounded-lg p-4 shadow-[0_10px_30px_-20px_rgba(65,105,225,0.35)]"
                     >
                       <span className="material-symbols-outlined text-[#4169E1]">
                         {item.icon}
                       </span>
-                      <span className="font-['Geist'] text-xs font-medium tracking-wide text-fg">
+                      <span className="font-['Geist'] text-xs font-medium tracking-wide text-[#1A1A1A]">
                         {item.label}
                       </span>
                     </div>
                   ))}
                 </div>
-                <button
-                  type="button"
-                  className="bg-fg text-bg px-10 py-5 font-['Geist'] text-xs font-medium uppercase tracking-[0.2em] hover:bg-[#4169E1] hover:text-[#FFFFFF] transition-all"
-                >
-                  Request Custom Solution
-                </button>
               </div>
-              <div className="relative group">
-                <div className="absolute -inset-1 bg-[#4169E1] opacity-20 blur-2xl group-hover:opacity-40 transition-opacity" />
-                <img
-                  className="relative z-10 w-full rounded-xl grayscale opacity-80 group-hover:grayscale-0 transition-all duration-700"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgNItaGEiJsyLVOq3QnNrpM9SRRH5CJSdmyV2GE041Vu4NpkPzy2rqvDQd_UYjN8ns_VW9azzGtuDlLGW1lGcY4PKA5YzCUVLfjqA17UREA3-1Xq1sNLLkJb2OzKc9EsGWMSrONk-2bL8pIY_nYGLf7X8IDoOvrs6lvnVj9y0n_3jS-LtmZxuS7QB9JZpEbVV9Jfem6AbTB3Zu7T_PuP098fdDDQ6uc3lwCn_J-eNBi1vGy195ENtoacsu5HJKZj8Uk-r7-TPtACor"
-                  alt="Custom engineering and bespoke technical craftsmanship"
-                />
-              </div>
+
+              <CustomSolutionForm />
             </div>
           </div>
         </section>

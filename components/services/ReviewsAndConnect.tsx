@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Quote, Star } from "lucide-react";
-import { serviceCategories } from "@/lib/services";
+import CustomSolutionForm from "@/components/services/CustomSolutionForm";
 
 const reviews = [
   {
@@ -37,17 +37,8 @@ const reviews = [
   },
 ];
 
-const allServices = serviceCategories.flatMap((cat) =>
-  cat.services.map((s) => s.name)
-);
-
-export default function ReviewsAndConnect({
-  currentService,
-}: {
-  currentService: string;
-}) {
+export default function ReviewsAndConnect(_props: { currentService?: string }) {
   const [active, setActive] = useState(0);
-  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(
@@ -125,98 +116,16 @@ export default function ReviewsAndConnect({
           </div>
         </div>
 
-        {/* Right — connect form */}
-        <div className="glass-card rounded-2xl border border-line/40 p-8 md:p-10">
-          {submitted ? (
-            <div className="py-20 text-center">
-              <span className="material-symbols-outlined mb-4 text-5xl text-[#4169E1]">
-                check_circle
-              </span>
-              <h3 className="font-['Hanken_Grotesk'] mb-3 text-2xl font-semibold">
-                Thank you!
-              </h3>
-              <p className="font-['Inter'] text-fg-2">
-                Our experts will reach out to you within 24 hours.
-              </p>
-            </div>
-          ) : (
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSubmitted(true);
-              }}
-              className="flex flex-col gap-5"
-            >
-              <div className="mb-2 text-center">
-                <h3 className="font-['Hanken_Grotesk'] text-[26px] font-semibold leading-snug">
-                  Connect with our{" "}
-                  <span className="text-[#4169E1]">Digital Marketing Experts</span>
-                </h3>
-                <span className="mt-4 inline-block h-[3px] w-14 rounded-full bg-[#4169E1]" />
-              </div>
-
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                <input
-                  type="text"
-                  required
-                  placeholder="Name *"
-                  suppressHydrationWarning
-                  className="w-full rounded-lg border border-line bg-surface px-4 py-3.5 font-['Inter'] text-sm text-fg placeholder:text-fg-3 outline-none transition-colors focus:border-[#4169E1]"
-                />
-                <input
-                  type="text"
-                  placeholder="Company Name"
-                  suppressHydrationWarning
-                  className="w-full rounded-lg border border-line bg-surface px-4 py-3.5 font-['Inter'] text-sm text-fg placeholder:text-fg-3 outline-none transition-colors focus:border-[#4169E1]"
-                />
-                <input
-                  type="tel"
-                  required
-                  placeholder="Mobile No. *"
-                  suppressHydrationWarning
-                  className="w-full rounded-lg border border-line bg-surface px-4 py-3.5 font-['Inter'] text-sm text-fg placeholder:text-fg-3 outline-none transition-colors focus:border-[#4169E1]"
-                />
-                <input
-                  type="email"
-                  required
-                  placeholder="Email Address *"
-                  suppressHydrationWarning
-                  className="w-full rounded-lg border border-line bg-surface px-4 py-3.5 font-['Inter'] text-sm text-fg placeholder:text-fg-3 outline-none transition-colors focus:border-[#4169E1]"
-                />
-              </div>
-
-              <select
-                defaultValue={currentService}
-                suppressHydrationWarning
-                className="w-full appearance-none rounded-lg border border-line bg-surface px-4 py-3.5 font-['Inter'] text-sm text-fg outline-none transition-colors focus:border-[#4169E1]"
-              >
-                {allServices.map((name) => (
-                  <option key={name} value={name} className="bg-surface">
-                    {name}
-                  </option>
-                ))}
-              </select>
-
-              <textarea
-                rows={4}
-                placeholder="Tell us about your project..."
-                suppressHydrationWarning
-                className="w-full resize-none rounded-lg border border-line bg-surface px-4 py-3.5 font-['Inter'] text-sm text-fg placeholder:text-fg-3 outline-none transition-colors focus:border-[#4169E1]"
-              />
-
-              <button
-                type="submit"
-                suppressHydrationWarning
-                className="rounded-full py-4 font-['Geist'] text-xs font-semibold uppercase tracking-[0.2em] text-white transition-transform hover:scale-[1.02]"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(120deg,#2E4FB8 0%,#4169E1 45%,#6E8CFF 100%)",
-                }}
-              >
-                Submit Now
-              </button>
-            </form>
-          )}
+        {/* Right — connect form (shared /services form card) */}
+        <div>
+          <div className="mb-16 text-center">
+            <h3 className="font-['Hanken_Grotesk'] text-[26px] font-semibold leading-snug">
+              Connect with our{" "}
+              <span className="text-[#4169E1]">Digital Marketing Experts</span>
+            </h3>
+            <span className="mt-4 inline-block h-[3px] w-14 rounded-full bg-[#4169E1]" />
+          </div>
+          <CustomSolutionForm />
         </div>
       </div>
     </section>

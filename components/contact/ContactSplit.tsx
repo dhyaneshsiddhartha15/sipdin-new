@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Paperclip, Check } from "lucide-react";
+import { Paperclip, Check, MapPin } from "lucide-react";
 import FluidCanvas from "./FluidCanvas";
 
 const interests = [
@@ -40,6 +40,7 @@ export default function ContactSplit() {
   };
 
   return (
+    <>
     <section className="relative flex flex-col lg:flex-row min-h-screen">
       <style>{`
         @keyframes sidpin-blob-a {
@@ -206,5 +207,43 @@ export default function ContactSplit() {
         </form>
       </div>
     </section>
+
+    {/* Map band */}
+    <section className="bg-surface dark:bg-[#0a0a0f]">
+      <div className="mx-auto max-w-[1400px] px-[24px] md:px-[56px] pb-24">
+        <div className="flex flex-col gap-3 mb-8">
+          <div className="flex items-center gap-3 text-fg">
+            <MapPin size={20} strokeWidth={2.2} className="text-[#4169E1]" />
+            <h2 className="font-['Hanken_Grotesk'] text-[26px] md:text-[32px] font-bold">
+              Visit our office
+            </h2>
+          </div>
+          <p className="font-['Inter'] text-[15px] text-fg-2 max-w-xl">
+            First Floor, Birla Farm, Haripur Kalan, Haridwar, Motichur Range,
+            Uttarakhand 249205
+          </p>
+        </div>
+        <div className="overflow-hidden rounded-2xl border border-line shadow-[0_20px_60px_-24px_rgba(65,105,225,0.35)]">
+          <iframe
+            title="SIDPIN Digital office location"
+            src="https://maps.google.com/maps?q=First%20Floor%2C%20Birla%20Farm%2C%20Haripur%20Kalan%2C%20Haridwar%2C%20Motichur%20Range%2C%20Uttarakhand%20249205&z=15&output=embed"
+            className="block w-full h-[380px] md:h-[460px] border-0"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          />
+        </div>
+        <a
+          href="https://www.google.com/maps?daddr=First+Floor,+Birla+Farm,+Haripur+Kalan,+Haridwar,+Motichur+Range,+Uttarakhand+249205"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 inline-flex items-center gap-2 font-['Inter'] text-[15px] font-medium text-[#4169E1] hover:underline"
+        >
+          Get directions
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+    </>
   );
 }

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { TrendingUp, Code2, Palette, Zap } from "lucide-react";
+import { TrendingUp, Code2, Palette, Zap, MapPin, Phone } from "lucide-react";
 
 const columns = [
   {
@@ -108,34 +108,53 @@ export default function Footer() {
         </div>
 
         <div className="md:col-span-2 bg-[#0C1424] px-[40px] md:px-[64px] py-[56px] md:py-[72px] min-h-[310px]">
-          <div className="max-w-[420px]">
-            <h4 className="font-['Hanken_Grotesk'] text-[24px] md:text-[27px] font-bold text-white leading-snug mb-5">
-              Do you want to increase your sales and reach your goals?
-            </h4>
-            <p className="font-['Inter'] text-[14.5px] text-white/85 leading-relaxed mb-8">
-              Schedule a free, no-obligation conversation with one of our
-              experts to quickly improve the results of your business.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block bg-[#4169E1] text-white font-['Inter'] text-[15px] px-7 py-3.5 rounded-[3px] hover:bg-[#2E4FB8] transition-colors duration-200"
-            >
-              Book a conversation
-            </Link>
-          </div>
-        </div>
-      </div>
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12">
+            <div className="max-w-[420px]">
+              <h4 className="font-['Hanken_Grotesk'] text-[24px] md:text-[27px] font-bold text-white leading-snug mb-5">
+                Do you want to increase your sales and reach your goals?
+              </h4>
+              <p className="font-['Inter'] text-[14.5px] text-white/85 leading-relaxed mb-8">
+                Schedule a free, no-obligation conversation with one of our
+                experts to quickly improve the results of your business.
+              </p>
+              <Link
+                href="/contact"
+                className="inline-block bg-[#4169E1] text-white font-['Inter'] text-[15px] px-7 py-3.5 rounded-[3px] hover:bg-[#2E4FB8] transition-colors duration-200"
+              >
+                Book a conversation
+              </Link>
+            </div>
 
-      {/* Slim copyright strip */}
-      <div className="bg-[#0C1424] px-[40px] md:px-[64px] py-5 border-t border-white/10">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-          <span className="font-['Hanken_Grotesk'] text-[18px] font-bold text-white">
-            SIDPIN Digital
-          </span>
-          <p className="font-['Inter'] text-[13px] text-white/60">
-            © 2026 SIDPIN Digital. All rights reserved. · hello@sidpin.com · +91 074538
-            69244
-          </p>
+            {/* Brand contact + copyright */}
+            <div className="flex flex-col gap-5 lg:max-w-[340px]">
+              <img
+                src="/logo-full-white.png"
+                alt="SIDPIN Digital"
+                className="h-8 w-auto object-contain self-start"
+              />
+              <div className="flex items-start gap-3 max-w-sm">
+                <MapPin size={18} strokeWidth={2} className="mt-0.5 shrink-0 text-[#6E8CFF]" />
+                <address className="font-['Inter'] text-[14px] not-italic text-white/70 leading-relaxed">
+                  First Floor, Birla Farm, Haripur Kalan, Haridwar,
+                  <br className="hidden sm:block" /> Motichur Range, Uttarakhand 249205
+                </address>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone size={18} strokeWidth={2} className="shrink-0 text-[#6E8CFF]" />
+                <a
+                  href="tel:+917453869244"
+                  className="font-['Inter'] text-[14px] text-white/70 hover:text-white transition-colors"
+                >
+                  074538 69244
+                </a>
+              </div>
+              <p className="font-['Inter'] text-[13px] text-white/60 pt-3 border-t border-white/10">
+                © 2026 SIDPIN Digital. All rights reserved.
+                <br />
+                hello@sidpin.com
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

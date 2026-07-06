@@ -317,10 +317,11 @@ export default function CoreAiExpertise() {
       style={{
         background: c.bg,
         fontFamily: "Hanken Grotesk, sans-serif",
-        padding: "100px 24px",
+        padding: "56px 24px 40px",
       }}
     >
       <div style={{ maxWidth: "1300px", margin: "0 auto" }}>
+        {/* Unified header for the combined AI + Cloud section */}
         <div style={{ textAlign: "center", marginBottom: "64px" }}>
           <span
             style={{
@@ -341,18 +342,56 @@ export default function CoreAiExpertise() {
             }}
           >
             <Sparkles size={14} />
-            Intelligence
+            Intelligence + Infrastructure
           </span>
           <h2
             style={{
               fontSize: "clamp(32px, 4vw, 48px)",
               fontWeight: 600,
               color: c.title,
-              margin: 0,
+              margin: "0 0 20px",
             }}
           >
-            Core <span style={{ color: c.accent }}>AI Expertise</span>
+            AI Solutions & <span style={{ color: c.accent }}>Managed Cloud</span>
           </h2>
+          <p
+            style={{
+              fontSize: "18px",
+              color: c.subtitle,
+              lineHeight: 1.6,
+              maxWidth: "620px",
+              margin: "0 auto",
+            }}
+          >
+            We build intelligent systems — and run the enterprise-grade cloud
+            they live on. One team for both, end to end.
+          </p>
+        </div>
+
+        {/* 01 — AI expertise */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "18px",
+            maxWidth: "960px",
+            margin: "0 auto 28px",
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "Geist, sans-serif",
+              fontSize: "12px",
+              fontWeight: 600,
+              letterSpacing: "0.25em",
+              textTransform: "uppercase",
+              color: c.accent,
+              whiteSpace: "nowrap",
+            }}
+          >
+            01 · Core AI Expertise
+          </span>
+          <span style={{ flex: 1, height: "1px", background: c.cardBorder }} />
         </div>
 
         <div

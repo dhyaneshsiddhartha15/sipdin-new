@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Hanken_Grotesk, Inter, Geist } from "next/font/google";
 import Script from "next/script";
+import CookieConsent from "@/components/ui/CookieConsent";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import "./globals.css";
 
 const hankenGrotesk = Hanken_Grotesk({
@@ -52,6 +54,8 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-bg text-fg selection:bg-[#4169E1] selection:text-white">
         {children}
+        <CookieConsent />
+        <WhatsAppButton />
       </body>
     </html>
   );

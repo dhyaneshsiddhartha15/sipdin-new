@@ -40,16 +40,17 @@ export default function Navbar() {
             background: "linear-gradient(120deg, #101A36 0%, #0B1226 100%)",
           }}
         >
-          {/* Logo circle — drop the SIDPIN Digital logo image in here */}
+          {/* Logo circle — SIDPIN Digital mark */}
           <a
             href="/"
             aria-label="SIDPIN Digital home"
             className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-white transition-transform duration-300 hover:rotate-[15deg]"
           >
-            {/* Replace with: <img src="/logo.png" alt="SIDPIN Digital" className="h-7 w-7 object-contain" /> */}
-            <span className="font-['Hanken_Grotesk'] text-xl font-bold text-[#4169E1]">
-              S
-            </span>
+            <img
+              src="/logo-mark.png"
+              alt="SIDPIN Digital"
+              className="h-7 w-7 object-contain"
+            />
           </a>
 
           {/* Center links */}

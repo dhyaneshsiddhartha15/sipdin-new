@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Cloud, Server, Database, Shield, Zap, Globe, CheckCircle } from "lucide-react";
+import { Server, Database, Shield, Zap, Globe, CheckCircle } from "lucide-react";
 
 // Official brand logo paths (Simple Icons, 24x24 viewBox)
 const brandPaths = {
@@ -86,48 +86,49 @@ export default function CloudDeployment() {
       };
 
   return (
-    <section style={{ background: colors.bg, fontFamily: "Hanken Grotesk, sans-serif", padding: "40px 24px" }}>
+    <section style={{ background: colors.bg, fontFamily: "Hanken Grotesk, sans-serif", padding: "24px 24px 100px" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: "60px" }}>
+        {/* 02 — cloud infrastructure (continues the AI + Cloud section above) */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "18px",
+            margin: "0 auto 40px",
+          }}
+        >
           <span
             style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              borderRadius: "9999px",
-              border: `1px solid ${colors.accent}20`,
-              background: `${colors.accent}05`,
-              padding: "8px 20px",
               fontFamily: "Geist, sans-serif",
               fontSize: "12px",
-              fontWeight: 500,
+              fontWeight: 600,
+              letterSpacing: "0.25em",
               textTransform: "uppercase",
-              letterSpacing: "0.3em",
               color: colors.accent,
+              whiteSpace: "nowrap",
             }}
           >
-            <Cloud size={16} />
-            Cloud Infrastructure
+            02 · Cloud Infrastructure
           </span>
+          <span style={{ flex: 1, height: "1px", background: colors.cardBorder }} />
+        </div>
 
-          <h2
+        <div style={{ textAlign: "center", marginBottom: "48px" }}>
+          <h3
             style={{
-              fontSize: "clamp(36px, 5vw, 56px)",
+              fontSize: "clamp(24px, 3vw, 32px)",
               fontWeight: 600,
-              lineHeight: 1.1,
-              marginBottom: "24px",
+              lineHeight: 1.2,
+              marginBottom: "16px",
               color: colors.title,
             }}
           >
-            Deploy Anywhere.
-            <br />
-            <span style={{ color: colors.accent }}>Scale Everywhere.</span>
-          </h2>
+            Deploy Anywhere. <span style={{ color: colors.accent }}>Scale Everywhere.</span>
+          </h3>
 
           <p
             style={{
-              fontSize: "18px",
+              fontSize: "16px",
               color: colors.subtitle,
               lineHeight: 1.6,
               maxWidth: "600px",

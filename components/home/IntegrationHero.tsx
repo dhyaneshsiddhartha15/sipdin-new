@@ -175,109 +175,128 @@ export default function Hero() {
           </div>
           <h1
             style={{
-              fontSize: "48px",
-              fontWeight: 500,
-              lineHeight: 1.15,
+              fontSize: "clamp(44px, 4.6vw, 62px)",
+              fontWeight: 600,
+              lineHeight: 1.16,
               color: colors.title,
-              margin: "0 0 28px 0",
+              margin: "0 0 32px 0",
               fontFamily: "Hanken Grotesk, sans-serif",
             }}
           >
-            We Build Digital Products
+            We Build{" "}
+            <span
+              style={{
+                textDecorationLine: "underline",
+                textDecorationColor: isDark ? "#6E8CFF" : "#4169E1",
+                textDecorationThickness: "5px",
+                textUnderlineOffset: "10px",
+              }}
+            >
+              Digital Products
+            </span>
             <br />
             <span style={{ color: isDark ? "#6E8CFF" : "#4169E1" }}>That Actually Get Delivered.</span>
           </h1>
-          <p style={{ fontSize: "17px", color: colors.subtitle, lineHeight: 1.6, maxWidth: "480px", margin: "0 0 40px 0", fontFamily: "Inter, sans-serif" }}>
+          <p style={{ fontSize: "19px", color: colors.subtitle, lineHeight: 1.75, maxWidth: "560px", margin: "0 0 40px 0", fontFamily: "Inter, sans-serif" }}>
             Scale your business, agency, or startup with end-to-end{" "}
             <span
               className="service-shake"
               style={{
-                color: colors.subtitle,
+                color: colors.title,
+                fontWeight: 600,
                 transition: "color 0.3s ease",
                 cursor: "default"
               }}
               onMouseEnter={(e) => { e.currentTarget.style.color = "#EF4444"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = colors.subtitle; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = colors.title; }}
             >Digital Marketing</span>,{" "}
             <span
               className="service-shake"
               style={{
-                color: colors.subtitle,
+                color: colors.title,
+                fontWeight: 600,
                 transition: "color 0.3s ease",
                 cursor: "default"
               }}
               onMouseEnter={(e) => { e.currentTarget.style.color = "#22C55E"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = colors.subtitle; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = colors.title; }}
             >SEO</span>,{" "}
             <span
               className="service-shake"
               style={{
-                color: colors.subtitle,
+                color: colors.title,
+                fontWeight: 600,
                 transition: "color 0.3s ease",
                 cursor: "default"
               }}
               onMouseEnter={(e) => { e.currentTarget.style.color = "#3B82F6"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = colors.subtitle; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = colors.title; }}
             >Creative Design</span>,{" "}
             <span
               className="service-shake"
               style={{
-                color: colors.subtitle,
+                color: colors.title,
+                fontWeight: 600,
                 transition: "color 0.3s ease",
                 cursor: "default"
               }}
               onMouseEnter={(e) => { e.currentTarget.style.color = "#F97316"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = colors.subtitle; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = colors.title; }}
             >Video Production</span>,{" "}
             <span
               className="service-shake"
               style={{
-                color: colors.subtitle,
+                color: colors.title,
+                fontWeight: 600,
                 transition: "color 0.3s ease",
                 cursor: "default"
               }}
               onMouseEnter={(e) => { e.currentTarget.style.color = "#8B5CF6"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = colors.subtitle; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = colors.title; }}
             >Website Development</span>,{" "}
             <span
               className="service-shake"
               style={{
-                color: colors.subtitle,
+                color: colors.title,
+                fontWeight: 600,
                 transition: "color 0.3s ease",
                 cursor: "default"
               }}
               onMouseEnter={(e) => { e.currentTarget.style.color = "#EC4899"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = colors.subtitle; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = colors.title; }}
             >AI Automation</span>,{" "}
             <span
               className="service-shake"
               style={{
-                color: colors.subtitle,
+                color: colors.title,
+                fontWeight: 600,
                 transition: "color 0.3s ease",
                 cursor: "default"
               }}
               onMouseEnter={(e) => { e.currentTarget.style.color = "#14B8A6"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = colors.subtitle; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = colors.title; }}
             >AI Agents</span>,{" "}
             <span
               className="service-shake"
               style={{
-                color: colors.subtitle,
+                color: colors.title,
+                fontWeight: 600,
                 transition: "color 0.3s ease",
                 cursor: "default"
               }}
               onMouseEnter={(e) => { e.currentTarget.style.color = "#EAB308"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = colors.subtitle; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = colors.title; }}
             >Custom CRM Solutions</span>, and{" "}
             <span
               className="service-shake"
               style={{
-                color: colors.subtitle,
+                color: colors.title,
+                fontWeight: 600,
                 transition: "color 0.3s ease",
                 cursor: "default"
               }}
               onMouseEnter={(e) => { e.currentTarget.style.color = "#6366F1"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = colors.subtitle; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = colors.title; }}
             >White-Label Services</span> — all from one
             trusted digital partner.
           </p>
@@ -311,6 +330,23 @@ export default function Hero() {
           >
             See Our Work
             <span style={{ fontSize: "18px" }}>→</span>
+          </a>
+          <a
+            href="/services"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px",
+              marginLeft: "24px",
+              fontSize: "15px",
+              fontWeight: 500,
+              color: colors.title,
+              textDecoration: "none",
+              fontFamily: "Inter, sans-serif",
+            }}
+          >
+            Explore Our Services{" "}
+            <span style={{ color: isDark ? "#6E8CFF" : "#4169E1", fontWeight: 600 }}>Here</span>
           </a>
         </div>
 
