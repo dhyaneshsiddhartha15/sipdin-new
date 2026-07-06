@@ -180,7 +180,7 @@ export default function ExpertiseGrid() {
           <span className="font-['Geist'] text-xs font-medium text-[#4169E1] tracking-[0.4em] uppercase mb-4 block">
             Our Expertise
           </span>
-          <h2 className="font-['Hanken_Grotesk'] text-[48px] md:text-[48px] font-medium mb-6">
+          <h2 className="font-['Hanken_Grotesk'] text-[34px] sm:text-[42px] md:text-[48px] font-medium mb-6">
             End-to-End Digital <br />
             Marketing Solutions
           </h2>

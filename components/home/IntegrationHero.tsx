@@ -146,16 +146,22 @@ export default function Hero() {
         .service-shake:hover {
           animation: shake 0.5s ease-in-out;
         }
+        /* Scale the fixed-size integration grid down on small screens */
+        .hero-grid-zoom { zoom: 1; }
+        @media (max-width: 640px) { .hero-grid-zoom { zoom: 0.85; } }
+        @media (max-width: 520px) { .hero-grid-zoom { zoom: 0.66; } }
+        @media (max-width: 400px) { .hero-grid-zoom { zoom: 0.55; } }
+        @media (max-width: 344px) { .hero-grid-zoom { zoom: 0.45; } }
       `}</style>
     <section style={{ background: colors.bg, fontFamily: "Hanken Grotesk, -apple-system, sans-serif", paddingTop: "80px" }}>
       <div
         style={{
           maxWidth: "1300px",
           margin: "0 auto",
-          padding: "80px 40px 70px",
+          padding: "80px clamp(20px, 4vw, 40px) 70px",
           display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "40px",
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 460px), 1fr))",
+          gap: "48px",
           alignItems: "center",
         }}
       >
@@ -351,7 +357,7 @@ export default function Hero() {
         </div>
 
         {/* RIGHT: integration grid */}
-        <div style={{ position: "relative", width, height, margin: "0 auto" }}>
+        <div className="hero-grid-zoom" style={{ position: "relative", width, height, margin: "0 auto" }}>
           {/* Single connector line that cycles through pairs */}
           <svg style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }} width={width} height={height}>
             <path

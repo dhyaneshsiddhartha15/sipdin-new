@@ -205,7 +205,6 @@ export default function AiCloudSection() {
           letterSpacing: "0.25em",
           textTransform: "uppercase",
           color: c.accent,
-          whiteSpace: "nowrap",
         }}
       >
         {text}
@@ -292,7 +291,7 @@ export default function AiCloudSection() {
           {/* RAG / chatbot card */}
           <div style={deck(0)} onClick={() => setAiActive(0)}>
           <div
-            style={{ ...card("rag"), height: "100%" }}
+            style={{ ...card("rag"), height: "100%", background: isDark ? "#0E1627" : "#ffffff" }}
             onMouseEnter={() => setHovered("rag")}
             onMouseLeave={() => setHovered(null)}
           >
@@ -355,7 +354,7 @@ export default function AiCloudSection() {
           {/* ETL / pipelines card */}
           <div style={deck(1)} onClick={() => setAiActive(1)}>
           <div
-            style={{ ...card("etl"), height: "100%" }}
+            style={{ ...card("etl"), height: "100%", background: isDark ? "#0E1627" : "#ffffff" }}
             onMouseEnter={() => setHovered("etl")}
             onMouseLeave={() => setHovered(null)}
           >

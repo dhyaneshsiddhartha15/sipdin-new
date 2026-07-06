@@ -51,7 +51,7 @@ export default function ReviewsAndConnect(_props: { currentService?: string }) {
   const review = reviews[active];
 
   return (
-    <section className="bg-surface px-6 py-[120px] md:px-[80px]">
+    <section className="bg-surface px-6 py-[120px] md:px-[80px] overflow-hidden">
       <div className="mx-auto grid max-w-[1440px] grid-cols-1 items-start gap-14 lg:grid-cols-2">
         {/* Left — testimonial carousel */}
         <div>

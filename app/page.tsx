@@ -49,14 +49,14 @@ export default function HomePage() {
         <RankOnGoogle />
 
         {/* 4. WORD CYCLE HERO */}
-        <section className="py-[80px] px-[80px] bg-bg">
+        <section className="py-[80px] px-[24px] md:px-[80px] bg-bg">
           <div className="max-w-[1440px] mx-auto">
             <WordCycleHero />
           </div>
         </section>
 
         {/* 5. BUILD PIPELINE */}
-        <section className="py-[80px] px-[80px] bg-surface">
+        <section className="py-[80px] px-[24px] md:px-[80px] bg-surface">
           <div className="max-w-[1440px] mx-auto">
             <BuildPipeline />
           </div>
@@ -91,7 +91,7 @@ export default function HomePage() {
 
         {/* 9. INDUSTRY CRM CAROUSEL */}
         <section className="py-[160px] bg-surface">
-          <div className="px-[80px] max-w-[1440px] mx-auto">
+          <div className="px-[24px] md:px-[80px] max-w-[1440px] mx-auto">
             <div className="mb-16 max-w-2xl">
               <span className="font-['Geist'] text-xs font-medium text-[#4169E1] tracking-[0.4em] uppercase mb-4 block">
                 Vertical Solutions

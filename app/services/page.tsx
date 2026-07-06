@@ -59,7 +59,7 @@ export default function ServicesPage() {
         {/* Hero — cream, centered, yellow-underline (brandwitty style) */}
         <section className="relative bg-[#F2F6FF] pt-[190px] pb-[130px] px-[24px] overflow-hidden">
           {/* Scattered colored dots */}
-          <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
+          <div aria-hidden="true" className="absolute inset-0 pointer-events-none hidden md:block">
             <span className="absolute top-[28%] left-[20%] w-3 h-3 rounded-full bg-[#8FB0FF]" />
             <span className="absolute top-[25%] left-[22%] w-1.5 h-1.5 rounded-full bg-[#4169E1]" />
             <span className="absolute top-[52%] left-[15%] w-3 h-3 rounded-full bg-[#2E4FB8]" />
@@ -110,7 +110,7 @@ export default function ServicesPage() {
         <CampaignTypes />
 
         {/* Custom Solutions — light band with request form */}
-        <section className="py-[140px] bg-[#F2F6FF]">
+        <section className="py-[140px] bg-[#F2F6FF] overflow-hidden">
           <div className="max-w-[1440px] mx-auto px-[24px] md:px-[80px]">
             <div className="grid md:grid-cols-2 gap-[80px] items-center">
               <div>
