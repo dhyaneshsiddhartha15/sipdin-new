@@ -11,15 +11,18 @@
 import Link from "next/link";
 import { useScrollReveal } from "@/lib/useScrollReveal";
 import {
-  Megaphone,
   Search,
-  Code2,
-  Palette,
-  Clapperboard,
-  Bot,
-  Database,
-  ShoppingBag,
+  MousePointerClick,
+  Megaphone,
   Share2,
+  Code2,
+  Smartphone,
+  Palette,
+  ShoppingCart,
+  Bot,
+  Clapperboard,
+  Brush,
+  Cloud,
   ArrowRight,
   type LucideIcon,
 } from "lucide-react";
@@ -38,15 +41,18 @@ type Product = {
 };
 
 const PRODUCTS: Product[] = [
-  { key: "marketing", name: "Digital Marketing", desc: "Full-funnel campaigns that grow reach, leads and revenue.", href: "/services", image: "/expertise/meta-ads.jpg", color: "#FF4A00", Icon: Megaphone },
-  { key: "seo", name: "SEO", desc: "Rank #1 on Google and win organic traffic that compounds.", href: "/services", image: "/expertise/seo.jpg", color: "#22C55E", Icon: Search },
-  { key: "web", name: "Web Development", desc: "Fast, scalable websites and web apps built to convert.", href: "/services", image: "/expertise/web-development.jpg", color: "#4169e1", Icon: Code2 },
-  { key: "design", name: "Creative Design", desc: "Brand identity, UI/UX and graphics people remember.", href: "/services", image: "/expertise/graphic-design.jpg", color: "#EC4899", Icon: Palette },
-  { key: "video", name: "Video Production", desc: "Scroll-stopping video and motion for every channel.", href: "/services", image: "/expertise/video-production.jpg", color: "#F97316", Icon: Clapperboard },
-  { key: "ai", name: "AI Automation", desc: "Custom AI agents that handle the busywork around the clock.", href: "/services", image: "/expertise/automation.jpg", color: "#8B5CF6", Icon: Bot },
-  { key: "crm", name: "Custom CRM", desc: "White-label CRM tailored to exactly how your team works.", href: "/services", image: "/expertise/app-development.jpg", color: "#06B6D4", Icon: Database },
-  { key: "ecom", name: "E-Commerce", desc: "High-converting stores on Shopify, WooCommerce and more.", href: "/services", image: "/expertise/ecommerce.jpg", color: "#10B981", Icon: ShoppingBag },
-  { key: "social", name: "Social Media", desc: "Content and community management that builds a following.", href: "/services", image: "/expertise/social-media.jpg", color: "#E4405F", Icon: Share2 },
+  { key: "seo", name: "Search Engine Optimization", desc: "Maximize your search traffic and rank higher on Google with our SEO experts.", href: "/services", image: "/expertise/seo.jpg", color: "#22C55E", Icon: Search },
+  { key: "ppc", name: "Pay-Per-Click Advertising", desc: "Drive conversions and traffic to your website and app with our PPC specialists.", href: "/services", image: "/expertise/ppc.jpg", color: "#F59E0B", Icon: MousePointerClick },
+  { key: "meta", name: "Meta Ads", desc: "Full-funnel Facebook and Instagram campaigns engineered for qualified leads.", href: "/services", image: "/expertise/meta-ads.jpg", color: "#0866FF", Icon: Megaphone },
+  { key: "social", name: "Social Media Marketing", desc: "Build your brand with highly engaging social media campaigns and content.", href: "/services", image: "/expertise/social-media.jpg", color: "#E4405F", Icon: Share2 },
+  { key: "web", name: "Web Development", desc: "We develop fast, secure, SEO-ready websites that drive conversions.", href: "/services", image: "/expertise/web-development.jpg", color: "#4169e1", Icon: Code2 },
+  { key: "app", name: "App Development", desc: "Custom mobile apps that help customers connect with your product easily.", href: "/services", image: "/expertise/app-development.jpg", color: "#06B6D4", Icon: Smartphone },
+  { key: "uiux", name: "UI/UX Design", desc: "Enhance customer experience across web and app with better UI and UX.", href: "/services", image: "/expertise/ui-ux.jpg", color: "#A855F7", Icon: Palette },
+  { key: "ecom", name: "E-commerce Development", desc: "High-converting online stores engineered for repeat purchases and growth.", href: "/services", image: "/expertise/ecommerce.jpg", color: "#10B981", Icon: ShoppingCart },
+  { key: "automation", name: "Marketing Automation", desc: "Lead nurturing, CRM flows, and email automation that scale your growth.", href: "/services", image: "/expertise/automation.jpg", color: "#8B5CF6", Icon: Bot },
+  { key: "video", name: "Video Editing", desc: "Cinematic edits, reels, and long-form content that keep audiences watching.", href: "/services", image: "/expertise/video-editing.jpg", color: "#F97316", Icon: Clapperboard },
+  { key: "graphic", name: "Graphic Designing", desc: "Logos, brand identity, and social creatives that make your brand memorable.", href: "/services", image: "/expertise/graphic-design.jpg", color: "#EC4899", Icon: Brush },
+  { key: "cloud", name: "Managed Cloud", desc: "Secure, scalable deployment and management on AWS and DigitalOcean.", href: "/services", image: "/expertise/cloud.jpg", color: "#0EA5E9", Icon: Cloud },
 ];
 
 export default function ProductGrid() {
@@ -101,15 +107,17 @@ export default function ProductGrid() {
         >
           <h2
             className="font-semibold leading-[1.08] tracking-tight"
-            style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: "clamp(38px, 5vw, 68px)" }}
+            style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: "clamp(34px, 4.6vw, 62px)" }}
           >
-            Tools that work for you.
+            End-to-End Digital
+            <br /> Marketing Solutions
           </h2>
           <p
             className="mx-auto mt-5 max-w-2xl text-white/80"
             style={{ fontFamily: "Inter, sans-serif", fontSize: "clamp(15px, 1.3vw, 19px)", lineHeight: 1.7 }}
           >
-            Bring any idea to life with solutions for creators, businesses, and beyond.
+            We provide comprehensive digital marketing solutions designed to help businesses grow
+            faster, generate qualified leads, and build a commanding online presence.
           </p>
           <Link
             href="/services"

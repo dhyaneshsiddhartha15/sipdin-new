@@ -12,11 +12,12 @@ import AdobeStyleHero from "@/components/home/AdobeStyleHero";
 import ProductShowcaseGallery from "@/components/home/ProductShowcaseGallery";
 import ProductGrid from "@/components/home/ProductGrid";
 import TestimonialCarousel from "@/components/home/TestimonialCarousel";
+import PricingSection from "@/components/home/PricingSection";
 import AiCloudSection from "@/components/home/AiCloudSection";
 import StatsSection from "@/components/home/StatsSection";
 import ClientLogos from "@/components/home/ClientLogos";
 import TechMarquee from "@/components/home/TechMarquee";
-import ExpertiseGrid from "@/components/home/ExpertiseGrid";
+// import ExpertiseGrid from "@/components/home/ExpertiseGrid"; // merged into ProductGrid
 // import CrmSlideshow from "@/components/home/CrmSlideshow"; // section removed from home
 import RankOnGoogle from "@/components/home/RankOnGoogle";
 import VelocityFramework from "@/components/home/VelocityFramework";
@@ -40,6 +41,9 @@ export default function HomePage() {
         {/* 1.55 CLIENT LOGO WALL — trusted by */}
         <ClientLogos />
 
+        {/* 1.56 PRICING — glowing 3D cards with a per-service dropdown */}
+        <PricingSection />
+
         {/* 1.57 PRODUCT SHOWCASE GALLERY — "Everything you need" expanding cards (from video) */}
         <ProductShowcaseGallery />
 
@@ -52,10 +56,7 @@ export default function HomePage() {
         {/* 1.9 TECH MARQUEE */}
         <TechMarquee />
 
-        {/* 2. OUR EXPERTISE */}
-        <ExpertiseGrid />
-
-        {/* 2.5 TOOLS THAT WORK FOR YOU — product grid (from video) */}
+        {/* 2. END-TO-END DIGITAL MARKETING SOLUTIONS — services grid (replaces Our Expertise) */}
         <ProductGrid />
 
         {/* 3. RANK ON GOOGLE — SEO conversion section */}
