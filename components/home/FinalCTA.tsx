@@ -82,7 +82,8 @@ export default function FinalCTA() {
               top: "80px",
               right: "80px",
               opacity: 0.3,
-            }} className="floating-icon" style={{ animationDelay: "1s" }}>
+              animationDelay: "1s",
+            }} className="floating-icon">
               <Zap size={28} color={isDark ? "#8B5CF6" : "#8B5CF6"} />
             </div>
             <div style={{
@@ -90,7 +91,8 @@ export default function FinalCTA() {
               bottom: "60px",
               left: "100px",
               opacity: 0.3,
-            }} className="floating-icon" style={{ animationDelay: "2s" }}>
+              animationDelay: "2s",
+            }} className="floating-icon">
               <TrendingUp size={24} color={isDark ? "#22C55E" : "#22C55E"} />
             </div>
 
