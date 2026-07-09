@@ -7,13 +7,17 @@ import BuildPipeline from "@/components/home/BuildPipeline";
 import TechnologyCore from "@/components/home/TechnologyCore";
 import ParticleWave from "@/components/ui/ParticleWave";
 import VideoShowcase from "@/components/home/VideoShowcase";
-import IntegrationHero from "@/components/home/IntegrationHero";
+// import IntegrationHero from "@/components/home/IntegrationHero"; // legacy hero — kept, swap back if needed
+import AdobeStyleHero from "@/components/home/AdobeStyleHero";
+import ProductShowcaseGallery from "@/components/home/ProductShowcaseGallery";
+import ProductGrid from "@/components/home/ProductGrid";
+import TestimonialCarousel from "@/components/home/TestimonialCarousel";
 import AiCloudSection from "@/components/home/AiCloudSection";
 import StatsSection from "@/components/home/StatsSection";
 import ClientLogos from "@/components/home/ClientLogos";
 import TechMarquee from "@/components/home/TechMarquee";
 import ExpertiseGrid from "@/components/home/ExpertiseGrid";
-import CrmSlideshow from "@/components/home/CrmSlideshow";
+// import CrmSlideshow from "@/components/home/CrmSlideshow"; // section removed from home
 import RankOnGoogle from "@/components/home/RankOnGoogle";
 import VelocityFramework from "@/components/home/VelocityFramework";
 import WhyChoosePartner from "@/components/home/WhyChoosePartner";
@@ -24,14 +28,20 @@ export default function HomePage() {
     <>
       <Navbar />
       <main>
-        {/* 1. HERO EXPERIENCE - Integration Grid */}
-        <IntegrationHero />
+        {/* 1. HERO EXPERIENCE — Adobe-style rotating hero (new).
+            Old integration-grid hero kept below; swap back by uncommenting it
+            and removing <AdobeStyleHero />. */}
+        <AdobeStyleHero />
+        {/* <IntegrationHero /> */}
 
         {/* 1.5 STATS SECTION */}
         <StatsSection />
 
         {/* 1.55 CLIENT LOGO WALL — trusted by */}
         <ClientLogos />
+
+        {/* 1.57 PRODUCT SHOWCASE GALLERY — "Everything you need" expanding cards (from video) */}
+        <ProductShowcaseGallery />
 
         {/* 1.6 AI SOLUTIONS & MANAGED CLOUD — one combined section (01 AI, 02 Cloud) */}
         <AiCloudSection />
@@ -44,6 +54,9 @@ export default function HomePage() {
 
         {/* 2. OUR EXPERTISE */}
         <ExpertiseGrid />
+
+        {/* 2.5 TOOLS THAT WORK FOR YOU — product grid (from video) */}
+        <ProductGrid />
 
         {/* 3. RANK ON GOOGLE — SEO conversion section */}
         <RankOnGoogle />
@@ -89,21 +102,8 @@ export default function HomePage() {
         {/* 8. THE VELOCITY FRAMEWORK — how we create digital solutions */}
         <VelocityFramework />
 
-        {/* 9. INDUSTRY CRM CAROUSEL */}
-        <section className="py-[160px] bg-surface">
-          <div className="px-[24px] md:px-[80px] max-w-[1440px] mx-auto">
-            <div className="mb-16 max-w-2xl">
-              <span className="font-['Geist'] text-xs font-medium text-[#4169E1] tracking-[0.4em] uppercase mb-4 block">
-                Vertical Solutions
-              </span>
-              <h2 className="font-['Hanken_Grotesk'] text-[48px] md:text-[48px] font-medium">
-                One CRM. <br />
-                Built For Every Business.
-              </h2>
-            </div>
-            <CrmSlideshow />
-          </div>
-        </section>
+        {/* 9.5 TESTIMONIAL CAROUSEL — client quotes slider (from video) */}
+        <TestimonialCarousel />
 
         {/* 10. FAQ — chat-style frequently asked questions */}
         <FaqChat />
