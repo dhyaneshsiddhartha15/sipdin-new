@@ -424,7 +424,7 @@ export default function StudioPage() {
                   Start A Project
                 </a>
                 <a
-                  href="/work"
+                  href="/case-studies"
                   className="border border-fg/20 hover:border-fg text-fg px-12 py-5 rounded-full font-['Geist'] text-xs font-medium tracking-wider uppercase transition-all duration-300"
                 >
                   View Our Work

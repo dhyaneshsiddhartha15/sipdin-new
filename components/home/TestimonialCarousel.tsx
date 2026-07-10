@@ -132,7 +132,7 @@ export default function TestimonialCarousel() {
                           <p className="text-[14px] text-white/70">{t.role}</p>
                         </div>
                         <Link
-                          href="/work"
+                          href="/case-studies"
                           className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 text-[14px] font-semibold text-black transition-transform duration-300 hover:scale-[1.04]"
                         >
                           See our work

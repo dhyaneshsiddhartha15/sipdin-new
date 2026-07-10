@@ -8,6 +8,7 @@
  */
 
 import { useRef, useState } from "react";
+import Link from "next/link";
 import {
   motion,
   AnimatePresence,
@@ -26,6 +27,9 @@ type Plan = {
 };
 
 type Service = { key: string; label: string; plans: Plan[] };
+
+/** Discount labels shown per column (Starter / Growth / Enterprise). */
+const DISCOUNTS = ["75% off", "Special offer • 80% off", "71% off"];
 
 const SERVICES: Service[] = [
   {
@@ -66,7 +70,7 @@ const SERVICES: Service[] = [
   },
 ];
 
-function PlanCard({ plan, index }: { plan: Plan; index: number }) {
+function PlanCard({ plan, index, discount }: { plan: Plan; index: number; discount?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const mx = useMotionValue(0.5);
   const my = useMotionValue(0.5);
@@ -112,6 +116,16 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
         }}
       />
 
+      {/* Discount label */}
+      {discount && (
+        <span
+          className="absolute right-4 top-4 z-20 rounded-full bg-[#FFD400] px-3 py-1 text-[11px] font-bold text-black shadow-[0_6px_20px_-6px_rgba(255,212,0,0.7)]"
+          style={{ fontFamily: "Geist, sans-serif", transform: "translateZ(60px)" }}
+        >
+          {discount}
+        </span>
+      )}
+
       <div className="relative z-10" style={{ transform: "translateZ(40px)" }}>
         <p className="text-[15px] font-medium text-white/85" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
           {plan.name}
@@ -138,18 +152,18 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
           ))}
         </ul>
 
-        <button
-          type="button"
+        <Link
+          href="/pricing"
           className={[
-            "mt-7 w-full rounded-full py-3 text-[14px] font-semibold transition-all duration-300",
+            "mt-7 block w-full rounded-full py-3 text-center text-[14px] font-semibold transition-all duration-300",
             hi
               ? "bg-white text-black hover:bg-white/90"
               : "border border-white/20 text-white hover:border-white/40 hover:bg-white/5",
           ].join(" ")}
           style={{ fontFamily: "Geist, sans-serif" }}
         >
-          Get Started
-        </button>
+          Learn more
+        </Link>
       </div>
     </motion.div>
   );
@@ -160,11 +174,30 @@ export default function PricingSection() {
   const active = SERVICES.find((s) => s.key === serviceKey) ?? SERVICES[0];
 
   return (
-    <section className="relative overflow-hidden bg-[#07070d] py-[80px] text-white md:py-[120px]">
-      {/* Ambient glows */}
+    <section className="relative overflow-hidden bg-[#0a0618] py-[80px] text-white md:py-[120px]">
+      {/* Ambient purple space glows */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-24 right-0 h-[440px] w-[560px] rounded-full bg-[#4f46e5]/25 blur-[140px]" />
-        <div className="absolute bottom-0 left-1/4 h-[380px] w-[560px] rounded-full bg-[#7c3aed]/15 blur-[140px]" />
+        <div className="absolute -top-24 right-0 h-[440px] w-[560px] rounded-full bg-[#7c3aed]/25 blur-[150px]" />
+        <div className="absolute top-1/3 left-0 h-[380px] w-[520px] rounded-full bg-[#4f46e5]/20 blur-[150px]" />
+      </div>
+
+      {/* Big glowing planet curve at the bottom */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center overflow-hidden">
+        <div
+          className="relative top-[46%] aspect-square w-[150vw] max-w-[2200px] rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle at 50% 0%, #3a1c7a 0%, #1a0d40 34%, #0a0618 62%)",
+            boxShadow:
+              "inset 0 70px 140px -40px rgba(167,110,255,0.9), 0 -20px 120px -10px rgba(139,92,246,0.55)",
+            border: "1px solid rgba(167,110,255,0.45)",
+          }}
+        />
+        {/* Bright rim highlight */}
+        <div
+          className="absolute top-[46%] h-[3px] w-[70%] -translate-y-[1px] rounded-full blur-[2px]"
+          style={{ background: "linear-gradient(90deg, transparent, rgba(200,160,255,0.9), transparent)" }}
+        />
       </div>
 
       <div className="relative mx-auto max-w-[1200px] px-[24px] md:px-[40px]">
@@ -219,7 +252,7 @@ export default function PricingSection() {
               className="grid gap-6 md:grid-cols-3 md:items-center"
             >
               {active.plans.map((plan, i) => (
-                <PlanCard key={`${serviceKey}-${plan.name}`} plan={plan} index={i} />
+                <PlanCard key={`${serviceKey}-${plan.name}`} plan={plan} index={i} discount={DISCOUNTS[i]} />
               ))}
             </motion.div>
           </AnimatePresence>

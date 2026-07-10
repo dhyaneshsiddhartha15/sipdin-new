@@ -27,6 +27,7 @@ export default function WhatsAppButton() {
           <div className="relative bg-[#4169E1] px-6 py-6 text-center">
             <button
               type="button"
+              suppressHydrationWarning
               onClick={() => setOpen(false)}
               aria-label="Close WhatsApp chat panel"
               className="absolute top-3 right-3 w-7 h-7 rounded-full bg-white/20 hover:bg-white/35 flex items-center justify-center text-white cursor-pointer transition-colors"
@@ -78,6 +79,7 @@ export default function WhatsAppButton() {
       {/* Pill button */}
       <button
         type="button"
+        suppressHydrationWarning
         onClick={() => setOpen((o) => !o)}
         aria-label="Chat with SIDPIN Digital on WhatsApp"
         aria-expanded={open}

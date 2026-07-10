@@ -94,7 +94,7 @@ export default function ServicesPage() {
                 Start A Project
               </a>
               <a
-                href="/work"
+                href="/case-studies"
                 className="bg-white border border-[#d7e0f7] text-[#1A1A1A] px-9 py-4 font-['Inter'] text-[15px] font-semibold rounded-[6px] hover:border-[#4169E1]/50 transition-all duration-300 inline-flex items-center gap-3"
               >
                 <span className="material-symbols-outlined text-[20px]">play_circle</span>

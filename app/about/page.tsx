@@ -101,7 +101,7 @@ export default function AboutPage() {
                     Call Now
                   </a>
                   <Link
-                    href="/work"
+                    href="/case-studies"
                     className="inline-flex items-center gap-3 bg-white border border-[#d7e0f7] text-[#1A1A1A] font-['Inter'] text-[15px] font-semibold px-8 py-4 rounded-[4px] hover:border-[#4169E1]/60 transition-colors duration-300"
                   >
                     <span className="material-symbols-outlined text-[20px]">play_arrow</span>

@@ -13,6 +13,7 @@ import ProductShowcaseGallery from "@/components/home/ProductShowcaseGallery";
 import ProductGrid from "@/components/home/ProductGrid";
 import TestimonialCarousel from "@/components/home/TestimonialCarousel";
 import PricingSection from "@/components/home/PricingSection";
+import MadeWithSidpin from "@/components/home/MadeWithSidpin";
 import AiCloudSection from "@/components/home/AiCloudSection";
 import StatsSection from "@/components/home/StatsSection";
 import ClientLogos from "@/components/home/ClientLogos";
@@ -99,6 +100,9 @@ export default function HomePage() {
 
         {/* 6.5 TECHNOLOGY CORE */}
         {/* <TechnologyCore /> */}
+
+        {/* 7.9 MADE WITH SIDPIN — website showcase marquee (Hostinger-style) */}
+        <MadeWithSidpin />
 
         {/* 8. THE VELOCITY FRAMEWORK — how we create digital solutions */}
         <VelocityFramework />

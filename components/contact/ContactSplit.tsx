@@ -62,7 +62,7 @@ export default function ContactSplit() {
         {/* Animated iridescent blobs */}
         <div
           aria-hidden="true"
-          className="absolute -inset-[20%] opacity-60 dark:opacity-90"
+          className="absolute -inset-[20%] opacity-80 dark:opacity-95"
           style={{
             background:
               "radial-gradient(closest-side, #4169E1 0%, transparent 70%)",
@@ -72,7 +72,7 @@ export default function ContactSplit() {
         />
         <div
           aria-hidden="true"
-          className="absolute -inset-[20%] opacity-45 dark:opacity-70"
+          className="absolute -inset-[20%] opacity-65 dark:opacity-80"
           style={{
             background:
               "radial-gradient(closest-side at 70% 30%, #9b5cff 0%, transparent 65%)",
@@ -82,7 +82,7 @@ export default function ContactSplit() {
         />
         <div
           aria-hidden="true"
-          className="absolute -inset-[20%] opacity-40 dark:opacity-60"
+          className="absolute -inset-[20%] opacity-55 dark:opacity-70"
           style={{
             background:
               "radial-gradient(closest-side at 30% 70%, #35d6c2 0%, transparent 60%)",
@@ -96,7 +96,7 @@ export default function ContactSplit() {
         {/* Veil so text stays readable in both themes */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-br from-white/25 to-white/55 dark:from-[#05060f]/25 dark:to-[#05060f]/65"
+          className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/40 dark:from-[#05060f]/10 dark:to-[#05060f]/45"
         />
 
         {/* Copy */}

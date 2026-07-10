@@ -53,7 +53,7 @@ const SLIDES: Slide[] = [
     subtitle:
       "End-to-end websites, apps and platforms — designed, built and shipped by one trusted digital partner.",
     cta: "See our work",
-    href: "/work",
+    href: "/case-studies",
     tab: "Web & Product",
     Icon: Boxes,
     image: "/expertise/web-development.jpg",
@@ -87,7 +87,7 @@ const SLIDES: Slide[] = [
     subtitle:
       "Brand identity, UI/UX and video production that give your business a look people remember and trust.",
     cta: "See our design",
-    href: "/work",
+    href: "/case-studies",
     tab: "Creative Design",
     Icon: Palette,
     image: "/expertise/graphic-design.jpg",
@@ -139,7 +139,7 @@ const SLIDES: Slide[] = [
     subtitle:
       "Logos, identity systems and guidelines that make you instantly recognizable across every touchpoint.",
     cta: "See our branding",
-    href: "/work",
+    href: "/case-studies",
     tab: "Branding",
     Icon: Sparkles,
     image: "/expertise/ui-ux.jpg",
@@ -173,7 +173,7 @@ const SLIDES: Slide[] = [
     subtitle:
       "Editing, motion and post-production for ads, social and brand films that keep people watching.",
     cta: "Watch our reels",
-    href: "/work",
+    href: "/case-studies",
     tab: "Video Editing",
     Icon: Clapperboard,
     image: "/expertise/video-editing.jpg",

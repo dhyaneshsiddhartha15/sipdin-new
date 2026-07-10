@@ -26,6 +26,11 @@ const slides = [
     name: "Forging",
     body: "A plan on paper generates no revenue. The Forging stage is where the blueprint becomes a high-performance engine. Our development team meticulously builds your digital platform, while our growth experts implement the digital marketing services designed for immediate and long-term impact. After launch, we continue to optimize your processes using real-world data to refine performance and prove the direct, positive effect on your bottom line.",
   },
+  {
+    num: "004",
+    name: "Scaling",
+    body: "Launch is the starting line, not the finish. In the Scaling phase we compound your results — continuous A/B testing, conversion-rate optimization, and data-driven iteration turn a live platform into a growth engine that keeps getting stronger month after month. This is how Sidpin partners for the long term, not just a one-off project.",
+  },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -175,7 +180,7 @@ export default function VelocityFramework() {
     const st = ScrollTrigger.create({
       trigger: section,
       start: "top top",
-      end: "+=250%",
+      end: "+=333%",
       pin: true,
       anticipatePin: 1,
       invalidateOnRefresh: true,
@@ -215,7 +220,7 @@ export default function VelocityFramework() {
         {/* Heading */}
         <div className="text-center px-[24px] mb-10">
           <span className="font-['Geist'] text-xs font-medium text-[#6E8CFF] tracking-[0.4em] uppercase mb-5 block">
-            The Velocity Framework
+            How We Work
           </span>
           <h2 className="font-['Hanken_Grotesk'] text-[36px] md:text-[48px] font-medium leading-[1.15]">
             Every Growth System <br />
@@ -229,7 +234,7 @@ export default function VelocityFramework() {
           onMouseLeave={() => setTooltip(null)}
           onMouseMove={(e) => setTooltip((t) => (t ? { ...t, x: e.clientX, y: e.clientY } : t))}
         >
-          <div className="grid grid-cols-3">
+          <div className="grid grid-cols-4">
             {slides.map((s, i) => (
               <button
                 key={s.num}
@@ -255,8 +260,8 @@ export default function VelocityFramework() {
           {/* track + active underline */}
           <div className="absolute bottom-0 inset-x-0 h-px bg-white/15" />
           <div
-            className="absolute bottom-0 h-[2px] w-1/3 bg-[#4169E1] transition-[left] duration-500 ease-out"
-            style={{ left: `${(active * 100) / 3}%` }}
+            className="absolute bottom-0 h-[2px] w-1/4 bg-[#4169E1] transition-[left] duration-500 ease-out"
+            style={{ left: `${(active * 100) / 4}%` }}
           />
         </div>
 
@@ -269,9 +274,10 @@ export default function VelocityFramework() {
               className="w-full max-w-[700px] h-auto max-h-[52vh]"
               aria-hidden="true"
             >
-              <LaptopWireframe visible={active === 2} />
+              <LaptopWireframe visible={active >= 2} />
               {particles.map((p, i) => (
-                <ParticleShape key={i} p={p} active={active} />
+                // Particles only define 3 layouts; step 004 reuses the Forging visual.
+                <ParticleShape key={i} p={p} active={Math.min(active, 2)} />
               ))}
             </svg>
           </div>
