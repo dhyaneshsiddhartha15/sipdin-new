@@ -255,7 +255,7 @@ export default function CaseStudyDetail({ study }: { study: CaseStudy }) {
       </section>
 
       {/* Sections */}
-      <section className="mx-auto max-w-[900px] px-[24px] pb-28 md:px-[40px]">
+      <section className="mx-auto max-w-[1200px] px-[24px] pb-28 md:px-[40px]">
         <div className="space-y-8">
           {study.sections.map((section, i) => (
             <SectionBlock key={i} section={section} accent={study.accent} />

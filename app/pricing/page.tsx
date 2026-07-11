@@ -78,6 +78,25 @@ export default function PricingPage() {
               . All plans are paid upfront. The monthly rate reflects the total plan price divided by the number of months in your plan.
             </p>
           </div>
+
+          {/* CRM callout */}
+          <div className="mx-auto mt-8 flex max-w-3xl flex-col items-center gap-4 rounded-2xl border border-line bg-surface px-6 py-6 text-center sm:flex-row sm:justify-between sm:text-left">
+            <div>
+              <h3 className="text-[18px] font-bold text-fg" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+                Looking for a custom CRM?
+              </h3>
+              <p className="mt-1 text-[14px] text-fg-2" style={{ fontFamily: "Inter, sans-serif" }}>
+                We build Starter, Business &amp; Enterprise CRM solutions from $499. Tell us your workflow.
+              </p>
+            </div>
+            <Link
+              href="/contact"
+              className="shrink-0 rounded-full bg-fg px-6 py-3 text-[14px] font-bold text-bg transition-transform duration-300 hover:scale-[1.04]"
+              style={{ fontFamily: "Geist, sans-serif" }}
+            >
+              Talk to us
+            </Link>
+          </div>
         </section>
 
         {/* Testimonials */}

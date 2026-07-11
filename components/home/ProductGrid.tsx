@@ -95,6 +95,14 @@ export default function ProductGrid() {
           style={{ opacity: 0.72 - p * 0.42 }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
+        {/* Brand-toned ambient glow for a richer backdrop */}
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(900px 460px at 18% 12%, rgba(65,105,225,0.35), transparent), radial-gradient(760px 460px at 85% 90%, rgba(124,58,237,0.28), transparent)",
+          }}
+        />
 
         {/* Header copy — rises up + fades in on scroll (adobe.com style) */}
         <div

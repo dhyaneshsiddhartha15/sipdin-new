@@ -7,33 +7,45 @@ import CustomSolutionForm from "@/components/services/CustomSolutionForm";
 const reviews = [
   {
     quote:
-      "SIDPIN Digital built us a website that actually converts. The team's coordination and attention to detail stood out from day one — in a market full of unreliable agencies, they simply delivered. Great work team!",
-    name: "Mohd. Arif",
-    role: "CEO, Zoya Clothing",
+      "Sidpin took our 70-year Rudraksha legacy online with complete authenticity. Our sales and customer trust have never been stronger.",
+    name: "Avish Bansal",
+    role: "Rudradharma",
   },
   {
     quote:
-      "Our social media presence went from invisible to unmissable. Consistent posting, real engagement, and a strategy that brought actual enquiries — not just likes. Highly recommended.",
-    name: "Ritika Sharma",
-    role: "Founder, Wellness Studio",
+      "Our brand finally looks as strong as our training. Enquiries went up the moment the new site went live — great work team.",
+    name: "Ankit Rawat",
+    role: "AG Fitness",
   },
   {
     quote:
-      "The CRM they built organized our entire admission pipeline. Follow-ups that used to slip through the cracks now happen automatically. Our team saves hours every single day.",
-    name: "Deepak Verma",
-    role: "Director, Coaching Institute",
+      "They understood our vision instantly and turned it into a calm, beautiful digital experience. Our bookings keep growing month on month.",
+    name: "Rohan Rawat",
+    role: "Yog Adhyayan",
   },
   {
     quote:
-      "From the brand film to the landing page, everything felt premium and connected. Leads started coming in within weeks of launch. A true growth partner, not just a vendor.",
-    name: "Ananya Iyer",
-    role: "Co-founder, D2C Skincare Brand",
+      "On a lean budget they delivered a website that competes with global hospitality brands. Prospective students notice the difference immediately.",
+    name: "Shubham Rayal",
+    role: "Raboche Institute of Technology & Management",
   },
   {
     quote:
-      "Professional, transparent, and fast. They rebuilt our store, tightened our ads, and our revenue reflects it. The monthly reporting alone is worth it — we finally know what's working.",
-    name: "Rahul Khanna",
-    role: "Owner, Home Decor E-commerce",
+      "Sidpin captured the spirit of our journeys perfectly. The content and reach they created brought in a whole new audience.",
+    name: "Akshat Trivedi",
+    role: "Panchbhootyatra",
+  },
+  {
+    quote:
+      "Professional, transparent, and genuinely invested in our mission. The results spoke for themselves within weeks.",
+    name: "Anuj Dhasmana",
+    role: "Rescue by Anuj",
+  },
+  {
+    quote:
+      "Our bookings and online presence transformed completely. Guests now find and trust us before they ever arrive.",
+    name: "Krishna Singh Rawat",
+    role: "Mazri Grant Resort",
   },
 ];
 

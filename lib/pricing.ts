@@ -1,7 +1,8 @@
 /**
- * Pricing page data — plans, the feature-comparison matrix, the "no extra cost"
- * perks, testimonials, and the "included with every plan" cards. Content is
- * adapted to Sidpin's website/growth plans. Edit values here to tune pricing.
+ * Pricing page data — Sidpin's real Website Development plans, the feature
+ * comparison matrix, the "all plans include" perks, testimonials, and the
+ * "included with every plan" cards. CRM pricing lives on the homepage pricing
+ * section (per-service dropdown) and is linked from /pricing.
  */
 
 export type PlanValue = boolean | string;
@@ -9,12 +10,11 @@ export type PlanValue = boolean | string;
 export type Plan = {
   key: string;
   name: string;
-  price: string; // e.g. "69"
-  period: string; // e.g. "/mo"
-  currency?: string; // e.g. "₹"
+  price: string; // e.g. "150" or "Custom"
+  period: string; // e.g. "/project"
+  currency?: string; // e.g. "$"
   popular?: boolean;
-  /** Discount badge, e.g. "75% off" or "Special offer • 80% off". */
-  discount?: string;
+  tagline?: string;
 };
 
 export type FeatureRow = {
@@ -23,41 +23,34 @@ export type FeatureRow = {
 };
 
 export const PLANS: Plan[] = [
-  { key: "single", name: "Single", price: "69", period: "/mo", currency: "₹", discount: "75% off" },
-  { key: "premium", name: "Premium", price: "139", period: "/mo", currency: "₹", popular: true, discount: "Special offer • 80% off" },
-  { key: "unlimited", name: "Unlimited", price: "249", period: "/mo", currency: "₹", discount: "72% off" },
-  { key: "cloud", name: "Cloud Startup", price: "599", period: "/mo", currency: "₹", discount: "71% off" },
+  { key: "starter", name: "Starter", price: "150", period: "/project", currency: "$", tagline: "Ideal for startups & small businesses" },
+  { key: "business", name: "Business", price: "250", period: "/project", currency: "$", popular: true, tagline: "Perfect for growing businesses" },
+  { key: "custom", name: "Custom", price: "Custom", period: "/project", tagline: "For large-scale & custom requirements" },
 ];
 
 export const FEATURES: FeatureRow[] = [
-  { label: "Websites", values: ["1", "3", "Unlimited", "Unlimited"] },
-  { label: "Storage", values: ["10 GB", "20 GB", "50 GB", "100 GB"] },
-  { label: "Daily backups", values: [false, false, true, true] },
-  { label: "Free CDN", values: [false, false, true, true] },
-  { label: "WordPress", values: [true, true, true, true] },
-  { label: "Drag-and-drop website builder", values: [false, true, true, true] },
-  { label: "E-commerce", values: [false, true, true, true] },
-  { label: "Web apps", values: [false, false, "5", "10"] },
-  { label: "Free domain (with annual plans)", values: [false, true, true, true] },
-  { label: "Mailboxes — free for 1 year", values: ["1", "10", "Unlimited", "Unlimited"] },
-  { label: "Free email marketing", values: [false, false, true, true] },
-  { label: "Priority 24/7 expert support", values: [false, true, true, true] },
-  { label: "AI tools", values: [true, true, true, true] },
-  { label: "AI SEO ready", values: [false, true, true, true] },
-  { label: "99.9% uptime guarantee", values: [true, true, true, true] },
-  { label: "Global data centres", values: [true, true, true, true] },
-  { label: "Free automatic website migration", values: [false, true, true, true] },
-  { label: "Unlimited free SSL", values: [true, true, true, true] },
-  { label: "Dedicated IP address", values: [false, false, false, true] },
+  { label: "Pages included", values: ["Up to 5", "Up to 10", "Unlimited"] },
+  { label: "2D or 3D website", values: [true, true, true] },
+  { label: "Responsive design (mobile, tablet, desktop)", values: [true, true, true] },
+  { label: "Contact form integration", values: [true, true, true] },
+  { label: "On-page SEO", values: ["Basic setup", "Advanced + speed", "Advanced + custom"] },
+  { label: "E-commerce functionality", values: [false, true, "Multi-vendor / booking"] },
+  { label: "CMS / Admin panel", values: [false, true, true] },
+  { label: "Web application development", values: [false, false, true] },
+  { label: "Free hosting", values: ["1 Year", "1 Year", "As per requirement"] },
+  { label: "Free domain", values: ["1 Year", "1 Year", "As per requirement"] },
+  { label: "Revision rounds", values: ["1", "3", "Unlimited"] },
+  { label: "Free support", values: ["6 Months", "6 Months", "Priority"] },
+  { label: "Dedicated project manager", values: [false, false, true] },
 ];
 
 export const PERKS: string[] = [
-  "Unlimited SSL security certificates",
-  "Free domain (with annual plans)",
-  "Professionally designed templates",
-  "Automatic back-ups and updates",
-  "Business email addresses",
-  "Unlimited web traffic",
+  "1 Year Free Hosting & Domain",
+  "6 Months Free Support",
+  "Mobile-first responsive design",
+  "SEO-ready, fast-loading build",
+  "Modern technologies & clean code",
+  "On-time delivery, guaranteed",
 ];
 
 export type Testimonial = { quote: string; name: string; role: string };
@@ -65,30 +58,30 @@ export type Testimonial = { quote: string; name: string; role: string };
 export const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      "Sidpin rebuilt our store and our online sales doubled within two months. A completely different experience from every provider we'd tried before.",
-    name: "Ayesha Khan",
-    role: "Founder, Lumen Studios",
+      "Sidpin took our 70-year Rudraksha legacy online with complete authenticity. Our sales and customer trust have never been stronger.",
+    name: "Avish Bansal",
+    role: "Rudradharma",
   },
   {
     quote:
-      "Sidpin made website management effortless — regular updates and better scalability as we added more products and destinations.",
-    name: "Daniel Osei",
-    role: "CEO, NovaCRM",
+      "On a lean budget they delivered a website that competes with global hospitality brands. Prospective students notice the difference.",
+    name: "Shubham Rayal",
+    role: "Raboche Institute of Technology & Management",
   },
   {
     quote:
-      "Being with Sidpin gives us a website that's a unique experience for our clients, so we can focus on the creative work instead of maintenance.",
-    name: "Priya Nair",
-    role: "Co-founder, Bloomkart",
+      "Our brand finally looks as strong as our training. Enquiries went up the moment the new site went live.",
+    name: "Ankit Rawat",
+    role: "AG Fitness",
   },
 ];
 
 export type Included = { title: string; body: string; icon: string };
 
 export const INCLUDED: Included[] = [
-  { icon: "builder", title: "Website Builder", body: "Build your website in 3 simple steps with AI tools. You'll be going live in minutes." },
-  { icon: "security", title: "Total security", body: "Relax — your websites and visitors are protected by the latest security software." },
-  { icon: "uptime", title: "99.9% uptime, guaranteed", body: "Our 99.9% uptime guarantee means your website is always available." },
-  { icon: "dashboard", title: "A single, simple dashboard", body: "Easy for beginners and pros alike — see at a glance how your site is performing." },
-  { icon: "support", title: "24/7 customer support", body: "Expert support whenever you need it. We typically respond in under 2 minutes." },
+  { icon: "builder", title: "Custom design, built for you", body: "Every site is designed around your brand — no cookie-cutter templates, just work that fits your business." },
+  { icon: "security", title: "Fast & secure", body: "Optimised for speed and secured for your users, so your site performs on every device." },
+  { icon: "uptime", title: "SEO-ready foundation", body: "Built with best practices so you're set up to rank and be found from day one." },
+  { icon: "dashboard", title: "Easy to manage", body: "A clean CMS / admin panel (on Business & Custom) so you can update content yourself." },
+  { icon: "support", title: "6 months free support", body: "We stay with you after launch — ongoing care, updates, and help whenever you need it." },
 ];

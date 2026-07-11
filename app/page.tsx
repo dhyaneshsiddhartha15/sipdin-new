@@ -14,6 +14,7 @@ import ProductGrid from "@/components/home/ProductGrid";
 import TestimonialCarousel from "@/components/home/TestimonialCarousel";
 import PricingSection from "@/components/home/PricingSection";
 import MadeWithSidpin from "@/components/home/MadeWithSidpin";
+import RecentWork from "@/components/home/RecentWork";
 import AiCloudSection from "@/components/home/AiCloudSection";
 import StatsSection from "@/components/home/StatsSection";
 import ClientLogos from "@/components/home/ClientLogos";
@@ -21,7 +22,7 @@ import TechMarquee from "@/components/home/TechMarquee";
 // import ExpertiseGrid from "@/components/home/ExpertiseGrid"; // merged into ProductGrid
 // import CrmSlideshow from "@/components/home/CrmSlideshow"; // section removed from home
 import RankOnGoogle from "@/components/home/RankOnGoogle";
-import VelocityFramework from "@/components/home/VelocityFramework";
+// import VelocityFramework from "@/components/home/VelocityFramework"; // "How We Work" hidden for now
 import WhyChoosePartner from "@/components/home/WhyChoosePartner";
 import FaqChat from "@/components/home/FaqChat";
 
@@ -104,8 +105,11 @@ export default function HomePage() {
         {/* 7.9 MADE WITH SIDPIN — website showcase marquee (Hostinger-style) */}
         <MadeWithSidpin />
 
-        {/* 8. THE VELOCITY FRAMEWORK — how we create digital solutions */}
-        <VelocityFramework />
+        {/* 7.95 OUR RECENT WORK — social-media campaign poster gallery */}
+        <RecentWork />
+
+        {/* 8. THE VELOCITY FRAMEWORK — "How We Work" (hidden for now) */}
+        {/* <VelocityFramework /> */}
 
         {/* 9.5 TESTIMONIAL CAROUSEL — client quotes slider (from video) */}
         <TestimonialCarousel />

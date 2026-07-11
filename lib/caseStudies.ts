@@ -426,6 +426,229 @@ const CASE_STUDIES: CaseStudy[] = [
       },
     ],
   },
+  {
+    slug: "cro-fragrance-beauty-retailer",
+    product: "Fragrance & Beauty Retailer",
+    tag: "Conversion Rate Optimization",
+    title: "Make Value Obvious. Reduce Thinking. Increase Clicks.",
+    description:
+      "A UX and conversion-rate-optimization engagement for a leading online fragrance & beauty retailer — five targeted interface changes across the listing page, homepage, and cart, each grounded in a before/after test and measured against real engagement data.",
+    accent: "#D6336C",
+    productInitial: "F",
+    watchUrl: "#",
+    stats: [
+      { value: "5", label: "UX Initiatives Shipped" },
+      { value: "+21%", label: "Peak Engagement Lift" },
+      { value: "+20%", label: "Peak Add-to-Cart Lift" },
+      { value: "+15%", label: "Avg. Conversion Lift" },
+    ],
+    sections: [
+      {
+        type: "text",
+        heading: "Project Overview",
+        body: [
+          "The client is a large online fragrance and beauty retailer with a catalog spanning hundreds of brands and thousands of SKUs. Their existing site converted reasonably well, but a full CRO audit revealed friction at nearly every stage of the funnel — from how products were scanned on listing pages, to how promotions were surfaced, to how offers were (or weren't) presented at the moment a shopper was closest to checking out.",
+          "Rather than a single redesign, we ran five focused, independently tested UX initiatives across the listing page, homepage, and cart. Each change was benchmarked against the existing experience and evaluated on real engagement, click-through, and conversion data.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "The Challenge",
+        body: [
+          "Fragrance is a high-consideration, high-SKU-count category: shoppers are comparing price, size, and scent family across dozens of near-identical products. The original experience asked users to do too much of that comparison work themselves — requiring extra clicks, page reloads, and guesswork just to figure out if a product fit their budget or if a deal applied to what they wanted.",
+          "The goal across every initiative was the same underlying principle: reduce the cognitive and physical effort between “I'm interested” and “I clicked,” without redesigning the brand or overhauling the platform.",
+        ],
+      },
+      {
+        type: "list",
+        heading: "1. Product Listing — Price Transparency",
+        intro:
+          "The original listing page buried pricing until a shopper opened a product. We surfaced price ranges and “up to X% off” discount framing directly on the product card, along with visual cues for bundle-deal eligibility — letting shoppers self-qualify by budget before clicking through.",
+        items: [
+          { label: "Instant price qualification", text: "Visible price ranges let users instantly decide “this is in my budget,” cutting low-intent clicks and improving qualified traffic." },
+          { label: "Discount framing as a scroll-stopper", text: "“Up to X% off” acts as a visual hook that pulls attention and increases interaction." },
+          { label: "Bundle eligibility as a value unlock", text: "Tagging products as bundle-eligible created a curiosity trigger — shoppers clicked through to unlock the deal." },
+          { label: "Decision compression at the card level", text: "Fewer steps between scanning and clicking reduced cognitive effort and increased high-intent visits." },
+        ],
+        note: "+10% Engagement Rate · +15% Checkouts · +12% Conversion Rate",
+      },
+      {
+        type: "list",
+        heading: "2. Product Listing — Friction Reduction",
+        intro:
+          "We reduced how often shoppers had to leave the listing page just to compare basic product details. Key attributes — price, size, variant options — became accessible in-line, keeping shoppers in a browsing, comparing state for longer.",
+        items: [
+          { label: "Reduced navigation friction", text: "Users could access key product details without a full page reload." },
+          { label: "Faster decision-making", text: "Quick access to price, size, and variant data helped shoppers shortlist products more quickly." },
+          { label: "Improved product comparison", text: "Shoppers could evaluate multiple products in less time." },
+          { label: "Stronger shopping momentum", text: "Fewer unnecessary detail-page visits kept shoppers engaged for longer." },
+        ],
+        note: "+20% Add to Carts · +11% Conversion Rate · +21% Engagement Rate",
+      },
+      {
+        type: "list",
+        heading: "3. Homepage — Brand Discovery",
+        intro:
+          "The original brand-discovery module was a row of text-only logo tiles. We replaced it with image-led tiles built around hero product photography, giving each brand a visual identity shoppers could recognize at a glance.",
+        items: [
+          { label: "Visual decision-making", text: "Shoppers connect faster with product imagery than plain text." },
+          { label: "Stronger brand recall", text: "Product visuals improved brand recognition and trust during browsing." },
+          { label: "Improved scannability", text: "Image-led tiles were easier to scan than the original text-heavy layout." },
+          { label: "Higher click motivation", text: "Seeing hero products created desire-led clicks and deeper category exploration." },
+        ],
+        note: "+21% Add Clicks · +10% Sessions · +15% Engagement",
+      },
+      {
+        type: "list",
+        heading: "4. Cart — AOV Optimization",
+        intro:
+          "Promotions previously lived only on the homepage, far from the moment of purchase. We introduced relevant, high-intent offers directly inside the mini-cart — including low-cost add-on suggestions to help shoppers clear free-shipping thresholds.",
+        items: [
+          { label: "High-intent offer placement", text: "Promotions were introduced at the mini-cart stage, where users are closest to purchase." },
+          { label: "Increased basket size", text: "Bundle deals and discounts encouraged shoppers to add more items before checking out." },
+          { label: "Stronger purchase motivation", text: "Visible savings nudged shoppers to complete their purchase faster." },
+          { label: "Improved offer discovery", text: "Shoppers who missed earlier promotions still encountered relevant offers before checkout." },
+        ],
+        note: "+15% Checkouts via Promos · +10% Cart Engagement · +12% AOV",
+      },
+      {
+        type: "list",
+        heading: "5. Homepage — Promotional Visibility",
+        intro:
+          "The homepage originally surfaced a single promotional banner. We introduced a multi-banner promotional module highlighting several campaigns — seasonal deals, bundle offers, and discovery sets — in parallel.",
+        items: [
+          { label: "Expanded promotions", text: "Users were previously exposed to only one deal at a time, limiting discovery." },
+          { label: "Multi-deal visibility", text: "Multiple banners highlighted bundle offers and price-led promotions." },
+          { label: "Improved value communication", text: "A clearer display of savings-driven campaigns improved purchase motivation." },
+          { label: "Higher homepage engagement", text: "Rotating hero banners encouraged shoppers to explore offers rather than bounce." },
+        ],
+        note: "+15% Overall Clicks · +10% Conversion Rate · +20% Engagement Rate",
+      },
+      {
+        type: "table",
+        heading: "Results at a Glance",
+        columns: ["Initiative", "Key Metrics"],
+        rows: [
+          ["Product Listing — Price Transparency", "+10% Engagement · +15% Checkouts · +12% Conversion"],
+          ["Product Listing — Friction Reduction", "+20% Add to Carts · +11% Conversion · +21% Engagement"],
+          ["Homepage — Brand Discovery", "+21% Add Clicks · +10% Sessions · +15% Engagement"],
+          ["Cart — AOV Optimization", "+15% Checkouts via Promos · +10% Cart Engagement · +12% AOV"],
+          ["Homepage — Promotional Visibility", "+15% Overall Clicks · +10% Conversion · +20% Engagement"],
+        ],
+      },
+      {
+        type: "list",
+        heading: "Key Takeaways",
+        intro:
+          "Across all five initiatives, the pattern was consistent: shoppers respond to reduced friction and clearer value framing far more than to new features. None of these changes required a platform migration or a visual rebrand.",
+        items: [
+          { label: "Surface value early", text: "Price, discount, and offer information moved earlier in the journey consistently improved qualified engagement." },
+          { label: "Meet shoppers at high-intent moments", text: "The cart and mini-cart proved to be some of the highest-leverage places to introduce relevant offers." },
+          { label: "Visual context beats text", text: "Image-led design outperformed text-only modules for both discovery and recall." },
+          { label: "Test in isolation, learn compounding", text: "Running each change as its own before/after test made it possible to attribute lift accurately." },
+        ],
+      },
+      {
+        type: "quote",
+        text: "Every change was small, testable, and measurable — and together they moved engagement, add-to-cart, and conversion across the entire funnel.",
+        name: "Fragrance & Beauty Retailer",
+        role: "CRO Engagement",
+      },
+    ],
+  },
+  {
+    slug: "ritm-hospitality-institute-website",
+    product: "RITM",
+    tag: "Website Design & Development",
+    title: "Building a Premium Digital Presence on a Lean Budget",
+    description:
+      "How we delivered a globally competitive website for Raboche Institute of Technology & Management (RITM), a hospitality education institute, without a premium budget to match.",
+    accent: "#0E8A80",
+    productInitial: "R",
+    watchUrl: "#",
+    stats: [
+      { value: "Next.js", label: "Modern React framework" },
+      { value: "Tight", label: "Turnaround timeline" },
+      { value: "EN / हि", label: "Bilingual experience" },
+      { value: "6", label: "Programs launched" },
+    ],
+    sections: [
+      {
+        type: "text",
+        heading: "Project Overview",
+        body: [
+          "Raboche Institute of Technology & Management (RITM) is a hospitality and hotel management institute based in Dehradun, Uttarakhand, offering diploma, certificate, and fast-track programs in hospitality, culinary arts, barista training, and bartending. RITM approached us to build a new website that could stand shoulder to shoulder with international hospitality brands — the same industry their graduates go on to work in, from cruise lines to five-star resorts.",
+          "The site needed to do three jobs at once: build immediate trust with prospective students and parents, clearly present a fairly complex course catalog, and drive enquiries and applications through simple, persistent calls to action.",
+        ],
+      },
+      {
+        type: "list",
+        heading: "The Challenge",
+        intro:
+          "RITM came to us with a modest budget and a tight timeline — typical constraints for an education client competing against institutes with far larger marketing budgets. The brief was clear: the site had to look and feel premium, without the cost of custom photoshoots, bespoke illustration, or a long development runway.",
+        items: [
+          { text: "Limited budget, no allowance for extensive custom photography or original video." },
+          { text: "Tight delivery timeline with no room for lengthy design iteration cycles." },
+          { text: "A wide, uneven set of course content that needed to feel structured, not overwhelming." },
+          { text: "Need to serve two audiences — English and Hindi-speaking families — without duplicating effort." },
+        ],
+        note:
+          "The core tension: perception versus budget. A hospitality institute lives and dies by the sense of quality it projects — cutting corners visually would have undercut the institute's core pitch.",
+      },
+      {
+        type: "list",
+        heading: "Design: Premium Feel Through Discipline",
+        intro:
+          "Rather than chase a big production budget, we focused on the fundamentals that make a site feel premium: a restrained colour palette, confident typography, generous white space, and consistent visual rhythm. We curated and art-directed the available photography so existing images carried the same weight as a custom shoot.",
+        items: [
+          { text: "Every homepage section built to tell a single, escalating story — hero, training environments, offerings, career roadmap, placements, alumni, and the course catalog." },
+          { text: "A narrative structure that gives the site a sense of intentionality and polish, not dependent on production value alone." },
+          { text: "Editorial framing of kitchens, culinary training, and campus life to feel aspirational rather than like generic stock." },
+        ],
+      },
+      {
+        type: "list",
+        heading: "Technical Build: Fast, Clean, Scalable",
+        intro:
+          "The site was built on Next.js and React, giving RITM a fast, modern, SEO-friendly foundation that can scale as the institute adds new programs, campuses, or content.",
+        items: [
+          { text: "A reusable component library (course cards, stat blocks, testimonial cards, CTA bands) so new content could be added fast." },
+          { text: "Bilingual (English / Hindi) toggle to serve local families alongside globally-minded applicants." },
+          { text: "Direct WhatsApp and click-to-call integration throughout — the primary enquiry channel for this audience." },
+          { text: "Optimised image loading (Next.js image pipeline) to keep pages fast despite a photography-heavy design." },
+          { text: "Clear, repeated conversion paths (“Apply for Next Intake” / “Get Information”) at every natural decision point." },
+        ],
+      },
+      {
+        type: "text",
+        heading: "Structuring a Complex Course Catalog",
+        body: [
+          "RITM offers six distinct programs ranging from a 45-day barista certification to an 18-month advanced diploma. Rather than presenting them as a flat list, we designed a consistent card system — duration, eligibility, placement highlight, and key takeaways — so a prospective student can compare programs at a glance and self-select into the right path within seconds.",
+        ],
+      },
+      {
+        type: "list",
+        heading: "Outcome & Impact",
+        intro:
+          "The final site gives RITM a digital presence that reads as premium and internationally credible — deliberately positioned to match the calibre of the hotel brands, cruise lines, and resorts its graduates are placed with.",
+        items: [
+          { text: "A cohesive, editorial visual identity that elevates the institute's brand well beyond its budget." },
+          { text: "A clear, structured presentation of a previously complex six-program catalog." },
+          { text: "Multiple, frictionless enquiry paths (WhatsApp, call, contact form) suited to how this audience reaches out." },
+          { text: "A bilingual experience that widens the site's reach across RITM's core recruitment regions." },
+          { text: "A component-based build that lets RITM's team extend the site without starting from scratch." },
+        ],
+        note:
+          "The project proved that a constrained budget and a tight timeline don't have to mean a compromised result — RITM now has a website that competes visually and structurally with far larger institutions.",
+      },
+      {
+        type: "quote",
+        text: "We take a real budget and a real deadline and treat them as design constraints to work within, not excuses for a lesser outcome — a site RITM can point prospective students to with confidence.",
+        name: "Raboche Institute of Technology & Management",
+        role: "Website Design & Development",
+      },
+    ],
+  },
 ];
 
 export function getAllCaseStudies(): CaseStudy[] {

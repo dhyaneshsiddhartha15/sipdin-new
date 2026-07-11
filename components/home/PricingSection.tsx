@@ -2,9 +2,9 @@
 
 /**
  * PricingSection — dark, glowing 3D pricing block with a service dropdown.
- * Selecting a service (Website Development / 3D Website / CRM / App Development)
- * swaps the three plans with an animated transition. Cards have a top glow, a
- * highlighted middle plan, and a subtle mouse-driven 3D tilt (framer-motion).
+ * Selecting a service (Website Development / CRM) swaps the three plans plus the
+ * add-on strip with an animated transition. Cards have a top glow, a highlighted
+ * "Most Popular" plan, and a subtle mouse-driven 3D tilt (framer-motion).
  */
 
 import { useRef, useState } from "react";
@@ -16,61 +16,178 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import { Check, ChevronDown } from "lucide-react";
+import { Check, ChevronDown, Plus } from "lucide-react";
 
 type Plan = {
   name: string;
   price: string;
   period: string;
+  tagline?: string;
   features: string[];
   highlighted?: boolean;
+  badge?: string;
+  cta: string;
+  ctaHref: string;
 };
 
-type Service = { key: string; label: string; plans: Plan[] };
+type Addon = { title: string; note?: string };
 
-/** Discount labels shown per column (Starter / Growth / Enterprise). */
-const DISCOUNTS = ["75% off", "Special offer • 80% off", "71% off"];
+type Service = {
+  key: string;
+  label: string;
+  plans: Plan[];
+  addonsTitle: string;
+  addons: Addon[];
+};
 
 const SERVICES: Service[] = [
   {
     key: "web",
     label: "Website Development",
     plans: [
-      { name: "Starter Plan", price: "$599", period: "/project", features: ["5-page responsive website", "Basic on-page SEO setup", "Contact form integration", "Mobile-first design", "1 revision round"] },
-      { name: "Growth Plan", price: "$1,499", period: "/project", highlighted: true, features: ["Up to 15 pages", "Advanced SEO & analytics", "CMS + blog integration", "Speed & performance tuning", "3 revision rounds"] },
-      { name: "Enterprise Plan", price: "$3,499", period: "/project", features: ["Unlimited pages", "Custom web-app features", "E-commerce ready", "Priority support & SLA", "Unlimited revisions"] },
+      {
+        name: "Starter",
+        price: "$150",
+        period: "/project",
+        tagline: "Ideal for startups & small businesses",
+        cta: "Get Started",
+        ctaHref: "/pricing",
+        features: [
+          "Up to 5 Pages (2D or 3D Website)",
+          "Responsive Design (Mobile, Tablet, Desktop)",
+          "Contact Form Integration",
+          "Basic SEO Setup",
+          "1 Year Free Hosting",
+          "1 Year Free Domain",
+          "1 Revision Round",
+          "6 Months Free Support",
+        ],
+      },
+      {
+        name: "Business",
+        price: "$250",
+        period: "/project",
+        tagline: "Perfect for growing businesses",
+        highlighted: true,
+        badge: "Most Popular",
+        cta: "Get Started",
+        ctaHref: "/pricing",
+        features: [
+          "Up to 10 Pages (2D or 3D Website)",
+          "E-commerce Functionality",
+          "CMS / Admin Panel",
+          "Advanced SEO & Speed Optimization",
+          "1 Year Free Hosting",
+          "1 Year Free Domain",
+          "3 Revision Rounds",
+          "6 Months Free Support",
+        ],
+      },
+      {
+        name: "Custom",
+        price: "Custom",
+        period: "/project",
+        tagline: "For large-scale & custom requirements",
+        cta: "Contact Us",
+        ctaHref: "/contact",
+        features: [
+          "Unlimited Pages (2D or 3D Website)",
+          "Custom Features & Functionalities",
+          "E-commerce / Multi-vendor / Booking",
+          "Web Application Development",
+          "Priority Support",
+          "Dedicated Project Manager",
+          "Unlimited Revisions",
+          "Hosting & Domain (As per Requirement)",
+        ],
+      },
     ],
-  },
-  {
-    key: "3d",
-    label: "3D Website",
-    plans: [
-      { name: "Starter Plan", price: "$1,200", period: "/project", features: ["1 interactive 3D scene", "Basic WebGL setup", "Scroll-based animation", "Mobile fallback", "1 revision round"] },
-      { name: "Growth Plan", price: "$2,900", period: "/project", highlighted: true, features: ["Up to 4 3D scenes", "Custom shaders & lighting", "Interactive product viewer", "Performance optimization", "3 revision rounds"] },
-      { name: "Enterprise Plan", price: "$6,500", period: "/project", features: ["Unlimited 3D scenes", "Real-time configurator", "AR / VR ready", "Dedicated 3D engineer", "Unlimited revisions"] },
+    addonsTitle: "Add-on Services",
+    addons: [
+      { title: "3D & Interactive", note: "Immersive 3D elements & animations" },
+      { title: "Logo & Branding", note: "Professional logo & brand identity" },
+      { title: "Content Writing", note: "SEO-friendly content that converts" },
+      { title: "Maintenance", note: "Ongoing updates & website care" },
+      { title: "Digital Marketing", note: "SEO, Social Media & PPC campaigns" },
     ],
   },
   {
     key: "crm",
     label: "CRM",
     plans: [
-      { name: "Starter Plan", price: "$29", period: "/month", features: ["Up to 3 users", "Contact & lead management", "Email integration", "Basic sales pipeline", "Standard support"] },
-      { name: "Growth Plan", price: "$79", period: "/month", highlighted: true, features: ["Up to 15 users", "Automation workflows", "Custom pipelines", "Analytics dashboard", "Priority support"] },
-      { name: "Enterprise Plan", price: "$199", period: "/month", features: ["Unlimited users", "Advanced automation & AI", "API & custom integrations", "Role-based access control", "Dedicated account manager"] },
+      {
+        name: "Starter CRM",
+        price: "$499",
+        period: "one-time",
+        tagline: "Perfect for small businesses",
+        cta: "Get Started",
+        ctaHref: "/pricing",
+        features: [
+          "Customer Management",
+          "Lead Management",
+          "Login & Role Management",
+          "Dashboard",
+          "Basic Reports",
+          "Responsive Design",
+          "Email Notifications",
+        ],
+      },
+      {
+        name: "Business CRM",
+        price: "$1,499",
+        period: "one-time",
+        tagline: "Built for growing businesses",
+        highlighted: true,
+        badge: "Most Popular",
+        cta: "Get Started",
+        ctaHref: "/pricing",
+        features: [
+          "Everything in Starter, plus:",
+          "Appointment Booking",
+          "Invoice & Billing",
+          "Employee Management",
+          "Sales Pipeline",
+          "Analytics Dashboard",
+          "Email & WhatsApp Integration",
+          "Custom Reports",
+        ],
+      },
+      {
+        name: "Enterprise CRM",
+        price: "Custom",
+        period: "quote",
+        tagline: "For businesses with unique workflows",
+        cta: "Contact Us",
+        ctaHref: "/contact",
+        features: [
+          "Multi-branch CRM",
+          "ERP Integration",
+          "AI Automation",
+          "Customer Portals",
+          "Mobile App",
+          "API Integrations",
+          "Advanced Dashboards",
+          "Custom Workflow Automation",
+        ],
+      },
     ],
-  },
-  {
-    key: "app",
-    label: "App Development",
-    plans: [
-      { name: "Starter Plan", price: "$2,500", period: "/project", features: ["Single platform (iOS or Android)", "Up to 5 screens", "Basic UI kit", "App store submission", "1 revision round"] },
-      { name: "Growth Plan", price: "$6,000", period: "/project", highlighted: true, features: ["Cross-platform (iOS + Android)", "Up to 15 screens", "Custom UI / UX", "Backend + REST API", "3 revision rounds"] },
-      { name: "Enterprise Plan", price: "$14,000", period: "/project", features: ["Unlimited screens", "Custom native modules", "Real-time & offline sync", "CI/CD + maintenance", "Dedicated app team"] },
+    addonsTitle: "Power-Up Your CRM with Add-ons",
+    addons: [
+      { title: "AI Chatbot Integration", note: "From $199" },
+      { title: "WhatsApp Integration", note: "From $99" },
+      { title: "Email Automation", note: "From $99" },
+      { title: "Mobile App (Android / iOS)", note: "From $999" },
+      { title: "Appointment Booking", note: "From $149" },
+      { title: "Invoice & Billing Module", note: "From $199" },
+      { title: "Advanced Reports", note: "From $199" },
+      { title: "Inventory Management", note: "From $299" },
+      { title: "API & Custom Integrations", note: "From $149" },
+      { title: "Annual Maintenance & Support", note: "From $49/month" },
     ],
   },
 ];
 
-function PlanCard({ plan, index, discount }: { plan: Plan; index: number; discount?: string }) {
+function PlanCard({ plan, index }: { plan: Plan; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const mx = useMotionValue(0.5);
   const my = useMotionValue(0.5);
@@ -116,21 +233,26 @@ function PlanCard({ plan, index, discount }: { plan: Plan; index: number; discou
         }}
       />
 
-      {/* Discount label */}
-      {discount && (
+      {/* Most Popular badge */}
+      {plan.badge && (
         <span
-          className="absolute right-4 top-4 z-20 rounded-full bg-[#FFD400] px-3 py-1 text-[11px] font-bold text-black shadow-[0_6px_20px_-6px_rgba(255,212,0,0.7)]"
-          style={{ fontFamily: "Geist, sans-serif", transform: "translateZ(60px)" }}
+          className="absolute left-1/2 top-4 z-20 -translate-x-1/2 rounded-full bg-white px-3.5 py-1 text-[11px] font-bold text-black"
+          style={{ fontFamily: "Geist, sans-serif", transform: "translateX(-50%) translateZ(60px)" }}
         >
-          {discount}
+          ★ {plan.badge}
         </span>
       )}
 
       <div className="relative z-10" style={{ transform: "translateZ(40px)" }}>
-        <p className="text-[15px] font-medium text-white/85" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+        <p className={`text-[15px] font-medium ${plan.badge ? "mt-5" : ""} text-white/85`} style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
           {plan.name}
         </p>
-        <div className="mt-1.5 flex items-end gap-1">
+        {plan.tagline && (
+          <p className="mt-1 text-[12px] leading-snug text-white/45" style={{ fontFamily: "Inter, sans-serif" }}>
+            {plan.tagline}
+          </p>
+        )}
+        <div className="mt-3 flex items-end gap-1">
           <span className="text-[42px] font-semibold leading-none text-white" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
             {plan.price}
           </span>
@@ -139,7 +261,7 @@ function PlanCard({ plan, index, discount }: { plan: Plan; index: number; discou
 
         <div className="my-5 flex items-center gap-3 text-[10px] font-medium uppercase tracking-[0.25em] text-white/35">
           <span className="h-px flex-1 bg-white/10" />
-          Features
+          Includes
           <span className="h-px flex-1 bg-white/10" />
         </div>
 
@@ -153,7 +275,7 @@ function PlanCard({ plan, index, discount }: { plan: Plan; index: number; discou
         </ul>
 
         <Link
-          href="/pricing"
+          href={plan.ctaHref}
           className={[
             "mt-7 block w-full rounded-full py-3 text-center text-[14px] font-semibold transition-all duration-300",
             hi
@@ -162,7 +284,7 @@ function PlanCard({ plan, index, discount }: { plan: Plan; index: number; discou
           ].join(" ")}
           style={{ fontFamily: "Geist, sans-serif" }}
         >
-          Learn more
+          {plan.cta}
         </Link>
       </div>
     </motion.div>
@@ -208,11 +330,11 @@ export default function PricingSection() {
               className="font-semibold leading-[1.05] tracking-tight"
               style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: "clamp(36px, 4.6vw, 60px)" }}
             >
-              Smart pricing for
-              <br /> every stage
+              Simple, Transparent
+              <br /> &amp; Fair Pricing
             </h2>
             <p className="mt-4 max-w-md text-white/60" style={{ fontFamily: "Inter, sans-serif", fontSize: "clamp(14px, 1.1vw, 16px)" }}>
-              Find the perfect balance of features, performance, and affordability.
+              High-quality websites, 3D experiences &amp; custom CRM solutions that drive results.
             </p>
           </div>
 
@@ -240,7 +362,7 @@ export default function PricingSection() {
           </div>
         </div>
 
-        {/* Plans — animate when the service changes */}
+        {/* Plans + add-ons — animate when the service changes */}
         <div className="mt-12" style={{ perspective: "1200px" }}>
           <AnimatePresence mode="wait">
             <motion.div
@@ -249,11 +371,40 @@ export default function PricingSection() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -18 }}
               transition={{ duration: 0.35, ease: "easeOut" }}
-              className="grid gap-6 md:grid-cols-3 md:items-center"
             >
-              {active.plans.map((plan, i) => (
-                <PlanCard key={`${serviceKey}-${plan.name}`} plan={plan} index={i} discount={DISCOUNTS[i]} />
-              ))}
+              <div className="grid gap-6 md:grid-cols-3 md:items-center">
+                {active.plans.map((plan, i) => (
+                  <PlanCard key={`${serviceKey}-${plan.name}`} plan={plan} index={i} />
+                ))}
+              </div>
+
+              {/* Add-on services */}
+              <div className="mt-14">
+                <div className="mb-6 flex items-center justify-center gap-3">
+                  <span className="h-px w-10 bg-white/15" />
+                  <h3 className="text-center text-[18px] font-bold text-white md:text-[22px]" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+                    {active.addonsTitle}
+                  </h3>
+                  <span className="h-px w-10 bg-white/15" />
+                </div>
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+                  {active.addons.map((a) => (
+                    <div key={a.title} className="rounded-xl border border-white/10 bg-white/[0.03] p-4 text-center transition-colors hover:border-white/25 hover:bg-white/[0.06]">
+                      <span className="mx-auto mb-2.5 grid h-9 w-9 place-items-center rounded-lg bg-[#7c3aed]/20 text-[#c4b5fd]">
+                        <Plus size={16} />
+                      </span>
+                      <p className="text-[13px] font-semibold leading-snug text-white" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+                        {a.title}
+                      </p>
+                      {a.note && (
+                        <p className="mt-1 text-[11px] text-white/45" style={{ fontFamily: "Inter, sans-serif" }}>
+                          {a.note}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
             </motion.div>
           </AnimatePresence>
         </div>
