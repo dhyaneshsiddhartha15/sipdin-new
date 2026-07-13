@@ -4,10 +4,8 @@
  * CaseStudyDetail — the shared layout every case-study page renders through.
  * A blue wavy background (public/wavy-baclh.webp) with every content block in a
  * white card colour-matched to the study's accent. Hero (screenshot + tag +
- * title + Watch Now), a bold stats row, then the flexible content sections.
+ * title), a bold stats row, then the flexible content sections.
  */
-
-import { Play } from "lucide-react";
 import type { CaseStudy, Section } from "@/lib/caseStudies";
 
 /** Blue wavy background shared by the case-study listing + detail pages. */
@@ -183,7 +181,7 @@ export default function CaseStudyDetail({ study }: { study: CaseStudy }) {
   return (
     <article style={PAPER_BG}>
       {/* Hero */}
-      <section className="mx-auto max-w-[1200px] px-[24px] pb-16 pt-36 md:px-[40px] md:pt-44">
+      <section className="mx-auto max-w-[1500px] px-[24px] pb-16 pt-36 md:px-[40px] md:pt-44">
         <div className="grid items-center gap-10 lg:grid-cols-2">
           {/* Screenshot / placeholder */}
           <div className="order-2 lg:order-1">
@@ -227,14 +225,6 @@ export default function CaseStudyDetail({ study }: { study: CaseStudy }) {
             <h1 className="mt-5 text-[38px] font-extrabold leading-[1.05] tracking-tight text-white drop-shadow-[0_2px_20px_rgba(8,30,80,0.4)] md:text-[56px]" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
               {study.title}
             </h1>
-            <a
-              href={study.watchUrl ?? "#"}
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-[15px] font-bold transition-transform duration-300 hover:scale-[1.04]"
-              style={{ color: study.accent }}
-            >
-              <Play size={17} fill="currentColor" />
-              Watch Now
-            </a>
           </div>
         </div>
 
@@ -255,7 +245,7 @@ export default function CaseStudyDetail({ study }: { study: CaseStudy }) {
       </section>
 
       {/* Sections */}
-      <section className="mx-auto max-w-[1200px] px-[24px] pb-28 md:px-[40px]">
+      <section className="mx-auto max-w-[1500px] px-[24px] pb-28 md:px-[40px]">
         <div className="space-y-8">
           {study.sections.map((section, i) => (
             <SectionBlock key={i} section={section} accent={study.accent} />

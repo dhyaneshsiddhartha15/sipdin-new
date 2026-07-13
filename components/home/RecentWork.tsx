@@ -62,8 +62,13 @@ export default function RecentWork() {
                 >
                   <div className="pointer-events-none absolute inset-0 opacity-40" style={{ background: `radial-gradient(420px 200px at 30% 0%, ${w.accent}55, transparent)` }} />
                   <div className="relative">
-                    <span className="grid h-11 w-11 place-items-center rounded-full text-[16px] font-extrabold text-black" style={{ background: w.accent, fontFamily: "Hanken Grotesk, sans-serif" }}>
-                      {w.brand[0]}
+                    <span className="grid h-11 w-11 place-items-center rounded-full overflow-hidden text-[16px] font-extrabold text-black" style={{ background: w.accent, fontFamily: "Hanken Grotesk, sans-serif" }}>
+                      {w.logo ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={w.logo} alt={w.brand} className="h-full w-full object-cover" />
+                      ) : (
+                        w.brand[0]
+                      )}
                     </span>
                     <h3 className="mt-4 text-[22px] font-extrabold leading-[1.05] text-white" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
                       {w.brand}

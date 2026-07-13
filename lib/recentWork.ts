@@ -28,6 +28,7 @@ export type RecentWork = {
   results: { value: string; label: string }[]; // 5
   platformPerf: PlatformPerf[];
   clientQuote: { text: string; name: string; role: string };
+  logo?: string; // optional logo path
 };
 
 const RECENT_WORK: RecentWork[] = [
@@ -37,6 +38,7 @@ const RECENT_WORK: RecentWork[] = [
     handle: "@ragarishikesh",
     instagramUrl: "https://www.instagram.com/ragarishikesh",
     category: "WELLNESS",
+    logo: "/work/raga-rishikesh.jpg",
     industry: "Wellness & Retreats",
     duration: "90 Days",
     platforms: ["Instagram", "Facebook", "YouTube"],
@@ -72,6 +74,7 @@ const RECENT_WORK: RecentWork[] = [
     handle: "@hithyoga",
     instagramUrl: "https://www.instagram.com/hithyoga",
     category: "YOGA",
+    logo: "/work/hith-yoga.jpg",
     industry: "Yoga & Lifestyle",
     duration: "90 Days",
     platforms: ["Instagram", "Facebook", "YouTube"],
