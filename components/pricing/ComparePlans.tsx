@@ -22,34 +22,39 @@ export default function ComparePlans() {
           <tr>
             <th className="w-[28%] align-bottom" />
             {PLANS.map((p, i) => (
-              <th key={p.key} className={`px-4 pb-6 align-bottom ${i === popularIdx ? "rounded-t-2xl bg-brand/[0.06]" : ""}`}>
-                {p.popular && (
-                  <span className="mb-2 inline-block rounded-full bg-brand px-3 py-1 text-[11px] font-bold text-white" style={{ fontFamily: "Geist, sans-serif" }}>
-                    ★ Most Popular
-                  </span>
-                )}
-                <div className="text-[18px] font-bold text-fg" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
-                  {p.name}
+              <th key={p.key} className={`w-[24%] px-4 pb-6 align-top ${i === popularIdx ? "rounded-t-2xl bg-brand/[0.06]" : ""}`}>
+                <div className="flex h-[240px] flex-col justify-between">
+                  <div>
+                    {p.popular && (
+                      <span className="mb-2 inline-block rounded-full bg-brand px-3 py-1 text-[11px] font-bold text-white" style={{ fontFamily: "Geist, sans-serif" }}>
+                        ★ Most Popular
+                      </span>
+                    )}
+                    <div className="text-[18px] font-bold text-fg" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+                      {p.name}
+                    </div>
+                    {p.tagline && (
+                      <p className="mt-1 text-[12px] leading-snug text-fg-3" style={{ fontFamily: "Inter, sans-serif" }}>
+                        {p.tagline}
+                      </p>
+                    )}
+                    <div className="mt-2 flex items-end gap-0.5">
+                      <span className="text-[28px] font-extrabold leading-none text-fg" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+                        {p.price}
+                      </span>
+                    </div>
+                    <div className="mt-1 flex items-end gap-0.5">
+                      <span className="mb-1 text-[14px] text-fg-3">{p.period}</span>
+                    </div>
+                  </div>
+                  <Link
+                    href="/contact"
+                    className="mt-4 block rounded-lg bg-[#111318] py-3 text-center text-[13px] font-bold text-white transition-colors hover:bg-black"
+                    style={{ fontFamily: "Geist, sans-serif" }}
+                  >
+                    {p.price === "Custom" ? "Contact Us" : "Get Started"}
+                  </Link>
                 </div>
-                {p.tagline && (
-                  <p className="mt-1 text-[12px] leading-snug text-fg-3" style={{ fontFamily: "Inter, sans-serif" }}>
-                    {p.tagline}
-                  </p>
-                )}
-                <div className="mt-2 flex items-end gap-0.5">
-                  {p.currency && <span className="text-[18px] font-semibold text-fg-2">{p.currency}</span>}
-                  <span className="text-[34px] font-extrabold leading-none text-fg" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
-                    {p.price}
-                  </span>
-                  <span className="mb-1 text-[14px] text-fg-3">{p.period}</span>
-                </div>
-                <Link
-                  href="/contact"
-                  className="mt-4 block rounded-lg bg-[#111318] py-3 text-center text-[13px] font-bold text-white transition-colors hover:bg-black"
-                  style={{ fontFamily: "Geist, sans-serif" }}
-                >
-                  {p.price === "Custom" ? "Contact Us" : "Get Started"}
-                </Link>
               </th>
             ))}
           </tr>

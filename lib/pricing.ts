@@ -1,8 +1,6 @@
 /**
- * Pricing page data — Sidpin's real Website Development plans, the feature
- * comparison matrix, the "all plans include" perks, testimonials, and the
- * "included with every plan" cards. CRM pricing lives on the homepage pricing
- * section (per-service dropdown) and is linked from /pricing.
+ * Pricing page data — Sidpin's real Website Development plans with updated pricing.
+ * Matches the home page pricing section for consistency.
  */
 
 export type PlanValue = boolean | string;
@@ -10,9 +8,9 @@ export type PlanValue = boolean | string;
 export type Plan = {
   key: string;
   name: string;
-  price: string; // e.g. "150" or "Custom"
-  period: string; // e.g. "/project"
-  currency?: string; // e.g. "$"
+  price: string; // e.g. "₹18,000 – ₹28,000"
+  period: string; // e.g. "one-time"
+  currency?: string; // e.g. "₹"
   popular?: boolean;
   tagline?: string;
 };
@@ -23,34 +21,56 @@ export type FeatureRow = {
 };
 
 export const PLANS: Plan[] = [
-  { key: "starter", name: "Starter", price: "150", period: "/project", currency: "$", tagline: "Ideal for startups & small businesses" },
-  { key: "business", name: "Business", price: "250", period: "/project", currency: "$", popular: true, tagline: "Perfect for growing businesses" },
-  { key: "custom", name: "Custom", price: "Custom", period: "/project", tagline: "For large-scale & custom requirements" },
+  {
+    key: "starter",
+    name: "Starter",
+    price: "₹18,000 – ₹28,000",
+    period: "one-time",
+    currency: "",
+    tagline: "5–7 page custom-designed site, mobile responsive, basic SEO setup"
+  },
+  {
+    key: "growth",
+    name: "Growth",
+    price: "₹40,000 – ₹65,000",
+    period: "one-time",
+    currency: "",
+    popular: true,
+    tagline: "Custom design, up to 12 pages, self-editable CMS, on-page SEO"
+  },
+  {
+    key: "premium",
+    name: "Premium",
+    price: "₹85,000 – ₹1,40,000",
+    period: "one-time",
+    currency: "",
+    tagline: "Fully custom multi-page site, advanced animations, multi-location/branch pages"
+  },
 ];
 
 export const FEATURES: FeatureRow[] = [
-  { label: "Pages included", values: ["Up to 5", "Up to 10", "Unlimited"] },
-  { label: "2D or 3D website", values: [true, true, true] },
+  { label: "Pages included", values: ["5–7 pages", "Up to 12 pages", "Unlimited pages"] },
+  { label: "Custom designed website", values: [true, true, true] },
   { label: "Responsive design (mobile, tablet, desktop)", values: [true, true, true] },
-  { label: "Contact form integration", values: [true, true, true] },
-  { label: "On-page SEO", values: ["Basic setup", "Advanced + speed", "Advanced + custom"] },
-  { label: "E-commerce functionality", values: [false, true, "Multi-vendor / booking"] },
-  { label: "CMS / Admin panel", values: [false, true, true] },
-  { label: "Web application development", values: [false, false, true] },
-  { label: "Free hosting", values: ["1 Year", "1 Year", "As per requirement"] },
-  { label: "Free domain", values: ["1 Year", "1 Year", "As per requirement"] },
-  { label: "Revision rounds", values: ["1", "3", "Unlimited"] },
-  { label: "Free support", values: ["6 Months", "6 Months", "Priority"] },
+  { label: "WhatsApp/contact integration", values: [true, true, true] },
+  { label: "SEO setup", values: ["Basic setup", "On-page SEO", "Advanced SEO"] },
+  { label: "Self-editable CMS", values: [false, true, true] },
+  { label: "Google Maps/booking integration", values: [false, true, true] },
+  { label: "Advanced animations", values: [false, false, true] },
+  { label: "Multi-location/branch pages", values: [false, false, true] },
+  { label: "CRM/booking integration", values: [false, false, true] },
+  { label: "Revision rounds", values: ["1 round", "2 rounds", "Multiple rounds"] },
+  { label: "Support", values: ["Standard", "Standard", "Priority"] },
   { label: "Dedicated project manager", values: [false, false, true] },
 ];
 
 export const PERKS: string[] = [
-  "1 Year Free Hosting & Domain",
-  "6 Months Free Support",
   "Mobile-first responsive design",
   "SEO-ready, fast-loading build",
   "Modern technologies & clean code",
   "On-time delivery, guaranteed",
+  "WhatsApp/contact integration",
+  "Free consultation before project",
 ];
 
 export type Testimonial = { quote: string; name: string; role: string };
@@ -79,9 +99,29 @@ export const TESTIMONIALS: Testimonial[] = [
 export type Included = { title: string; body: string; icon: string };
 
 export const INCLUDED: Included[] = [
-  { icon: "builder", title: "Custom design, built for you", body: "Every site is designed around your brand — no cookie-cutter templates, just work that fits your business." },
-  { icon: "security", title: "Fast & secure", body: "Optimised for speed and secured for your users, so your site performs on every device." },
-  { icon: "uptime", title: "SEO-ready foundation", body: "Built with best practices so you're set up to rank and be found from day one." },
-  { icon: "dashboard", title: "Easy to manage", body: "A clean CMS / admin panel (on Business & Custom) so you can update content yourself." },
-  { icon: "support", title: "6 months free support", body: "We stay with you after launch — ongoing care, updates, and help whenever you need it." },
+  {
+    icon: "builder",
+    title: "Custom design, built for you",
+    body: "Every site is designed around your brand — no cookie-cutter templates, just work that fits your business."
+  },
+  {
+    icon: "security",
+    title: "Fast & secure",
+    body: "Optimised for speed and secured for your users, so your site performs on every device."
+  },
+  {
+    icon: "uptime",
+    title: "SEO-ready foundation",
+    body: "Built with best practices so you're set up to rank and be found from day one."
+  },
+  {
+    icon: "dashboard",
+    title: "Easy to manage",
+    body: "A clean CMS / admin panel (on Growth & Premium) so you can update content yourself."
+  },
+  {
+    icon: "support",
+    title: "Ongoing support",
+    body: "We stay with you after launch — ongoing care, updates, and help whenever you need it."
+  },
 ];
