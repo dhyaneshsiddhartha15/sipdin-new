@@ -15,18 +15,18 @@ type LocaleContextType = {
 const LocaleContext = createContext<LocaleContextType | undefined>(undefined);
 
 export function LocaleProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocale] = useState<Locale>(() => {
-    // Initialize from localStorage or defaults
-    if (typeof window !== "undefined") {
-      const savedLang = localStorage.getItem("sidpin-language") as Language | null;
-      const savedRegion = localStorage.getItem("sidpin-region") as Region | null;
-      return {
-        language: savedLang || "en",
-        region: savedRegion || detectRegion(),
-      };
-    }
-    return { language: "en", region: "intl" };
-  });
+  // Start from a deterministic default so server and first client render match.
+  // The saved preference is loaded in an effect after mount to avoid hydration mismatch.
+  const [locale, setLocale] = useState<Locale>({ language: "en", region: "intl" });
+
+  useEffect(() => {
+    const savedLang = localStorage.getItem("sidpin-language") as Language | null;
+    const savedRegion = localStorage.getItem("sidpin-region") as Region | null;
+    setLocale({
+      language: savedLang || "en",
+      region: savedRegion || detectRegion(),
+    });
+  }, []);
 
   // Update document direction when language changes
   useEffect(() => {

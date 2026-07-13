@@ -41,16 +41,16 @@ export default function Navbar() {
       <div className="pointer-events-auto relative w-full max-w-[1080px]">
         {/* The pill */}
         <div
-          className="flex items-center justify-between gap-4 rounded-full px-2.5 py-2.5 ring-1 ring-[#4169E1]/70 shadow-[0_0_12px_rgba(65,105,225,0.55),0_0_36px_rgba(65,105,225,0.3),0_18px_45px_-18px_rgba(0,0,0,0.55)]"
+          className="flex items-center justify-between gap-4 rounded-full px-2.5 py-2.5 ring-1 ring-[#4169E1]/30 shadow-[0_0_12px_rgba(65,105,225,0.18),0_18px_45px_-18px_rgba(0,0,0,0.25)]"
           style={{
-            background: "linear-gradient(120deg, #101A36 0%, #0B1226 100%)",
+            background: "#ffffff",
           }}
         >
           {/* Logo circle — SIDPIN Digital mark */}
           <a
             href="/"
             aria-label="SIDPIN Digital home"
-            className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-white transition-transform duration-300 hover:rotate-[15deg]"
+            className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-white ring-1 ring-[#4169E1]/20 transition-transform duration-300 hover:rotate-[15deg]"
           >
             <img
               src="/logo-mark.png"
@@ -82,7 +82,7 @@ export default function Navbar() {
                   <a
                     href={link.href}
                     className={`nav-pill-link inline-block py-3 font-['Inter'] text-[15.5px] font-medium transition-colors duration-200 ${
-                      isActive ? "text-white" : "text-white/75 hover:text-white"
+                      isActive ? "text-[#0B1226]" : "text-[#0B1226]/70 hover:text-[#0B1226]"
                     }`}
                   >
                     {t(link.nameKey)}
@@ -144,11 +144,11 @@ export default function Navbar() {
 
           {/* Right cluster: theme toggle + language + email pill */}
           <div className="flex items-center gap-2.5">
-            <ThemeToggle className="!h-12 !w-12 !border-white/15 !bg-white/10 !text-white hover:!border-white/50 hover:!text-white" />
+            <ThemeToggle className="!h-12 !w-12 !border-[#4169E1]/20 !bg-[#4169E1]/10 !text-[#4169E1] hover:!border-[#4169E1]/50 hover:!text-[#4169E1]" />
             <LanguageSwitcher />
             <a
               href="mailto:hello@sidpin.com"
-              className="hidden items-center rounded-full bg-white px-6 py-3 font-['Inter'] text-[15px] font-medium text-[#0B1226] shadow-[0_0_10px_rgba(65,105,225,0.35)] transition-transform duration-300 hover:scale-[1.03] sm:flex"
+              className="hidden items-center rounded-full bg-[#4169E1] px-6 py-3 font-['Inter'] text-[15px] font-medium text-white shadow-[0_0_10px_rgba(65,105,225,0.35)] transition-transform duration-300 hover:scale-[1.03] sm:flex"
             >
               hello@sidpin.com
             </a>
@@ -158,7 +158,7 @@ export default function Navbar() {
               type="button"
               aria-label="Toggle menu"
               onClick={() => setMenuOpen((v) => !v)}
-              className="grid h-12 w-12 place-items-center rounded-full bg-white/10 text-white lg:hidden"
+              className="grid h-12 w-12 place-items-center rounded-full bg-[#4169E1]/10 text-[#4169E1] lg:hidden"
             >
               <span className="material-symbols-outlined text-[22px]">
                 {menuOpen ? "close" : "menu"}

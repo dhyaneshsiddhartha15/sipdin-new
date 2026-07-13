@@ -4,20 +4,40 @@ import { useState } from "react";
 import { useLocale } from "@/contexts/LocaleContext";
 import { LANGUAGE_NAMES, REGION_INFO, type Language, type Region } from "@/lib/locale";
 
+// Short label for the current language shown on the trigger button
+const LANGUAGE_SHORT: Record<Language, string> = {
+  en: "EN",
+  ar: "ع",
+};
+
 export default function LanguageSwitcher({ className = "" }: { className?: string }) {
   const { locale, setLanguage, setRegion } = useLocale();
   const [isOpen, setIsOpen] = useState(false);
 
+  const shortLang = LANGUAGE_SHORT[locale.language];
+  const currency = REGION_INFO[locale.region].currency;
+
   return (
     <div className={`relative ${className}`}>
-      {/* Button */}
+      {/* Button — shows current language + currency so visitors know they can switch */}
       <button
         type="button"
         onClick={() => setIsOpen((v) => !v)}
-        className="grid h-12 w-12 place-items-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
-        aria-label="Change language or region"
+        className="flex h-12 items-center gap-1.5 rounded-full bg-[#4169E1]/10 px-3.5 text-[#4169E1] transition-colors hover:bg-[#4169E1]/20"
+        aria-label="Change language, region or currency"
+        title="Change language, region or currency"
       >
-        <span className="text-[16px]">🌐</span>
+        <span className="text-[15px] leading-none">🌐</span>
+        <span className="text-[13px] font-semibold leading-none">{shortLang}</span>
+        <span className="text-[#4169E1]/40 leading-none">·</span>
+        <span className="text-[13px] font-semibold leading-none">{currency}</span>
+        <span
+          className={`material-symbols-outlined text-[16px] leading-none transition-transform duration-200 ${
+            isOpen ? "rotate-180" : ""
+          }`}
+        >
+          expand_more
+        </span>
       </button>
 
       {/* Dropdown */}
