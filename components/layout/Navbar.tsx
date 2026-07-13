@@ -6,6 +6,7 @@ import ThemeToggle from "./ThemeToggle";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { serviceCategories } from "@/lib/services";
 import { useLocale } from "@/contexts/LocaleContext";
+import type { TranslationKey } from "@/lib/translations";
 
 export default function Navbar() {
   const { t } = useLocale();
@@ -15,7 +16,7 @@ export default function Navbar() {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const pathname = usePathname();
 
-  const navLinks = useMemo(() => [
+  const navLinks = useMemo<{ nameKey: TranslationKey; href: string }[]>(() => [
     { nameKey: "nav.home", href: "/" },
     { nameKey: "nav.about", href: "/about" },
     { nameKey: "nav.services", href: "/services" },
