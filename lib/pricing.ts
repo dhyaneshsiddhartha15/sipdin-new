@@ -3,12 +3,15 @@
  * Matches the home page pricing section for consistency.
  */
 
+import type { Region } from "./locale";
+import { formatPrice } from "./locale";
+
 export type PlanValue = boolean | string;
 
 export type Plan = {
   key: string;
   name: string;
-  price: string; // e.g. "₹18,000 – ₹28,000"
+  price: string; // e.g. "₹18,000 – ₹28,000" (INR base)
   period: string; // e.g. "one-time"
   currency?: string; // e.g. "₹"
   popular?: boolean;
@@ -20,7 +23,8 @@ export type FeatureRow = {
   values: PlanValue[]; // one per plan, same order as PLANS
 };
 
-export const PLANS: Plan[] = [
+// Base plans in INR
+export const BASE_PLANS: Plan[] = [
   {
     key: "starter",
     name: "Starter",
@@ -47,6 +51,17 @@ export const PLANS: Plan[] = [
     tagline: "Fully custom multi-page site, advanced animations, multi-location/branch pages"
   },
 ];
+
+// Get formatted plans based on region
+export function getPlans(region: Region): Plan[] {
+  return BASE_PLANS.map((plan) => ({
+    ...plan,
+    price: formatPrice(plan.price, region),
+  }));
+}
+
+// For backward compatibility
+export const PLANS = BASE_PLANS;
 
 export const FEATURES: FeatureRow[] = [
   { label: "Pages included", values: ["5–7 pages", "Up to 12 pages", "Unlimited pages"] },

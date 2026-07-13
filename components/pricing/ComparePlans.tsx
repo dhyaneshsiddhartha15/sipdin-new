@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { Check, Minus, Rocket } from "lucide-react";
-import { PLANS, FEATURES, type PlanValue } from "@/lib/pricing";
+import { BASE_PLANS, FEATURES, getPlans, type PlanValue } from "@/lib/pricing";
+import { useLocale } from "@/contexts/LocaleContext";
 
 function Value({ v }: { v: PlanValue }) {
   if (v === true) return <Check size={20} className="mx-auto text-emerald-500" strokeWidth={2.5} />;
@@ -13,7 +16,9 @@ function Value({ v }: { v: PlanValue }) {
 }
 
 export default function ComparePlans() {
-  const popularIdx = PLANS.findIndex((p) => p.popular);
+  const { locale } = useLocale();
+  const plans = getPlans(locale.region);
+  const popularIdx = plans.findIndex((p) => p.popular);
 
   return (
     <div className="overflow-x-auto">
@@ -21,7 +26,7 @@ export default function ComparePlans() {
         <thead>
           <tr>
             <th className="w-[28%] align-bottom" />
-            {PLANS.map((p, i) => (
+            {plans.map((p, i) => (
               <th key={p.key} className={`w-[24%] px-4 pb-6 align-top ${i === popularIdx ? "rounded-t-2xl bg-brand/[0.06]" : ""}`}>
                 <div className="flex h-[240px] flex-col justify-between">
                   <div>
@@ -62,7 +67,7 @@ export default function ComparePlans() {
         <tbody>
           {/* Group header */}
           <tr>
-            <td colSpan={PLANS.length + 1} className="pb-3 pt-8">
+            <td colSpan={plans.length + 1} className="pb-3 pt-8">
               <span className="flex items-center gap-2 text-[15px] font-bold text-fg" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
                 <Rocket size={18} className="text-brand" />
                 Top features

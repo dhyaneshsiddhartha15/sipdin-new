@@ -5,7 +5,7 @@
  * Select service + business type → shows recommended tier with highlight.
  */
 
-import { useRef, useState } from "react";
+import { useRef, useState, useMemo } from "react";
 import Link from "next/link";
 import {
   motion,
@@ -15,6 +15,8 @@ import {
   useTransform,
 } from "framer-motion";
 import { Check, ChevronDown, Plus } from "lucide-react";
+import { useLocale } from "@/contexts/LocaleContext";
+import { formatPrice } from "@/lib/locale";
 
 type Tier = "starter" | "growth" | "premium";
 
@@ -619,9 +621,26 @@ function PlanCard({
 }
 
 export default function PricingSection() {
+  const { locale, t } = useLocale();
   const [serviceKey, setServiceKey] = useState(SERVICES[0].key);
   const [businessType, setBusinessType] = useState<BusinessType>("other");
-  const active = SERVICES.find((s) => s.key === serviceKey) ?? SERVICES[0];
+
+  // Convert prices based on region
+  const services = useMemo(() => {
+    return SERVICES.map((service) => ({
+      ...service,
+      plans: service.plans.map((plan) => ({
+        ...plan,
+        price: formatPrice(plan.price, locale.region),
+      })),
+      addons: service.addons.map((addon) => ({
+        ...addon,
+        note: addon.note ? formatPrice(addon.note, locale.region) : addon.note,
+      })),
+    }));
+  }, [locale.region]);
+
+  const active = services.find((s) => s.key === serviceKey) ?? services[0];
   const recommendedTier = RECOMMENDATION_MAP[businessType];
 
   return (
@@ -667,8 +686,7 @@ export default function PricingSection() {
                 fontSize: "clamp(36px, 4.6vw, 60px)",
               }}
             >
-              Simple, Transparent
-              <br /> &amp; Fair Pricing
+              {t("pricing.title")}
             </h2>
             <p
               className="mt-4 max-w-md text-white/60"
@@ -677,8 +695,7 @@ export default function PricingSection() {
                 fontSize: "clamp(14px, 1.1vw, 16px)",
               }}
             >
-              High-quality websites, 3D experiences &amp; custom CRM solutions
-              that drive results.
+              {t("pricing.subtitle")}
             </p>
           </div>
 
@@ -690,7 +707,7 @@ export default function PricingSection() {
                 className="hidden text-xs uppercase tracking-widest text-white/40 sm:block"
                 style={{ fontFamily: "Geist, sans-serif" }}
               >
-                Pricing for
+                {t("pricing.pricingFor")}
               </span>
               <div className="relative">
                 <select
@@ -723,7 +740,7 @@ export default function PricingSection() {
                 className="hidden text-xs uppercase tracking-widest text-white/40 sm:block"
                 style={{ fontFamily: "Geist, sans-serif" }}
               >
-                Required for
+                {t("pricing.requiredFor")}
               </span>
               <div className="relative">
                 <select

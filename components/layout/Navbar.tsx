@@ -1,26 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { usePathname } from "next/navigation";
 import ThemeToggle from "./ThemeToggle";
+import LanguageSwitcher from "./LanguageSwitcher";
 import { serviceCategories } from "@/lib/services";
+import { useLocale } from "@/contexts/LocaleContext";
 
 export default function Navbar() {
+  const { t } = useLocale();
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const pathname = usePathname();
 
-  const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Services", href: "/services" },
-    { name: "Case Studies", href: "/case-studies" },
-    // { name: "Our Products", href: "/our-products" }, // hidden for now
-    { name: "Pricing", href: "/pricing" },
-    { name: "Studio", href: "/studio" },
-  ];
+  const navLinks = useMemo(() => [
+    { nameKey: "nav.home", href: "/" },
+    { nameKey: "nav.about", href: "/about" },
+    { nameKey: "nav.services", href: "/services" },
+    { nameKey: "nav.caseStudies", href: "/case-studies" },
+    // { nameKey: "nav.products", href: "/our-products" }, // hidden for now
+    { nameKey: "nav.pricing", href: "/pricing" },
+    { nameKey: "nav.studio", href: "/studio" },
+  ], []);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-5 pointer-events-none">
@@ -65,7 +68,7 @@ export default function Navbar() {
               const isServices = link.href === "/services";
               return (
                 <div
-                  key={link.name}
+                  key={link.nameKey}
                   className="relative"
                   onMouseEnter={() => isServices && setServicesOpen(true)}
                   onMouseLeave={() => {
@@ -81,7 +84,7 @@ export default function Navbar() {
                       isActive ? "text-white" : "text-white/75 hover:text-white"
                     }`}
                   >
-                    {link.name}
+                    {t(link.nameKey)}
                   </a>
 
                   {/* Services dropdown */}
@@ -92,7 +95,7 @@ export default function Navbar() {
                           href="/services"
                           className="block px-6 py-3 font-['Inter'] text-[14px] font-medium text-white/60 transition-colors hover:bg-white/10 hover:text-white"
                         >
-                          All Services
+                          {t("nav.allServices")}
                         </a>
                         <div className="mx-4 my-1 h-px bg-white/10" />
                         {serviceCategories.map((cat) => (
@@ -138,9 +141,10 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* Right cluster: theme toggle + email pill */}
+          {/* Right cluster: theme toggle + language + email pill */}
           <div className="flex items-center gap-2.5">
             <ThemeToggle className="!h-12 !w-12 !border-white/15 !bg-white/10 !text-white hover:!border-white/50 hover:!text-white" />
+            <LanguageSwitcher />
             <a
               href="mailto:hello@sidpin.com"
               className="hidden items-center rounded-full bg-white px-6 py-3 font-['Inter'] text-[15px] font-medium text-[#0B1226] shadow-[0_0_10px_rgba(65,105,225,0.35)] transition-transform duration-300 hover:scale-[1.03] sm:flex"
@@ -170,13 +174,13 @@ export default function Navbar() {
                 const isServices = link.href === "/services";
                 if (isServices) {
                   return (
-                    <div key={link.name}>
+                    <div key={link.nameKey}>
                       <button
                         type="button"
                         onClick={() => setMobileServicesOpen((v) => !v)}
                         className="flex w-full items-center justify-between py-4 font-['Inter'] text-[16px] font-medium text-white/85"
                       >
-                        Services
+                        {t("nav.services")}
                         <span
                           className={`material-symbols-outlined text-[20px] transition-transform duration-300 ${
                             mobileServicesOpen ? "rotate-180" : ""
@@ -192,7 +196,7 @@ export default function Navbar() {
                             onClick={() => setMenuOpen(false)}
                             className="block rounded-xl px-4 py-3 font-['Inter'] text-[14px] text-white/70 hover:bg-white/10"
                           >
-                            All Services
+                            {t("nav.allServices")}
                           </a>
                           {serviceCategories.flatMap((cat) =>
                             cat.services.map((service) => (
@@ -213,12 +217,12 @@ export default function Navbar() {
                 }
                 return (
                   <a
-                    key={link.name}
+                    key={link.nameKey}
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
                     className="py-4 font-['Inter'] text-[16px] font-medium text-white/85 hover:text-white"
                   >
-                    {link.name}
+                    {t(link.nameKey)}
                   </a>
                 );
               })}
