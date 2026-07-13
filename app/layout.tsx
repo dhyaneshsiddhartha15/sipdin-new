@@ -3,6 +3,7 @@ import { Hanken_Grotesk, Inter, Geist } from "next/font/google";
 import Script from "next/script";
 import CookieConsent from "@/components/ui/CookieConsent";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import { LocaleProvider } from "@/contexts/LocaleContext";
 import "./globals.css";
 
 const hankenGrotesk = Hanken_Grotesk({
@@ -47,15 +48,19 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
           rel="stylesheet"
         />
-        {/* No-flash theme: apply saved/system preference before first paint. */}
-        <Script id="theme-init" strategy="beforeInteractive">
-          {`(function(){try{var t=localStorage.getItem('theme');var d=t?t==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.classList.toggle('dark',d);}catch(e){}})();`}
-        </Script>
       </head>
       <body className="min-h-full flex flex-col bg-bg text-fg selection:bg-[#4169E1] selection:text-white">
-        {children}
-        <CookieConsent />
-        <WhatsAppButton />
+        <LocaleProvider>
+          {/* No-flash theme: apply saved/system preference before first paint. */}
+          <template
+            dangerouslySetInnerHTML={{
+              __html: `<script id="theme-init">(function(){try{var t=localStorage.getItem('theme');var d=t?t==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.classList.toggle('dark',d);}catch(e){}})();<\/script>`,
+            }}
+          />
+          {children}
+          <CookieConsent />
+          <WhatsAppButton />
+        </LocaleProvider>
       </body>
     </html>
   );

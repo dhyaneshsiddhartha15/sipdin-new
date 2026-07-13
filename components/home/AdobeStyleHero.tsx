@@ -26,15 +26,17 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import IntegrationGrid from "./IntegrationGrid";
+import { useLocale } from "@/contexts/LocaleContext";
+import type { TranslationKey } from "@/lib/translations";
 
 type Slide = {
   key: string;
-  eyebrow: string;
-  title: React.ReactNode;
-  subtitle: string;
-  cta: string;
+  eyebrowKey: TranslationKey;
+  titleKey: TranslationKey;
+  subtitleKey: TranslationKey;
+  ctaKey: TranslationKey;
   href: string;
-  tab: string;
+  tabKey: TranslationKey;
   Icon: LucideIcon;
   image: string;
   video?: string;
@@ -43,146 +45,99 @@ type Slide = {
 const SLIDES: Slide[] = [
   {
     key: "web",
-    eyebrow: "Digital Delivery",
-    title: (
-      <>
-        We build digital products
-        <br /> that actually get delivered.
-      </>
-    ),
-    subtitle:
-      "End-to-end websites, apps and platforms — designed, built and shipped by one trusted digital partner.",
-    cta: "See our work",
+    eyebrowKey: "hero.web.eyebrow",
+    titleKey: "hero.web.title",
+    subtitleKey: "hero.web.subtitle",
+    ctaKey: "hero.web.cta",
     href: "/case-studies",
-    tab: "Web & Product",
+    tabKey: "hero.web.tab",
     Icon: Boxes,
     image: "/expertise/web-development.jpg",
   },
   {
     key: "seo",
-    eyebrow: "Growth Marketing",
-    title: (
-      <>
-        Rank #1 and turn
-        <br /> clicks into customers.
-      </>
-    ),
-    subtitle:
-      "SEO, Google & Meta Ads engineered around revenue — more visibility, more qualified traffic, more conversions.",
-    cta: "Explore SEO & Ads",
+    eyebrowKey: "hero.seo.eyebrow",
+    titleKey: "hero.seo.title",
+    subtitleKey: "hero.seo.subtitle",
+    ctaKey: "hero.seo.cta",
     href: "/services",
-    tab: "SEO & Ads",
+    tabKey: "hero.seo.tab",
     Icon: Search,
     image: "/expertise/seo.jpg",
   },
   {
     key: "design",
-    eyebrow: "Creative Studio",
-    title: (
-      <>
-        Designs that make
-        <br /> brands unforgettable.
-      </>
-    ),
-    subtitle:
-      "Brand identity, UI/UX and video production that give your business a look people remember and trust.",
-    cta: "See our design",
+    eyebrowKey: "hero.design.eyebrow",
+    titleKey: "hero.design.title",
+    subtitleKey: "hero.design.subtitle",
+    ctaKey: "hero.design.cta",
     href: "/case-studies",
-    tab: "Creative Design",
+    tabKey: "hero.design.tab",
     Icon: Palette,
     image: "/expertise/graphic-design.jpg",
   },
   {
     key: "ai",
-    eyebrow: "AI Automation",
-    title: (
-      <>
-        Automate the busywork
-        <br /> with AI agents.
-      </>
-    ),
-    subtitle:
-      "Custom AI agents and automations that handle repetitive work around the clock — so your team scales without the headcount.",
-    cta: "Meet the agents",
+    eyebrowKey: "hero.automation.eyebrow",
+    titleKey: "hero.automation.title",
+    subtitleKey: "hero.automation.subtitle",
+    ctaKey: "hero.automation.cta",
     href: "/services",
-    tab: "AI Automation",
+    tabKey: "hero.automation.tab",
     Icon: Bot,
     image: "/expertise/automation.jpg",
   },
   {
     key: "crm",
-    eyebrow: "Custom CRM",
-    title: (
-      <>
-        One CRM, built
-        <br /> for your business.
-      </>
-    ),
-    subtitle:
-      "White-label CRM solutions tailored to how you actually work — every pipeline, every team, one source of truth.",
-    cta: "Book a demo",
+    eyebrowKey: "hero.automation.eyebrow",
+    titleKey: "hero.automation.title",
+    subtitleKey: "hero.automation.subtitle",
+    ctaKey: "hero.automation.cta",
     href: "/contact",
-    tab: "Custom CRM",
+    tabKey: "hero.automation.tab",
     Icon: Database,
     image: "/expertise/app-development.jpg",
     video: "/crm.mp4",
   },
   {
     key: "branding",
-    eyebrow: "Branding",
-    title: (
-      <>
-        A brand people
-        <br /> actually remember.
-      </>
-    ),
-    subtitle:
-      "Logos, identity systems and guidelines that make you instantly recognizable across every touchpoint.",
-    cta: "See our branding",
+    eyebrowKey: "hero.design.eyebrow",
+    titleKey: "hero.design.title",
+    subtitleKey: "hero.design.subtitle",
+    ctaKey: "hero.design.cta",
     href: "/case-studies",
-    tab: "Branding",
+    tabKey: "hero.design.tab",
     Icon: Sparkles,
-    image: "/expertise/ui-ux.jpg",
+    image: "/expertise/graphic-design.jpg",
   },
   {
     key: "marketing",
-    eyebrow: "Digital Marketing",
-    title: (
-      <>
-        Full-funnel growth,
-        <br /> engineered for revenue.
-      </>
-    ),
-    subtitle:
-      "Campaigns across search, social and paid ads — built around the metrics that actually move your business.",
-    cta: "Explore marketing",
+    eyebrowKey: "hero.seo.eyebrow",
+    titleKey: "hero.seo.title",
+    subtitleKey: "hero.seo.subtitle",
+    ctaKey: "hero.seo.cta",
     href: "/services",
-    tab: "Digital Marketing",
+    tabKey: "hero.seo.tab",
     Icon: Megaphone,
-    image: "/expertise/meta-ads.jpg",
+    image: "/expertise/seo.jpg",
   },
   {
     key: "video",
-    eyebrow: "Video Editing",
-    title: (
-      <>
-        Video that stops
-        <br /> the scroll.
-      </>
-    ),
-    subtitle:
-      "Editing, motion and post-production for ads, social and brand films that keep people watching.",
-    cta: "Watch our reels",
-    href: "/case-studies",
-    tab: "Video Editing",
+    eyebrowKey: "hero.video.eyebrow",
+    titleKey: "hero.video.title",
+    subtitleKey: "hero.video.subtitle",
+    ctaKey: "hero.video.cta",
+    href: "/services",
+    tabKey: "hero.video.tab",
     Icon: Clapperboard,
-    image: "/expertise/video-editing.jpg",
+    image: "/expertise/video-production.jpg",
   },
 ];
 
 const SLIDE_MS = 6000;
 
 export default function AdobeStyleHero() {
+  const { t } = useLocale();
   const [active, setActive] = useState(0);
   const [playing, setPlaying] = useState(true);
 
@@ -253,22 +208,22 @@ export default function AdobeStyleHero() {
               className="mb-5 block text-[11px] font-semibold uppercase tracking-[0.35em] text-white/80"
               style={{ fontFamily: "Geist, sans-serif" }}
             >
-              {slide.eyebrow}
+              {t(slide.eyebrowKey)}
             </span>
             <h1 className="font-semibold leading-[1.08] tracking-tight text-white" style={{ fontSize: "clamp(38px, 5.2vw, 68px)" }}>
-              {slide.title}
+              {t(slide.titleKey)}
             </h1>
             <p
               className="mt-6 max-w-[560px] text-white/85"
               style={{ fontFamily: "Inter, sans-serif", fontSize: "clamp(15px, 1.3vw, 19px)", lineHeight: 1.7 }}
             >
-              {slide.subtitle}
+              {t(slide.subtitleKey)}
             </p>
             <a
               href={slide.href}
               className="mt-9 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-[15px] font-semibold text-black transition-transform duration-300 hover:scale-[1.04] hover:bg-white/90"
             >
-              {slide.cta}
+              {t(slide.ctaKey)}
               <ArrowRight size={18} strokeWidth={2.5} />
             </a>
           </div>
@@ -303,7 +258,7 @@ export default function AdobeStyleHero() {
                   <span className="flex items-center gap-2">
                     <TabIcon size={18} strokeWidth={2} className={isActive ? "text-[#4169e1]" : "text-white/70"} />
                     <span className="text-[13px] font-semibold" style={{ fontFamily: "Geist, sans-serif" }}>
-                      {s.tab}
+                      {t(s.tabKey)}
                     </span>
                   </span>
 

@@ -86,7 +86,7 @@ export default function PricingPage() {
                 Looking for a custom CRM?
               </h3>
               <p className="mt-1 text-[14px] text-fg-2" style={{ fontFamily: "Inter, sans-serif" }}>
-                We build Starter, Business &amp; Enterprise CRM solutions from $499. Tell us your workflow.
+                We build Starter, Growth &amp; Premium CRM solutions from ₹45,000. Tell us your workflow.
               </p>
             </div>
             <Link
