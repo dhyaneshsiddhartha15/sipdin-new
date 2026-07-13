@@ -1,43 +1,59 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import {
+  Rocket,
+  RefreshCcw,
+  Target,
+  Award,
+  Building2,
+  Clock,
+} from "lucide-react";
 
 const stats = [
   {
-    value: 150,
+    icon: Rocket,
+    color: "#6E8CFF",
+    value: 80,
     suffix: "+",
     label: "Projects Delivered",
     description: "Across digital marketing, web development, and creative design",
   },
   {
+    icon: RefreshCcw,
+    color: "#22C55E",
     value: 85,
     suffix: "%",
     label: "Client Retention Rate",
     description: "Businesses that choose to grow with us year after year",
   },
   {
+    icon: Target,
+    color: "#F97316",
     value: 3,
     suffix: "x",
     label: "Average ROI Increase",
     description: "Typical growth in marketing performance for our clients",
   },
   {
+    icon: Award,
+    color: "#A78BFA",
     value: 5,
     suffix: "+",
     label: "Years of Excellence",
     description: "Building digital products and marketing systems that work",
   },
   {
+    icon: Building2,
+    color: "#EC4899",
     value: 25,
     suffix: "+",
     label: "Industries Served",
     description: "From hospitality to education, healthcare to retail",
   },
   {
+    icon: Clock,
+    color: "#22D3EE",
     value: 100,
     suffix: "%",
     label: "On-Time Delivery",
@@ -45,194 +61,118 @@ const stats = [
   },
 ];
 
-export default function StatsSection() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [isDark, setIsDark] = useState(false);
+/* Counts 0 -> value when scrolled into view */
+function CountUp({ value, suffix }: { value: number; suffix: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [display, setDisplay] = useState(0);
 
   useEffect(() => {
-    // Check dark mode
-    const checkDark = () => {
-      setIsDark(document.documentElement.classList.contains("dark"));
-    };
-    checkDark();
+    const el = ref.current;
+    if (!el) return;
 
-    const observer = new MutationObserver(checkDark);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    const track = trackRef.current;
-
-    if (!section || !track) return;
-
-    // Calculate scroll amount
-    function getScrollAmount() {
-      if (!track) return 0;
-      const trackWidth = track.scrollWidth;
-      const viewportWidth = window.innerWidth;
-      const lastCard = track.lastElementChild;
-      const lastCardWidth = lastCard ? lastCard.clientWidth : 320;
-      return -(trackWidth - viewportWidth * 0.65 - lastCardWidth / 2);
-    }
-
-    // Create horizontal scroll animation
-    const tween = gsap.to(track, {
-      x: getScrollAmount,
-      ease: "none",
-      scrollTrigger: {
-        trigger: section,
-        start: "top top",
-        end: () => "+=" + track.scrollWidth,
-        scrub: 1,
-        pin: true,
-        invalidateOnRefresh: true,
+    let raf = 0;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        const duration = 1400;
+        let start: number | null = null;
+        const tick = (t: number) => {
+          if (start === null) start = t;
+          const p = Math.min(1, (t - start) / duration);
+          const eased = 1 - Math.pow(1 - p, 3);
+          setDisplay(Math.round(value * eased));
+          if (p < 1) raf = requestAnimationFrame(tick);
+        };
+        raf = requestAnimationFrame(tick);
       },
-    });
-
-    // Animate numbers
-    const numberElements = section.querySelectorAll(".stat-number");
-    numberElements.forEach((el) => {
-      const span = el.querySelector("span");
-      if (!span) return;
-
-      const target = parseFloat(span.getAttribute("data-value") || "0");
-      const decimals = (span.getAttribute("data-value")?.split(".")[1] || "").length;
-
-      gsap.to(span, {
-        innerText: target,
-        duration: 1.5,
-        snap: { innerText: decimals ? 1 / Math.pow(10, decimals) : 1 },
-        scrollTrigger: {
-          trigger: section,
-          start: "top 60%",
-          toggleActions: "play none none reverse",
-        },
-        onUpdate: function () {
-          const target = this.targets()[0] as HTMLElement;
-          target.innerText = parseFloat(target.innerText).toFixed(decimals);
-        },
-      });
-    });
-
-    ScrollTrigger.refresh();
-
+      { threshold: 0.4 }
+    );
+    observer.observe(el);
     return () => {
-      tween.kill();
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      observer.disconnect();
+      cancelAnimationFrame(raf);
     };
-  }, []);
-
-  const colors = isDark
-    ? {
-        bg: "#070b14",
-        title: "#eef2fb",
-        subtitle: "#aab4c9",
-        border: "rgba(110, 140, 255, 0.2)",
-        gradientStart: "#6E8CFF",
-        gradientEnd: "#00D4FF",
-      }
-    : {
-        bg: "#ffffff",
-        title: "#111111",
-        subtitle: "#666666",
-        border: "rgba(0, 0, 0, 0.1)",
-        gradientStart: "#4169E1",
-        gradientEnd: "#06b6d4",
-      };
+  }, [value]);
 
   return (
-    <section
-      ref={sectionRef}
-      style={{
-        position: "relative",
-        background: colors.bg,
-        overflow: "hidden",
-        padding: "60px 0",
-        fontFamily: "Hanken Grotesk, -apple-system, sans-serif",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "1100px",
-          margin: "0 auto",
-          textAlign: "center",
-          padding: "0 24px",
-        }}
-      >
-        <h2
-          style={{
-            fontSize: "clamp(24px, 4vw, 42px)",
-            fontWeight: 500,
-            lineHeight: 1.3,
-            marginBottom: "40px",
-            color: colors.title,
-          }}
-        >
-          Built for Real Business Growth. <br />
-          Designed for Long-Term Success.
-        </h2>
-      </div>
+    <span ref={ref}>
+      {display}
+      {suffix}
+    </span>
+  );
+}
 
-      <div style={{ overflow: "visible", marginTop: "40px" }}>
-        <div
-          ref={trackRef}
-          style={{
-            display: "flex",
-            flexWrap: "nowrap" as const,
-            gap: "48px",
-            paddingLeft: "5vw",
-            width: "max-content",
-          }}
-        >
-          {stats.map((stat, index) => (
-            <div
-              key={index}
-              style={{
-                width: "320px",
-                borderTop: `1px solid ${colors.border}`,
-                paddingTop: "32px",
-                flexShrink: 0,
-              }}
-            >
-              <div
-                className="stat-number"
-                style={{
-                  fontSize: "80px",
-                  fontWeight: 300,
-                  lineHeight: 1,
-                  marginBottom: "16px",
-                  color: isDark ? "#6E8CFF" : "#4169E1",
-                }}
-              >
-                <span className="num" data-value={stat.value.toString()}>
-                  0
-                </span>
-                {stat.suffix}
+/* Big two-tone line icon: white base + blue stroke continuously drawing over it */
+function AnimatedIcon({
+  Icon,
+  color,
+  delay,
+}: {
+  Icon: React.ComponentType<{ size?: number; strokeWidth?: number; className?: string; style?: React.CSSProperties }>;
+  color: string;
+  delay: number;
+}) {
+  return (
+    <span className="relative block w-[110px] h-[110px] shrink-0" aria-hidden="true">
+      <Icon size={110} strokeWidth={1} className="absolute inset-0 text-[#C3CFE8]" />
+      <span
+        className="stat-draw absolute inset-0 block"
+        style={{ "--stat-delay": `${delay}ms` } as React.CSSProperties}
+      >
+        <Icon size={110} strokeWidth={1.1} style={{ color }} />
+      </span>
+    </span>
+  );
+}
+
+export default function StatsSection() {
+  return (
+    <section className="bg-[#F2F6FF] py-[70px] px-[24px] md:px-[70px]">
+      <div className="max-w-[1700px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-16">
+        {stats.map((stat, i) => (
+          <div key={stat.label} className="flex items-center gap-8">
+            <AnimatedIcon Icon={stat.icon} color={stat.color} delay={i * 600} />
+            <div>
+              <div className="font-['Hanken_Grotesk'] text-[17px] font-medium text-[#1A1A1A] leading-relaxed">
+                {stat.label}
               </div>
               <div
-                style={{
-                  fontSize: "16px",
-                  color: colors.subtitle,
-                  lineHeight: 1.5,
-                  maxWidth: "80%",
-                }}
+                className="font-['Hanken_Grotesk'] text-[24px] font-bold leading-relaxed"
+                style={{ color: stat.color }}
               >
-                <strong style={{ color: colors.title, display: "block", marginBottom: "4px" }}>
-                  {stat.label}
-                </strong>
+                <CountUp value={stat.value} suffix={stat.suffix} />
+              </div>
+              <div className="font-['Inter'] text-[12.5px] text-[#555555] leading-relaxed max-w-[280px] mt-1">
                 {stat.description}
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
+
+      <style>{`
+        .stat-draw svg,
+        .stat-draw svg * {
+          stroke-dasharray: 90;
+          stroke-dashoffset: 90;
+        }
+        .stat-draw svg * {
+          animation: statDraw 4.5s linear infinite;
+          animation-delay: var(--stat-delay, 0ms);
+        }
+        @keyframes statDraw {
+          0% {
+            stroke-dashoffset: 90;
+          }
+          50% {
+            stroke-dashoffset: 0;
+          }
+          100% {
+            stroke-dashoffset: -90;
+          }
+        }
+      `}</style>
     </section>
   );
 }

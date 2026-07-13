@@ -30,7 +30,7 @@ export default function BuildPipeline() {
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-6 px-2 mb-2">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 md:gap-6 px-2 mb-2">
         {TABS.map((tab, i) => (
           <button
             key={tab}
