@@ -389,18 +389,22 @@ export default function PricingSection() {
                 </div>
                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
                   {active.addons.map((a) => (
-                    <div key={a.title} className="rounded-xl border border-white/10 bg-white/[0.03] p-4 text-center transition-colors hover:border-white/25 hover:bg-white/[0.06]">
-                      <span className="mx-auto mb-2.5 grid h-9 w-9 place-items-center rounded-lg bg-[#7c3aed]/20 text-[#c4b5fd]">
-                        <Plus size={16} />
-                      </span>
-                      <p className="text-[13px] font-semibold leading-snug text-white" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
-                        {a.title}
-                      </p>
-                      {a.note && (
-                        <p className="mt-1 text-[11px] text-white/45" style={{ fontFamily: "Inter, sans-serif" }}>
-                          {a.note}
+                    <div key={a.title} className="group relative rounded-xl border border-white/10 bg-white/[0.03] p-4 text-center transition-all hover:border-white/25 hover:bg-white/[0.06] backdrop-blur-sm">
+                      {/* Blur glow effect on hover */}
+                      <div className="pointer-events-none absolute inset-0 rounded-xl bg-[#7c3aed]/10 opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-100" />
+                      <div className="relative z-10">
+                        <span className="mx-auto mb-2.5 grid h-9 w-9 place-items-center rounded-lg bg-[#7c3aed]/20 text-[#c4b5fd]">
+                          <Plus size={16} />
+                        </span>
+                        <p className="text-[13px] font-semibold leading-snug text-white" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+                          {a.title}
                         </p>
-                      )}
+                        {a.note && (
+                          <p className="mt-1 text-[11px] text-white/45" style={{ fontFamily: "Inter, sans-serif" }}>
+                            {a.note}
+                          </p>
+                        )}
+                      </div>
                     </div>
                   ))}
                 </div>

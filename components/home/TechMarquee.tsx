@@ -28,6 +28,10 @@ const STACK = [
   { name: "Docker", tag: "DEVOPS", Icon: Container },
 ];
 
+// Split STACK into two halves for two-row marquee
+const STACK_FIRST_HALF = STACK.slice(0, 10);
+const STACK_SECOND_HALF = STACK.slice(10);
+
 function Pill({ name, tag, Icon, index }: { name: string; tag: string; Icon: any; index: number }) {
   return (
     <div
@@ -194,56 +198,113 @@ export default function TechMarquee() {
           }}
         />
 
-        <div className="marquee-track" style={{ display: "flex", width: "max-content", gap: "16px" }}>
-          {[...STACK, ...STACK].map((item, i) => (
-            <div
-              key={i}
-              style={{
-                padding: "14px 24px",
-                flexShrink: 0,
-                borderRadius: "16px",
-                background: colors.pillBg,
-                border: `1px solid ${colors.pillBorder}`,
-                boxShadow: "0 4px 20px rgba(0, 0, 0, 0.05)",
-                transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-              }}
-              className="tech-card"
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-4px) scale(1.02)";
-                e.currentTarget.style.boxShadow = isDark
-                  ? "0 8px 30px rgba(0, 255, 136, 0.2)"
-                  : "0 8px 30px rgba(99, 102, 241, 0.2)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateY(0) scale(1)";
-                e.currentTarget.style.boxShadow = "0 4px 20px rgba(0, 0, 0, 0.05)";
-              }}
-            >
+        {/* Two rows of marquee */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+          {/* Row 1 - Left scroll */}
+          <div className="marquee-track" style={{ display: "flex", width: "max-content", gap: "16px" }}>
+            {[...STACK_FIRST_HALF, ...STACK_FIRST_HALF, ...STACK_FIRST_HALF, ...STACK_FIRST_HALF].map((item, i) => (
               <div
-                className="icon-wrapper"
+                key={`row1-${i}`}
                 style={{
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "10px",
-                  background: isDark
-                    ? "linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(0, 212, 255, 0.15))"
-                    : "linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1))",
-                  border: `1px solid ${isDark ? "rgba(0, 255, 136, 0.2)" : "rgba(99, 102, 241, 0.2)"}`,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: "8px",
-                  transition: "all 0.3s ease",
+                  padding: "14px 24px",
+                  flexShrink: 0,
+                  borderRadius: "16px",
+                  background: colors.pillBg,
+                  border: `1px solid ${colors.pillBorder}`,
+                  boxShadow: "0 4px 20px rgba(0, 0, 0, 0.05)",
+                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                }}
+                className="tech-card"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-4px) scale(1.02)";
+                  e.currentTarget.style.boxShadow = isDark
+                    ? "0 8px 30px rgba(0, 255, 136, 0.2)"
+                    : "0 8px 30px rgba(99, 102, 241, 0.2)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0) scale(1)";
+                  e.currentTarget.style.boxShadow = "0 4px 20px rgba(0, 0, 0, 0.05)";
                 }}
               >
-                <item.Icon size={20} strokeWidth={1.8} color={isDark ? "#00ff88" : "#6366f1"} />
+                <div
+                  className="icon-wrapper"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    borderRadius: "10px",
+                    background: isDark
+                      ? "linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(0, 212, 255, 0.15))"
+                      : "linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1))",
+                    border: `1px solid ${isDark ? "rgba(0, 255, 136, 0.2)" : "rgba(99, 102, 241, 0.2)"}`,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginBottom: "8px",
+                    transition: "all 0.3s ease",
+                  }}
+                >
+                  <item.Icon size={20} strokeWidth={1.8} color={isDark ? "#00ff88" : "#6366f1"} />
+                </div>
+                <p style={{ margin: 0, fontWeight: 700, fontSize: "15px", color: colors.nameColor }}>{item.name}</p>
+                <p style={{ margin: "4px 0 0 0", fontSize: "10px", letterSpacing: "0.15em", fontWeight: 600, color: colors.tagColor }}>
+                  {item.tag}
+                </p>
               </div>
-              <p style={{ margin: 0, fontWeight: 700, fontSize: "15px", color: colors.nameColor }}>{item.name}</p>
-              <p style={{ margin: "4px 0 0 0", fontSize: "10px", letterSpacing: "0.15em", fontWeight: 600, color: colors.tagColor }}>
-                {item.tag}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* Row 2 - Right scroll (opposite direction) */}
+          <div className="marquee-track-reverse" style={{ display: "flex", width: "max-content", gap: "16px" }}>
+            {[...STACK_SECOND_HALF, ...STACK_SECOND_HALF, ...STACK_SECOND_HALF, ...STACK_SECOND_HALF].map((item, i) => (
+              <div
+                key={`row2-${i}`}
+                style={{
+                  padding: "14px 24px",
+                  flexShrink: 0,
+                  borderRadius: "16px",
+                  background: colors.pillBg,
+                  border: `1px solid ${colors.pillBorder}`,
+                  boxShadow: "0 4px 20px rgba(0, 0, 0, 0.05)",
+                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                }}
+                className="tech-card"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-4px) scale(1.02)";
+                  e.currentTarget.style.boxShadow = isDark
+                    ? "0 8px 30px rgba(0, 255, 136, 0.2)"
+                    : "0 8px 30px rgba(99, 102, 241, 0.2)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0) scale(1)";
+                  e.currentTarget.style.boxShadow = "0 4px 20px rgba(0, 0, 0, 0.05)";
+                }}
+              >
+                <div
+                  className="icon-wrapper"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    borderRadius: "10px",
+                    background: isDark
+                      ? "linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(0, 212, 255, 0.15))"
+                      : "linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1))",
+                    border: `1px solid ${isDark ? "rgba(0, 255, 136, 0.2)" : "rgba(99, 102, 241, 0.2)"}`,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginBottom: "8px",
+                    transition: "all 0.3s ease",
+                  }}
+                >
+                  <item.Icon size={20} strokeWidth={1.8} color={isDark ? "#00ff88" : "#6366f1"} />
+                </div>
+                <p style={{ margin: 0, fontWeight: 700, fontSize: "15px", color: colors.nameColor }}>{item.name}</p>
+                <p style={{ margin: "4px 0 0 0", fontSize: "10px", letterSpacing: "0.15em", fontWeight: 600, color: colors.tagColor }}>
+                  {item.tag}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -255,9 +316,20 @@ export default function TechMarquee() {
         .marquee-track:hover {
           animation-play-state: paused;
         }
+        .marquee-track-reverse {
+          animation: marquee-scroll-reverse 40s linear infinite;
+          padding: 0 24px;
+        }
+        .marquee-track-reverse:hover {
+          animation-play-state: paused;
+        }
         @keyframes marquee-scroll {
           from { transform: translateX(0); }
           to { transform: translateX(-50%); }
+        }
+        @keyframes marquee-scroll-reverse {
+          from { transform: translateX(-50%); }
+          to { transform: translateX(0); }
         }
         .tech-card {
           animation: fadeSlideUp 0.6s ease-out forwards;
