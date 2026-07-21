@@ -91,14 +91,14 @@ export default function Navbar() {
                   {/* Services dropdown */}
                   {isServices && servicesOpen && (
                     <div className="absolute left-1/2 top-full w-[300px] -translate-x-1/2 pt-4">
-                      <div className="rounded-2xl bg-[#0D1530] py-3 ring-1 ring-[#4169E1]/50 shadow-[0_0_16px_rgba(65,105,225,0.35),0_24px_60px_-16px_rgba(0,0,0,0.7)]">
+                      <div className="rounded-2xl bg-white py-3 ring-1 ring-[#4169E1]/20 shadow-[0_0_12px_rgba(65,105,225,0.15),0_24px_60px_-16px_rgba(11,18,38,0.25)]">
                         <a
                           href="/services"
-                          className="block px-6 py-3 font-['Inter'] text-[14px] font-medium text-white/60 transition-colors hover:bg-white/10 hover:text-white"
+                          className="block px-6 py-3 font-['Inter'] text-[14px] font-medium text-[#0B1226]/60 transition-colors hover:bg-[#4169E1]/10 hover:text-[#0B1226]"
                         >
                           {t("nav.allServices")}
                         </a>
-                        <div className="mx-4 my-1 h-px bg-white/10" />
+                        <div className="mx-4 my-1 h-px bg-[#0B1226]/10" />
                         {serviceCategories.map((cat) => (
                           <div
                             key={cat.name}
@@ -108,8 +108,8 @@ export default function Navbar() {
                             <div
                               className={`flex cursor-default items-center justify-between px-6 py-3 font-['Inter'] text-[14px] font-medium transition-colors ${
                                 activeCategory === cat.name
-                                  ? "bg-white/10 text-white"
-                                  : "text-white/75"
+                                  ? "bg-[#4169E1]/10 text-[#0B1226]"
+                                  : "text-[#0B1226]/75"
                               }`}
                             >
                               {cat.name}
@@ -119,12 +119,12 @@ export default function Navbar() {
                             </div>
                             {activeCategory === cat.name && (
                               <div className="absolute left-full top-0 w-[280px] pl-2">
-                                <div className="rounded-2xl bg-[#0D1530] py-3 ring-1 ring-[#4169E1]/50 shadow-[0_0_16px_rgba(65,105,225,0.35),0_24px_60px_-16px_rgba(0,0,0,0.7)]">
+                                <div className="rounded-2xl bg-white py-3 ring-1 ring-[#4169E1]/20 shadow-[0_0_12px_rgba(65,105,225,0.15),0_24px_60px_-16px_rgba(11,18,38,0.25)]">
                                   {cat.services.map((service) => (
                                     <a
                                       key={service.slug}
                                       href={`/services/${service.slug}`}
-                                      className="block px-6 py-3 font-['Inter'] text-[14px] font-medium text-white/75 transition-colors hover:bg-white/10 hover:text-white"
+                                      className="block px-6 py-3 font-['Inter'] text-[14px] font-medium text-[#0B1226]/75 transition-colors hover:bg-[#4169E1]/10 hover:text-[#0B1226]"
                                     >
                                       {service.name}
                                     </a>
@@ -169,7 +169,7 @@ export default function Navbar() {
 
         {/* Mobile menu panel */}
         {menuOpen && (
-          <div className="mt-3 rounded-3xl bg-[#0D1530] p-6 ring-1 ring-[#4169E1]/50 shadow-[0_0_16px_rgba(65,105,225,0.35),0_24px_60px_-16px_rgba(0,0,0,0.7)] lg:hidden">
+          <div className="mt-3 rounded-3xl bg-white p-6 ring-1 ring-[#4169E1]/20 shadow-[0_0_12px_rgba(65,105,225,0.15),0_24px_60px_-16px_rgba(11,18,38,0.25)] lg:hidden">
             <div className="flex flex-col">
               {navLinks.map((link) => {
                 const isServices = link.href === "/services";
@@ -179,7 +179,7 @@ export default function Navbar() {
                       <button
                         type="button"
                         onClick={() => setMobileServicesOpen((v) => !v)}
-                        className="flex w-full items-center justify-between py-4 font-['Inter'] text-[16px] font-medium text-white/85"
+                        className="flex w-full items-center justify-between py-4 font-['Inter'] text-[16px] font-medium text-[#0B1226]/85"
                       >
                         {t("nav.services")}
                         <span
@@ -191,11 +191,11 @@ export default function Navbar() {
                         </span>
                       </button>
                       {mobileServicesOpen && (
-                        <div className="mb-2 rounded-2xl bg-white/5 p-2">
+                        <div className="mb-2 rounded-2xl bg-[#4169E1]/[0.06] p-2">
                           <a
                             href="/services"
                             onClick={() => setMenuOpen(false)}
-                            className="block rounded-xl px-4 py-3 font-['Inter'] text-[14px] text-white/70 hover:bg-white/10"
+                            className="block rounded-xl px-4 py-3 font-['Inter'] text-[14px] text-[#0B1226]/70 hover:bg-[#4169E1]/10"
                           >
                             {t("nav.allServices")}
                           </a>
@@ -205,7 +205,7 @@ export default function Navbar() {
                                 key={service.slug}
                                 href={`/services/${service.slug}`}
                                 onClick={() => setMenuOpen(false)}
-                                className="block rounded-xl px-4 py-3 font-['Inter'] text-[14px] text-white/70 hover:bg-white/10"
+                                className="block rounded-xl px-4 py-3 font-['Inter'] text-[14px] text-[#0B1226]/70 hover:bg-[#4169E1]/10"
                               >
                                 {service.name}
                               </a>
@@ -221,7 +221,7 @@ export default function Navbar() {
                     key={link.nameKey}
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className="py-4 font-['Inter'] text-[16px] font-medium text-white/85 hover:text-white"
+                    className="py-4 font-['Inter'] text-[16px] font-medium text-[#0B1226]/85 hover:text-[#0B1226]"
                   >
                     {t(link.nameKey)}
                   </a>
@@ -229,7 +229,7 @@ export default function Navbar() {
               })}
               <a
                 href="mailto:hello@sidpin.com"
-                className="mt-4 rounded-full bg-white px-6 py-3.5 text-center font-['Inter'] text-[15px] font-medium text-[#0B1226]"
+                className="mt-4 rounded-full bg-[#4169E1] px-6 py-3.5 text-center font-['Inter'] text-[15px] font-medium text-white"
               >
                 hello@sidpin.com
               </a>

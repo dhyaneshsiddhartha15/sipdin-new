@@ -29,6 +29,12 @@ export type RecentWork = {
   platformPerf: PlatformPerf[];
   clientQuote: { text: string; name: string; role: string };
   logo?: string; // optional logo path
+  /** YouTube uploads-playlist id ("UU…") — embeds the channel's latest videos. */
+  youtubeUploadsId?: string;
+  /** YouTube channel URL (human-facing link). */
+  youtubeUrl?: string;
+  /** Real poster / creative artwork paths for the "Our Creative Work" gallery. */
+  posters?: string[];
 };
 
 const RECENT_WORK: RecentWork[] = [
@@ -67,6 +73,9 @@ const RECENT_WORK: RecentWork[] = [
       name: "Raga Rishikesh",
       role: "Wellness Retreat",
     },
+    youtubeUploadsId: "UUfOvNAZqsw3vMDVVrARhD4Q",
+    youtubeUrl: "https://youtube.com/@ragarishikesh",
+    posters: ["/poster/raga-rishkes.jpeg"],
   },
   {
     slug: "hith-yoga",
@@ -110,6 +119,7 @@ const RECENT_WORK: RecentWork[] = [
     handle: "@cameramarketdehradun",
     instagramUrl: "https://www.instagram.com/cameramarketdehradun",
     category: "RETAIL",
+    logo: "/work/camera-market-dehradun.jpg",
     industry: "Electronics Retail",
     duration: "90 Days",
     platforms: ["Instagram", "Facebook"],
@@ -137,6 +147,8 @@ const RECENT_WORK: RecentWork[] = [
       name: "Camera Market Dehradun",
       role: "Electronics Retailer",
     },
+    youtubeUploadsId: "UUlnrjq5nKx2GERP-LiNhLGw",
+    youtubeUrl: "https://youtube.com/@cmd_studios",
   },
   {
     slug: "panchbhoot-yog",
@@ -144,6 +156,7 @@ const RECENT_WORK: RecentWork[] = [
     handle: "@panchbhootyog",
     instagramUrl: "https://www.instagram.com/panchbhootyog",
     category: "YOGA",
+    logo: "/work/panchbhoot-yog.jpg",
     industry: "Yoga & Wellness",
     duration: "90 Days",
     platforms: ["Instagram", "Facebook", "YouTube"],
@@ -172,6 +185,8 @@ const RECENT_WORK: RecentWork[] = [
       name: "Akshat Trivedi",
       role: "Panchbhoot Yog",
     },
+    youtubeUploadsId: "UUzA0JQQ-r73A4sy8IAvD9xA",
+    youtubeUrl: "https://youtube.com/@panchbhootyog",
   },
   {
     slug: "himalayan-yogi",
@@ -179,6 +194,7 @@ const RECENT_WORK: RecentWork[] = [
     handle: "@ahimalayanyogi",
     instagramUrl: "https://www.instagram.com/ahimalayanyogi",
     category: "WELLNESS",
+    logo: "/work/himalayan-yogi.jpg",
     industry: "Yoga & Spirituality",
     duration: "90 Days",
     platforms: ["Instagram", "YouTube"],
@@ -206,6 +222,9 @@ const RECENT_WORK: RecentWork[] = [
       name: "A Himalayan Yogi",
       role: "Yoga Teacher",
     },
+    youtubeUploadsId: "UUVItwzgfjYiKipWtTZWzIrA",
+    youtubeUrl: "https://youtube.com/@advaityogbhushan",
+    posters: ["/poster/himalay-yogi.jpeg", "/poster/omkara.jpeg"],
   },
 ];
 

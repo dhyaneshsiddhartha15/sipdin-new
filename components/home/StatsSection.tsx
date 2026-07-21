@@ -14,7 +14,7 @@ const stats = [
   {
     icon: Rocket,
     color: "#6E8CFF",
-    value: 80,
+    value: 50,
     suffix: "+",
     label: "Projects Delivered",
     description: "Across digital marketing, web development, and creative design",
@@ -38,7 +38,7 @@ const stats = [
   {
     icon: Award,
     color: "#A78BFA",
-    value: 5,
+    value: 3,
     suffix: "+",
     label: "Years of Excellence",
     description: "Building digital products and marketing systems that work",

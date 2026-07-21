@@ -1,8 +1,8 @@
 /**
- * RecentWorkDetail — full social-media campaign case-study page (modelled on the
- * reference "Naturals" layout). Dark theme with a per-campaign accent: hero +
- * highlight card, process cards, 90-day results, per-platform performance,
- * creative gallery, tools, client quote, and a closing CTA.
+ * RecentWorkDetail — full social-media campaign case-study page. SIDPIN dark-navy
+ * theme with a per-campaign accent: hero + real Instagram profile card, process
+ * cards, results, per-platform performance, an "Our Creative Work" block that
+ * embeds the client's real YouTube channel + posters, tools, quote and CTA.
  */
 
 import Link from "next/link";
@@ -18,8 +18,14 @@ import {
   Building2,
   Clock,
   Share2,
+  Camera,
+  MonitorPlay,
+  ExternalLink,
 } from "lucide-react";
 import type { RecentWork } from "@/lib/recentWork";
+
+/** SIDPIN dark-navy surface used across the recent-work detail pages. */
+const NAVY = "#0a1024";
 
 const PROCESS = [
   { icon: Target, title: "Strategy & Planning", body: "We researched the audience, competitors, and market trends to create a data-driven content strategy." },
@@ -48,9 +54,10 @@ function MiniChart({ color }: { color: string }) {
 
 export default function RecentWorkDetail({ work }: { work: RecentWork }) {
   const a = work.accent;
+  const igFollowers = work.platformPerf.find((p) => p.platform === "Instagram")?.rows.find((r) => /follower/i.test(r.label));
 
   return (
-    <main className="bg-[#0a0a0a] text-white">
+    <main style={{ backgroundColor: NAVY }} className="text-white">
       <div className="mx-auto max-w-[1120px] px-[24px] pt-32 md:px-[40px] md:pt-36">
         {/* Top bar */}
         <div className="flex items-center justify-between">
@@ -85,39 +92,59 @@ export default function RecentWorkDetail({ work }: { work: RecentWork }) {
               <a href={work.instagramUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-[14px] font-bold text-black transition-transform duration-300 hover:scale-[1.04]" style={{ background: a, fontFamily: "Geist, sans-serif" }}>
                 View Live Campaign <ArrowRight size={16} />
               </a>
-              <a href={work.instagramUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-[14px] font-semibold text-white transition-colors hover:border-white/50" style={{ fontFamily: "Geist, sans-serif" }}>
-                Watch Campaign Reel <Play size={14} fill="currentColor" />
-              </a>
+              {work.youtubeUrl && (
+                <a href={work.youtubeUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-[14px] font-semibold text-white transition-colors hover:border-white/50" style={{ fontFamily: "Geist, sans-serif" }}>
+                  Watch on YouTube <Play size={14} fill="currentColor" />
+                </a>
+              )}
             </div>
           </div>
 
-          {/* Highlight card */}
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 p-8 shadow-[0_40px_90px_-40px_rgba(0,0,0,0.9)]" style={{ background: `linear-gradient(160deg, ${work.gradient[0]}, ${work.gradient[1]})` }}>
+          {/* Real Instagram profile card */}
+          <a
+            href={work.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative block overflow-hidden rounded-3xl border border-white/10 p-8 shadow-[0_40px_90px_-40px_rgba(0,0,0,0.9)] transition-transform duration-300 hover:-translate-y-1"
+            style={{ background: `linear-gradient(160deg, ${work.gradient[0]}, ${work.gradient[1]})` }}
+          >
             <div className="pointer-events-none absolute inset-0 opacity-40" style={{ background: `radial-gradient(520px 240px at 70% 0%, ${a}44, transparent)` }} />
             <div className="relative">
-              <span className="text-[13px] font-semibold uppercase tracking-[0.25em]" style={{ color: a, fontFamily: "Geist, sans-serif" }}>
-                {work.handle}
-              </span>
-              <p className="mt-6 text-[28px] font-extrabold leading-tight md:text-[34px]" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
-                {work.brand}
-              </p>
-              <p className="mt-2 text-[14px] text-white/70" style={{ fontFamily: "Inter, sans-serif" }}>
+              <div className="flex items-center gap-4">
+                <span className="grid h-14 w-14 place-items-center overflow-hidden rounded-full text-[18px] font-extrabold text-black" style={{ background: a, fontFamily: "Hanken Grotesk, sans-serif" }}>
+                  {work.logo ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={work.logo} alt={work.brand} className="h-full w-full object-cover" />
+                  ) : (
+                    work.brand[0]
+                  )}
+                </span>
+                <div>
+                  <p className="text-[20px] font-extrabold leading-tight" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+                    {work.brand}
+                  </p>
+                  <span className="flex items-center gap-1.5 text-[13px] font-semibold" style={{ color: a, fontFamily: "Geist, sans-serif" }}>
+                    <Camera size={14} /> {work.handle}
+                  </span>
+                </div>
+              </div>
+
+              <p className="mt-5 text-[14px] text-white/70" style={{ fontFamily: "Inter, sans-serif" }}>
                 {work.productLine}
               </p>
 
-              <div className="mt-10 rounded-2xl bg-black/30 p-5 backdrop-blur">
-                <div className="flex items-end justify-between">
-                  <span className="text-[30px] font-extrabold" style={{ color: a, fontFamily: "Hanken Grotesk, sans-serif" }}>
-                    {work.heroStat.value}
-                  </span>
-                  <span className="mb-1 text-[13px] text-white/70" style={{ fontFamily: "Inter, sans-serif" }}>
-                    {work.heroStat.label}
-                  </span>
-                </div>
-                <MiniChart color={a} />
+              {/* Real profile stats */}
+              <div className="mt-6 grid grid-cols-3 gap-3">
+                {igFollowers && <ProfileStat value={igFollowers.value} label="Followers" accent={a} />}
+                <ProfileStat value={work.heroStat.value} label={work.heroStat.label} accent={a} />
+                <ProfileStat value={work.platforms.length.toString()} label="Platforms" accent={a} />
               </div>
+
+              <span className="mt-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2.5 text-[13px] font-bold text-white transition-colors group-hover:bg-white/20" style={{ fontFamily: "Geist, sans-serif" }}>
+                <Camera size={15} /> View Instagram profile <ArrowUpRightMini />
+              </span>
             </div>
-          </div>
+          </a>
         </div>
 
         {/* How we managed */}
@@ -170,13 +197,9 @@ export default function RecentWorkDetail({ work }: { work: RecentWork }) {
           </div>
         </Section>
 
-        {/* Creative work */}
+        {/* Creative work — real embeds */}
         <Section title="Our Creative Work" subtitle="Designs, videos & content that captured attention and built brand identity.">
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <div key={i} className="aspect-[4/5] rounded-2xl border border-white/10" style={{ background: `linear-gradient(${140 + i * 20}deg, ${work.gradient[0]}, ${work.gradient[1]})` }} />
-            ))}
-          </div>
+          <CreativeWork work={work} />
         </Section>
 
         {/* Tools */}
@@ -221,6 +244,114 @@ export default function RecentWorkDetail({ work }: { work: RecentWork }) {
         </div>
       </div>
     </main>
+  );
+}
+
+function ArrowUpRightMini() {
+  return <ArrowRight size={13} className="-rotate-45" />;
+}
+
+function ProfileStat({ value, label, accent }: { value: string; label: string; accent: string }) {
+  return (
+    <div className="rounded-xl bg-black/25 px-3 py-3 text-center backdrop-blur">
+      <div className="text-[18px] font-extrabold leading-none" style={{ color: accent, fontFamily: "Hanken Grotesk, sans-serif" }}>{value}</div>
+      <div className="mt-1.5 text-[10.5px] leading-tight text-white/60" style={{ fontFamily: "Inter, sans-serif" }}>{label}</div>
+    </div>
+  );
+}
+
+/** Real creative work: embedded YouTube channel + posters + profile links. */
+function CreativeWork({ work }: { work: RecentWork }) {
+  const a = work.accent;
+  const hasYouTube = !!work.youtubeUploadsId;
+  const hasPosters = !!work.posters?.length;
+
+  return (
+    <div className="space-y-8">
+      {/* YouTube channel embed (latest uploads) */}
+      {hasYouTube && (
+        <div>
+          <p className="mb-3 flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.15em] text-white/60" style={{ fontFamily: "Geist, sans-serif" }}>
+            <MonitorPlay size={16} style={{ color: a }} /> Latest from their channel
+          </p>
+          <div className="overflow-hidden rounded-2xl border border-white/10 bg-black shadow-[0_30px_70px_-30px_rgba(0,0,0,0.9)]">
+            <div className="relative w-full" style={{ aspectRatio: "16 / 9" }}>
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/videoseries?list=${work.youtubeUploadsId}`}
+                title={`${work.brand} on YouTube`}
+                className="absolute inset-0 h-full w-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Posters made by the agency */}
+      {hasPosters && (
+        <div>
+          <p className="mb-3 text-[13px] font-bold uppercase tracking-[0.15em] text-white/60" style={{ fontFamily: "Geist, sans-serif" }}>
+            Poster &amp; campaign artwork
+          </p>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {work.posters!.map((src) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={src}
+                src={src}
+                alt={`${work.brand} campaign poster`}
+                className="w-full rounded-2xl border border-white/10 object-cover shadow-[0_30px_70px_-40px_rgba(0,0,0,0.9)]"
+                loading="lazy"
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Follow / watch link cards */}
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <a
+          href={work.instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-colors hover:border-white/25 hover:bg-white/[0.06]"
+        >
+          <span className="flex items-center gap-3">
+            <span className="grid h-11 w-11 place-items-center rounded-xl" style={{ background: `${a}22`, color: a }}>
+              <Camera size={20} />
+            </span>
+            <span style={{ fontFamily: "Inter, sans-serif" }}>
+              <span className="block text-[14px] font-bold text-white">Instagram</span>
+              <span className="text-[12.5px] text-white/55">{work.handle}</span>
+            </span>
+          </span>
+          <ExternalLink size={16} className="text-white/40 transition-colors group-hover:text-white" />
+        </a>
+
+        {work.youtubeUrl && (
+          <a
+            href={work.youtubeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-colors hover:border-white/25 hover:bg-white/[0.06]"
+          >
+            <span className="flex items-center gap-3">
+              <span className="grid h-11 w-11 place-items-center rounded-xl" style={{ background: `${a}22`, color: a }}>
+                <MonitorPlay size={20} />
+              </span>
+              <span style={{ fontFamily: "Inter, sans-serif" }}>
+                <span className="block text-[14px] font-bold text-white">YouTube</span>
+                <span className="text-[12.5px] text-white/55">Watch the channel</span>
+              </span>
+            </span>
+            <ExternalLink size={16} className="text-white/40 transition-colors group-hover:text-white" />
+          </a>
+        )}
+      </div>
+    </div>
   );
 }
 

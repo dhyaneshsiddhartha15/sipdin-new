@@ -14,7 +14,7 @@ export default function RecentWork() {
   const items = getAllRecentWork();
 
   return (
-    <section className="relative overflow-hidden bg-[#080808] py-[80px] text-white md:py-[110px]">
+    <section className="relative overflow-hidden bg-[#0a1024] py-[80px] text-white md:py-[110px]">
       {/* Header */}
       <div className="relative mx-auto flex max-w-[1280px] flex-col gap-6 px-[24px] md:flex-row md:items-end md:justify-between md:px-[48px]">
         <div>
@@ -60,7 +60,19 @@ export default function RecentWork() {
                   className="relative flex aspect-[3/4.4] flex-col justify-end overflow-hidden rounded-2xl border border-white/10 p-5 shadow-[0_30px_70px_-30px_rgba(0,0,0,0.9)]"
                   style={{ background: `linear-gradient(160deg, ${w.gradient[0]}, ${w.gradient[1]})` }}
                 >
+                  {/* Brand cover wash — the Instagram profile image, blurred as a soft backdrop */}
+                  {w.logo && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={w.logo}
+                      alt=""
+                      aria-hidden
+                      className="pointer-events-none absolute inset-x-0 top-0 h-3/5 w-full scale-125 object-cover opacity-30 blur-2xl"
+                    />
+                  )}
                   <div className="pointer-events-none absolute inset-0 opacity-40" style={{ background: `radial-gradient(420px 200px at 30% 0%, ${w.accent}55, transparent)` }} />
+                  {/* Legibility scrim — darkens the lower half so the title/stat stay crisp */}
+                  <div className="pointer-events-none absolute inset-0" style={{ background: `linear-gradient(180deg, transparent 35%, ${w.gradient[1]} 100%)` }} />
                   <div className="relative">
                     <span className="grid h-11 w-11 place-items-center rounded-full overflow-hidden text-[16px] font-extrabold text-black" style={{ background: w.accent, fontFamily: "Hanken Grotesk, sans-serif" }}>
                       {w.logo ? (

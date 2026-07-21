@@ -6,7 +6,7 @@ import type { Service, ServiceCategory } from "@/lib/services";
 import ReviewsAndConnect from "./ReviewsAndConnect";
 
 const stats = [
-  { value: "150+", label: "Projects Completed" },
+  { value: "50+", label: "Projects Completed" },
   { value: "100%", label: "Client Retention" },
   { value: "4.9", label: "Client Rating" },
 ];

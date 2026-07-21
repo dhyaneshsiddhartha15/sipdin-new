@@ -154,6 +154,35 @@ function SectionBlock({ section, accent }: { section: Section; accent: string })
     );
   }
 
+  if (section.type === "image") {
+    const single = section.images.length === 1;
+    return (
+      <Card accent={accent}>
+        {section.heading && <Heading accent={accent}>{section.heading}</Heading>}
+        {section.intro && (
+          <p className="mt-6 text-[18px] font-medium leading-[1.8] text-[#333] md:text-[20px]" style={{ fontFamily: "Inter, sans-serif" }}>
+            {section.intro}
+          </p>
+        )}
+        <div className={`${section.heading || section.intro ? "mt-6" : ""} grid gap-6 ${single ? "" : "sm:grid-cols-2"}`}>
+          {section.images.map((img) => (
+            <figure key={img.src}>
+              <div className="overflow-hidden rounded-2xl border border-[#0f1728]/10 bg-[#faf7f0]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={img.src} alt={img.caption ?? "Case study visual"} className="h-auto w-full object-contain" loading="lazy" />
+              </div>
+              {img.caption && (
+                <figcaption className="mt-3 text-center text-[14px] font-medium italic text-[#666]" style={{ fontFamily: "Inter, sans-serif" }}>
+                  {img.caption}
+                </figcaption>
+              )}
+            </figure>
+          ))}
+        </div>
+      </Card>
+    );
+  }
+
   // quote
   return (
     <Card accent={accent} className="text-center">
@@ -180,52 +209,18 @@ function SectionBlock({ section, accent }: { section: Section; accent: string })
 export default function CaseStudyDetail({ study }: { study: CaseStudy }) {
   return (
     <article style={PAPER_BG}>
-      {/* Hero */}
+      {/* Hero — heading only */}
       <section className="mx-auto max-w-[1500px] px-[24px] pb-16 pt-36 md:px-[40px] md:pt-44">
-        <div className="grid items-center gap-10 lg:grid-cols-2">
-          {/* Screenshot / placeholder */}
-          <div className="order-2 lg:order-1">
-            <div className="overflow-hidden rounded-2xl border border-white/40 bg-white shadow-[0_40px_90px_-40px_rgba(8,30,80,0.7)]">
-              <div className="flex items-center gap-1.5 border-b border-line bg-surface-2 px-4 py-3">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-              </div>
-              {study.heroImage ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={study.heroImage} alt={`${study.product} dashboard`} className="h-auto w-full object-cover" />
-              ) : (
-                <div className="grid aspect-[16/10] place-items-center" style={{ background: `linear-gradient(135deg, ${study.accent}22, ${study.accent}0a)` }}>
-                  <div className="text-center">
-                    {study.logo ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img src={study.logo} alt={study.product} className="mx-auto h-16 w-auto max-w-[180px] object-contain" />
-                    ) : (
-                      <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl text-2xl font-extrabold text-white shadow-lg" style={{ background: study.accent, fontFamily: "Hanken Grotesk, sans-serif" }}>
-                        {study.productInitial}
-                      </div>
-                    )}
-                    <p className="mt-4 text-[16px] font-bold text-fg" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
-                      {study.product} Dashboard
-                    </p>
-                    <p className="mt-1 text-[13px] text-fg-3" style={{ fontFamily: "Inter, sans-serif" }}>
-                      Preview image — add later
-                    </p>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Title */}
-          <div className="order-1 lg:order-2">
-            <span className="inline-block rounded bg-white/20 px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.25em] text-white backdrop-blur" style={{ fontFamily: "Geist, sans-serif" }}>
-              {study.tag}
-            </span>
-            <h1 className="mt-5 text-[38px] font-extrabold leading-[1.05] tracking-tight text-white drop-shadow-[0_2px_20px_rgba(8,30,80,0.4)] md:text-[56px]" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
-              {study.title}
-            </h1>
-          </div>
+        <div className="max-w-4xl">
+          <span className="inline-block rounded bg-white/20 px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.25em] text-white backdrop-blur" style={{ fontFamily: "Geist, sans-serif" }}>
+            {study.tag}
+          </span>
+          <h1 className="mt-5 text-[38px] font-extrabold leading-[1.05] tracking-tight text-white drop-shadow-[0_2px_20px_rgba(8,30,80,0.4)] md:text-[56px]" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+            {study.title}
+          </h1>
+          <p className="mt-5 max-w-2xl text-[17px] leading-relaxed text-white/85 drop-shadow-[0_2px_20px_rgba(8,30,80,0.4)] md:text-[19px]" style={{ fontFamily: "Inter, sans-serif" }}>
+            {study.description}
+          </p>
         </div>
 
         {/* Stats — creative cards */}

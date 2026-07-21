@@ -14,6 +14,7 @@ export type Section =
   | { type: "text"; heading: string; body: string[] }
   | { type: "list"; heading: string; intro?: string; items: ListItem[]; note?: string }
   | { type: "table"; heading: string; columns: string[]; rows: string[][] }
+  | { type: "image"; heading?: string; intro?: string; images: { src: string; caption?: string }[] }
   | { type: "quote"; text: string; name: string; role: string };
 
 export type CaseStudy = {
@@ -646,6 +647,134 @@ const CASE_STUDIES: CaseStudy[] = [
         text: "We take a real budget and a real deadline and treat them as design constraints to work within, not excuses for a lesser outcome — a site RITM can point prospective students to with confidence.",
         name: "Raboche Institute of Technology & Management",
         role: "Website Design & Development",
+      },
+    ],
+  },
+  {
+    slug: "dharohar-dhaagon-ki-brand-identity",
+    product: "धरोहर धागों की",
+    tag: "Brand Identity & Logo Design",
+    title: "धरोहर धागों की – Heritage Woven in Threads",
+    description:
+      "A complete visual identity for a women's ethnic-wear boutique — a Devanagari 'ध' monogram, an earthy heritage palette and a full type system, delivered in one week and now in active use across the store.",
+    accent: "#B58350",
+    bannerColor: "#4A452F",
+    productInitial: "ध",
+    heroImage: "/case-studies/dharohar/final-logo.png",
+    watchUrl: "#",
+    stats: [
+      { value: "1 Week", label: "Full Identity Turnaround" },
+      { value: "2 Rounds", label: "Of Revision" },
+      { value: "In-Store", label: "Now Live as Signage" },
+    ],
+    sections: [
+      {
+        type: "text",
+        heading: "Project Overview",
+        body: [
+          "Client: धरोहर धागों की · Industry: Women's Clothing, Fabrics & Boutique · Scope: Brand Strategy, Logo Design, Colour Palette, Typography System, Packaging & Signage Mockups · Timeline: 1 Week (2 rounds of revision) · Tools: CorelDRAW & Adobe Photoshop.",
+          "धरोहर धागों की approached us to build a complete visual identity for their boutique — a label rooted in Indian textile heritage, women's ethnic wear, and handcrafted fabric artistry. The brief called for a mark that felt premium, feminine and timeless, avoiding anything generic, overly literal, or decorative for its own sake.",
+          "Deliverables: primary logo, colour system, type system, and label / packaging / signage mockups — final artwork delivered in editable CDR format, now in active use across the client's boutique and in-store display.",
+        ],
+      },
+      {
+        type: "list",
+        heading: "Brand Strategy",
+        intro:
+          "Before any visual exploration began, we defined the brand's core territory: heritage, craftsmanship, and the emotional bond between fabric and tradition. The name itself — 'धरोहर धागों की', meaning 'heritage of threads' — set the tone for every decision that followed. We anchored the strategy around three pillars:",
+        items: [
+          { label: "Heritage", text: "Rooted in traditional Indian textile and craft sensibility, never costume-like or clichéd." },
+          { label: "Feminine Elegance", text: "Soft, confident, boutique-luxury, built for a discerning clientele." },
+          { label: "Timelessness", text: "A mark designed to outlast trends, working equally well on a woven saree label or a storefront sign." },
+        ],
+      },
+      {
+        type: "image",
+        images: [{ src: "/case-studies/dharohar/mood.jpg", caption: "Mood direction — heritage textiles, warm craft tones, and quiet feminine detail." }],
+      },
+      {
+        type: "text",
+        heading: "Colour Palette",
+        body: [
+          "The palette was developed to feel earthy, premium and distinctly Indian — deep olive for gravity and heritage, antique brass for warmth and craft, and soft ivory to keep the system light and boutique-appropriate.",
+        ],
+      },
+      {
+        type: "image",
+        images: [{ src: "/case-studies/dharohar/palette.png", caption: "Final brand colour system, sampled directly from the approved artwork." }],
+      },
+      {
+        type: "text",
+        heading: "Typography System",
+        body: [
+          "The wordmark uses a refined Devanagari display letterform for 'धरोहर धागों की', chosen for its bold, heritage-driven character — confident enough to anchor the mark, warm enough to feel handcrafted rather than corporate.",
+          "It is paired with a clean, neutral sans for supporting text — tags, care labels, packaging copy and digital use — to keep everyday communication legible at small sizes.",
+        ],
+      },
+      {
+        type: "image",
+        images: [{ src: "/case-studies/dharohar/typography.png", caption: "Primary wordmark typeface — bold heritage display." }],
+      },
+      {
+        type: "text",
+        heading: "Logo Design Process",
+        body: [
+          "The design centres on the Devanagari letter 'ध' — the first sound of 'धरोहर' (heritage) — reimagined as a monogram. Rather than pairing the letter with a separate decorative icon, we built the brand's signature motif directly into the letterform's own strokes, so mark and symbolism read as one continuous gesture instead of two elements placed side by side.",
+          "Early exploration focused on proportion and weight: how tall the stem should stand, how open the bowl needed to be to stay legible at small sizes, and where a supporting motif could grow naturally out of the letter's own terminals without overwhelming it.",
+          "Once the core gesture was approved, we moved to precise construction — aligning the stem, bowl and flourish to a consistent grid so the mark holds its balance at every size, from a woven fabric tag to a full storefront sign.",
+        ],
+      },
+      {
+        type: "image",
+        images: [{ src: "/case-studies/dharohar/logo-process.png", caption: "From rough construction sketch to the finalised, client-approved mark, on a proportion grid." }],
+      },
+      {
+        type: "text",
+        heading: "Final Logo",
+        body: [
+          "The finished mark balances a bold, heritage-inspired letterform in deep olive with a slender brass thread motif that curls away from the stem — a quiet nod to the brand's craft roots — resting above a soft, abstract fabric fold in warm tan. The result is a symbol that is distinctive on its own, without needing the full name beside it.",
+        ],
+      },
+      {
+        type: "image",
+        images: [{ src: "/case-studies/dharohar/final-logo.png", caption: "Final, approved logo — delivered to the client in editable CDR format." }],
+      },
+      {
+        type: "text",
+        heading: "Brand Applications",
+        body: [
+          "To make sure the identity held up beyond the screen, we mocked up the logo across the client's real-world touchpoints — fabric and saree labels, product packaging, shopping bags, and storefront signage. The mark has since been put into production and is on display in the client's boutique.",
+        ],
+      },
+      {
+        type: "image",
+        images: [{ src: "/case-studies/dharohar/applications.png", caption: "Logo applied across fabric labels, packaging, shopping bags and storefront signage." }],
+      },
+      {
+        type: "list",
+        heading: "Process & Timeline",
+        intro: "The full identity — from first strategy conversation to final, print-ready artwork — was completed in one week across two structured rounds of revision:",
+        items: [
+          { label: "Day 1–2", text: "Brand strategy, mood direction and colour exploration." },
+          { label: "Day 2–4", text: "Logo concept development around the 'ध' letterform." },
+          { label: "Day 4–5", text: "Client review (Round 1) and refinement of the selected direction." },
+          { label: "Day 5–6", text: "Final revision (Round 2), typography pairing and colour system lock." },
+          { label: "Day 6–7", text: "Application mockups, final artwork preparation and CDR handoff." },
+        ],
+        note: "Using CorelDRAW for vector construction and Adobe Photoshop for texture, mockups and presentation.",
+      },
+      {
+        type: "text",
+        heading: "Outcome",
+        body: [
+          "धरोहर धागों की now has a complete, cohesive brand identity built for longevity — a monogram that is ownable and recognisable on its own, a colour and type system that extends cleanly across packaging and signage, and finished artwork the client can put into production immediately. The logo is currently in active use as in-store display signage at the client's boutique.",
+        ],
+      },
+      {
+        type: "quote",
+        text: "They turned the meaning behind our name into a mark we're proud to hang in the shop — it feels like heritage, and it's ours.",
+        name: "धरोहर धागों की",
+        role: "Boutique Owner",
       },
     ],
   },
