@@ -132,18 +132,18 @@ export default function TestimonialCarousel() {
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          <div className="relative mx-auto max-w-[820px] rounded-3xl border border-line bg-surface px-8 py-12 shadow-[0_40px_90px_-50px_rgba(65,105,225,0.4)] md:px-16 md:py-16">
-            <Quote size={44} className="mx-auto text-brand" fill="currentColor" />
+          <div className="relative mx-auto max-w-[680px] rounded-3xl border border-line bg-surface px-8 py-10 shadow-[0_20px_60px_-30px_rgba(65,105,225,0.35)] md:px-14 md:py-12">
+            <Quote size={36} className="mx-auto text-brand" fill="currentColor" />
             <blockquote
               key={t.key}
-              className="mx-auto mt-8 max-w-2xl text-center font-semibold leading-[1.3] text-fg"
-              style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: "clamp(22px, 2.8vw, 34px)" }}
+              className="mx-auto mt-7 max-w-2xl text-center font-semibold leading-[1.3] text-fg"
+              style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: "clamp(20px, 2.4vw, 28px)" }}
             >
               &ldquo;{t.quote}&rdquo;
             </blockquote>
 
-            <div className="mt-10 flex flex-col items-center gap-3">
-              <span className="grid h-14 w-14 place-items-center rounded-full bg-brand/12 text-[16px] font-bold text-brand" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+            <div className="mt-8 flex flex-col items-center gap-3">
+              <span className="grid h-12 w-12 place-items-center rounded-full bg-brand/12 text-[15px] font-bold text-brand" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
                 {initials(t.name)}
               </span>
               <div className="text-center" style={{ fontFamily: "Inter, sans-serif" }}>

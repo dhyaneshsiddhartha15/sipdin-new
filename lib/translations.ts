@@ -140,6 +140,12 @@ export const translations = {
     "hero.automation.cta": "Explore Automation",
     "hero.automation.tab": "AI & Automation",
 
+    "hero.crm.eyebrow": "CRM & Sales",
+    "hero.crm.title": "Turn every lead into a lasting customer.",
+    "hero.crm.subtitle": "Track leads, manage pipelines, and nurture relationships — a single CRM that keeps your sales team organized and your customers coming back.",
+    "hero.crm.cta": "Explore CRM",
+    "hero.crm.tab": "CRM",
+
     "hero.video.eyebrow": "Video Production",
     "hero.video.title": "Scroll-stopping video for every channel.",
     "hero.video.subtitle": "Cinematic ads, product demos, and brand stories that capture attention and drive action across all platforms.",
@@ -277,6 +283,12 @@ export const translations = {
     "hero.automation.subtitle": "أتمتة المتابعات، وتأهيل العملاء المتوقعين، ومزامنة البيانات — بينما تركز على إغلاق الصفقات ونمو عملك.",
     "hero.automation.cta": "استكشف الأتمتة",
     "hero.automation.tab": "الذكاء الاصطناعي والأتمتة",
+
+    "hero.crm.eyebrow": "إدارة علاقات العملاء",
+    "hero.crm.title": "حوّل كل عميل محتمل إلى عميل دائم.",
+    "hero.crm.subtitle": "تتبّع العملاء المحتملين، وأدر خطوط المبيعات، وارعَ العلاقات — نظام CRM واحد يبقي فريق مبيعاتك منظّمًا وعملاءك عائدين.",
+    "hero.crm.cta": "استكشف CRM",
+    "hero.crm.tab": "CRM",
 
     "hero.video.eyebrow": "إنتاج الفيديو",
     "hero.video.title": "فيديو يوقف التمرير لكل قناة.",

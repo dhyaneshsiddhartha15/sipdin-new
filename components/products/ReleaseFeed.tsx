@@ -10,6 +10,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ChevronDown, Check, ArrowRight } from "lucide-react";
+import { sendForm } from "@/lib/sendForm";
 import {
   RELEASES,
   PRODUCT_AREAS,
@@ -124,6 +125,24 @@ export default function ReleaseFeed() {
   const [type, setType] = useState<string>(RELEASE_TYPES[0]);
   const [area, setArea] = useState<string>(PRODUCT_AREAS[0]);
   const [page, setPage] = useState(0);
+  const [subEmail, setSubEmail] = useState("");
+  const [subStatus, setSubStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [subMsg, setSubMsg] = useState("");
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubStatus("sending");
+    setSubMsg("");
+    const res = await sendForm("Newsletter subscribe", { Email: subEmail });
+    if (res.ok) {
+      setSubStatus("sent");
+      setSubMsg("You're subscribed! We'll keep you posted.");
+      setSubEmail("");
+    } else {
+      setSubStatus("error");
+      setSubMsg(res.error || "Something went wrong. Please try again.");
+    }
+  };
 
   const filtered = useMemo(() => {
     return RELEASES.filter(
@@ -163,23 +182,35 @@ export default function ReleaseFeed() {
 
           {/* Subscribe */}
           <form
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={handleSubscribe}
             className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row"
           >
             <input
               type="email"
+              required
+              value={subEmail}
+              onChange={(e) => setSubEmail(e.target.value)}
               placeholder="Enter your email"
               className="flex-1 rounded-full border border-white/15 bg-white/[0.05] px-5 py-3 text-[14px] text-white outline-none placeholder:text-white/40 focus:border-[#7c5cec] focus:ring-2 focus:ring-[#7c5cec]/30"
               style={{ fontFamily: "Inter, sans-serif" }}
             />
             <button
               type="submit"
-              className="rounded-full bg-white px-6 py-3 text-[14px] font-bold text-black transition-transform duration-300 hover:scale-[1.03]"
+              disabled={subStatus === "sending"}
+              className="rounded-full bg-white px-6 py-3 text-[14px] font-bold text-black transition-transform duration-300 hover:scale-[1.03] disabled:opacity-60 disabled:cursor-not-allowed"
               style={{ fontFamily: "Geist, sans-serif" }}
             >
-              Subscribe
+              {subStatus === "sending" ? "Subscribing..." : "Subscribe"}
             </button>
           </form>
+          {subMsg && (
+            <p
+              className={`mt-3 text-[13px] ${subStatus === "error" ? "text-red-400" : "text-emerald-400"}`}
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
+              {subMsg}
+            </p>
+          )}
         </div>
       </section>
 
