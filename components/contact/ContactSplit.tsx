@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Paperclip, Check, MapPin } from "lucide-react";
 import FluidCanvas from "./FluidCanvas";
+import { sendForm } from "@/lib/sendForm";
 
 const interests = [
   "SEO",
@@ -21,6 +22,8 @@ export default function ContactSplit() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [fileName, setFileName] = useState<string | null>(null);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [feedback, setFeedback] = useState("");
 
   const toggle = (item: string) => {
     setSelected((prev) =>
@@ -28,15 +31,29 @@ export default function ContactSplit() {
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(
-      `New project enquiry — ${selected.join(", ") || "General"}`
-    );
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nInterested in: ${selected.join(", ")}\n\n${message}`
-    );
-    window.location.href = `mailto:hello@sidpin.com?subject=${subject}&body=${body}`;
+    setStatus("sending");
+    setFeedback("");
+    const res = await sendForm("Project enquiry", {
+      Name: name,
+      Email: email,
+      "Interested in": selected.join(", "),
+      Message: message,
+      ...(fileName ? { Attachment: fileName } : {}),
+    });
+    if (res.ok) {
+      setStatus("sent");
+      setFeedback("Thanks! Your request has been sent — we'll reply fast.");
+      setName("");
+      setEmail("");
+      setMessage("");
+      setSelected([interests[0]]);
+      setFileName(null);
+    } else {
+      setStatus("error");
+      setFeedback(res.error || "Something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -199,10 +216,20 @@ export default function ContactSplit() {
             <button
               type="submit"
               suppressHydrationWarning
-              className="bg-fg text-surface dark:text-black font-['Geist'] text-[14px] font-bold px-10 py-4 rounded-sm hover:opacity-90 hover:-translate-y-0.5 transition-all duration-300"
+              disabled={status === "sending"}
+              className="bg-fg text-surface dark:text-black font-['Geist'] text-[14px] font-bold px-10 py-4 rounded-sm hover:opacity-90 hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Send request
+              {status === "sending" ? "Sending..." : "Send request"}
             </button>
+            {feedback && (
+              <p
+                className={`mt-4 font-['Inter'] text-[14px] ${
+                  status === "error" ? "text-[#c0392b]" : "text-[#0eab93] dark:text-[#35d6c2]"
+                }`}
+              >
+                {feedback}
+              </p>
+            )}
           </div>
         </form>
       </div>

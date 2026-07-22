@@ -1,6 +1,7 @@
 /**
- * RecentWorkDetail — full social-media campaign case-study page. SIDPIN dark-navy
- * theme with a per-campaign accent: hero + real Instagram profile card, process
+ * RecentWorkDetail — full social-media campaign case-study page. Theme-aware
+ * (light/dark via semantic tokens: bg-bg / bg-surface / text-fg / border-line)
+ * with a per-campaign accent: hero + real Instagram profile card, process
  * cards, results, per-platform performance, an "Our Creative Work" block that
  * embeds the client's real YouTube channel + posters, tools, quote and CTA.
  */
@@ -23,9 +24,6 @@ import {
   ExternalLink,
 } from "lucide-react";
 import type { RecentWork } from "@/lib/recentWork";
-
-/** SIDPIN dark-navy surface used across the recent-work detail pages. */
-const NAVY = "#0a1024";
 
 const PROCESS = [
   { icon: Target, title: "Strategy & Planning", body: "We researched the audience, competitors, and market trends to create a data-driven content strategy." },
@@ -57,11 +55,11 @@ export default function RecentWorkDetail({ work }: { work: RecentWork }) {
   const igFollowers = work.platformPerf.find((p) => p.platform === "Instagram")?.rows.find((r) => /follower/i.test(r.label));
 
   return (
-    <main style={{ backgroundColor: NAVY }} className="text-white">
+    <main className="bg-bg text-fg">
       <div className="mx-auto max-w-[1120px] px-[24px] pt-32 md:px-[40px] md:pt-36">
         {/* Top bar */}
         <div className="flex items-center justify-between">
-          <Link href="/case-studies" className="inline-flex items-center gap-2 text-[13px] font-medium text-white/70 transition-colors hover:text-white" style={{ fontFamily: "Geist, sans-serif" }}>
+          <Link href="/case-studies" className="inline-flex items-center gap-2 text-[13px] font-medium text-fg/70 transition-colors hover:text-fg" style={{ fontFamily: "Geist, sans-serif" }}>
             <ArrowLeft size={16} /> Back to All Work
           </Link>
         </div>
@@ -77,7 +75,7 @@ export default function RecentWorkDetail({ work }: { work: RecentWork }) {
               <br />
               <span style={{ color: a }}>{work.heroTitleAccent}</span>
             </h1>
-            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-white/60" style={{ fontFamily: "Inter, sans-serif" }}>
+            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-fg/60" style={{ fontFamily: "Inter, sans-serif" }}>
               {work.intro}
             </p>
 
@@ -93,19 +91,19 @@ export default function RecentWorkDetail({ work }: { work: RecentWork }) {
                 View Live Campaign <ArrowRight size={16} />
               </a>
               {work.youtubeUrl && (
-                <a href={work.youtubeUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-[14px] font-semibold text-white transition-colors hover:border-white/50" style={{ fontFamily: "Geist, sans-serif" }}>
+                <a href={work.youtubeUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 text-[14px] font-semibold text-fg transition-colors hover:border-fg/40" style={{ fontFamily: "Geist, sans-serif" }}>
                   Watch on YouTube <Play size={14} fill="currentColor" />
                 </a>
               )}
             </div>
           </div>
 
-          {/* Real Instagram profile card */}
+          {/* Real Instagram profile card — colored gradient surface, always white text */}
           <a
             href={work.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative block overflow-hidden rounded-3xl border border-white/10 p-8 shadow-[0_40px_90px_-40px_rgba(0,0,0,0.9)] transition-transform duration-300 hover:-translate-y-1"
+            className="group relative block overflow-hidden rounded-3xl border border-white/10 p-8 text-white shadow-[0_40px_90px_-40px_rgba(0,0,0,0.9)] transition-transform duration-300 hover:-translate-y-1"
             style={{ background: `linear-gradient(160deg, ${work.gradient[0]}, ${work.gradient[1]})` }}
           >
             <div className="pointer-events-none absolute inset-0 opacity-40" style={{ background: `radial-gradient(520px 240px at 70% 0%, ${a}44, transparent)` }} />
@@ -151,12 +149,12 @@ export default function RecentWorkDetail({ work }: { work: RecentWork }) {
         <Section title="How We Managed Their Social Media" subtitle="A complete 360° approach to build brand presence and drive measurable results.">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {PROCESS.map((p) => (
-              <div key={p.title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+              <div key={p.title} className="rounded-2xl border border-line bg-surface p-5">
                 <span className="grid h-10 w-10 place-items-center rounded-lg" style={{ background: `${a}22`, color: a }}>
                   <p.icon size={19} />
                 </span>
                 <h3 className="mt-4 text-[15px] font-bold" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>{p.title}</h3>
-                <p className="mt-2 text-[12.5px] leading-relaxed text-white/55" style={{ fontFamily: "Inter, sans-serif" }}>{p.body}</p>
+                <p className="mt-2 text-[12.5px] leading-relaxed text-fg/60" style={{ fontFamily: "Inter, sans-serif" }}>{p.body}</p>
               </div>
             ))}
           </div>
@@ -166,9 +164,9 @@ export default function RecentWorkDetail({ work }: { work: RecentWork }) {
         <Section title={`Campaign Results (${work.duration})`}>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {work.results.map((r) => (
-              <div key={r.label} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+              <div key={r.label} className="rounded-2xl border border-line bg-surface p-5">
                 <div className="text-[30px] font-extrabold leading-none" style={{ color: a, fontFamily: "Hanken Grotesk, sans-serif" }}>{r.value}</div>
-                <div className="mt-2 text-[12.5px] text-white/60" style={{ fontFamily: "Inter, sans-serif" }}>{r.label}</div>
+                <div className="mt-2 text-[12.5px] text-fg/60" style={{ fontFamily: "Inter, sans-serif" }}>{r.label}</div>
                 <MiniChart color={a} />
               </div>
             ))}
@@ -179,14 +177,14 @@ export default function RecentWorkDetail({ work }: { work: RecentWork }) {
         <Section title="Performance by Platform" subtitle="How the campaign performed across every major social platform.">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {work.platformPerf.map((pf) => (
-              <div key={pf.platform} className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+              <div key={pf.platform} className="rounded-2xl border border-line bg-surface p-6">
                 <p className="text-[15px] font-bold" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>{pf.platform}</p>
                 <div className="mt-4 space-y-3">
                   {pf.rows.map((row) => (
                     <div key={row.label} className="flex items-center justify-between text-[13px]" style={{ fontFamily: "Inter, sans-serif" }}>
-                      <span className="text-white/50">{row.label}</span>
+                      <span className="text-fg/50">{row.label}</span>
                       <span className="flex items-center gap-2">
-                        <span className="font-semibold text-white">{row.value}</span>
+                        <span className="font-semibold text-fg">{row.value}</span>
                         <span className="font-semibold" style={{ color: a }}>{row.delta}</span>
                       </span>
                     </div>
@@ -206,7 +204,7 @@ export default function RecentWorkDetail({ work }: { work: RecentWork }) {
         <Section title="Tools & Platforms We Use">
           <div className="flex flex-wrap gap-3">
             {TOOLS.map((t) => (
-              <span key={t} className="rounded-full border border-white/12 bg-white/[0.04] px-5 py-2.5 text-[13px] font-semibold text-white/80" style={{ fontFamily: "Geist, sans-serif" }}>
+              <span key={t} className="rounded-full border border-line bg-surface px-5 py-2.5 text-[13px] font-semibold text-fg/80" style={{ fontFamily: "Geist, sans-serif" }}>
                 {t}
               </span>
             ))}
@@ -215,19 +213,19 @@ export default function RecentWorkDetail({ work }: { work: RecentWork }) {
 
         {/* Client quote */}
         <Section title="What Our Client Says">
-          <figure className="rounded-3xl border border-white/10 bg-white/[0.03] p-8 md:p-12">
-            <p className="text-[20px] font-semibold italic leading-relaxed text-white md:text-[26px]" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+          <figure className="rounded-3xl border border-line bg-surface p-8 md:p-12">
+            <p className="text-[20px] font-semibold italic leading-relaxed text-fg md:text-[26px]" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
               &ldquo;{work.clientQuote.text}&rdquo;
             </p>
             <figcaption className="mt-6" style={{ fontFamily: "Inter, sans-serif" }}>
-              <span className="block text-[15px] font-bold text-white">{work.clientQuote.name}</span>
-              <span className="text-[13px] text-white/55">{work.clientQuote.role}</span>
+              <span className="block text-[15px] font-bold text-fg">{work.clientQuote.name}</span>
+              <span className="text-[13px] text-fg/55">{work.clientQuote.role}</span>
             </figcaption>
           </figure>
         </Section>
       </div>
 
-      {/* Final CTA */}
+      {/* Final CTA — accent surface, always black text */}
       <div className="mx-auto mt-20 max-w-[1120px] px-[24px] pb-24 md:px-[40px]">
         <div className="flex flex-col items-start justify-between gap-6 rounded-3xl p-8 md:flex-row md:items-center md:p-12" style={{ background: a }}>
           <div>
@@ -268,46 +266,49 @@ function CreativeWork({ work }: { work: RecentWork }) {
 
   return (
     <div className="space-y-8">
-      {/* YouTube channel embed (latest uploads) */}
-      {hasYouTube && (
-        <div>
-          <p className="mb-3 flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.15em] text-white/60" style={{ fontFamily: "Geist, sans-serif" }}>
-            <MonitorPlay size={16} style={{ color: a }} /> Latest from their channel
-          </p>
-          <div className="overflow-hidden rounded-2xl border border-white/10 bg-black shadow-[0_30px_70px_-30px_rgba(0,0,0,0.9)]">
-            <div className="relative w-full" style={{ aspectRatio: "16 / 9" }}>
-              <iframe
-                src={`https://www.youtube-nocookie.com/embed/videoseries?list=${work.youtubeUploadsId}`}
-                title={`${work.brand} on YouTube`}
-                className="absolute inset-0 h-full w-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-                loading="lazy"
-              />
+      {/* YouTube channel embed + posters — same row (side by side) on large screens */}
+      {(hasYouTube || hasPosters) && (
+        <div className={hasYouTube && hasPosters ? "grid gap-6 lg:grid-cols-2 lg:items-start" : "space-y-8"}>
+          {hasYouTube && (
+            <div>
+              <p className="mb-3 flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.15em] text-fg/60" style={{ fontFamily: "Geist, sans-serif" }}>
+                <MonitorPlay size={16} style={{ color: a }} /> Latest from their channel
+              </p>
+              <div className="overflow-hidden rounded-2xl border border-line bg-black shadow-[0_30px_70px_-30px_rgba(0,0,0,0.9)]">
+                <div className="relative w-full" style={{ aspectRatio: "16 / 9" }}>
+                  <iframe
+                    src={`https://www.youtube-nocookie.com/embed/videoseries?list=${work.youtubeUploadsId}`}
+                    title={`${work.brand} on YouTube`}
+                    className="absolute inset-0 h-full w-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                    loading="lazy"
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          )}
 
-      {/* Posters made by the agency */}
-      {hasPosters && (
-        <div>
-          <p className="mb-3 text-[13px] font-bold uppercase tracking-[0.15em] text-white/60" style={{ fontFamily: "Geist, sans-serif" }}>
-            Poster &amp; campaign artwork
-          </p>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {work.posters!.map((src) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                key={src}
-                src={src}
-                alt={`${work.brand} campaign poster`}
-                className="w-full rounded-2xl border border-white/10 object-cover shadow-[0_30px_70px_-40px_rgba(0,0,0,0.9)]"
-                loading="lazy"
-              />
-            ))}
-          </div>
+          {hasPosters && (
+            <div>
+              <p className="mb-3 text-[13px] font-bold uppercase tracking-[0.15em] text-fg/60" style={{ fontFamily: "Geist, sans-serif" }}>
+                Poster &amp; campaign artwork
+              </p>
+              <div className="grid grid-cols-1 gap-4">
+                {work.posters!.map((src) => (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    key={src}
+                    src={src}
+                    alt={`${work.brand} campaign poster`}
+                    className="w-full rounded-2xl border border-line object-cover shadow-[0_30px_70px_-40px_rgba(0,0,0,0.9)]"
+                    loading="lazy"
+                  />
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
 
@@ -317,18 +318,18 @@ function CreativeWork({ work }: { work: RecentWork }) {
           href={work.instagramUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-colors hover:border-white/25 hover:bg-white/[0.06]"
+          className="group flex items-center justify-between rounded-2xl border border-line bg-surface p-5 transition-colors hover:border-fg/25 hover:bg-surface-2"
         >
           <span className="flex items-center gap-3">
             <span className="grid h-11 w-11 place-items-center rounded-xl" style={{ background: `${a}22`, color: a }}>
               <Camera size={20} />
             </span>
             <span style={{ fontFamily: "Inter, sans-serif" }}>
-              <span className="block text-[14px] font-bold text-white">Instagram</span>
-              <span className="text-[12.5px] text-white/55">{work.handle}</span>
+              <span className="block text-[14px] font-bold text-fg">Instagram</span>
+              <span className="text-[12.5px] text-fg/55">{work.handle}</span>
             </span>
           </span>
-          <ExternalLink size={16} className="text-white/40 transition-colors group-hover:text-white" />
+          <ExternalLink size={16} className="text-fg/40 transition-colors group-hover:text-fg" />
         </a>
 
         {work.youtubeUrl && (
@@ -336,18 +337,18 @@ function CreativeWork({ work }: { work: RecentWork }) {
             href={work.youtubeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-colors hover:border-white/25 hover:bg-white/[0.06]"
+            className="group flex items-center justify-between rounded-2xl border border-line bg-surface p-5 transition-colors hover:border-fg/25 hover:bg-surface-2"
           >
             <span className="flex items-center gap-3">
               <span className="grid h-11 w-11 place-items-center rounded-xl" style={{ background: `${a}22`, color: a }}>
                 <MonitorPlay size={20} />
               </span>
               <span style={{ fontFamily: "Inter, sans-serif" }}>
-                <span className="block text-[14px] font-bold text-white">YouTube</span>
-                <span className="text-[12.5px] text-white/55">Watch the channel</span>
+                <span className="block text-[14px] font-bold text-fg">YouTube</span>
+                <span className="text-[12.5px] text-fg/55">Watch the channel</span>
               </span>
             </span>
-            <ExternalLink size={16} className="text-white/40 transition-colors group-hover:text-white" />
+            <ExternalLink size={16} className="text-fg/40 transition-colors group-hover:text-fg" />
           </a>
         )}
       </div>
@@ -358,10 +359,10 @@ function CreativeWork({ work }: { work: RecentWork }) {
 function Meta({ icon: Icon, label, value }: { icon: typeof Building2; label: string; value: string }) {
   return (
     <div className="flex items-start gap-2.5">
-      <Icon size={17} className="mt-0.5 text-white/40" />
+      <Icon size={17} className="mt-0.5 text-fg/40" />
       <div style={{ fontFamily: "Inter, sans-serif" }}>
-        <p className="text-[11px] uppercase tracking-wide text-white/40">{label}</p>
-        <p className="text-[14px] font-semibold text-white">{value}</p>
+        <p className="text-[11px] uppercase tracking-wide text-fg/40">{label}</p>
+        <p className="text-[14px] font-semibold text-fg">{value}</p>
       </div>
     </div>
   );
@@ -371,7 +372,7 @@ function Section({ title, subtitle, children }: { title: string; subtitle?: stri
   return (
     <section className="mt-20">
       <h2 className="text-[26px] font-extrabold tracking-tight md:text-[34px]" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>{title}</h2>
-      {subtitle && <p className="mt-2 max-w-2xl text-[14px] text-white/55" style={{ fontFamily: "Inter, sans-serif" }}>{subtitle}</p>}
+      {subtitle && <p className="mt-2 max-w-2xl text-[14px] text-fg/55" style={{ fontFamily: "Inter, sans-serif" }}>{subtitle}</p>}
       <div className="mt-8">{children}</div>
     </section>
   );

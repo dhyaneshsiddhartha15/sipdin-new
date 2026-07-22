@@ -194,31 +194,33 @@ export default function TestimonialsCarousel() {
             className="testimonial-slide"
             style={{
               background: colors.cardBg,
-              borderRadius: "24px",
-              padding: "48px",
+              borderRadius: "20px",
+              padding: "32px",
               border: `1px solid ${colors.border}`,
               boxShadow: isDark
-                ? "0 40px 80px rgba(65, 105, 225, 0.15)"
-                : "0 40px 80px rgba(0, 0, 0, 0.08)",
+                ? "0 20px 50px rgba(65, 105, 225, 0.12)"
+                : "0 20px 50px rgba(0, 0, 0, 0.06)",
+              maxWidth: "900px",
+              margin: "0 auto",
             }}
           >
             {/* Quote */}
             <div style={{
               display: "flex",
               alignItems: "flex-start",
-              gap: "24px",
-              marginBottom: "32px",
+              gap: "20px",
+              marginBottom: "24px",
             }}>
               {/* Avatar */}
               <div style={{ position: "relative", flexShrink: 0 }}>
                 <div
                   className="avatar-glow"
                   style={{
-                    width: "80px",
-                    height: "80px",
+                    width: "64px",
+                    height: "64px",
                     borderRadius: "50%",
                     overflow: "hidden",
-                    border: `3px solid ${isDark ? "#6E8CFF" : "#4169E1"}`,
+                    border: `2px solid ${isDark ? "#6E8CFF" : "#4169E1"}`,
                   }}
                 >
                   <img
@@ -252,10 +254,10 @@ export default function TestimonialsCarousel() {
                 </div>
 
                 <blockquote style={{
-                  fontSize: "24px",
+                  fontSize: "20px",
                   lineHeight: 1.5,
                   color: colors.quote,
-                  marginBottom: "24px",
+                  marginBottom: "20px",
                   fontFamily: "Hanken Grotesk, sans-serif",
                   fontWeight: 500,
                   fontStyle: "italic",
@@ -300,7 +302,7 @@ export default function TestimonialsCarousel() {
               alignItems: "center",
               justifyContent: "space-between",
               borderTop: `1px solid ${colors.border}`,
-              paddingTop: "24px",
+              paddingTop: "20px",
             }}>
               {/* Slide indicators */}
               <div style={{

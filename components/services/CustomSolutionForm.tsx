@@ -1,23 +1,37 @@
 "use client";
 
 import { useState } from "react";
+import { sendForm } from "@/lib/sendForm";
 
 export default function CustomSolutionForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+  const sent = status === "sent";
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\n${message}`
-    );
-    window.location.href = `mailto:hello@sidpin.com?subject=${encodeURIComponent(
-      "Custom Solution Request"
-    )}&body=${body}`;
-    setSent(true);
+    setStatus("sending");
+    setErrorMsg("");
+    const res = await sendForm("Custom Solution Request", {
+      Name: name,
+      Email: email,
+      Phone: phone,
+      Message: message,
+    });
+    if (res.ok) {
+      setStatus("sent");
+      setName("");
+      setEmail("");
+      setPhone("");
+      setMessage("");
+    } else {
+      setStatus("error");
+      setErrorMsg(res.error || "Something went wrong.");
+    }
   };
 
   const inputClass =
@@ -111,17 +125,20 @@ export default function CustomSolutionForm() {
 
         <button
           type="submit"
-          className="font-['Geist'] text-[11px] font-bold tracking-[0.12em] uppercase text-[#4169E1] border border-[#4169E1] rounded-[4px] px-6 py-3 cursor-pointer hover:bg-[#4169E1] hover:text-white transition-colors duration-300"
+          disabled={status === "sending"}
+          className="font-['Geist'] text-[11px] font-bold tracking-[0.12em] uppercase text-[#4169E1] border border-[#4169E1] rounded-[4px] px-6 py-3 cursor-pointer hover:bg-[#4169E1] hover:text-white transition-colors duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
         >
-          Send Message
+          {status === "sending" ? "Sending..." : "Send Message"}
         </button>
 
         <p className="font-['Inter'] text-[13.5px] text-[#555555] text-center mt-8">
           {sent ? (
             <>
-              Thanks! Your email app should open —{" "}
+              Thanks! Your message has been sent —{" "}
               <strong className="text-[#1A1A1A]">we&apos;ll reply fast.</strong>
             </>
+          ) : status === "error" ? (
+            <span className="text-[#c0392b]">{errorMsg}</span>
           ) : (
             <>
               Let&apos;s Boost Your{" "}
