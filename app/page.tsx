@@ -9,7 +9,8 @@ import ParticleWave from "@/components/ui/ParticleWave";
 import VideoShowcase from "@/components/home/VideoShowcase";
 // import IntegrationHero from "@/components/home/IntegrationHero"; // legacy hero — kept, swap back if needed
 import AdobeStyleHero from "@/components/home/AdobeStyleHero";
-import ProductShowcaseGallery from "@/components/home/ProductShowcaseGallery";
+// import ProductShowcaseGallery from "@/components/home/ProductShowcaseGallery"; // replaced by IndustriesShowcase
+import IndustriesShowcase from "@/components/home/IndustriesShowcase";
 import ProductGrid from "@/components/home/ProductGrid";
 import TestimonialCarousel from "@/components/home/TestimonialCarousel";
 import PricingSection from "@/components/home/PricingSection";
@@ -46,8 +47,8 @@ export default function HomePage() {
         {/* 1.56 PRICING — glowing 3D cards with a per-service dropdown */}
         <PricingSection />
 
-        {/* 1.57 PRODUCT SHOWCASE GALLERY — "Everything you need" expanding cards (from video) */}
-        <ProductShowcaseGallery />
+        {/* 1.57 INDUSTRIES SHOWCASE — hover-reveal image list (replaces the expanding cards) */}
+        <IndustriesShowcase />
 
         {/* 1.6 AI SOLUTIONS & MANAGED CLOUD — one combined section (01 AI, 02 Cloud) */}
         <AiCloudSection />
