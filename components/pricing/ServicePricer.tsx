@@ -83,7 +83,7 @@ const SERVICES: ServiceDef[] = [
     key: "website",
     label: "Website development",
     kind: "site",
-    base: { india: [16500, 55000, 165000], gulf: [2499, 6999, 17999], usa: [999, 2999, 6999] },
+    base: { india: [15000, 25000, 40000], gulf: [2499, 6999, 17999], usa: [999, 2999, 6999] },
     tiers: [
       { name: "Starter", desc: "For startups & small businesses establishing their online presence.", includes: ["Up to 6 custom pages, responsive", "Basic on-page SEO + speed optimization", "Contact form, WhatsApp & Maps"], bonus: "1-year domain + web hosting", delivery: "15-day post-launch support" },
       { name: "Business", desc: "For growing businesses looking to generate more leads.", includes: ["Up to 15 pages + editable CMS", "Advanced technical SEO + Search Console", "Blog module + business email (5 inboxes)"], bonus: "1-year domain + premium hosting", delivery: "30-day priority support", featured: true },
@@ -127,7 +127,7 @@ const SERVICES: ServiceDef[] = [
     key: "ecommerce",
     label: "E-commerce (Shopify)",
     kind: "site",
-    base: { india: [45000, 95000, 250000], gulf: [4999, 12999, 27999], usa: [2499, 6499, 13999] },
+    base: { india: [35000, 55000, 110000], gulf: [4999, 12999, 27999], usa: [2499, 6499, 13999] },
     tiers: [
       { name: "Starter Store", desc: "Everything you need to start selling professionally.", includes: ["Up to 8 pages, up to 50 products", "Premium Shopify design + secure gateway", "Inventory, shipping/tax & product reviews"], bonus: "1-year domain + hosting", delivery: "Store launch support" },
       { name: "Growth Store", desc: "A conversion-focused store built to grow your sales.", includes: ["Up to 20 pages, up to 500 products", "Fully custom design + multiple gateways", "Wishlist, coupons, email marketing & analytics"], bonus: "1-year domain + hosting", delivery: "30-day support · multi-currency", featured: true },
@@ -248,10 +248,10 @@ function PlanCard({
           ))}
         </ul>
 
-        <div className="mt-5 flex items-start gap-2.5 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-3">
+        <div className="mt-5 flex items-start gap-2.5 rounded-xl border border-[#c4b5fd]/30 bg-[#c4b5fd]/[0.08] px-3.5 py-3">
           <Gift size={15} className="mt-[2px] shrink-0 text-[#c4b5fd]" />
           <span className="text-[12.5px] leading-snug text-white/70" style={{ fontFamily: "Inter, sans-serif" }}>
-            <span className="text-white/40">Thrown in free — </span>
+            <span className="font-bold text-[#c4b5fd]">Thrown in free — </span>
             {tier.bonus}
           </span>
         </div>

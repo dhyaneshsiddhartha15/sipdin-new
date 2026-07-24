@@ -87,8 +87,8 @@ export const FEATURES: FeatureRow[] = [
 // ── E-Commerce package matrix ──────────────────────────────
 export const ECOMMERCE_PLANS: Plan[] = [
   { key: "starter", name: "Starter", price: "₹35,000", period: "one-time", currency: "", tagline: "Essential online store to start selling" },
-  { key: "growth", name: "Growth", price: "₹70,000", period: "one-time", currency: "", popular: true, tagline: "Scale up with advanced store features" },
-  { key: "enterprise", name: "Enterprise", price: "₹1,50,000+", period: "one-time", currency: "", tagline: "Full-scale custom commerce platform" },
+  { key: "growth", name: "Growth", price: "₹60,000", period: "one-time", currency: "", popular: true, tagline: "Scale up with advanced store features" },
+  { key: "enterprise", name: "Enterprise", price: "₹70,000+", period: "one-time", currency: "", tagline: "Full-scale custom commerce platform" },
 ];
 
 export const ECOMMERCE_FEATURES: FeatureRow[] = [
@@ -135,7 +135,7 @@ export const ECOMMERCE_FEATURES: FeatureRow[] = [
 export const MOBILE_PLANS: Plan[] = [
   { key: "launch", name: "Launch", price: "₹25,000", period: "one-time", currency: "", tagline: "Get your Android app live" },
   { key: "growth", name: "Growth", price: "₹45,000", period: "one-time", currency: "", popular: true, tagline: "Cross-platform Android + iOS app" },
-  { key: "enterprise", name: "Enterprise", price: "₹80,000", period: "one-time", currency: "", tagline: "Advanced app with premium integrations" },
+  { key: "enterprise", name: "Enterprise", price: "₹75,000", period: "one-time", currency: "", tagline: "Advanced app with premium integrations" },
 ];
 
 export const MOBILE_FEATURES: FeatureRow[] = [
@@ -149,23 +149,22 @@ export const MOBILE_FEATURES: FeatureRow[] = [
   { label: "Push Notifications", values: [true, true, true] },
   { label: "API Integration", values: ["Basic", "Advanced", "Unlimited"] },
   { label: "Firebase Integration", values: [true, true, true] },
-  { label: "Google Maps Integration", values: ["Optional", true, true] },
+  { label: "Google Maps Integration", values: [false, true, true] },
   { label: "Payment Gateway", values: [false, true, true] },
   { label: "Social Login (Google / Apple)", values: [false, true, true] },
-  { label: "In-App Chat", values: [false, "Optional", true] },
-  { label: "Booking & Appointment System", values: [false, "Optional", true] },
-  { label: "QR / Barcode Scanner", values: [false, "Optional", true] },
+  { label: "In-App Chat", values: [false, false, true] },
+  { label: "Booking & Appointment System", values: [false, false, true] },
+  { label: "QR / Barcode Scanner", values: [false, false, true] },
   { label: "File Uploads", values: [false, true, true] },
   { label: "Offline Support", values: [false, "Basic", "Advanced"] },
   { label: "Admin Dashboard", values: ["Basic", "Advanced", "Enterprise"] },
-  { label: "CMS Integration", values: [false, "Optional", true] },
   { label: "Database Integration", values: [true, true, true] },
   { label: "Cloud Backend Integration", values: [true, true, true] },
   { label: "Third-Party API Integrations", values: ["Basic", "Advanced", "Unlimited"] },
-  { label: "AI Chatbot Integration", values: [false, "Optional", true] },
-  { label: "Real-Time Features", values: [false, "Optional", true] },
-  { label: "Live Location Tracking", values: [false, "Optional", true] },
-  { label: "Multi-language Support", values: [false, "Optional", true] },
+  { label: "AI Chatbot Integration", values: [false, false, true] },
+  { label: "Real-Time Features", values: [false, false, true] },
+  { label: "Live Location Tracking", values: [false, false, true] },
+  { label: "Multi-language Support", values: [false, false, true] },
   { label: "Analytics Integration", values: ["Basic", "Advanced", "Enterprise"] },
   { label: "Crash Monitoring", values: [true, true, true] },
   { label: "Performance Optimization", values: ["Basic", "Advanced", "Premium"] },
@@ -180,9 +179,9 @@ export const MOBILE_FEATURES: FeatureRow[] = [
 
 // ── Web Development package matrix (detailed) ──────────────
 export const WEBDEV_PLANS: Plan[] = [
-  { key: "starter", name: "Starter", price: "₹16,500", period: "one-time", currency: "", tagline: "For startups & small businesses establishing an online presence" },
-  { key: "business", name: "Business", price: "₹55,000", period: "one-time", currency: "", popular: true, tagline: "For growing businesses looking to generate more leads" },
-  { key: "enterprise", name: "Enterprise", price: "₹1,65,000+", period: "one-time", currency: "", tagline: "Enterprise-grade functionality, integrations & custom features" },
+  { key: "starter", name: "Starter", price: "₹15,000", period: "one-time", currency: "", tagline: "For startups & small businesses establishing an online presence" },
+  { key: "business", name: "Business", price: "₹25,000", period: "one-time", currency: "", popular: true, tagline: "For growing businesses looking to generate more leads" },
+  { key: "enterprise", name: "Enterprise", price: "₹40,000", period: "one-time", currency: "", tagline: "Enterprise-grade functionality, integrations & custom features" },
 ];
 
 export const WEBDEV_FEATURES: FeatureRow[] = [
@@ -201,9 +200,8 @@ export const WEBDEV_FEATURES: FeatureRow[] = [
   { label: "Blog & News Module", values: [false, true, true] },
   { label: "Business Email Setup", values: [false, "Up to 5", "Custom"] },
   { label: "Lead Generation Forms", values: [false, true, true] },
-  { label: "Premium UI/UX Components", values: [false, true, "Fully Custom"] },
+  { label: "3D Interactive Components", values: [false, true, "Fully Custom"] },
   { label: "Performance Optimization", values: ["Standard", "Enhanced", "Premium"] },
-  { label: "Custom Web App Features", values: [false, false, true] },
   { label: "CRM Integration", values: [false, false, true] },
   { label: "Third-Party API Integration", values: [false, false, true] },
   { label: "Payment Gateway Integration", values: [false, false, true] },
@@ -212,17 +210,15 @@ export const WEBDEV_FEATURES: FeatureRow[] = [
   { label: "Animations & Interactions", values: [false, false, "Advanced"] },
   { label: "Multi-Language Support", values: [false, false, true] },
   { label: "Multi-Location Website", values: [false, false, true] },
-  { label: "Security Level", values: ["Standard SSL", "Enhanced", "Enterprise-Level"] },
-  { label: "Dedicated Project Manager", values: [false, false, true] },
-  { label: "Free 1-Yr Domain & Hosting", values: [true, "Premium Hosting", "Premium Hosting"] },
+  { label: "Free 1-Yr Domain & Hosting", values: [true, true, true] },
   { label: "Post-Launch Support", values: ["15 Days", "30 Days", "Priority"] },
 ];
 
 // ── SaaS & CRM Solution matrix ─────────────────────────────
 export const SAAS_PLANS: Plan[] = [
-  { key: "starter", name: "Starter", price: "₹75,000", period: "one-time", currency: "", tagline: "Core CRM to manage customers & leads" },
-  { key: "business", name: "Business", price: "₹1,50,000", period: "one-time", currency: "", popular: true, tagline: "Full CRM with pipelines, automation & collaboration" },
-  { key: "enterprise", name: "Enterprise", price: "₹3,50,000+", period: "one-time", currency: "", tagline: "Enterprise SaaS with AI, multi-company & custom workflows" },
+  { key: "starter", name: "Starter", price: "₹50,000", period: "one-time", currency: "", tagline: "Core CRM to manage customers & leads" },
+  { key: "business", name: "Business", price: "₹70,000", period: "one-time", currency: "", popular: true, tagline: "Full CRM with pipelines, automation & collaboration" },
+  { key: "enterprise", name: "Enterprise", price: "₹1,30,000", period: "one-time", currency: "", tagline: "Enterprise SaaS with AI, multi-company & custom workflows" },
 ];
 
 export const SAAS_FEATURES: FeatureRow[] = [
@@ -264,9 +260,9 @@ export const SAAS_FEATURES: FeatureRow[] = [
 
 // ── Shopify / E-Commerce Store matrix ──────────────────────
 export const SHOPIFY_PLANS: Plan[] = [
-  { key: "starter", name: "Starter Store", price: "₹45,000", period: "one-time", currency: "", tagline: "Everything you need to start selling professionally" },
-  { key: "growth", name: "Growth Store", price: "₹95,000", period: "one-time", currency: "", popular: true, tagline: "Conversion-focused store built to grow your sales" },
-  { key: "enterprise", name: "Enterprise Commerce", price: "₹2,50,000+", period: "one-time", currency: "", tagline: "Enterprise commerce with automation & scalability" },
+  { key: "starter", name: "Starter Store", price: "₹35,000", period: "one-time", currency: "", tagline: "Everything you need to start selling professionally" },
+  { key: "growth", name: "Growth Store", price: "₹55,000", period: "one-time", currency: "", popular: true, tagline: "Conversion-focused store built to grow your sales" },
+  { key: "enterprise", name: "Enterprise Commerce", price: "₹1,10,000+", period: "one-time", currency: "", tagline: "Enterprise commerce with automation & scalability" },
 ];
 
 export const SHOPIFY_FEATURES: FeatureRow[] = [
@@ -299,8 +295,8 @@ export type PlanMatrix = { id: string; label: string; plans: Plan[]; features: F
 
 export const MATRICES: PlanMatrix[] = [
   { id: "web", label: "Web Development", plans: WEBDEV_PLANS, features: WEBDEV_FEATURES },
-  { id: "ecommerce", label: "E-Commerce", plans: ECOMMERCE_PLANS, features: ECOMMERCE_FEATURES },
-  { id: "shopify", label: "Shopify", plans: SHOPIFY_PLANS, features: SHOPIFY_FEATURES },
+  { id: "ecommerce", label: "E-commerce", plans: ECOMMERCE_PLANS, features: ECOMMERCE_FEATURES },
+  { id: "shopify", label: "E-commerce (Shopify)", plans: SHOPIFY_PLANS, features: SHOPIFY_FEATURES },
   { id: "mobile", label: "Mobile App", plans: MOBILE_PLANS, features: MOBILE_FEATURES },
   { id: "saas", label: "SaaS & CRM", plans: SAAS_PLANS, features: SAAS_FEATURES },
 ];
