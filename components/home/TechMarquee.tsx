@@ -126,7 +126,7 @@ export default function TechMarquee() {
     <section
       className="relative w-full overflow-hidden"
       style={{
-        background: "linear-gradient(160deg, #081327 0%, #0E1733 55%, #111C3D 100%)",
+        background: "#000000",
         paddingTop: "120px",
         paddingBottom: "140px",
         fontFamily: "Hanken Grotesk, -apple-system, sans-serif",
