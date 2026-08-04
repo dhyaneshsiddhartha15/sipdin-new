@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Sparkles, Bot } from "lucide-react";
+import AiCloudCTA from "./AiCloudCTA";
 
 // Official brand logo paths (Simple Icons, 24x24 viewBox)
 const brand = {
@@ -493,50 +494,7 @@ export default function AiCloudSection() {
         </div>
 
         {/* Single CTA for the whole section */}
-        <div
-          style={{
-            textAlign: "center",
-            padding: "36px",
-            borderRadius: "16px",
-            background: isDark ? "rgba(110, 140, 255, 0.05)" : "rgba(65, 105, 225, 0.03)",
-            border: `1px solid ${c.accent}15`,
-          }}
-        >
-          <h3 style={{ fontSize: "24px", fontWeight: 600, color: c.title, marginBottom: "12px" }}>
-            Ready to build AI on solid cloud foundations?
-          </h3>
-          <p style={{ fontSize: "16px", color: c.subtitle, marginBottom: "24px" }}>
-            Let&apos;s discuss your AI and infrastructure needs and find the
-            perfect solution for your business.
-          </p>
-          <a
-            href="/contact"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "12px",
-              background: c.accent,
-              color: "#fff",
-              padding: "15px 32px",
-              borderRadius: "8px",
-              fontFamily: "Geist, sans-serif",
-              fontSize: "14px",
-              fontWeight: 600,
-              letterSpacing: "0.04em",
-              textDecoration: "none",
-              transition: "transform 0.2s",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "scale(1.05)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "scale(1)";
-            }}
-          >
-            Get Started
-            <span style={{ fontSize: "20px" }}>→</span>
-          </a>
-        </div>
+        <AiCloudCTA />
       </div>
     </section>
   );

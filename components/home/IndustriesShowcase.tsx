@@ -41,8 +41,8 @@ export default function IndustriesShowcase() {
           className="max-w-[900px] font-semibold leading-[1.06] tracking-tight text-fg"
           style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: "clamp(34px, 4.6vw, 60px)" }}
         >
-          Regulated, complex, high-stakes.{" "}
-          <span className="text-fg-2">Where software has to work the first time.</span>
+          Industries We Serve with AI{" "}
+          <span className="text-fg-2">Development Solutions</span>
         </h2>
       </div>
 

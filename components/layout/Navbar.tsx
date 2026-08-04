@@ -24,6 +24,7 @@ export default function Navbar() {
     // { nameKey: "nav.products", href: "/our-products" }, // hidden for now
     { nameKey: "nav.pricing", href: "/pricing" },
     { nameKey: "nav.studio", href: "/studio" },
+    { nameKey: "nav.sidpinAi", href: "/sidpin-ai" },
   ], []);
 
   return (
@@ -67,6 +68,7 @@ export default function Navbar() {
                   ? pathname.startsWith("/services")
                   : pathname === link.href;
               const isServices = link.href === "/services";
+              const isSidpinAi = link.href === "/sidpin-ai";
               return (
                 <div
                   key={link.nameKey}
@@ -82,7 +84,11 @@ export default function Navbar() {
                   <a
                     href={link.href}
                     className={`nav-pill-link inline-block py-3 font-['Inter'] text-[15.5px] font-medium transition-colors duration-200 ${
-                      isActive ? "text-[#0B1226]" : "text-[#0B1226]/70 hover:text-[#0B1226]"
+                      isSidpinAi
+                        ? "text-[#4169E1] hover:text-[#2E4FB8]"
+                        : isActive
+                        ? "text-[#0B1226]"
+                        : "text-[#0B1226]/70 hover:text-[#0B1226]"
                     }`}
                   >
                     {t(link.nameKey)}
@@ -221,7 +227,11 @@ export default function Navbar() {
                     key={link.nameKey}
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className="py-4 font-['Inter'] text-[16px] font-medium text-[#0B1226]/85 hover:text-[#0B1226]"
+                    className={
+                      link.href === "/sidpin-ai"
+                        ? "py-4 font-['Inter'] text-[16px] font-medium text-[#4169E1]"
+                        : "py-4 font-['Inter'] text-[16px] font-medium text-[#0B1226]/85 hover:text-[#0B1226]"
+                    }
                   >
                     {t(link.nameKey)}
                   </a>
