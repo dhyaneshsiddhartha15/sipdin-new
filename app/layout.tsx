@@ -41,7 +41,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${hankenGrotesk.variable} ${inter.variable} ${geist.variable} h-full antialiased`}
+      className={`${hankenGrotesk.variable} ${inter.variable} ${geist.variable} antialiased`}
     >
       <head>
         <link
@@ -49,7 +49,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-full flex flex-col bg-bg text-fg selection:bg-[#4169E1] selection:text-white">
+      <body className="min-h-screen flex flex-col bg-bg text-fg selection:bg-[#4169E1] selection:text-white">
         <LocaleProvider>
           {/* No-flash theme: apply saved/system preference before first paint. */}
           <template

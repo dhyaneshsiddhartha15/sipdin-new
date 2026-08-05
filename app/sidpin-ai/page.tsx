@@ -4,6 +4,9 @@ import Footer from "@/components/layout/Footer";
 import Reveal from "@/components/studio/Reveal";
 import AiCloudCTA from "@/components/home/AiCloudCTA";
 import AiHero from "@/components/sidpin-ai/AiHero";
+import AiDevelopmentSection from "@/components/sidpin-ai/AiDevelopmentSection";
+import AiProcessTimeline from "@/components/sidpin-ai/AiProcessTimeline";
+import AiBuildShowcase from "@/components/sidpin-ai/AiBuildShowcase";
 import { Bot, Workflow, Database, Cloud } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -41,6 +44,9 @@ export default function SidpinAiPage() {
       <Navbar />
       <main className="bg-bg">
         <AiHero />
+        <AiDevelopmentSection />
+        <AiProcessTimeline />
+        <AiBuildShowcase />
 
         {/* Capabilities */}
         <section id="capabilities" className="px-[24px] pb-[100px] pt-[100px] md:px-[80px]">
