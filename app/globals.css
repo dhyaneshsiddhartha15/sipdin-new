@@ -112,7 +112,10 @@ body {
   background-color: var(--color-bg);
   color: var(--color-fg);
   font-family: "Inter", sans-serif;
-  overflow-x: hidden;
+  /* `clip` (not `hidden`) prevents horizontal overflow WITHOUT turning <body>
+     into a scroll container — `overflow-x: hidden` forces `overflow-y: auto`,
+     which breaks GSAP ScrollTrigger's position:fixed pinning. */
+  overflow-x: clip;
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 

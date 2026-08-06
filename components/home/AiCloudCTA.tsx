@@ -39,13 +39,12 @@ export default function AiCloudCTA() {
         `}</style>
 
         {/* Card background — clipped separately so the robot photo can spill past the card edge.
-            A lighter layered gradient (not a flat single tone) so the card still reads as an
-            elevated surface even when the page itself is dark. */}
+            Matches the Industries section background color. */}
         <div
           aria-hidden
           className="absolute inset-0 overflow-hidden"
           style={{
-            background: "linear-gradient(160deg, #121B32 0%, #0B111F 45%, #070b14 100%)",
+            background: "#08162D",
             border: "1px solid rgba(255,255,255,0.07)",
             borderRadius: "32px",
           }}
