@@ -12,7 +12,8 @@ import AdobeStyleHero from "@/components/home/AdobeStyleHero";
 // import ProductShowcaseGallery from "@/components/home/ProductShowcaseGallery"; // replaced by IndustriesShowcase
 import IndustriesShowcase from "@/components/home/IndustriesShowcase";
 import ProductGrid from "@/components/home/ProductGrid";
-import TestimonialCarousel from "@/components/home/TestimonialCarousel";
+// import TestimonialCarousel from "@/components/home/TestimonialCarousel"; // hidden — replaced by GlobalTestimonials
+import GlobalTestimonials from "@/components/home/GlobalTestimonials";
 import PricingSection from "@/components/home/PricingSection";
 import MadeWithSidpin from "@/components/home/MadeWithSidpin";
 import RecentWork from "@/components/home/RecentWork";
@@ -112,8 +113,12 @@ export default function HomePage() {
         {/* 8. THE VELOCITY FRAMEWORK — "How We Work" (hidden for now) */}
         {/* <VelocityFramework /> */}
 
-        {/* 9.5 TESTIMONIAL CAROUSEL — client quotes slider (from video) */}
-        <TestimonialCarousel />
+        {/* 9.4 GLOBAL TESTIMONIALS — video-style client cards + happy-clients stat */}
+        <GlobalTestimonials />
+
+        {/* 9.5 TESTIMONIAL CAROUSEL — "Trusted by founders & teams" quote slider.
+            Hidden: replaced by the GlobalTestimonials video-card wall above. */}
+        {/* <TestimonialCarousel /> */}
 
         {/* 10. FAQ — chat-style frequently asked questions */}
         <FaqChat />

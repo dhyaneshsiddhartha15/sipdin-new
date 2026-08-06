@@ -1,94 +1,103 @@
-"use client";
-
 /**
- * IndustriesShowcase — replaces the "Everything you need" expanding-card gallery.
- * A clean, full-bleed list of the industries Sidpin serves. Rows and their divider
- * lines span the full screen width; hovering a row reveals its image filling that
- * row's own area (full row width × height), label + link overlaid on top. Images
- * are local placeholders under /public — swap them for real industry shots.
+ * IndustriesShowcase — bordered card grid of the industries Sidpin serves with AI.
+ * Centered heading + intro, then a responsive 4-column grid of cards
+ * (outline icon · accent title · short description).
  */
 
-import Link from "next/link";
+import type { LucideIcon } from "lucide-react";
+import {
+  HeartPulse,
+  ShieldCheck,
+  Factory,
+  ShoppingCart,
+  GraduationCap,
+  Utensils,
+  Car,
+  Building2,
+  Gem,
+  Dumbbell,
+  UtensilsCrossed,
+  Newspaper,
+  Shirt,
+  Plane,
+  Clapperboard,
+  Landmark,
+} from "lucide-react";
 
-type Industry = { name: string; image: string };
-
-// Industry-relevant imagery from Unsplash (landscape crop for the wide rows).
-const U = (id: string) => `https://images.unsplash.com/photo-${id}?w=1400&h=500&fit=crop&q=80`;
+type Industry = { name: string; description: string; icon: LucideIcon };
 
 const INDUSTRIES: Industry[] = [
-  { name: "Healthcare", image: U("1519494026892-80bbd2d6fd0d") },
-  { name: "Finance", image: U("1611974789855-9c2a0a7236a3") },
-  { name: "Government", image: U("1529107386315-e1a2ed48a620") },
-  { name: "Real Estate", image: U("1560518883-ce09059eeffa") },
-  { name: "Education", image: U("1523240795612-9a054b0db644") },
-  { name: "Construction", image: U("1503387762-592deb58ef4e") },
-  { name: "Retail", image: U("1441986300917-64674bd600d8") },
-  { name: "Manufacturing", image: U("1581091226825-a6a2a5aee158") },
-  { name: "Hospitality", image: U("1566073771259-6a8506099945") },
-  { name: "Logistics", image: U("1586528116311-ad8dd3c8310d") },
+  { name: "Healthcare", description: "AI diagnostics, patient analytics, and clinical workflow automation.", icon: HeartPulse },
+  { name: "Insurance", description: "Fraud detection, risk scoring, and claims processing intelligence.", icon: ShieldCheck },
+  { name: "Manufacturing", description: "Predictive maintenance, quality control, and smart factory AI.", icon: Factory },
+  { name: "E-Commerce", description: "Personalised recommendations, dynamic pricing AI, and inventory demand forecasting.", icon: ShoppingCart },
+  { name: "Education", description: "Adaptive learning, intelligent tutoring, and outcome analytics.", icon: GraduationCap },
+  { name: "Restaurant", description: "Smart ordering, inventory AI, and customer experience automation.", icon: Utensils },
+  { name: "Automobile", description: "Connected vehicle AI, sales intelligence, and service analytics.", icon: Car },
+  { name: "Real Estate", description: "Property valuation AI, lead scoring, and market prediction.", icon: Building2 },
+  { name: "Luxury", description: "Personalized experiences, customer insights, and brand engagement.", icon: Gem },
+  { name: "Sports", description: "Performance analytics, fan engagement, and event management.", icon: Dumbbell },
+  { name: "Food & Beverage", description: "Demand forecasting, inventory control, and quality management.", icon: UtensilsCrossed },
+  { name: "News", description: "Content personalisation, audience analytics, and AI-powered publishing automation.", icon: Newspaper },
+  { name: "Fashion & Retail", description: "Trend forecasting, inventory optimization, and AI-driven customer insight.", icon: Shirt },
+  { name: "Tourism", description: "Travel personalization, booking automation, and customer engagement.", icon: Plane },
+  { name: "Media & Entertainment", description: "Content recommendations, audience insights, and distribution automation.", icon: Clapperboard },
+  { name: "Bank", description: "Fraud detection, risk analysis, and financial process automation.", icon: Landmark },
 ];
-
-// Text stays inside the original 1440 container so copy aligns where it was,
-// while the borders and hover image run edge-to-edge (full screen width).
-const INNER = "mx-auto max-w-[1440px] px-[24px] md:px-[80px]";
 
 export default function IndustriesShowcase() {
   return (
-    <section className="w-full bg-bg py-[80px] md:py-[120px]">
-      {/* Heading */}
-      <div className={INNER}>
-        <h2
-          className="max-w-[900px] font-semibold leading-[1.06] tracking-tight text-fg"
-          style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: "clamp(34px, 4.6vw, 60px)" }}
-        >
-          Industries We Serve with AI{" "}
-          <span className="text-fg-2">Development Solutions</span>
-        </h2>
-      </div>
+    <section className="w-full bg-bg py-[72px] md:py-[100px]">
+      <div className="mx-auto max-w-[1200px] px-[24px] md:px-[40px]">
+        {/* Heading */}
+        <div className="mx-auto max-w-[760px] text-center">
+          <h2
+            className="font-semibold leading-[1.1] tracking-tight text-fg"
+            style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: "clamp(30px, 4vw, 46px)" }}
+          >
+            Industries We Serve with AI{" "}
+            <span className="text-fg-2">Development Solutions</span>
+          </h2>
+          <p
+            className="mx-auto mt-5 max-w-[680px] text-[15px] leading-relaxed text-fg-2 md:text-[16px]"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            SIDPIN Digital delivers AI development, machine learning, and custom SaaS
+            solutions across 16+ industries — helping enterprises in healthcare, fintech,
+            manufacturing, e-commerce, education, and more automate operations, reduce
+            costs, and accelerate growth.
+          </p>
+        </div>
 
-      {/* Full-width industry list (lines + hover image span the whole screen) */}
-      <ul className="mt-14 w-full border-t border-line">
-        {INDUSTRIES.map((industry, i) => (
-          <li key={industry.name} className="border-b border-line">
-            <Link href="/case-studies" className="group relative block overflow-hidden">
-              {/* Image fills the whole row on hover */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={industry.image}
-                alt={industry.name}
-                className="pointer-events-none absolute inset-0 h-full w-full scale-105 object-cover opacity-0 transition-all duration-500 ease-out group-hover:scale-100 group-hover:opacity-100"
-              />
-              {/* Darken for text legibility (only when image is visible) */}
-              <div className="pointer-events-none absolute inset-0 bg-black/45 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-              {/* Text — kept within the original container so it aligns as before */}
-              <div className={`relative z-10 flex items-center justify-between gap-4 py-6 md:py-8 ${INNER}`}>
-                <div className="flex items-baseline gap-5 md:gap-8">
-                  <span
-                    className="text-[12px] font-medium tabular-nums text-fg-2/70 transition-colors duration-300 group-hover:text-white/70"
-                    style={{ fontFamily: "Geist, sans-serif" }}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span
-                    className="font-semibold tracking-tight text-fg transition-colors duration-300 group-hover:text-white"
-                    style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: "clamp(26px, 3.4vw, 44px)" }}
-                  >
-                    {industry.name}
-                  </span>
-                </div>
-
-                <span
-                  className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.18em] text-fg-2 transition-colors duration-300 group-hover:text-white"
-                  style={{ fontFamily: "Geist, sans-serif" }}
-                >
-                  Case Studies <span aria-hidden>→</span>
+        {/* Bordered card grid */}
+        <div className="mt-12 grid grid-cols-1 overflow-hidden rounded-2xl border border-line sm:grid-cols-2 lg:grid-cols-4">
+          {INDUSTRIES.map((industry) => {
+            const Icon = industry.icon;
+            return (
+              <div
+                key={industry.name}
+                className="group -mb-px -mr-px border-b border-r border-line bg-surface p-6 transition-colors duration-300 hover:bg-[#4169E1]/[0.04] dark:hover:bg-[#6E8CFF]/[0.06]"
+              >
+                <span className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[#4169E1]/10 text-[#4169E1] transition-colors duration-300 group-hover:bg-[#4169E1] group-hover:text-white dark:bg-[#6E8CFF]/12 dark:text-[#6E8CFF] dark:group-hover:bg-[#6E8CFF] dark:group-hover:text-[#0a0f1c]">
+                  <Icon className="h-[22px] w-[22px]" strokeWidth={1.75} aria-hidden />
                 </span>
+                <h3
+                  className="mb-2 text-[16px] font-semibold text-[#4169E1] dark:text-[#8CA6FF]"
+                  style={{ fontFamily: "Hanken Grotesk, sans-serif" }}
+                >
+                  {industry.name}
+                </h3>
+                <p
+                  className="text-[13.5px] leading-relaxed text-fg-2"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
+                  {industry.description}
+                </p>
               </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
+            );
+          })}
+        </div>
+      </div>
     </section>
   );
 }
