@@ -159,8 +159,25 @@ export default function AIConsultationModal({ open, onClose }: Props) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate required fields
+    if (!fields.firstName.trim() || !fields.lastName.trim() || !fields.email.trim()) {
+      setFeedback("Please fill in all required fields.");
+      setStatus("error");
+      return;
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(fields.email)) {
+      setFeedback("Please enter a valid email address.");
+      setStatus("error");
+      return;
+    }
+
     setStatus("sending");
     setFeedback("");
+
     const res = await sendForm("AI Consultation Request", {
       "First Name": fields.firstName,
       "Last Name": fields.lastName,
@@ -170,6 +187,7 @@ export default function AIConsultationModal({ open, onClose }: Props) {
       Service: fields.service,
       Message: fields.message,
     });
+
     if (res.ok) {
       setStatus("sent");
       setFeedback("Thanks — your request is in. We'll be in touch within one business day.");
@@ -202,8 +220,8 @@ export default function AIConsultationModal({ open, onClose }: Props) {
             role="dialog"
             aria-modal="true"
             aria-labelledby="ai-consult-heading"
-            className="relative flex w-full max-w-[920px] flex-col overflow-hidden bg-white shadow-[0_60px_160px_-40px_rgba(10,10,20,0.55)] md:flex-row"
-            style={{ borderRadius: "22px", maxHeight: "min(600px, 88vh)" }}
+            className="relative flex w-full max-w-[1100px] flex-col overflow-hidden bg-white shadow-[0_60px_160px_-40px_rgba(10,10,20,0.55)] md:flex-row"
+            style={{ borderRadius: "22px", maxHeight: "min(850px, 92vh)" }}
             initial={{ opacity: 0, scale: 0.94, y: 18 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 10 }}
@@ -501,20 +519,25 @@ export default function AIConsultationModal({ open, onClose }: Props) {
                           className={inputClass}
                         />
                       </FloatField>
-                      <FloatField label="Service" active={!!fields.service}>
+                      <div className="relative">
                         <select
                           value={fields.service}
                           onChange={(e) => set("service")(e.target.value)}
-                          className={`${inputClass} appearance-none`}
+                          onFocus={() => setFocusField("service")}
+                          onBlur={() => setFocusField(null)}
+                          className={`${inputClass} appearance-none pr-10`}
                         >
-                          <option value="" disabled hidden />
+                          <option value="" disabled>Select a service</option>
                           {SERVICE_OPTIONS.map((s) => (
                             <option key={s} value={s}>
                               {s}
                             </option>
                           ))}
                         </select>
-                      </FloatField>
+                        <span className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#9A97A6]">
+                          ▼
+                        </span>
+                      </div>
                     </div>
 
                     <div className="mt-2">
@@ -528,15 +551,6 @@ export default function AIConsultationModal({ open, onClose }: Props) {
                           className={`${inputClass} resize-none`}
                         />
                       </FloatField>
-                    </div>
-
-                    {/* reCAPTCHA placeholder */}
-                    <div className="mt-2.5 flex items-center gap-3 rounded-[14px] border border-[#E7E5EF] bg-[#FAFAFC] px-4 py-2">
-                      <span className="grid h-6 w-6 shrink-0 place-items-center rounded border border-[#C9C6D6] bg-white" />
-                      <span className="text-[13px] text-[#5C5870]">I&apos;m not a robot</span>
-                      <span className="ml-auto text-[10px] font-medium uppercase tracking-wide text-[#B5B1C4]">
-                        reCAPTCHA
-                      </span>
                     </div>
 
                     <button

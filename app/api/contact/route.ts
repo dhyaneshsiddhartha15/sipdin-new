@@ -19,6 +19,15 @@ const escapeHtml = (v: string) =>
 export async function POST(req: Request) {
   const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, MAIL_TO } = process.env;
 
+  // Log SMTP config for debugging (without exposing the full password)
+  console.log("[api/contact] SMTP config check:", {
+    host: SMTP_HOST || "smtp.gmail.com",
+    port: Number(SMTP_PORT) || 587,
+    user: SMTP_USER ? SMTP_USER.substring(0, 3) + "***" : "not set",
+    pass: SMTP_PASS ? "set (" + SMTP_PASS.length + " chars)" : "not set",
+    mailTo: MAIL_TO || SMTP_USER || "not set",
+  });
+
   // Credentials come from the environment only — never hardcoded.
   if (!SMTP_USER || !SMTP_PASS) {
     return NextResponse.json(
@@ -66,27 +75,38 @@ export async function POST(req: Request) {
     </div>`;
 
   try {
+    console.log("[api/contact] Creating transporter and sending email...");
     const transporter = nodemailer.createTransport({
       host: SMTP_HOST || "smtp.gmail.com",
       port: Number(SMTP_PORT) || 587,
       secure: Number(SMTP_PORT) === 465, // 465 = SSL, 587 = STARTTLS
       auth: { user: SMTP_USER, pass: SMTP_PASS },
+      // Add timeout to prevent hanging
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 10000,
     });
 
-    await transporter.sendMail({
+    const mailOptions = {
       from: `"SIDPIN Website" <${SMTP_USER}>`, // Gmail requires the authenticated user as the sender
       to: MAIL_TO || SMTP_USER,
       replyTo: replyTo || undefined,
       subject: `[SIDPIN] ${formType}`,
       text: textBody,
       html: htmlBody,
-    });
+    };
+
+    console.log("[api/contact] Attempting to send email to:", mailOptions.to);
+    const info = await transporter.sendMail(mailOptions);
+    console.log("[api/contact] Email sent successfully:", info.messageId);
 
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("[api/contact] send failed:", err);
+    // Provide more detailed error for debugging
+    const errorMessage = err instanceof Error ? err.message : "Unknown error";
     return NextResponse.json(
-      { ok: false, error: "Could not send your message. Please try again later." },
+      { ok: false, error: `Could not send your message. ${errorMessage}` },
       { status: 502 },
     );
   }
