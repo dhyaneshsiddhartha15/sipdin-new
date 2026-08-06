@@ -16,7 +16,7 @@ export const translations = {
     "nav.caseStudies": "Case Studies",
     "nav.pricing": "Pricing",
     "nav.studio": "Studio",
-    "nav.sidpinAi": "SidPin.ai",
+    "nav.sidpinAi": "Sidpin.ai",
     "nav.allServices": "All Services",
     "nav.email": "hello@sidpin.com",
 
@@ -161,7 +161,7 @@ export const translations = {
     "nav.caseStudies": "دراسات الحالة",
     "nav.pricing": "التسعير",
     "nav.studio": "الاستوديو",
-    "nav.sidpinAi": "SidPin.ai",
+    "nav.sidpinAi": "Sidpin.ai",
     "nav.allServices": "جميع الخدمات",
     "nav.email": "hello@sidpin.com",
 

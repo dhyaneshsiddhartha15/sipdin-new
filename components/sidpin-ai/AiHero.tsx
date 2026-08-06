@@ -226,7 +226,7 @@ export default function AiHero() {
               color: "rgba(255,255,255,0.95)",
             }}
           >
-            SidPin
+            Sidpin
             <span
               style={{
                 color: "#8FB5FF",

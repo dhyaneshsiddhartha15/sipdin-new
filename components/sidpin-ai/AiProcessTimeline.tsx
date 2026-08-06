@@ -20,10 +20,10 @@ if (typeof window !== "undefined") {
 const PROCESS_STEPS = [
   {
     id: 1,
-    phase: "Phase 01",
-    title: "Discovery & AI Strategy",
+    phase: "01",
+    title: "Discovery & Strategy",
     description:
-      "We begin with deep discovery to understand your business challenges, identify AI opportunities, and define success metrics. This phase includes stakeholder interviews, workflow analysis, and strategic roadmapping.",
+      "We dive deep into your business — understanding goals, workflows, and where AI can deliver real impact.",
     checklist: [
       "Business goals assessment",
       "AI opportunity mapping",
@@ -32,15 +32,15 @@ const PROCESS_STEPS = [
       "Implementation roadmap",
     ],
     image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80",
+      "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&q=80",
     alt: "Business strategy meeting",
   },
   {
     id: 2,
-    phase: "Phase 02",
-    title: "Data Audit & Preparation",
+    phase: "02",
+    title: "Data & Knowledge Base",
     description:
-      "Quality AI requires quality data. We audit your existing data sources, identify gaps, clean and structure information, and prepare pipelines for training and inference.",
+      "Building your RAG foundation — we gather, clean, and structure your data so AI responses are accurate and grounded.",
     checklist: [
       "Data source inventory",
       "Quality assessment & cleaning",
@@ -54,33 +54,33 @@ const PROCESS_STEPS = [
   },
   {
     id: 3,
-    phase: "Phase 03",
-    title: "AI Solution Architecture",
+    phase: "03",
+    title: "Model Development & Training",
     description:
-      "We design a robust, scalable AI architecture tailored to your needs. This includes model selection, infrastructure planning, API design, and integration strategy.",
+      "Training AI on your brand voice, processes, and knowledge — creating agents that think like your team.",
     checklist: [
       "Model selection & validation",
       "Infrastructure design",
-      "API & integration planning",
+      "Custom training setup",
       "Security architecture",
-      "Scalability blueprint",
+      "Performance optimization",
     ],
     image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80",
-    alt: "Software architecture visualization",
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80",
+    alt: "AI neural network visualization",
   },
   {
     id: 4,
-    phase: "Phase 04",
-    title: "Model Development",
+    phase: "04",
+    title: "Integration & Workflow",
     description:
-      "Our engineers build and fine-tune AI models specifically for your use cases. We train, validate, and iterate until performance meets your requirements.",
+      "Connecting AI to your existing tools — CRM, calendars, email, and other systems for seamless automation.",
     checklist: [
-      "Custom model training",
-      "Fine-tuning & optimization",
-      "Validation & testing",
-      "Performance benchmarking",
-      "Error analysis & refinement",
+      "System integration",
+      "API connections",
+      "User interface setup",
+      "Monitoring configuration",
+      "Documentation & handover",
     ],
     image:
       "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=1200&q=80",
@@ -88,27 +88,27 @@ const PROCESS_STEPS = [
   },
   {
     id: 5,
-    phase: "Phase 05",
-    title: "Integration & Deployment",
+    phase: "05",
+    title: "Testing & Optimization",
     description:
-      "We seamlessly integrate AI into your existing systems and deploy to production. This includes API connections, user interfaces, and monitoring setup.",
+      "Rigorous testing across scenarios, refining responses, and ensuring reliability before launch.",
     checklist: [
-      "System integration",
-      "Production deployment",
-      "User interface setup",
-      "Monitoring configuration",
-      "Documentation & handover",
+      "Validation & testing",
+      "Performance benchmarking",
+      "Error analysis & refinement",
+      "Quality assurance",
+      "User acceptance testing",
     ],
     image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80",
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80",
     alt: "Cloud infrastructure deployment",
   },
   {
     id: 6,
-    phase: "Phase 06",
-    title: "Continuous Optimization",
+    phase: "06",
+    title: "Launch & Support",
     description:
-      "AI gets better with use. We monitor performance, collect feedback, retrain models, and continuously optimize to ensure your AI systems deliver maximum value.",
+      "Deploying to production with monitoring, continuous improvement, and ongoing support.",
     checklist: [
       "Performance monitoring",
       "Feedback collection",
