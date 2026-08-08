@@ -3,6 +3,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import AiCloudCTA from "@/components/home/AiCloudCTA";
 import AiHero from "@/components/sidpin-ai/AiHero";
+import AiPoweredSystem from "@/components/sidpin-ai/AiPoweredSystem";
 import AiDevelopmentSection from "@/components/sidpin-ai/AiDevelopmentSection";
 import AiProcessTimeline from "@/components/sidpin-ai/AiProcessTimeline";
 import AiBuildShowcase from "@/components/sidpin-ai/AiBuildShowcase";
@@ -22,6 +23,7 @@ export default function SidpinAiPage() {
       <Navbar />
       <main className="bg-bg">
         <AiHero />
+        <AiPoweredSystem />
         <AiDevelopmentSection />
         <AiProcessTimeline />
         <AiBuildShowcase />

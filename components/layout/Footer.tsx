@@ -48,9 +48,41 @@ const otherServices = {
   ],
 };
 
+const locations = [
+  { code: "in", country: "India" },
+  { code: "us", country: "United States" },
+  { code: "ae", country: "UAE" },
+  { code: "ca", country: "Canada" },
+  { code: "qa", country: "Qatar" },
+  { code: "eg", country: "Egypt" },
+];
+
 export default function Footer() {
   return (
     <footer className="w-full">
+      {/* Global offices strip — placed at the top of the footer for visibility (existing blocks unchanged) */}
+      <div className="bg-[#0C1424] px-[40px] md:px-[64px] py-[36px]">
+        <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-6">
+          {locations.map((loc) => (
+            <div
+              key={loc.country}
+              className="flex items-center gap-2.5 rounded-lg bg-white/[0.04] px-3.5 py-5 ring-1 ring-white/10"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`https://flagcdn.com/w80/${loc.code}.png`}
+                alt={`${loc.country} flag`}
+                loading="lazy"
+                className="h-5 w-[28px] shrink-0 rounded-sm object-cover ring-1 ring-white/15"
+              />
+              <p className="font-['Hanken_Grotesk'] text-[13px] font-bold text-white">
+                {loc.country}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Top row — three brand-blue link blocks */}
       <div className="grid grid-cols-1 md:grid-cols-3">
         {columns.map((col) => (

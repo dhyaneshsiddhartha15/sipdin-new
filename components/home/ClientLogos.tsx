@@ -37,7 +37,7 @@ const rowBottom = logoFiles.slice(half);
 
 function Chip({ file }: { file: string }) {
   return (
-    <div className="flex h-24 w-40 shrink-0 items-center justify-center rounded-2xl bg-white ring-1 ring-black/[0.06] shadow-[0_10px_30px_-16px_rgba(15,23,42,0.35)] transition-transform duration-300 hover:-translate-y-1 md:h-28 md:w-48 dark:ring-white/10">
+    <div className="flex h-20 w-40 shrink-0 items-center justify-center rounded-2xl bg-white ring-1 ring-black/[0.06] shadow-[0_10px_30px_-16px_rgba(15,23,42,0.35)] transition-transform duration-300 hover:-translate-y-1 md:h-24 md:w-48 dark:ring-white/10">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={`/logos/${encodeURIComponent(file)}`}
@@ -76,7 +76,7 @@ function MarqueeRow({
 
 export default function ClientLogos() {
   return (
-    <section className="bg-white px-6 py-20 md:py-28 dark:bg-[#070b14]">
+    <section className="bg-white px-6 py-12 md:py-16 dark:bg-[#070b14]">
       <style>{`
         @keyframes sidpin-track-l { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         @keyframes sidpin-track-r { from { transform: translateX(-50%); } to { transform: translateX(0); } }
@@ -106,7 +106,7 @@ export default function ClientLogos() {
         </p>
       </div>
 
-      <div className="relative mx-auto mt-16 flex max-w-[1400px] flex-col gap-5">
+      <div className="relative mx-auto mt-10 flex max-w-[1400px] flex-col gap-4">
         <MarqueeRow files={rowTop} direction="l" duration={45} />
         <MarqueeRow files={rowBottom} direction="r" duration={40} />
 

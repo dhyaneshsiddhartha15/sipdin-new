@@ -489,6 +489,393 @@ export const serviceCategories: ServiceCategory[] = [
       },
     ],
   },
+  {
+    name: "Software Engineering",
+    services: [
+      {
+        slug: "software-development",
+        name: "Software Development",
+        heroTitle: "Custom Software Development Services",
+        tagline: "Custom enterprise tools engineered around how you actually work",
+        description:
+          "We design and build custom software — internal tools, dashboards, and enterprise platforms — that automate operations and scale with your business.",
+        intro:
+          "From discovery and architecture to development and deployment, we build reliable software tailored to your exact workflows and data.",
+        aboutLabel: "Software Development",
+        aboutTitle: "Software built around your business, not the other way around",
+        aboutText:
+          "Off-the-shelf tools force you to change how you work. We build custom software that fits your exact processes — clean architecture, secure data, and interfaces your team will actually use.",
+        offeringsTitle: "What We Build",
+        offerings: [
+          { title: "Enterprise Web Apps", description: "Scalable internal platforms and portals built around your operations and roles." },
+          { title: "Internal Dashboards", description: "Admin panels and dashboards that put your data and controls in one place." },
+          { title: "Workflow Automation", description: "Tools that remove repetitive manual work and connect your business processes." },
+          { title: "API & System Integrations", description: "Connect the tools you already use into one reliable, automated system." },
+          { title: "SaaS Platforms", description: "Multi-tenant products with billing, roles, and dashboards ready to ship." },
+          { title: "Legacy Modernization", description: "Rebuild slow or outdated systems into fast, secure, maintainable software." },
+        ],
+        faqIntro:
+          "Our custom software is built to solve real operational problems — reliable, secure, and shaped around the way your business actually runs.",
+        faqs: [
+          { question: "How do you scope a custom software project?", answer: "We start with a discovery phase — mapping your workflows, data, and goals — then deliver a clear scope, architecture, and phased plan before development begins." },
+          { question: "Do you build on modern, maintainable stacks?", answer: "Yes. We use proven, well-supported technologies and clean architecture so your software stays fast, secure, and easy to extend over time." },
+          { question: "Can you integrate with our existing tools?", answer: "Absolutely. We integrate CRMs, payment systems, ERPs, and third-party APIs so your software fits into your current stack." },
+          { question: "Do you provide support after launch?", answer: "Yes. We offer maintenance, monitoring, and feature development so your software keeps evolving with your business." },
+        ],
+      },
+      {
+        slug: "blockchain-development",
+        name: "Blockchain Development",
+        heroTitle: "Blockchain Development Services",
+        tagline: "Smart contracts and dApps engineered for trust and transparency",
+        description:
+          "We build secure smart contracts, decentralized applications, and token systems on leading blockchains — audited, gas-optimized, and production-ready.",
+        intro:
+          "From architecture and smart-contract development to audits and deployment, we ship Web3 products built for security and scale.",
+        aboutLabel: "Blockchain Development",
+        aboutTitle: "Web3 products built on security first",
+        aboutText:
+          "In blockchain, a single bug can cost everything. We engineer smart contracts and dApps with a security-first mindset — clean code, gas optimization, and thorough audits before anything touches mainnet.",
+        offeringsTitle: "What We Build",
+        offerings: [
+          { title: "Smart Contract Development", description: "Secure, gas-optimized contracts for tokens, staking, and complex on-chain logic." },
+          { title: "dApp Development", description: "Full decentralized applications with polished front-ends and Web3 wallets." },
+          { title: "Token & NFT Systems", description: "Fungible and NFT token systems with minting, royalties, and marketplaces." },
+          { title: "Wallet Integration", description: "MetaMask, WalletConnect, and multi-chain wallet connectivity done right." },
+          { title: "Smart Contract Audits", description: "Security reviews that catch vulnerabilities before they reach production." },
+          { title: "Web3 Backend & Indexing", description: "Event indexing, subgraphs, and off-chain services that power your dApp." },
+        ],
+        faqIntro:
+          "Our blockchain solutions prioritize security, transparency, and real utility — built and audited to production standards before launch.",
+        faqs: [
+          { question: "Which blockchains do you build on?", answer: "We work across leading EVM chains and other major networks, recommending the right chain based on your cost, speed, and ecosystem needs." },
+          { question: "Do you audit smart contracts?", answer: "Yes. Every contract goes through internal security review and gas optimization, and we coordinate third-party audits for high-value deployments." },
+          { question: "Can you build tokens or NFT projects?", answer: "Yes. We build complete token and NFT systems including minting, royalties, marketplaces, and the front-end experience." },
+          { question: "Do you help with deployment and post-launch?", answer: "We handle deployment, verification, and monitoring, and provide ongoing support for upgrades and new features." },
+        ],
+      },
+    ],
+  },
+  {
+    name: "AI Services",
+    services: [
+      {
+        slug: "ai-development",
+        name: "AI Development",
+        heroTitle: "AI Development Services",
+        tagline: "Intelligent applications and systems built for real outcomes",
+        description:
+          "We build AI-powered applications and systems — from predictive models to computer vision and NLP — designed to solve real business problems and scale.",
+        intro:
+          "From data and model selection to deployment and monitoring, we build AI solutions that deliver measurable results, not demos.",
+        aboutLabel: "AI Development",
+        aboutTitle: "AI that ships and delivers value",
+        aboutText:
+          "Most AI projects stall at the prototype stage. We build production-grade AI systems — properly deployed, monitored, and integrated into your product — so the intelligence actually reaches your users.",
+        offeringsTitle: "What We Build",
+        offerings: [
+          { title: "AI-Powered Apps", description: "Web and mobile products with intelligence built into the core experience." },
+          { title: "Predictive Systems", description: "Models that forecast demand, churn, risk, and other business outcomes." },
+          { title: "Computer Vision", description: "Image and video understanding for detection, recognition, and automation." },
+          { title: "NLP Solutions", description: "Text classification, extraction, and understanding tuned to your domain." },
+          { title: "Recommendation Engines", description: "Personalization systems that lift engagement and conversions." },
+          { title: "Model Deployment & MLOps", description: "Reliable serving, monitoring, and retraining pipelines for your models." },
+        ],
+        faqIntro:
+          "Our AI development is grounded in real business outcomes — we build systems that are deployed, monitored, and delivering value, not stuck in a notebook.",
+        faqs: [
+          { question: "Do we need our own data to build AI?", answer: "Not always. We work with your data where available, and use pre-trained models, public datasets, or synthetic data when needed to get you to value faster." },
+          { question: "How do you ensure the AI is reliable?", answer: "We validate models against clear metrics, monitor them in production, and build retraining and fallback paths so quality holds up over time." },
+          { question: "Can AI be added to our existing product?", answer: "Yes. We integrate AI features into your current app and stack rather than requiring a rebuild." },
+          { question: "How long does an AI project take?", answer: "A focused AI feature can ship in a few weeks; larger systems take longer. We start with a scoped pilot to prove value quickly." },
+        ],
+      },
+      {
+        slug: "generative-ai",
+        name: "Generative AI",
+        heroTitle: "Generative AI Development Services",
+        tagline: "LLMs, copilots and agents that do real work",
+        description:
+          "We build custom copilots, RAG assistants, and AI agents grounded on your data — automating knowledge work and elevating your product experience.",
+        intro:
+          "From retrieval pipelines to agent orchestration, we design generative AI systems that are accurate, safe, and genuinely useful.",
+        aboutLabel: "Generative AI",
+        aboutTitle: "Copilots and agents grounded on your knowledge",
+        aboutText:
+          "Generic chatbots hallucinate and disappoint. We build generative AI grounded on your own data with retrieval, guardrails, and evaluation — so answers are accurate, on-brand, and trustworthy.",
+        offeringsTitle: "What We Build",
+        offerings: [
+          { title: "Custom Copilots", description: "In-product assistants that help your users and team get work done faster." },
+          { title: "RAG Knowledge Assistants", description: "Assistants grounded on your docs and data for accurate, sourced answers." },
+          { title: "AI Agents & Workflows", description: "Autonomous agents that take multi-step actions across your tools." },
+          { title: "Content Generation", description: "Systems that draft copy, reports, and creative at scale in your voice." },
+          { title: "Fine-Tuning & Prompting", description: "Prompt engineering and fine-tuning tuned to your domain and tone." },
+          { title: "LLM App Integration", description: "Reliable, cost-controlled LLM features wired into your product." },
+        ],
+        faqIntro:
+          "Our generative AI systems are grounded, evaluated, and guarded — built to be accurate and safe, not just impressive in a demo.",
+        faqs: [
+          { question: "How do you prevent hallucinations?", answer: "We ground responses on your data with retrieval (RAG), add guardrails and citations, and evaluate outputs continuously to keep answers accurate." },
+          { question: "Which models do you use?", answer: "We're model-agnostic and select the best fit for accuracy, cost, and privacy — including options that keep sensitive data in your control." },
+          { question: "Can it use our internal knowledge?", answer: "Yes. We connect your documents, databases, and tools so the assistant answers from your actual knowledge base." },
+          { question: "How do you manage cost?", answer: "We optimize prompts, caching, and model selection to keep inference costs predictable and low without sacrificing quality." },
+        ],
+      },
+      {
+        slug: "machine-learning",
+        name: "Machine Learning",
+        heroTitle: "Machine Learning Services",
+        tagline: "Predictive and smart systems trained on your data",
+        description:
+          "We build machine learning systems — forecasting, classification, scoring, and anomaly detection — that turn your data into decisions and automation.",
+        intro:
+          "From data pipelines and feature engineering to model deployment and monitoring, we build ML that holds up in production.",
+        aboutLabel: "Machine Learning",
+        aboutTitle: "Turning your data into decisions",
+        aboutText:
+          "Your data holds patterns worth money. We build machine learning models that predict, classify, and detect — then deploy and monitor them so the insights keep working long after launch.",
+        offeringsTitle: "What We Build",
+        offerings: [
+          { title: "Predictive Analytics", description: "Models that forecast demand, revenue, churn, and other key outcomes." },
+          { title: "Classification & Scoring", description: "Lead scoring, risk scoring, and categorization tuned to your goals." },
+          { title: "Forecasting Systems", description: "Time-series forecasting for inventory, demand, and capacity planning." },
+          { title: "Anomaly Detection", description: "Spot fraud, failures, and outliers automatically in real time." },
+          { title: "Data & Feature Pipelines", description: "Clean, reliable pipelines that feed your models the right features." },
+          { title: "Model Monitoring", description: "Drift detection and retraining so accuracy holds up over time." },
+        ],
+        faqIntro:
+          "Our machine learning work is engineered for production — clean data pipelines, validated models, and monitoring that keeps them accurate over time.",
+        faqs: [
+          { question: "How much data do we need?", answer: "It depends on the problem. We assess your data up front and design an approach that works with what you have, augmenting it where needed." },
+          { question: "How do you measure model quality?", answer: "We define success metrics with you before building, validate against held-out data, and monitor performance continuously in production." },
+          { question: "Can models run on our infrastructure?", answer: "Yes. We can deploy on your cloud or ours, including private setups that keep sensitive data in your environment." },
+          { question: "What happens when data changes over time?", answer: "We build drift monitoring and retraining pipelines so models adapt as your data and business evolve." },
+        ],
+      },
+      {
+        slug: "ai-chatbot",
+        name: "AI Chatbot",
+        heroTitle: "AI Chatbot Development Services",
+        tagline: "Intelligent customer support that never sleeps",
+        description:
+          "We build AI chatbots for web, app, and WhatsApp that answer questions, qualify leads, and support customers 24/7 — grounded on your business knowledge.",
+        intro:
+          "From knowledge grounding to human handoff, we build chatbots that resolve real queries and hand off cleanly when a human is needed.",
+        aboutLabel: "AI Chatbot",
+        aboutTitle: "Support and sales that run around the clock",
+        aboutText:
+          "Customers expect instant answers. We build AI chatbots grounded on your knowledge base that resolve questions, capture leads, and escalate to your team when it matters — across web, app, and WhatsApp.",
+        offeringsTitle: "What We Build",
+        offerings: [
+          { title: "Website & App Chatbots", description: "On-brand assistants that answer questions and guide users to action." },
+          { title: "WhatsApp & Social Bots", description: "Automated conversations on WhatsApp, Instagram, and Messenger." },
+          { title: "Knowledge-Base Assistants", description: "Bots grounded on your docs and FAQs for accurate, sourced answers." },
+          { title: "Lead-Qualification Bots", description: "Conversational flows that qualify and route leads to your sales team." },
+          { title: "Voice & Multilingual Bots", description: "Multi-language and voice-capable bots for wider reach." },
+          { title: "Handoff & Analytics", description: "Smooth human handoff plus analytics on what customers ask." },
+        ],
+        faqIntro:
+          "Our AI chatbots are grounded on your knowledge and designed to resolve real queries — with clean human handoff whenever a person is needed.",
+        faqs: [
+          { question: "Where can the chatbot be deployed?", answer: "On your website, web app, mobile app, and channels like WhatsApp, Instagram, and Messenger — with consistent answers across all of them." },
+          { question: "Does it answer from our own content?", answer: "Yes. We ground the bot on your FAQs, docs, and product data so answers are accurate and on-brand, with citations where useful." },
+          { question: "Can it hand off to a human?", answer: "Yes. When a query needs a person, the bot escalates with full context to your team, keeping the customer experience smooth." },
+          { question: "Will it capture and qualify leads?", answer: "Absolutely. We build conversational flows that qualify visitors and push leads straight into your CRM." },
+        ],
+      },
+      {
+        slug: "ai-saas",
+        name: "AI SaaS",
+        heroTitle: "AI SaaS Development Services",
+        tagline: "Scalable AI platforms built to ship and monetize",
+        description:
+          "We design and build AI SaaS products end to end — multi-tenant architecture, usage-based billing, and inference infrastructure ready to scale.",
+        intro:
+          "From MVP to scale, we build AI SaaS platforms with the architecture, billing, and infrastructure needed to grow a real product.",
+        aboutLabel: "AI SaaS",
+        aboutTitle: "From AI idea to a product you can sell",
+        aboutText:
+          "Turning an AI idea into a sellable product takes more than a model. We build the full SaaS — multi-tenant architecture, billing, dashboards, and inference infrastructure — so you can launch, charge, and scale.",
+        offeringsTitle: "What We Build",
+        offerings: [
+          { title: "AI SaaS MVPs", description: "Launch-ready products that prove your AI concept with real users fast." },
+          { title: "Multi-Tenant Architecture", description: "Secure tenant isolation and roles built for many customers from day one." },
+          { title: "Usage-Based Billing", description: "Metering and subscription billing tied to real product usage." },
+          { title: "Inference Infrastructure", description: "Reliable, cost-optimized model serving that scales with demand." },
+          { title: "Dashboards & Admin", description: "Customer dashboards and admin tooling to run the product day to day." },
+          { title: "Scaling & Cost Control", description: "Architecture and optimizations that keep unit economics healthy." },
+        ],
+        faqIntro:
+          "We build AI SaaS as a complete product — architecture, billing, and infrastructure — so you can launch, monetize, and scale with confidence.",
+        faqs: [
+          { question: "Can you take us from idea to launch?", answer: "Yes. We handle product design, architecture, AI, billing, and deployment — delivering a launch-ready SaaS you can put in front of paying customers." },
+          { question: "How do you handle multi-tenancy and security?", answer: "We build secure tenant isolation, role-based access, and encrypted data handling suited to a multi-customer SaaS from the start." },
+          { question: "How is AI usage billed?", answer: "We implement metering and subscription or usage-based billing so your pricing maps cleanly to real inference and feature usage." },
+          { question: "Will it scale as we grow?", answer: "Yes. We design the architecture and inference layer to scale horizontally while keeping costs predictable." },
+        ],
+      },
+      {
+        slug: "ai-integration",
+        name: "AI Integration",
+        heroTitle: "AI Integration Services",
+        tagline: "Seamless AI-powered workflows across your stack",
+        description:
+          "We integrate AI into your existing products and tools — LLM APIs, CRMs, and automation platforms — to create seamless, intelligent workflows.",
+        intro:
+          "From API integration to data and governance, we wire AI into the systems you already use so it delivers value without disruption.",
+        aboutLabel: "AI Integration",
+        aboutTitle: "Add intelligence to the tools you already use",
+        aboutText:
+          "You don't always need a new product — you need your current stack to be smarter. We integrate AI into your apps, CRM, and workflows so automation and insight flow through the systems your team already relies on.",
+        offeringsTitle: "What We Integrate",
+        offerings: [
+          { title: "LLM API Integration", description: "Reliable, cost-controlled AI features added to your existing product." },
+          { title: "CRM & Tool Integrations", description: "AI wired into your CRM, helpdesk, and internal tools." },
+          { title: "Workflow Automation", description: "Intelligent automations that connect apps and remove manual steps." },
+          { title: "Data & Vector Databases", description: "Embeddings and vector search that ground AI on your data." },
+          { title: "Third-Party AI Services", description: "Vision, speech, and specialized AI APIs integrated cleanly." },
+          { title: "Security & Governance", description: "Access controls, logging, and guardrails for responsible AI use." },
+        ],
+        faqIntro:
+          "Our AI integrations bring intelligence into your existing stack — reliable, secure, and governed — without forcing a rebuild.",
+        faqs: [
+          { question: "Do we need to replace our current tools?", answer: "No. We integrate AI into the systems you already use, so you gain intelligence and automation without disrupting your stack." },
+          { question: "Which platforms can you integrate with?", answer: "CRMs, helpdesks, automation tools, databases, and virtually any system with an API — plus leading LLM and AI service providers." },
+          { question: "How do you keep it secure?", answer: "We add access controls, audit logging, and guardrails, and can keep sensitive data within your environment where required." },
+          { question: "How do you control ongoing costs?", answer: "We optimize prompts, caching, and model choice, and add usage monitoring so AI costs stay predictable as adoption grows." },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Consulting",
+    services: [
+      {
+        slug: "it-consulting",
+        name: "IT Consulting",
+        heroTitle: "IT Consulting Services",
+        tagline: "Technology strategy and planning that aligns tech with growth",
+        description:
+          "We help you plan and align your technology with business goals — strategy, architecture, cloud, security, and a clear digital transformation roadmap.",
+        intro:
+          "From assessment to roadmap, we give you clear, vendor-neutral guidance on the technology decisions that move your business forward.",
+        aboutLabel: "IT Consulting",
+        aboutTitle: "Clear technology decisions, aligned to your goals",
+        aboutText:
+          "Technology choices are expensive to get wrong. We assess where you are, define where you're going, and deliver a practical roadmap — so every investment in tech maps directly to business outcomes.",
+        offeringsTitle: "What We Advise On",
+        offerings: [
+          { title: "Technology Strategy", description: "A clear plan connecting your tech investments to business goals." },
+          { title: "Architecture Review", description: "Assessment of your systems for scalability, security, and cost." },
+          { title: "Cloud & Infrastructure", description: "Planning for cloud adoption, migration, and infrastructure efficiency." },
+          { title: "Security & Compliance", description: "Guidance on securing systems and meeting compliance requirements." },
+          { title: "Vendor & Stack Selection", description: "Unbiased help choosing the right platforms, tools, and partners." },
+          { title: "Transformation Roadmaps", description: "Phased digital transformation plans your team can actually execute." },
+        ],
+        faqIntro:
+          "Our IT consulting is practical and vendor-neutral — clear assessments and roadmaps that connect technology decisions to real business outcomes.",
+        faqs: [
+          { question: "Do you work with our existing team?", answer: "Yes. We partner with your internal team, bringing outside expertise and a clear plan while respecting the knowledge you already have." },
+          { question: "Are your recommendations vendor-neutral?", answer: "Yes. We recommend what fits your goals and budget, not what earns us a commission — you get honest, independent guidance." },
+          { question: "What do we get at the end?", answer: "A clear assessment, prioritized recommendations, and a phased roadmap your team can execute — not a slide deck that sits on a shelf." },
+          { question: "Can you help execute the plan too?", answer: "Yes. Beyond strategy, our engineering teams can implement the roadmap if you'd like a single partner from plan to delivery." },
+        ],
+      },
+      {
+        slug: "software-consulting",
+        name: "Software Consulting",
+        heroTitle: "Software Consulting Services",
+        tagline: "Architecture and development guidance from experienced engineers",
+        description:
+          "We provide software architecture, code audits, and delivery guidance — helping teams build scalable, maintainable systems and ship with confidence.",
+        intro:
+          "From architecture design to code audits and process, we help your team make the right technical decisions and avoid costly mistakes.",
+        aboutLabel: "Software Consulting",
+        aboutTitle: "Senior engineering guidance when it matters most",
+        aboutText:
+          "The right architecture decision early saves months later. We bring senior engineering perspective — reviewing your systems, guiding your stack, and strengthening your delivery process so you build the right thing well.",
+        offeringsTitle: "What We Advise On",
+        offerings: [
+          { title: "Architecture Design", description: "Scalable, maintainable system architecture tailored to your product." },
+          { title: "Code & System Audits", description: "Reviews that surface risks, tech debt, and security issues early." },
+          { title: "Tech Stack Selection", description: "Guidance on the right languages, frameworks, and tools for your goals." },
+          { title: "Scalability Planning", description: "Prepare your systems to handle growth without breaking or overspending." },
+          { title: "Team Augmentation", description: "Senior engineers who plug into your team to accelerate delivery." },
+          { title: "Delivery & Process", description: "Practices that help your team ship faster with fewer defects." },
+        ],
+        faqIntro:
+          "Our software consulting brings senior engineering perspective to your toughest technical decisions — architecture, quality, and delivery.",
+        faqs: [
+          { question: "When should we bring in a software consultant?", answer: "Before major architecture decisions, when scaling, when quality or velocity slips, or when planning a rebuild — early guidance prevents expensive rework." },
+          { question: "Do you review existing codebases?", answer: "Yes. We audit your code and architecture, then deliver a prioritized report of risks, quick wins, and longer-term improvements." },
+          { question: "Can you guide our in-house team?", answer: "Yes. We work alongside your developers, providing architecture direction, code review, and process improvements without taking over." },
+          { question: "Do you also build?", answer: "We can. If you'd like, our engineering team can implement the recommendations end to end." },
+        ],
+      },
+      {
+        slug: "mobile-consulting",
+        name: "Mobile Consulting",
+        heroTitle: "Mobile Consulting Services",
+        tagline: "App strategy and optimization for growth and retention",
+        description:
+          "We help you plan, launch, and optimize mobile apps — strategy, UX and performance audits, store optimization, and retention that drives real growth.",
+        intro:
+          "From app strategy to store optimization and analytics, we help you build mobile products users keep and love.",
+        aboutLabel: "Mobile Consulting",
+        aboutTitle: "Build the right app, then make it grow",
+        aboutText:
+          "A great app is only half the battle — getting installs, retention, and reviews is the rest. We advise on strategy, UX, performance, and store optimization so your app doesn't just launch, it grows.",
+        offeringsTitle: "What We Advise On",
+        offerings: [
+          { title: "App Strategy & Roadmap", description: "A clear plan for what to build, for whom, and in what order." },
+          { title: "UX & Performance Audits", description: "Reviews that surface friction, crashes, and slow paths to fix." },
+          { title: "App Store Optimization", description: "Listing, keyword, and conversion improvements that drive installs." },
+          { title: "Cross-Platform Strategy", description: "Guidance on native vs cross-platform for your budget and goals." },
+          { title: "Analytics & Retention", description: "Instrumentation and retention tactics that keep users coming back." },
+          { title: "Release & Scaling", description: "Guidance on release process, monitoring, and scaling your app." },
+        ],
+        faqIntro:
+          "Our mobile consulting covers the full journey — strategy, UX, performance, and growth — so your app succeeds beyond launch day.",
+        faqs: [
+          { question: "We have an app that isn't growing — can you help?", answer: "Yes. We audit UX, performance, and your store presence, then deliver a prioritized plan to improve installs, retention, and reviews." },
+          { question: "Native or cross-platform — which should we choose?", answer: "It depends on your budget, timeline, and features. We assess your goals and recommend the approach with the best long-term value." },
+          { question: "Do you help with App Store and Play Store rankings?", answer: "Yes. We guide store optimization — listings, keywords, and conversion — to improve visibility and install rates." },
+          { question: "Can you improve retention?", answer: "Absolutely. We help you instrument analytics and apply onboarding and engagement tactics proven to lift retention." },
+        ],
+      },
+      {
+        slug: "ai-consulting",
+        name: "AI Consulting",
+        heroTitle: "AI Consulting Services",
+        tagline: "AI adoption and implementation without the guesswork",
+        description:
+          "We help you identify high-value AI opportunities, assess data readiness, and build a practical roadmap to adopt AI with real ROI — not hype.",
+        intro:
+          "From opportunity assessment to implementation roadmap, we cut through the AI hype and focus on what will actually move your business.",
+        aboutLabel: "AI Consulting",
+        aboutTitle: "AI decisions grounded in ROI, not hype",
+        aboutText:
+          "Everyone wants AI, but few know where to start. We assess where AI can create real value in your business, check your data readiness, and deliver a practical roadmap — so you invest in the use cases that pay off.",
+        offeringsTitle: "What We Advise On",
+        offerings: [
+          { title: "AI Opportunity Assessment", description: "Identify where AI can realistically create value in your business." },
+          { title: "Use-Case Prioritization", description: "Rank opportunities by impact, feasibility, and cost to focus effort." },
+          { title: "Data Readiness Audit", description: "Assess whether your data can support the AI you want to build." },
+          { title: "Build-vs-Buy Strategy", description: "Guidance on when to build custom AI versus adopt existing tools." },
+          { title: "Implementation Roadmap", description: "A phased plan to adopt AI with clear milestones and ROI." },
+          { title: "Governance & Compliance", description: "Responsible-AI practices, guardrails, and compliance guidance." },
+        ],
+        faqIntro:
+          "Our AI consulting is practical and outcome-focused — we help you invest in the AI use cases that deliver measurable ROI, and skip the ones that don't.",
+        faqs: [
+          { question: "We want to use AI but don't know where to start.", answer: "That's exactly what we solve. We assess your business, identify high-value use cases, check data readiness, and deliver a prioritized roadmap." },
+          { question: "How do you decide what's worth building?", answer: "We rank opportunities by business impact, technical feasibility, and cost, so you invest first in the AI that delivers clear ROI." },
+          { question: "Is our data ready for AI?", answer: "We run a data readiness audit and tell you honestly — plus what to fix — before you commit budget to building." },
+          { question: "Can you implement, not just advise?", answer: "Yes. Our AI engineering teams can execute the roadmap end to end if you'd like a single partner from strategy to delivery." },
+        ],
+      },
+    ],
+  },
 ];
 
 export function getAllServices(): Service[] {

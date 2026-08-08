@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import { usePathname } from "next/navigation";
 import ThemeToggle from "./ThemeToggle";
 import LanguageSwitcher from "./LanguageSwitcher";
-import { serviceCategories } from "@/lib/services";
+import { servicesMenuColumns, servicesMenuPromos } from "@/lib/servicesMenu";
 import { useLocale } from "@/contexts/LocaleContext";
 import type { TranslationKey } from "@/lib/translations";
 
@@ -12,7 +12,6 @@ export default function Navbar() {
   const { t } = useLocale();
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const pathname = usePathname();
 
@@ -72,14 +71,9 @@ export default function Navbar() {
               return (
                 <div
                   key={link.nameKey}
-                  className="relative"
+                  className={isServices ? "static" : "relative"}
                   onMouseEnter={() => isServices && setServicesOpen(true)}
-                  onMouseLeave={() => {
-                    if (isServices) {
-                      setServicesOpen(false);
-                      setActiveCategory(null);
-                    }
-                  }}
+                  onMouseLeave={() => isServices && setServicesOpen(false)}
                 >
                   <a
                     href={link.href}
@@ -94,52 +88,75 @@ export default function Navbar() {
                     {t(link.nameKey)}
                   </a>
 
-                  {/* Services dropdown */}
+                  {/* Services mega-menu */}
                   {isServices && servicesOpen && (
-                    <div className="absolute left-1/2 top-full w-[300px] -translate-x-1/2 pt-4">
-                      <div className="rounded-2xl bg-white py-3 ring-1 ring-[#4169E1]/20 shadow-[0_0_12px_rgba(65,105,225,0.15),0_24px_60px_-16px_rgba(11,18,38,0.25)]">
-                        <a
-                          href="/services"
-                          className="block px-6 py-3 font-['Inter'] text-[14px] font-medium text-[#0B1226]/60 transition-colors hover:bg-[#4169E1]/10 hover:text-[#0B1226]"
-                        >
-                          {t("nav.allServices")}
-                        </a>
-                        <div className="mx-4 my-1 h-px bg-[#0B1226]/10" />
-                        {serviceCategories.map((cat) => (
-                          <div
-                            key={cat.name}
-                            className="relative"
-                            onMouseEnter={() => setActiveCategory(cat.name)}
-                          >
-                            <div
-                              className={`flex cursor-default items-center justify-between px-6 py-3 font-['Inter'] text-[14px] font-medium transition-colors ${
-                                activeCategory === cat.name
-                                  ? "bg-[#4169E1]/10 text-[#0B1226]"
-                                  : "text-[#0B1226]/75"
-                              }`}
-                            >
-                              {cat.name}
-                              <span className="material-symbols-outlined text-[16px]">
-                                chevron_right
-                              </span>
-                            </div>
-                            {activeCategory === cat.name && (
-                              <div className="absolute left-full top-0 w-[280px] pl-2">
-                                <div className="rounded-2xl bg-white py-3 ring-1 ring-[#4169E1]/20 shadow-[0_0_12px_rgba(65,105,225,0.15),0_24px_60px_-16px_rgba(11,18,38,0.25)]">
-                                  {cat.services.map((service) => (
+                    <div className="absolute left-1/2 top-full z-50 w-[min(1180px,calc(100vw-2rem))] -translate-x-1/2 pt-4">
+                      <div className="rounded-[24px] bg-white p-7 ring-1 ring-[#4169E1]/20 shadow-[0_0_12px_rgba(65,105,225,0.15),0_28px_70px_-16px_rgba(11,18,38,0.28)]">
+                        {/* Category columns */}
+                        <div className="grid grid-cols-4 gap-x-6 gap-y-8">
+                          {servicesMenuColumns.map((col) => (
+                            <div key={col.name}>
+                              <p className="mb-3 px-2 font-['Inter'] text-[11px] font-semibold uppercase tracking-[0.14em] text-[#0B1226]/40">
+                                {col.name}
+                              </p>
+                              <div className="flex flex-col">
+                                {col.items.map((item) => {
+                                  const Icon = item.icon;
+                                  return (
                                     <a
-                                      key={service.slug}
-                                      href={`/services/${service.slug}`}
-                                      className="block px-6 py-3 font-['Inter'] text-[14px] font-medium text-[#0B1226]/75 transition-colors hover:bg-[#4169E1]/10 hover:text-[#0B1226]"
+                                      key={item.name}
+                                      href={item.href}
+                                      className="group flex items-start gap-3 rounded-xl px-2 py-2 transition-colors hover:bg-[#4169E1]/[0.06]"
                                     >
-                                      {service.name}
+                                      <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-[#4169E1]/10 text-[#4169E1] transition-colors group-hover:bg-[#4169E1] group-hover:text-white">
+                                        <Icon className="h-[17px] w-[17px]" strokeWidth={1.75} />
+                                      </span>
+                                      <span className="min-w-0">
+                                        <span className="block font-['Inter'] text-[13.5px] font-semibold text-[#0B1226]">
+                                          {item.name}
+                                        </span>
+                                        <span className="block font-['Inter'] text-[11.5px] leading-snug text-[#0B1226]/50">
+                                          {item.description}
+                                        </span>
+                                      </span>
                                     </a>
-                                  ))}
-                                </div>
+                                  );
+                                })}
                               </div>
-                            )}
-                          </div>
-                        ))}
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Promo row */}
+                        <div className="mt-6 grid grid-cols-3 gap-6 border-t border-[#0B1226]/10 pt-6">
+                          {servicesMenuPromos.map((promo) => {
+                            const Icon = promo.icon;
+                            return (
+                              <a
+                                key={promo.title}
+                                href={promo.href}
+                                className="group flex items-start gap-3 rounded-xl px-2 py-1 transition-colors hover:bg-[#4169E1]/[0.06]"
+                              >
+                                <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-[#4169E1]/10 text-[#4169E1] transition-colors group-hover:bg-[#4169E1] group-hover:text-white">
+                                  <Icon className="h-[19px] w-[19px]" strokeWidth={1.75} />
+                                </span>
+                                <span className="min-w-0">
+                                  <span className="flex items-baseline gap-2">
+                                    <span className="font-['Inter'] text-[14px] font-semibold text-[#0B1226]">
+                                      {promo.title}
+                                    </span>
+                                    <span className="font-['Inter'] text-[11px] font-semibold text-[#4169E1]">
+                                      {promo.audience}
+                                    </span>
+                                  </span>
+                                  <span className="block font-['Inter'] text-[11.5px] leading-snug text-[#0B1226]/50">
+                                    {promo.description}
+                                  </span>
+                                </span>
+                              </a>
+                            );
+                          })}
+                        </div>
                       </div>
                     </div>
                   )}
@@ -205,18 +222,27 @@ export default function Navbar() {
                           >
                             {t("nav.allServices")}
                           </a>
-                          {serviceCategories.flatMap((cat) =>
-                            cat.services.map((service) => (
-                              <a
-                                key={service.slug}
-                                href={`/services/${service.slug}`}
-                                onClick={() => setMenuOpen(false)}
-                                className="block rounded-xl px-4 py-3 font-['Inter'] text-[14px] text-[#0B1226]/70 hover:bg-[#4169E1]/10"
-                              >
-                                {service.name}
-                              </a>
-                            ))
-                          )}
+                          {servicesMenuColumns.map((col) => (
+                            <div key={col.name}>
+                              <p className="px-4 pb-1 pt-3 font-['Inter'] text-[11px] font-semibold uppercase tracking-[0.14em] text-[#0B1226]/40">
+                                {col.name}
+                              </p>
+                              {col.items.map((item) => {
+                                const Icon = item.icon;
+                                return (
+                                  <a
+                                    key={item.name}
+                                    href={item.href}
+                                    onClick={() => setMenuOpen(false)}
+                                    className="flex items-center gap-3 rounded-xl px-4 py-2.5 font-['Inter'] text-[14px] text-[#0B1226]/75 hover:bg-[#4169E1]/10"
+                                  >
+                                    <Icon className="h-[16px] w-[16px] shrink-0 text-[#4169E1]" strokeWidth={1.75} />
+                                    {item.name}
+                                  </a>
+                                );
+                              })}
+                            </div>
+                          ))}
                         </div>
                       )}
                     </div>
