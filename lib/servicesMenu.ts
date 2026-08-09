@@ -78,15 +78,6 @@ export const servicesMenuColumns: MegaMenuColumn[] = [
       { name: "AI Integration", description: "Seamless AI-Powered Workflows", href: "/services/ai-integration", icon: Workflow },
     ],
   },
-  {
-    name: "Consulting",
-    items: [
-      { name: "IT Consulting", description: "Technology Strategy & Planning", href: "/services/it-consulting", icon: Server },
-      { name: "Software Consulting", description: "Architecture & Development Guidance", href: "/services/software-consulting", icon: FileCode },
-      { name: "Mobile Consulting", description: "App Strategy & Optimization", href: "/services/mobile-consulting", icon: Smartphone },
-      { name: "AI Consulting", description: "AI Adoption & Implementation", href: "/services/ai-consulting", icon: Lightbulb },
-    ],
-  },
 ];
 
 export const servicesMenuPromos: MegaMenuPromo[] = [

@@ -18,7 +18,6 @@ import PricingSection from "@/components/home/PricingSection";
 import MadeWithSidpin from "@/components/home/MadeWithSidpin";
 import RecentWork from "@/components/home/RecentWork";
 import AiCloudSection from "@/components/home/AiCloudSection";
-import StatsSection from "@/components/home/StatsSection";
 import ClientLogos from "@/components/home/ClientLogos";
 import TechMarquee from "@/components/home/TechMarquee";
 // import ExpertiseGrid from "@/components/home/ExpertiseGrid"; // merged into ProductGrid
@@ -38,9 +37,6 @@ export default function HomePage() {
             and removing <AdobeStyleHero />. */}
         <AdobeStyleHero />
         {/* <IntegrationHero /> */}
-
-        {/* 1.5 STATS SECTION */}
-        <StatsSection />
 
         {/* 1.55 CLIENT LOGO WALL — trusted by */}
         <ClientLogos />

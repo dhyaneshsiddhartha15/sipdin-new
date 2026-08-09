@@ -93,7 +93,7 @@ export default function Navbar() {
                     <div className="absolute left-1/2 top-full z-50 w-[min(1180px,calc(100vw-2rem))] -translate-x-1/2 pt-4">
                       <div className="rounded-[24px] bg-white p-7 ring-1 ring-[#4169E1]/20 shadow-[0_0_12px_rgba(65,105,225,0.15),0_28px_70px_-16px_rgba(11,18,38,0.28)]">
                         {/* Category columns */}
-                        <div className="grid grid-cols-4 gap-x-6 gap-y-8">
+                        <div className="grid grid-cols-3 gap-x-6 gap-y-8">
                           {servicesMenuColumns.map((col) => (
                             <div key={col.name}>
                               <p className="mb-3 px-2 font-['Inter'] text-[11px] font-semibold uppercase tracking-[0.14em] text-[#0B1226]/40">

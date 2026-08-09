@@ -207,24 +207,68 @@ function SectionBlock({ section, accent }: { section: Section; accent: string })
 }
 
 export default function CaseStudyDetail({ study }: { study: CaseStudy }) {
+  // Rudradharma gets no blue background
+  const backgroundStyle = study.slug === "rudradharma-spiritual-ecommerce"
+    ? { backgroundColor: "#fafafa", backgroundImage: "none" }
+    : PAPER_BG;
+
   return (
-    <article style={PAPER_BG}>
+    <article style={backgroundStyle} className="relative">
       {/* Hero — heading only */}
-      <section className="mx-auto max-w-[1500px] px-[24px] pb-16 pt-36 md:px-[40px] md:pt-44">
-        <div className="max-w-4xl">
-          <span className="inline-block rounded bg-white/20 px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.25em] text-white backdrop-blur" style={{ fontFamily: "Geist, sans-serif" }}>
+      <section className="relative mx-auto max-w-[1500px] px-[24px] pb-16 pt-40 md:px-[40px] md:pt-52">
+        {/* Overlay Image for Rudradharma - Hero section only, right side */}
+        {study.slug === "rudradharma-spiritual-ecommerce" && (
+          <div className="absolute right-0 top-0 z-0 opacity-50 md:opacity-60 pointer-events-none">
+            <img
+              src="/website-case-studies/rudradharma/overlay.png"
+              alt="Rudradharma overlay"
+              className="h-full w-auto object-contain"
+            />
+          </div>
+        )}
+
+        {/* Decorative deep rudraksha-brown box — fills the empty left area between
+            the hero heading and the stats row, balancing the right-side overlay. */}
+        {study.slug === "rudradharma-spiritual-ecommerce" && (
+          <div
+            className="pointer-events-none absolute bottom-[272px] left-[24px] z-0 hidden h-[190px] w-[340px] rounded-3xl shadow-[0_30px_70px_-40px_rgba(80,40,15,0.6)] md:left-[40px] md:block"
+            style={{ background: "linear-gradient(135deg, #7A4E2D 0%, #5E3A21 100%)" }}
+            aria-hidden
+          />
+        )}
+
+        <div className="relative z-10 max-w-4xl">
+          <span
+            className="inline-block rounded bg-white/20 px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.25em] backdrop-blur"
+            style={{
+              fontFamily: "Geist, sans-serif",
+              color: study.slug === "rudradharma-spiritual-ecommerce" ? "#E08A34" : "white"
+            }}
+          >
             {study.tag}
           </span>
-          <h1 className="mt-5 text-[38px] font-extrabold leading-[1.05] tracking-tight text-white drop-shadow-[0_2px_20px_rgba(8,30,80,0.4)] md:text-[56px]" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+          <h1
+            className="mt-5 text-[38px] font-extrabold leading-[1.05] tracking-tight drop-shadow-[0_2px_20px_rgba(8,30,80,0.4)] md:text-[56px]"
+            style={{
+              fontFamily: "Hanken Grotesk, sans-serif",
+              color: study.slug === "rudradharma-spiritual-ecommerce" ? "#E08A34" : "white"
+            }}
+          >
             {study.title}
           </h1>
-          <p className="mt-5 max-w-2xl text-[17px] leading-relaxed text-white/85 drop-shadow-[0_2px_20px_rgba(8,30,80,0.4)] md:text-[19px]" style={{ fontFamily: "Inter, sans-serif" }}>
+          <p
+            className="mt-5 max-w-2xl text-[17px] leading-relaxed drop-shadow-[0_2px_20px_rgba(8,30,80,0.4)] md:text-[19px]"
+            style={{
+              fontFamily: "Inter, sans-serif",
+              color: study.slug === "rudradharma-spiritual-ecommerce" ? "#E08A34" : "rgba(255,255,255,0.85)"
+            }}
+          >
             {study.description}
           </p>
         </div>
 
         {/* Stats — creative cards */}
-        <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-3">
+        <div className="mt-64 grid grid-cols-1 gap-5 sm:grid-cols-3">
           {study.stats.map((s) => (
             <div key={s.label} className="rounded-2xl border-t-4 bg-white p-7 shadow-[0_30px_70px_-40px_rgba(8,30,80,0.6)]" style={{ borderColor: study.accent }}>
               <div className="text-[56px] font-extrabold leading-none tracking-tight md:text-[68px]" style={{ color: study.accent, fontFamily: "Hanken Grotesk, sans-serif" }}>
