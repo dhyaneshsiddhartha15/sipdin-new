@@ -4,6 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CaseStudyDetail, { PAPER_BG } from "@/components/case-studies/CaseStudyDetail";
 import RudradharmaCaseStudy from "@/components/case-studies/RudradharmaCaseStudy";
+import PremiumCaseStudy from "@/components/case-studies/PremiumCaseStudy";
 import CaseStudyCard from "@/components/case-studies/CaseStudyCard";
 import { getAllCaseStudies, getCaseStudyBySlug } from "@/lib/caseStudies";
 
@@ -37,11 +38,11 @@ export default async function CaseStudyPage({
     <>
       <Navbar />
       <main>
-        {/* Use premium layout for Rudradharma, standard layout for others */}
+        {/* Rudradharma uses custom layout, others use premium layout */}
         {slug === "rudradharma-spiritual-ecommerce" ? (
           <RudradharmaCaseStudy />
         ) : (
-          <CaseStudyDetail study={study} />
+          <PremiumCaseStudy study={study} />
         )}
 
         {/* More case studies */}

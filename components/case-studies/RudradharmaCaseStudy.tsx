@@ -307,9 +307,51 @@ function ProjectInfoSection() {
 function AboutProjectSection() {
   const [leftRef, leftVisible] = useScrollReveal();
   const [rightRef, rightVisible] = useScrollReveal();
+  const sectionRef = useRef<HTMLElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const text = textRef.current;
+    if (!section || !text) return;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
+    let rafId: number;
+
+    const updateParallax = () => {
+      const rect = section.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const isDesktop = window.innerWidth >= 1024;
+
+      // Scroll progress (0 to 1) as the section moves through the viewport
+      const scrollProgress = Math.max(0, Math.min(1, (viewportHeight - rect.top) / (viewportHeight + rect.height)));
+
+      // Clean vertical drift only
+      const parallaxOffset = isDesktop ? 120 : 50;
+      const parallaxY = scrollProgress * parallaxOffset - (parallaxOffset / 2);
+
+      text.style.transform = `translate3d(0, ${parallaxY}px, 0)`;
+      text.style.willChange = "transform";
+    };
+
+    const handleScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(updateParallax);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    updateParallax();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
 
   return (
-    <section className="bg-white py-24">
+    <section ref={sectionRef} className="bg-white py-24 relative z-20">
       <div className="mx-auto max-w-[1400px] px-6 md:px-12">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* LEFT - Heading */}
@@ -331,7 +373,7 @@ function AboutProjectSection() {
               rightVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <div className="space-y-6 text-[16px] leading-relaxed text-[#555555] md:text-[18px]" style={{ fontFamily: "Inter, sans-serif" }}>
+            <div ref={textRef} className="space-y-6 text-[16px] leading-relaxed text-[#555555] md:text-[18px]" style={{ fontFamily: "Inter, sans-serif" }}>
               {CASE_STUDY.aboutProject.map((paragraph, i) => (
                 <p key={i}>{paragraph}</p>
               ))}
@@ -343,51 +385,64 @@ function AboutProjectSection() {
   );
 }
 
-// 5. IMAGE GALLERY SECTION
+// 5. IMAGE GALLERY SECTION (PREMIUM STICKY PARALLAX LIKE AGENCY SITES)
 function GallerySection() {
-  const [ref1, v1] = useScrollReveal();
+  const sectionRef = useRef<HTMLElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
-  const [transform, setTransform] = useState("translateY(0px)");
 
   useEffect(() => {
+    const section = sectionRef.current;
     const img = imgRef.current;
-    if (!img) return;
+    if (!section || !img) return;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
+    let rafId: number;
+
+    const updateParallax = () => {
+      const rect = section.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const isDesktop = window.innerWidth >= 1024;
+
+      // Scroll progress (0 to 1) as the section moves through the viewport
+      const scrollProgress = Math.max(0, Math.min(1, (viewportHeight - rect.top) / (viewportHeight + rect.height)));
+
+      // Clean vertical drift only
+      const parallaxOffset = isDesktop ? 120 : 50;
+      const parallaxY = scrollProgress * parallaxOffset - (parallaxOffset / 2);
+
+      img.style.transform = `translate3d(0, ${parallaxY}px, 0)`;
+      img.style.willChange = "transform";
+    };
 
     const handleScroll = () => {
-      const rect = img.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-
-      // Calculate how far the element is from center of viewport
-      const centerOffset = (rect.top + rect.height / 2) - viewportHeight / 2;
-      const normalizedOffset = centerOffset / viewportHeight; // -1 to 1
-
-      // Apply parallax based on position in viewport (only translateY, no scale)
-      const translateY = normalizedOffset * 30; // Move up/down
-
-      setTransform(`translateY(${translateY}px)`);
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(updateParallax);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Initial call
-    return () => window.removeEventListener("scroll", handleScroll);
+    updateParallax();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
+  // Image effects: (1) sticky, (2) parallax vertical drift, (3) grayscale → color on hover.
   return (
-    <section className="bg-white py-6 md:py-8">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-12">
-        {/* Single Large Featured Image with Parallax */}
-        <div
-          ref={ref1}
-          className={`overflow-hidden rounded-3xl transition-all duration-1000 ${
-            v1 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-          }`}
-        >
+    <section ref={sectionRef} data-gallery-section className="bg-transparent lg:sticky lg:top-0 z-10 overflow-visible">
+      <div className="mx-auto max-w-[1700px] px-6 md:px-12 relative">
+        <div className="relative overflow-visible rounded-3xl">
           <img
             ref={imgRef}
             src="/case-study/rudradharma-layout.png"
             alt="Rudradharma Layout"
-            className="h-auto w-full object-cover grayscale transition-transform duration-300 ease-out hover:grayscale-0"
-            style={{ transform }}
+            className="relative z-30 h-auto w-full max-w-[1600px] mx-auto object-cover grayscale transition-[filter] duration-500 ease-out hover:grayscale-0"
+            style={{ filter: "grayscale(100%)" }}
+            onMouseEnter={(e) => e.currentTarget.style.filter = "grayscale(0%)"}
+            onMouseLeave={(e) => e.currentTarget.style.filter = "grayscale(100%)"}
           />
         </div>
       </div>
@@ -399,17 +454,59 @@ function GallerySection() {
 function FeatureSection({ feature, index }: { feature: typeof CASE_STUDY.features[0]; index: number }) {
   const [textRef, textVisible] = useScrollReveal();
   const [imageRef, imageVisible] = useScrollReveal();
+  const sectionRef = useRef<HTMLElement>(null);
   const isEven = index % 2 === 0; // 0, 2, 4... = text left | 1, 3, 5... = image left
 
+  useEffect(() => {
+    const section = sectionRef.current;
+    const textEl = textRef.current;
+    const imageEl = imageRef.current;
+    if (!section || (!textEl && !imageEl)) return;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
+    let rafId: number;
+
+    const updateParallax = () => {
+      const rect = section.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const isDesktop = window.innerWidth >= 1024;
+
+      // Scroll progress (0 to 1) as the section moves through the viewport
+      const scrollProgress = Math.max(0, Math.min(1, (viewportHeight - rect.top) / (viewportHeight + rect.height)));
+
+      // Clean vertical drift — image moves a touch more than text for subtle depth
+      const parallaxOffset = isDesktop ? 120 : 50;
+      const parallaxY = scrollProgress * parallaxOffset - (parallaxOffset / 2);
+
+      if (textEl) textEl.style.transform = `translate3d(0, ${parallaxY * 0.6}px, 0)`;
+      if (imageEl) imageEl.style.transform = `translate3d(0, ${parallaxY}px, 0)`;
+    };
+
+    const handleScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(updateParallax);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    updateParallax();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(rafId);
+    };
+  }, [textRef, imageRef]);
+
   return (
-    <section className={`py-24 ${index % 2 === 0 ? "bg-white" : "bg-[#fafafa]"}`}>
+    <section ref={sectionRef} className={`py-24 ${index % 2 === 0 ? "bg-white" : "bg-[#fafafa]"}`}>
       <div className="mx-auto max-w-[1400px] px-6 md:px-12">
         <div className={`flex flex-col gap-12 lg:flex-row ${isEven ? "" : "lg:flex-row-reverse"}`}>
           {/* Content Side */}
           <div
             ref={textRef}
-            className={`flex flex-col justify-center transition-all duration-1000 ${
-              textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            className={`flex flex-col justify-center transition-opacity duration-1000 ${
+              textVisible ? "opacity-100" : "opacity-0"
             }`}
           >
             <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#E08A34]" style={{ fontFamily: "Inter, sans-serif" }}>
@@ -472,8 +569,8 @@ function FeatureSection({ feature, index }: { feature: typeof CASE_STUDY.feature
           {/* Image Side */}
           <div
             ref={imageRef}
-            className={`transition-all duration-1000 delay-200 ${
-              imageVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            className={`transition-opacity duration-1000 delay-200 ${
+              imageVisible ? "opacity-100" : "opacity-0"
             }`}
           >
             <div className="overflow-hidden rounded-3xl">
@@ -531,8 +628,11 @@ export default function RudradharmaCaseStudy() {
       <HeroSection />
       <LogoSection />
       <ProjectInfoSection />
-      <AboutProjectSection />
-      <GallerySection />
+      {/* About Project text stays pinned while the gallery image scrolls up and overlaps it */}
+      <div className="relative">
+        <AboutProjectSection />
+        <GallerySection />
+      </div>
 
       {/* Feature Sections with Alternating Layouts */}
       {CASE_STUDY.features.map((feature, index) => (
