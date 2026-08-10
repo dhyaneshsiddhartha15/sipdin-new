@@ -27,6 +27,7 @@ import {
 } from "lucide-react";
 import IntegrationGrid from "./IntegrationGrid";
 import AIConsultationModal from "@/components/contact/AIConsultationModal";
+import StatsSection from "@/components/home/StatsSection";
 import { useLocale } from "@/contexts/LocaleContext";
 import type { TranslationKey } from "@/lib/translations";
 
@@ -249,7 +250,7 @@ export default function AdobeStyleHero() {
         </div>
 
         {/* Bottom tab carousel */}
-        <div className="pt-12">
+        <div className="pt-12 pb-24">
           <div className="flex items-stretch gap-2.5 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {SLIDES.map((s, i) => {
               const isActive = i === active;
@@ -303,6 +304,11 @@ export default function AdobeStyleHero() {
               {playing ? <Pause size={16} fill="currentColor" /> : <Play size={16} fill="currentColor" />}
             </button>
           </div>
+        </div>
+
+        {/* Stats Section - Compact horizontal bar */}
+        <div className="absolute bottom-0 left-0 right-0 z-20 mb-6">
+          <StatsSection />
         </div>
       </div>
 

@@ -103,7 +103,7 @@ function CountUp({ value, suffix }: { value: number; suffix: string }) {
   );
 }
 
-/* Big two-tone line icon: white base + blue stroke continuously drawing over it */
+/* Compact animated icon with drawing effect */
 function AnimatedIcon({
   Icon,
   color,
@@ -114,13 +114,13 @@ function AnimatedIcon({
   delay: number;
 }) {
   return (
-    <span className="relative block w-[110px] h-[110px] shrink-0" aria-hidden="true">
-      <Icon size={110} strokeWidth={1} className="absolute inset-0 text-[#C3CFE8]" />
+    <span className="relative block w-10 h-10 shrink-0" aria-hidden="true">
+      <Icon size={40} strokeWidth={1.2} className="absolute inset-0 text-[#C3CFE8]" />
       <span
         className="stat-draw absolute inset-0 block"
         style={{ "--stat-delay": `${delay}ms` } as React.CSSProperties}
       >
-        <Icon size={110} strokeWidth={1.1} style={{ color }} />
+        <Icon size={40} strokeWidth={1.3} style={{ color }} />
       </span>
     </span>
   );
@@ -128,23 +128,28 @@ function AnimatedIcon({
 
 export default function StatsSection() {
   return (
-    <section className="bg-[#F2F6FF] py-[70px] px-[24px] md:px-[70px]">
-      <div className="max-w-[1700px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-16">
+    <section className="bg-transparent py-3 px-6 md:px-12">
+      <div className="w-full max-w-[1800px] mx-auto grid grid-cols-2 md:grid-cols-6 gap-x-4 md:gap-x-0 gap-y-3 md:gap-y-0">
         {stats.map((stat, i) => (
-          <div key={stat.label} className="flex items-center gap-8">
+          <div
+            key={stat.label}
+            className="flex items-center gap-3 px-2 md:px-3 py-2 md:relative"
+          >
+            {/* Vertical divider on desktop only (not after last item) */}
+            {i < stats.length - 1 && (
+              <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-8 w-px bg-[#D1DCE8]" />
+            )}
+
+            {/* Icon */}
             <AnimatedIcon Icon={stat.icon} color={stat.color} delay={i * 600} />
-            <div>
-              <div className="font-['Hanken_Grotesk'] text-[17px] font-medium text-[#1A1A1A] leading-relaxed">
-                {stat.label}
-              </div>
-              <div
-                className="font-['Hanken_Grotesk'] text-[24px] font-bold leading-relaxed"
-                style={{ color: stat.color }}
-              >
+
+            {/* Content */}
+            <div className="min-w-0">
+              <div className="font-['Hanken_Grotesk'] text-xl font-bold leading-none" style={{ color: stat.color }}>
                 <CountUp value={stat.value} suffix={stat.suffix} />
               </div>
-              <div className="font-['Inter'] text-[12.5px] text-[#555555] leading-relaxed max-w-[280px] mt-1">
-                {stat.description}
+              <div className="font-['Hanken_Grotesk'] text-sm font-semibold text-white/90 leading-tight mt-1">
+                {stat.label}
               </div>
             </div>
           </div>
@@ -171,6 +176,12 @@ export default function StatsSection() {
           100% {
             stroke-dashoffset: -90;
           }
+        }
+        .line-clamp-2 {
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
       `}</style>
     </section>
