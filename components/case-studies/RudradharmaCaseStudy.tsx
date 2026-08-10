@@ -236,12 +236,11 @@ function HeroSection() {
             }`}
           >
             <img
-              src={UNSPLASH_IMAGES.hero}
+              src="/case-study/rudradharma-6.png"
               alt="Rudradharma Spiritual E-Commerce"
               className="h-full w-full object-cover"
               style={{ minHeight: "400px" }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
           </div>
         </div>
       </div>
@@ -453,15 +452,20 @@ function GallerySection() {
 // 6. FEATURE SECTION WITH ALTERNATING LAYOUTS
 function FeatureSection({ feature, index }: { feature: typeof CASE_STUDY.features[0]; index: number }) {
   const [textRef, textVisible] = useScrollReveal();
+  const [categoryRef, categoryVisible] = useScrollReveal();
+  const [titleRef, titleVisible] = useScrollReveal();
+  const [contentRef, contentVisible] = useScrollReveal();
   const [imageRef, imageVisible] = useScrollReveal();
   const sectionRef = useRef<HTMLElement>(null);
   const isEven = index % 2 === 0; // 0, 2, 4... = text left | 1, 3, 5... = image left
 
   useEffect(() => {
     const section = sectionRef.current;
-    const textEl = textRef.current;
+    const categoryEl = categoryRef.current;
+    const titleEl = titleRef.current;
+    const contentEl = contentRef.current;
     const imageEl = imageRef.current;
-    if (!section || (!textEl && !imageEl)) return;
+    if (!section || (!categoryEl && !titleEl && !contentEl && !imageEl)) return;
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) return;
@@ -480,7 +484,9 @@ function FeatureSection({ feature, index }: { feature: typeof CASE_STUDY.feature
       const parallaxOffset = isDesktop ? 120 : 50;
       const parallaxY = scrollProgress * parallaxOffset - (parallaxOffset / 2);
 
-      if (textEl) textEl.style.transform = `translate3d(0, ${parallaxY * 0.6}px, 0)`;
+      if (categoryEl) categoryEl.style.transform = `translate3d(0, ${parallaxY * 0.4}px, 0)`;
+      if (titleEl) titleEl.style.transform = `translate3d(0, ${parallaxY * 0.5}px, 0)`;
+      if (contentEl) contentEl.style.transform = `translate3d(0, ${parallaxY * 0.6}px, 0)`;
       if (imageEl) imageEl.style.transform = `translate3d(0, ${parallaxY}px, 0)`;
     };
 
@@ -496,28 +502,41 @@ function FeatureSection({ feature, index }: { feature: typeof CASE_STUDY.feature
       window.removeEventListener("scroll", handleScroll);
       cancelAnimationFrame(rafId);
     };
-  }, [textRef, imageRef]);
+  }, [categoryRef, titleRef, contentRef, imageRef]);
 
   return (
     <section ref={sectionRef} className={`py-24 ${index % 2 === 0 ? "bg-white" : "bg-[#fafafa]"}`}>
       <div className="mx-auto max-w-[1400px] px-6 md:px-12">
         <div className={`flex flex-col gap-12 lg:flex-row ${isEven ? "" : "lg:flex-row-reverse"}`}>
           {/* Content Side */}
-          <div
-            ref={textRef}
-            className={`flex flex-col justify-center transition-opacity duration-1000 ${
-              textVisible ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#E08A34]" style={{ fontFamily: "Inter, sans-serif" }}>
+          <div className="flex flex-col justify-center">
+            <span
+              ref={categoryRef}
+              className={`inline-block text-[14px] font-semibold uppercase tracking-[0.25em] text-[#E08A34] transition-all duration-1000 delay-100 ${
+                categoryVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
               {feature.category}
             </span>
-            <h2 className="mt-4 text-[24px] font-bold leading-tight text-[#1A1A1A] md:text-[32px]" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+            <h2
+              ref={titleRef}
+              className={`mt-4 text-[32px] font-bold leading-tight text-[#1A1A1A] md:text-[40px] transition-all duration-1000 delay-200 ${
+                titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              }`}
+              style={{ fontFamily: "Hanken Grotesk, sans-serif" }}
+            >
               {feature.title}
             </h2>
 
             {/* Points or Items */}
-            <div className="mt-8 space-y-4" style={{ fontFamily: "Inter, sans-serif" }}>
+            <div
+              ref={contentRef}
+              className={`mt-8 space-y-4 transition-all duration-1000 delay-300 ${
+                contentVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
               {feature.points && (
                 <ul className="space-y-3">
                   {feature.points.map((point, i) => (
@@ -621,6 +640,297 @@ function QuoteSection() {
   );
 }
 
+// 8. RUDRADHARMA BRAND IDENTITY SHOWCASE SECTION
+function BrandIdentitySection() {
+  const [sectionRef, sectionVisible] = useScrollReveal();
+  const [headingRef, headingVisible] = useScrollReveal();
+  const [paletteRef, paletteVisible] = useScrollReveal();
+  const [typographyRef, typographyVisible] = useScrollReveal();
+  const [logoRef, logoVisible] = useScrollReveal();
+
+  // Actual Rudradharma brand colors derived from the website
+  const BRAND_COLORS = [
+    { name: "Rudradharma Orange", hex: "#E08A34", description: "Primary accent" },
+    { name: "Warm Ivory", hex: "#FAF8F3", description: "Background surface" },
+    { name: "Rudraksha Brown", hex: "#8B6F47", description: "Earth tones" },
+    { name: "Deep Charcoal", hex: "#1A1A1A", description: "Primary text" },
+    { name: "Soft Gold", hex: "#C9A961", description: "Premium accent" },
+    { name: "Warm Sand", hex: "#D4C4A8", description: "Supportive tone" },
+  ];
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative bg-[#FAF8F3] py-32 overflow-hidden"
+    >
+      {/* Subtle mandala pattern background */}
+      <div className="absolute inset-0 opacity-[0.02]" style={{
+        backgroundImage: `repeating-conic-gradient(from 0deg, #E08A34 0deg, #E08A34 0.5deg, transparent 0.5deg, transparent 45deg)`,
+        backgroundSize: '800px 800px',
+        filter: 'blur(1px)'
+      }} />
+
+      <div className="mx-auto max-w-[1400px] px-6 md:px-12 relative z-10">
+
+        {/* SECTION HEADER */}
+        <div
+          ref={headingRef}
+          className={`text-center mb-20 transition-all duration-1000 ${
+            headingVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.3em] text-[#E08A34]" style={{ fontFamily: "Inter, sans-serif" }}>
+            Brand Identity
+          </span>
+          <h2 className="mt-6 text-[36px] md:text-[48px] font-bold leading-[1.1] tracking-tight text-[#1A1A1A]" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+            A Spiritual Identity,
+            <br />
+            Rooted in Tradition
+          </h2>
+          <p className="mt-6 text-[16px] text-[#666666] max-w-2xl mx-auto" style={{ fontFamily: "Inter, sans-serif" }}>
+            Rudradharma's visual language is built on warmth, authenticity and spiritual elegance — every element honors the sacred essence of Rudraksha.
+          </p>
+        </div>
+
+        {/* MAIN GRID - DESIGN SYSTEM */}
+        <div className="grid gap-12 lg:gap-16 lg:grid-cols-2">
+
+          {/* LEFT COLUMN */}
+          <div className="space-y-16">
+
+            {/* COLOR PALETTE */}
+            <div
+              ref={paletteRef}
+              className={`transition-all duration-1000 delay-200 ${
+                paletteVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+            >
+              <h3 className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1A1A1A] mb-6" style={{ fontFamily: "Inter, sans-serif" }}>
+                Color Palette
+              </h3>
+              <p className="text-[14px] text-[#666666] mb-6" style={{ fontFamily: "Inter, sans-serif" }}>
+                Warm tones inspired by Rudraksha, brass and natural textures.
+              </p>
+
+              {/* Color swatches grid */}
+              <div className="grid grid-cols-3 gap-4">
+                {BRAND_COLORS.map((color, index) => (
+                  <div key={color.hex} className="space-y-2">
+                    {/* Color swatch */}
+                    <div
+                      className="h-24 rounded-lg shadow-sm transition-transform hover:scale-105 duration-300"
+                      style={{
+                        backgroundColor: color.hex,
+                        border: color.hex === "#FAF8F3" ? "1px solid #E5E5E5" : "none"
+                      }}
+                    />
+                    {/* Color info */}
+                    <div>
+                      <div className="text-[12px] font-medium text-[#1A1A1A]">{color.name}</div>
+                      <div className="text-[11px] text-[#888888] font-mono">{color.hex}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* TYPOGRAPHY */}
+            <div
+              ref={typographyRef}
+              className={`transition-all duration-1000 delay-300 ${
+                typographyVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+            >
+              <h3 className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1A1A1A] mb-6" style={{ fontFamily: "Inter, sans-serif" }}>
+                Typography
+              </h3>
+              <p className="text-[14px] text-[#666666] mb-6" style={{ fontFamily: "Inter, sans-serif" }}>
+                Clean modern typography balances traditional brand character with digital clarity.
+              </p>
+
+              {/* Typography samples */}
+              <div className="bg-white rounded-xl p-6 border border-[#E5E5E5]">
+                <div className="space-y-6">
+                  {/* Primary typeface */}
+                  <div>
+                    <div className="text-[11px] uppercase tracking-[0.15em] text-[#888888] mb-2">Primary Typeface</div>
+                    <div className="text-[24px] text-[#1A1A1A] leading-relaxed" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+                      Aa Bb Cc Dd
+                    </div>
+                    <div className="text-[16px] text-[#1A1A1A] mt-2" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+                      ABCDEFGHIJKLMNOPQRSTUVWXYZ
+                    </div>
+                    <div className="text-[14px] text-[#666666] mt-1" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+                      abcdefghijklmnopqrstuvwxyz
+                    </div>
+                  </div>
+
+                  {/* Typography hierarchy */}
+                  <div className="pt-6 border-t border-[#F5F5F5]">
+                    <div className="text-[11px] uppercase tracking-[0.15em] text-[#888888] mb-3">Typography Hierarchy</div>
+                    <div className="space-y-3">
+                      <div className="text-[32px] font-bold text-[#1A1A1A]" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+                        Heading
+                      </div>
+                      <div className="text-[20px] font-semibold text-[#1A1A1A]" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+                        Subheading
+                      </div>
+                      <div className="text-[14px] text-[#666666]" style={{ fontFamily: "Inter, sans-serif" }}>
+                        Body text - Regular paragraph for content and descriptions
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* RIGHT COLUMN */}
+          <div className="space-y-16">
+
+            {/* LOGO */}
+            <div
+              ref={logoRef}
+              className={`transition-all duration-1000 delay-400 ${
+                logoVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+            >
+              <h3 className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1A1A1A] mb-6" style={{ fontFamily: "Inter, sans-serif" }}>
+                Logo & Brand Mark
+              </h3>
+              <p className="text-[14px] text-[#666666] mb-6" style={{ fontFamily: "Inter, sans-serif" }}>
+                A distinctive wordmark representing Rudradharma's spiritual identity.
+              </p>
+
+              {/* Logo display */}
+              <div className="bg-white rounded-xl p-8 border border-[#E5E5E5] flex items-center justify-center min-h-[200px]">
+                <img
+                  src="/logos/15.png"
+                  alt="Rudradharma Logo"
+                  className="h-24 w-auto object-contain"
+                />
+              </div>
+            </div>
+
+            {/* UI ACCENTS & ELEMENTS */}
+            <div className={`transition-all duration-1000 delay-500 ${
+              logoVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}>
+              <h3 className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1A1A1A] mb-6" style={{ fontFamily: "Inter, sans-serif" }}>
+                UI Elements & Accents
+              </h3>
+
+              {/* UI elements grid */}
+              <div className="space-y-4">
+                {/* Buttons */}
+                <div className="bg-white rounded-xl p-6 border border-[#E5E5E5]">
+                  <div className="text-[11px] uppercase tracking-[0.15em] text-[#888888] mb-4">Button Style</div>
+                  <div className="flex flex-wrap gap-3">
+                    <button className="px-6 py-3 bg-[#E08A34] text-white text-[14px] font-semibold rounded-lg hover:bg-[#c47828] transition-colors">
+                      Primary Action
+                    </button>
+                    <button className="px-6 py-3 bg-white text-[#E08A34] text-[14px] font-semibold rounded-lg border-2 border-[#E08A34] hover:bg-[#E08A34] hover:text-white transition-colors">
+                      Secondary
+                    </button>
+                  </div>
+                </div>
+
+                {/* Iconography & Borders */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-white rounded-xl p-6 border border-[#E5E5E5]">
+                    <div className="text-[11px] uppercase tracking-[0.15em] text-[#888888] mb-4">Iconography</div>
+                    <div className="flex gap-4">
+                      <div className="w-10 h-10 rounded-full bg-[#E08A34]/10 flex items-center justify-center">
+                        <svg className="w-5 h-5 text-[#E08A34]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                      </div>
+                      <div className="w-10 h-10 rounded-full bg-[#E08A34]/10 flex items-center justify-center">
+                        <svg className="w-5 h-5 text-[#E08A34]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="text-[12px] text-[#666666] mt-3">Minimal line icons with orange accents</div>
+                  </div>
+
+                  <div className="bg-white rounded-xl p-6 border border-[#E5E5E5]">
+                    <div className="text-[11px] uppercase tracking-[0.15em] text-[#888888] mb-4">Borders & Shapes</div>
+                    <div className="space-y-2">
+                      <div className="h-8 rounded-lg border-2 border-[#E08A34]/20"></div>
+                      <div className="h-8 rounded-full border-2 border-[#E08A34]/30"></div>
+                    </div>
+                    <div className="text-[12px] text-[#666666] mt-3">Soft rounded corners with warm borders</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* PRODUCT IMAGERY STYLE */}
+        <div className={`mt-20 transition-all duration-1000 delay-600 ${
+          logoVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}>
+          <h3 className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1A1A1A] mb-6 text-center" style={{ fontFamily: "Inter, sans-serif" }}>
+            Product Imagery
+          </h3>
+          <p className="text-[14px] text-[#666666] mb-8 text-center max-w-2xl mx-auto" style={{ fontFamily: "Inter, sans-serif" }}>
+            Authentic Rudraksha photography with warm, natural tones.
+          </p>
+
+          {/* Product images grid */}
+          <div className="grid grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <div className="bg-white rounded-xl p-4 border border-[#E5E5E5] shadow-sm hover:shadow-md transition-shadow">
+              <img
+                src="/case-study/rudradharma-1.png"
+                alt="Rudraksha Product"
+                className="w-full h-32 object-contain"
+              />
+            </div>
+            <div className="bg-white rounded-xl p-4 border border-[#E5E5E5] shadow-sm hover:shadow-md transition-shadow">
+              <img
+                src="/case-study/rudradharma-3.png"
+                alt="Rudraksha Mala"
+                className="w-full h-32 object-contain"
+              />
+            </div>
+            <div className="bg-white rounded-xl p-4 border border-[#E5E5E5] shadow-sm hover:shadow-md transition-shadow">
+              <img
+                src="/case-study/rudradharma-4.png"
+                alt="Rudraksha Detail"
+                className="w-full h-32 object-contain"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* SPIRITUAL VISUAL LANGUAGE */}
+        <div className={`mt-16 text-center transition-all duration-1000 delay-700 ${
+          logoVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}>
+          <div className="inline-flex items-center gap-3 px-6 py-4 bg-white rounded-full border border-[#E08A34]/20">
+            <div className="w-8 h-8 rounded-full bg-[#E08A34]/10 flex items-center justify-center">
+              <div className="text-[16px] text-[#E08A34]/60" style={{ fontFamily: 'serif' }}>
+                ॐ
+              </div>
+            </div>
+            <div className="text-[12px] text-[#666666]" style={{ fontFamily: "Inter, sans-serif" }}>
+              Subtle spiritual motifs • Traditional Indian elegance • Premium minimalism
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      {/* Bottom accent line */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#E08A34]/20 to-transparent" />
+    </section>
+  );
+}
+
 // === MAIN COMPONENT ===
 export default function RudradharmaCaseStudy() {
   return (
@@ -640,6 +950,7 @@ export default function RudradharmaCaseStudy() {
       ))}
 
       <QuoteSection />
+      <BrandIdentitySection />
     </main>
   );
 }

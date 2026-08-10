@@ -99,13 +99,48 @@ function HeroSection({ study }: { study: CaseStudy }) {
             }`}
           >
             <img
-              src={study.heroImage || UNSPLASH_IMAGES.hero}
+              src={study.slug === "ritm-hospitality-institute-website" ? "/case-study/RITM/RITM-2.png" : (study.heroImage || UNSPLASH_IMAGES.hero)}
               alt={study.title}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-contain"
               style={{ minHeight: "400px" }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// RITM IMAGE SHOWCASE SECTION
+function RITMImageSection() {
+  const [ref, isVisible] = useScrollReveal();
+
+  return (
+    <section className="relative bg-white pb-16 ml-0 mr-0">
+      <div
+        ref={ref}
+        className={`grid grid-cols-2 gap-0 transition-all duration-1000 ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
+      >
+        {/* LEFT IMAGE - RITM-1.png */}
+        <div className="overflow-hidden rounded-3xl">
+          <img
+            src="/case-study/RITM/RITM-1.png"
+            alt="RITM Hospitality Institute"
+            className="h-full w-full object-contain"
+            style={{ maxHeight: "800px" }}
+          />
+        </div>
+
+        {/* RIGHT IMAGE - RITM-3.png */}
+        <div className="overflow-hidden rounded-3xl">
+          <img
+            src="/case-study/RITM/RITM-3.png"
+            alt="RITM Campus Life"
+            className="h-full w-full object-contain"
+            style={{ maxHeight: "800px" }}
+          />
         </div>
       </div>
     </section>
@@ -115,7 +150,7 @@ function HeroSection({ study }: { study: CaseStudy }) {
 // PROJECT INFORMATION GRID
 function ProjectInfoSection({ study }: { study: CaseStudy }) {
   return (
-    <section className="bg-[#fafafa] pb-24">
+    <section className="bg-white pb-24">
       <div className="mx-auto max-w-[1400px] px-6 md:px-12">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <div className="rounded-2xl border bg-white p-6 transition-all duration-300 hover:shadow-lg" style={{ borderColor: `${study.accent}20` }}>
@@ -422,6 +457,7 @@ export default function PremiumCaseStudy({ study }: { study: CaseStudy }) {
   return (
     <main className="bg-white">
       <HeroSection study={study} />
+      {study.slug === "ritm-hospitality-institute-website" && <RITMImageSection />}
       <ProjectInfoSection study={study} />
       <ContentSections study={study} />
       <QuoteSection study={study} />
