@@ -621,6 +621,17 @@ a {
   100% { transform: translateX(0); }
 }
 
+@keyframes scrollRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* Gallery continuous scroll - RIGHT → LEFT movement */
+@keyframes galleryScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 .animate-scroll {
   animation: scroll 30s linear infinite;
 }
@@ -629,7 +640,17 @@ a {
   animation: scrollReverse 30s linear infinite;
 }
 
+.animate-scroll-right {
+  animation: scrollRight 40s linear infinite;
+}
+
+.animate-gallery-scroll {
+  animation: galleryScroll 60s linear infinite;
+}
+
 .animate-scroll:hover,
-.animate-scroll-reverse:hover {
+.animate-scroll-reverse:hover,
+.animate-scroll-right:hover,
+.animate-gallery-scroll:hover {
   animation-play-state: paused;
 }

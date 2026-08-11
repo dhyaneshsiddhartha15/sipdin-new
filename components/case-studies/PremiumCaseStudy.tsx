@@ -222,7 +222,7 @@ function TextSection({ section, study, isEven }: { section: any; study: CaseStud
   );
 }
 
-function ListSection({ section, study, isEven }: { section: any; study: CaseStudy; isEven: boolean }) {
+function ListSection({ section, study, isEven, index = 0 }: { section: any; study: CaseStudy; isEven: boolean; index?: number }) {
   const [contentRef, contentVisible] = useScrollReveal();
   const [imageRef, imageVisible] = useScrollReveal();
 
@@ -295,7 +295,7 @@ function ListSection({ section, study, isEven }: { section: any; study: CaseStud
           >
             <div className="overflow-hidden rounded-3xl">
               <img
-                src={UNSPLASH_IMAGES[`feature${Math.floor(Math.random() * 7) + 1}` as keyof typeof UNSPLASH_IMAGES]}
+                src={UNSPLASH_IMAGES[`feature${(index % 7) + 1}` as keyof typeof UNSPLASH_IMAGES]}
                 alt={section.heading}
                 className="h-auto w-full object-cover"
                 style={{ minHeight: "400px", maxHeight: "500px" }}
@@ -440,7 +440,7 @@ function ContentSections({ study }: { study: CaseStudy }) {
         }
 
         if (section.type === "list") {
-          return <ListSection key={sectionIndex} section={section} study={study} isEven={isEven} />;
+          return <ListSection key={sectionIndex} section={section} study={study} isEven={isEven} index={sectionIndex} />;
         }
 
         if (section.type === "image") {

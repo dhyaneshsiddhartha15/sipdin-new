@@ -32,6 +32,148 @@ function useScrollReveal() {
   return [ref, isVisible] as const;
 }
 
+// === APP SCREENS FOR THE SHOWCASE GALLERY ===
+const DOHABUS_SCREENS = [
+  '/case-study/Doha-bus/8.jpg',
+  '/case-study/Doha-bus/9.jpg',
+  '/case-study/Doha-bus/10.jpg',
+  '/case-study/Doha-bus/11.jpg',
+  '/case-study/Doha-bus/12.jpg',
+  '/case-study/Doha-bus/13.jpg',
+];
+
+// === DOHABUS APP GALLERY SHOWCASE (center phone mirrors the passing screen) ===
+function DohabusGallerySection() {
+  const [headingRef, headingVisible] = useScrollReveal();
+
+  const [currentPhoneImage, setCurrentPhoneImage] = useState(DOHABUS_SCREENS[0]);
+  const [phoneImageOpacity, setPhoneImageOpacity] = useState(1);
+  const galleryRef = useRef<HTMLDivElement>(null);
+
+  // Center phone mirrors whichever scrolling screen is passing through the
+  // center of the mockup — the passing screen "enters" the phone (rAF-driven).
+  useEffect(() => {
+    const container = galleryRef.current;
+    if (!container) return;
+
+    let raf = 0;
+    let lastIndex = -1;
+    let fadeTimer: ReturnType<typeof setTimeout>;
+
+    const tick = () => {
+      const cRect = container.getBoundingClientRect();
+      const centerX = cRect.left + cRect.width / 2;
+
+      let closest: HTMLElement | null = null;
+      let min = Infinity;
+      container.querySelectorAll<HTMLElement>(".gallery-item").forEach((it) => {
+        const r = it.getBoundingClientRect();
+        const d = Math.abs(r.left + r.width / 2 - centerX);
+        if (d < min) {
+          min = d;
+          closest = it;
+        }
+      });
+
+      if (closest) {
+        const idx =
+          parseInt((closest as HTMLElement).dataset.imageIndex || "0") % DOHABUS_SCREENS.length;
+        if (idx !== lastIndex) {
+          lastIndex = idx;
+          setPhoneImageOpacity(0);
+          clearTimeout(fadeTimer);
+          fadeTimer = setTimeout(() => {
+            setCurrentPhoneImage(DOHABUS_SCREENS[idx]);
+            setPhoneImageOpacity(1);
+          }, 180);
+        }
+      }
+
+      raf = requestAnimationFrame(tick);
+    };
+
+    raf = requestAnimationFrame(tick);
+    return () => {
+      cancelAnimationFrame(raf);
+      clearTimeout(fadeTimer);
+    };
+  }, []);
+
+  return (
+    <section className="relative bg-[#FAF8F3] py-32 overflow-hidden">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-12 relative z-10">
+        <div
+          ref={headingRef}
+          className={`text-center transition-all duration-1000 ${
+            headingVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <h3 className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0C8A99] mb-6" style={{ fontFamily: "Inter, sans-serif" }}>
+            App Gallery
+          </h3>
+          <p className="text-[14px] text-[#666666] mb-12 max-w-2xl mx-auto" style={{ fontFamily: "Inter, sans-serif" }}>
+            Explore the Dohabus booking experience — tours, attractions, and seamless trip planning.
+          </p>
+        </div>
+
+        {/* GALLERY CONTAINER */}
+        <div className="relative overflow-hidden py-20" style={{ height: '44rem' }} ref={galleryRef as any}>
+
+          {/* Layer 1: Continuous Scrolling App Screens - RIGHT → LEFT */}
+          <div className="absolute inset-0 flex items-center">
+            <div className="flex animate-gallery-scroll items-center gap-10" id="galleryTrack">
+              {[...Array(6)].fill(null).map((_, setIndex) => (
+                <div key={`scroll-${setIndex}`} className="flex gap-10">
+                  {DOHABUS_SCREENS.map((src, imgIndex) => (
+                    <div
+                      key={`scroll-${setIndex}-${imgIndex}`}
+                      className="gallery-item flex-shrink-0 w-[248px] h-[512px] rounded-[2.25rem] overflow-hidden bg-white ring-1 ring-black/5 shadow-[0_30px_60px_-15px_rgba(12,138,153,0.25)] brightness-[0.97] transition-all duration-500"
+                      data-image-index={imgIndex}
+                    >
+                      <img
+                        src={src}
+                        alt={`Dohabus app screen ${imgIndex + 1}`}
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Layer 2: Fixed Center Phone Mockup with Dynamic Screen */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30">
+            <div className="relative">
+              {/* Realistic phone shadow */}
+              <div className="absolute inset-0 bg-black/20 rounded-[3.5rem] blur-2xl transform scale-105 translate-y-4"></div>
+
+              {/* Main phone body — screen matches the screenshot aspect (347:771) so the FULL image shows with no crop */}
+              <div className="w-[276px] bg-gradient-to-b from-gray-900 to-gray-800 rounded-[3rem] p-3 shadow-2xl relative z-10">
+                <div className="w-full aspect-[347/771] bg-white rounded-[2.4rem] overflow-hidden relative">
+                  <img
+                    src={currentPhoneImage}
+                    alt="Dohabus app screen"
+                    className="w-full h-full object-cover object-top transition-opacity duration-200 ease-in-out"
+                    style={{ opacity: phoneImageOpacity }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Layer 3: Strong Edge Fade Masks */}
+          <div className="absolute left-0 top-0 bottom-0 w-72 bg-gradient-to-r from-[#FAF8F3] via-[#FAF8F3]/60 to-transparent z-20"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-72 bg-gradient-to-l from-[#FAF8F3] via-[#FAF8F3]/60 to-transparent z-20"></div>
+        </div>
+      </div>
+
+      {/* Bottom accent line */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#0C8A99]/20 to-transparent" />
+    </section>
+  );
+}
+
 // === DOHABUS BRAND IDENTITY SHOWCASE SECTION ===
 function DohabusBrandIdentitySection() {
   const [sectionRef, sectionVisible] = useScrollReveal();
@@ -335,6 +477,8 @@ export default function DohabusCaseStudy({ study }: DohabusCaseStudyProps) {
       <PremiumCaseStudy study={study} />
       {/* Add Dohabus Brand Identity Section */}
       <DohabusBrandIdentitySection />
+      {/* Add Dohabus App Gallery showcase */}
+      <DohabusGallerySection />
     </>
   );
 }

@@ -32,6 +32,14 @@ function useScrollReveal() {
   return [ref, isVisible] as const;
 }
 
+// === GALLERY IMAGE TRACKER ===
+const GALLERY_IMAGES = [
+  '/case-study/camera/8.jpg',
+  '/case-study/camera/9.jpg',
+  '/case-study/camera/10.jpg',
+  '/case-study/camera/11.jpg'
+];
+
 // === CAMERA MARKET BRAND IDENTITY SHOWCASE SECTION ===
 function CameraMarketBrandIdentitySection() {
   const [sectionRef, sectionVisible] = useScrollReveal();
@@ -39,6 +47,61 @@ function CameraMarketBrandIdentitySection() {
   const [paletteRef, paletteVisible] = useScrollReveal();
   const [typographyRef, typographyVisible] = useScrollReveal();
   const [logoRef, logoVisible] = useScrollReveal();
+
+  // Dynamic phone screen state
+  const [currentPhoneImage, setCurrentPhoneImage] = useState(GALLERY_IMAGES[0]);
+  const [phoneImageOpacity, setPhoneImageOpacity] = useState(1);
+  const galleryRef = useRef<HTMLDivElement>(null);
+
+  // Center phone mirrors whichever scrolling screen is passing through the
+  // center of the mockup — the passing screen "enters" the phone. Driven by
+  // rAF (smooth, auto-pauses when off-screen) instead of a 100ms polling loop.
+  useEffect(() => {
+    const container = galleryRef.current;
+    if (!container) return;
+
+    let raf = 0;
+    let lastIndex = -1;
+    let fadeTimer: ReturnType<typeof setTimeout>;
+
+    const tick = () => {
+      const cRect = container.getBoundingClientRect();
+      const centerX = cRect.left + cRect.width / 2;
+
+      let closest: HTMLElement | null = null;
+      let min = Infinity;
+      container.querySelectorAll<HTMLElement>(".gallery-item").forEach((it) => {
+        const r = it.getBoundingClientRect();
+        const d = Math.abs(r.left + r.width / 2 - centerX);
+        if (d < min) {
+          min = d;
+          closest = it;
+        }
+      });
+
+      if (closest) {
+        const idx =
+          parseInt((closest as HTMLElement).dataset.imageIndex || "0") % GALLERY_IMAGES.length;
+        if (idx !== lastIndex) {
+          lastIndex = idx;
+          setPhoneImageOpacity(0);
+          clearTimeout(fadeTimer);
+          fadeTimer = setTimeout(() => {
+            setCurrentPhoneImage(GALLERY_IMAGES[idx]);
+            setPhoneImageOpacity(1);
+          }, 180);
+        }
+      }
+
+      raf = requestAnimationFrame(tick);
+    };
+
+    raf = requestAnimationFrame(tick);
+    return () => {
+      cancelAnimationFrame(raf);
+      clearTimeout(fadeTimer);
+    };
+  }, []);
 
   // Camera Market brand colors - photography & tech theme
   const BRAND_COLORS = [
@@ -279,40 +342,65 @@ function CameraMarketBrandIdentitySection() {
           <h3 className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1A1A1A] mb-6 text-center" style={{ fontFamily: "Inter, sans-serif" }}>
             Product Gallery
           </h3>
-          <p className="text-[14px] text-[#666666] mb-8 text-center max-w-2xl mx-auto" style={{ fontFamily: "Inter, sans-serif" }}>
+          <p className="text-[14px] text-[#666666] mb-12 text-center max-w-2xl mx-auto" style={{ fontFamily: "Inter, sans-serif" }}>
             Explore our range of professional photography equipment
           </p>
 
-          {/* Animated Carousel Container */}
-          <div className="relative overflow-hidden py-12">
-            {/* Gradient fade effects on edges */}
-            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#F8F9FA] to-transparent z-10" />
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#F8F9FA] to-transparent z-10" />
+          {/* GALLERY CONTAINER */}
+          <div className="relative overflow-hidden py-20" style={{ height: '44rem' }} ref={galleryRef as any}>
 
-            {/* Scrolling track */}
-            <div className="flex animate-scroll items-center">
-              {[...Array(3)].fill(null).map((_, setIndex) => (
-                <div key={setIndex} className="flex gap-12 px-6">
-                  {[
-                    '/case-study/camera/8.jpg',
-                    '/case-study/camera/9.jpg',
-                    '/case-study/camera/10.jpg',
-                    '/case-study/camera/11.jpg'
-                  ].map((src, imgIndex) => (
-                    <div
-                      key={`${setIndex}-${imgIndex}`}
-                      className="flex-shrink-0 w-80 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
-                    >
-                      <img
-                        src={src}
-                        alt={`Camera equipment ${imgIndex + 1}`}
-                        className="w-full h-auto object-contain"
-                      />
-                    </div>
-                  ))}
-                </div>
-              ))}
+            {/* Layer 1: Continuous Scrolling App Screens - RIGHT → LEFT */}
+            <div className="absolute inset-0 flex items-center">
+              <div className="flex animate-gallery-scroll items-center gap-10" id="galleryTrack">
+                {[...Array(6)].fill(null).map((_, setIndex) => (
+                  <div key={`scroll-${setIndex}`} className="flex gap-10">
+                    {[
+                      { src: '/case-study/camera/8.jpg', id: 0 },
+                      { src: '/case-study/camera/9.jpg', id: 1 },
+                      { src: '/case-study/camera/10.jpg', id: 2 },
+                      { src: '/case-study/camera/11.jpg', id: 3 }
+                    ].map((img, imgIndex) => (
+                      <div
+                        key={`scroll-${setIndex}-${imgIndex}`}
+                        className="gallery-item flex-shrink-0 w-[248px] h-[512px] rounded-[2.25rem] overflow-hidden bg-white ring-1 ring-black/5 shadow-[0_30px_60px_-15px_rgba(30,58,138,0.25)] brightness-[0.97] transition-all duration-500"
+                        data-image-index={img.id}
+                      >
+                        <img
+                          src={img.src}
+                          alt={`Camera Market app screen ${imgIndex + 1}`}
+                          className="w-full h-full object-cover object-top"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
             </div>
+
+            {/* Layer 2: Fixed Center Phone Mockup with Dynamic Screen */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30">
+              {/* Phone frame with enhanced shadow */}
+              <div className="relative">
+                {/* Realistic phone shadow */}
+                <div className="absolute inset-0 bg-black/20 rounded-[3.5rem] blur-2xl transform scale-105 translate-y-4"></div>
+
+                {/* Main phone body — screen matches the screenshot aspect (347:771) so the FULL image shows with no crop */}
+                <div className="w-[276px] bg-gradient-to-b from-gray-900 to-gray-800 rounded-[3rem] p-3 shadow-2xl relative z-10">
+                  <div className="w-full aspect-[347/771] bg-white rounded-[2.4rem] overflow-hidden relative">
+                    <img
+                      src={currentPhoneImage}
+                      alt="Camera Market app screen"
+                      className="w-full h-full object-cover transition-opacity duration-200 ease-in-out"
+                      style={{ opacity: phoneImageOpacity }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Layer 3: Strong Edge Fade Masks */}
+            <div className="absolute left-0 top-0 bottom-0 w-72 bg-gradient-to-r from-[#F8F9FA] via-[#F8F9FA]/60 to-transparent z-20"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-72 bg-gradient-to-l from-[#F8F9FA] via-[#F8F9FA]/60 to-transparent z-20"></div>
           </div>
         </div>
 
