@@ -264,59 +264,6 @@ function RITMBrandIdentitySection() {
           </div>
         </div>
 
-        {/* HOSPITALITY EDUCATION IMAGERY */}
-        <div className={`mt-20 transition-all duration-1000 delay-600 ${
-          logoVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}>
-          <h3 className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1A1A1A] mb-6 text-center" style={{ fontFamily: "Inter, sans-serif" }}>
-            Training Environment
-          </h3>
-          <p className="text-[14px] text-[#666666] mb-8 text-center max-w-2xl mx-auto" style={{ fontFamily: "Inter, sans-serif" }}>
-            State-of-the-art facilities for hospitality and culinary training.
-          </p>
-
-          {/* RITM images grid */}
-          <div className="grid grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div className="bg-white rounded-xl p-4 border border-[#E5E5E5] shadow-sm hover:shadow-md transition-shadow">
-              <img
-                src="/case-study/RITM/RITM-1.png"
-                alt="RITM Training"
-                className="w-full h-32 object-cover"
-              />
-            </div>
-            <div className="bg-white rounded-xl p-4 border border-[#E5E5E5] shadow-sm hover:shadow-md transition-shadow">
-              <img
-                src="/case-study/RITM/RITM-2.png"
-                alt="Culinary Arts"
-                className="w-full h-32 object-cover"
-              />
-            </div>
-            <div className="bg-white rounded-xl p-4 border border-[#E5E5E5] shadow-sm hover:shadow-md transition-shadow">
-              <img
-                src="/case-study/RITM/RITM-3.png"
-                alt="Campus Life"
-                className="w-full h-32 object-cover"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* EDUCATIONAL VISUAL LANGUAGE */}
-        <div className={`mt-16 text-center transition-all duration-1000 delay-700 ${
-          logoVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}>
-          <div className="inline-flex items-center gap-3 px-6 py-4 bg-white rounded-full border border-[#0E8A80]/20">
-            <div className="w-8 h-8 rounded-full bg-[#0E8A80]/10 flex items-center justify-center">
-              <svg className="w-4 h-4 text-[#0E8A80]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-              </svg>
-            </div>
-            <div className="text-[12px] text-[#666666]" style={{ fontFamily: "Inter, sans-serif" }}>
-              Professional excellence • Global standards • Industry-ready skills
-            </div>
-          </div>
-        </div>
-
       </div>
 
       {/* Bottom accent line */}
@@ -330,28 +277,18 @@ function RITMImageSection() {
   const [ref, isVisible] = useScrollReveal();
 
   return (
-    <section className="relative bg-white pb-16">
+    <section className="relative bg-[#FAF7F6]">
       <div
         ref={ref}
-        className={`grid grid-cols-2 gap-0 transition-all duration-1000 ${
+        className={`flex justify-center transition-all duration-1000 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
-        {/* LEFT IMAGE - RITM-1.png */}
-        <div className="overflow-hidden rounded-3xl">
+        {/* RITM-1.png */}
+        <div className="w-full max-w-[1000px] overflow-hidden rounded-3xl">
           <img
             src="/case-study/RITM/RITM-1.png"
             alt="RITM Hospitality Institute"
-            className="h-full w-full object-contain"
-            style={{ maxHeight: "800px" }}
-          />
-        </div>
-
-        {/* RIGHT IMAGE - RITM-3.png */}
-        <div className="overflow-hidden rounded-3xl">
-          <img
-            src="/case-study/RITM/RITM-3.png"
-            alt="RITM Campus Life"
             className="h-full w-full object-contain"
             style={{ maxHeight: "800px" }}
           />
@@ -410,7 +347,7 @@ function HeroSection({ study }: { study: CaseStudy }) {
             }`}
           >
             <img
-              src="/case-study/RITM/RITM-2.png"
+              src="/case-study/RITM/RITM-3.png"
               alt={study.title}
               className="h-full w-full object-contain"
               style={{ minHeight: "400px" }}
@@ -425,7 +362,7 @@ function HeroSection({ study }: { study: CaseStudy }) {
 // === PROJECT INFORMATION GRID ===
 function ProjectInfoSection({ study }: { study: CaseStudy }) {
   return (
-    <section className="bg-white pb-24">
+    <section className="bg-white pt-16 pb-24 md:pt-20">
       <div className="mx-auto max-w-[1400px] px-6 md:px-12">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <div className="rounded-2xl border bg-white p-6 transition-all duration-300 hover:shadow-lg" style={{ borderColor: `${study.accent}20` }}>

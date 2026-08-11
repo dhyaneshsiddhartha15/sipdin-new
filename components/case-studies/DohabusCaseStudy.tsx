@@ -109,7 +109,7 @@ function DohabusGallerySection() {
           }`}
         >
           <h3 className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0C8A99] mb-6" style={{ fontFamily: "Inter, sans-serif" }}>
-            App Gallery
+            Product Gallery
           </h3>
           <p className="text-[14px] text-[#666666] mb-12 max-w-2xl mx-auto" style={{ fontFamily: "Inter, sans-serif" }}>
             Explore the Dohabus booking experience — tours, attractions, and seamless trip planning.
@@ -401,59 +401,6 @@ function DohabusBrandIdentitySection() {
               </div>
             </div>
 
-          </div>
-        </div>
-
-        {/* TOURISM IMAGERY STYLE */}
-        <div className={`mt-20 transition-all duration-1000 delay-600 ${
-          logoVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}>
-          <h3 className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1A1A1A] mb-6 text-center" style={{ fontFamily: "Inter, sans-serif" }}>
-            Tourism Imagery
-          </h3>
-          <p className="text-[14px] text-[#666666] mb-8 text-center max-w-2xl mx-auto" style={{ fontFamily: "Inter, sans-serif" }}>
-            Showcasing Qatar's landmarks, desert adventures, and tourism experiences.
-          </p>
-
-          {/* Tourism images grid */}
-          <div className="grid grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div className="bg-white rounded-xl p-4 border border-[#E5E5E5] shadow-sm hover:shadow-md transition-shadow">
-              <img
-                src="/case-study/Doha-bus/1.jpg"
-                alt="Dohabus Tour"
-                className="w-full h-32 object-cover"
-              />
-            </div>
-            <div className="bg-white rounded-xl p-4 border border-[#E5E5E5] shadow-sm hover:shadow-md transition-shadow">
-              <img
-                src="/case-study/Doha-bus/2.jpg"
-                alt="Desert Safari"
-                className="w-full h-32 object-cover"
-              />
-            </div>
-            <div className="bg-white rounded-xl p-4 border border-[#E5E5E5] shadow-sm hover:shadow-md transition-shadow">
-              <img
-                src="/case-study/Doha-bus/3.jpg"
-                alt="City Tour"
-                className="w-full h-32 object-cover"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* TOURISM VISUAL LANGUAGE */}
-        <div className={`mt-16 text-center transition-all duration-1000 delay-700 ${
-          logoVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}>
-          <div className="inline-flex items-center gap-3 px-6 py-4 bg-white rounded-full border border-[#0C8A99]/20">
-            <div className="w-8 h-8 rounded-full bg-[#0C8A99]/10 flex items-center justify-center">
-              <svg className="w-4 h-4 text-[#0C8A99]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <div className="text-[12px] text-[#666666]" style={{ fontFamily: "Inter, sans-serif" }}>
-              Global tourism appeal • Qatari heritage • Modern adventure experiences
-            </div>
           </div>
         </div>
 
