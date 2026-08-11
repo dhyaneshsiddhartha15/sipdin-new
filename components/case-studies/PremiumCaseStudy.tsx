@@ -194,242 +194,272 @@ function ProjectInfoSection({ study }: { study: CaseStudy }) {
   );
 }
 
+// INDIVIDUAL SECTION COMPONENTS TO FIX HOOKS ORDER ISSUE
+
+function TextSection({ section, study, isEven }: { section: any; study: CaseStudy; isEven: boolean }) {
+  const [ref, isVisible] = useScrollReveal();
+
+  return (
+    <section className={`py-24 ${isEven ? "bg-white" : "bg-[#fafafa]"}`}>
+      <div
+        ref={ref}
+        className={`mx-auto max-w-[1400px] px-6 md:px-12 transition-all duration-1000 ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
+      >
+        <h2 className="text-[28px] font-bold leading-tight text-[#1A1A1A] md:text-[36px]" style={{ color: study.accent, fontFamily: "Hanken Grotesk, sans-serif" }}>
+          {section.heading}
+        </h2>
+        <div className="mt-8 space-y-6">
+          {section.body.map((p: string, i: number) => (
+            <p key={i} className="text-[16px] leading-relaxed text-[#555555] md:text-[18px]" style={{ fontFamily: "Inter, sans-serif" }}>
+              {p}
+            </p>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ListSection({ section, study, isEven }: { section: any; study: CaseStudy; isEven: boolean }) {
+  const [contentRef, contentVisible] = useScrollReveal();
+  const [imageRef, imageVisible] = useScrollReveal();
+
+  return (
+    <section className={`py-24 ${isEven ? "bg-white" : "bg-[#fafafa]"}`}>
+      <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+        <div className={`flex flex-col gap-12 lg:flex-row ${!isEven ? "lg:flex-row-reverse" : ""}`}>
+          {/* Content Side */}
+          <div
+            ref={contentRef}
+            className={`flex-1 transition-all duration-1000 ${
+              contentVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            <span className="text-[11px] font-semibold uppercase tracking-[0.25em]" style={{ color: study.accent, fontFamily: "Inter, sans-serif" }}>
+              {section.heading}
+            </span>
+
+            {section.intro && (
+              <p className="mt-4 text-[16px] leading-relaxed text-[#555555] md:text-[18px]" style={{ fontFamily: "Inter, sans-serif" }}>
+                {section.intro}
+              </p>
+            )}
+
+            <ol className="mt-8 space-y-6">
+              {section.items.map((it: any, i: number) => (
+                <li key={i} className="flex gap-4">
+                  <span
+                    className="grid h-9 w-9 shrink-0 place-items-center rounded-xl text-[15px] font-exabold text-white"
+                    style={{ background: study.accent, fontFamily: "Hanken Grotesk, sans-serif" }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div className="pt-1">
+                    {it.label && <span className="font-bold text-[#1A1A1A]">{it.label}: </span>}
+                    {it.text && <span className="font-medium text-[#3a3a3a]">{it.text}</span>}
+                    {it.sub && (
+                      <ul className="mt-3 space-y-2">
+                        {it.sub.map((s: string, j: number) => (
+                          <li key={j} className="flex items-start gap-3 text-[15px] font-medium text-[#444]">
+                            <span className="mt-[9px] h-2 w-2 shrink-0 rounded-full" style={{ background: study.accent }} />
+                            {s}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ol>
+
+            {section.note && (
+              <div
+                className="mt-8 rounded-xl border-l-4 px-5 py-4 italic"
+                style={{ borderColor: study.accent, background: `${study.accent}12`, fontFamily: "Inter, sans-serif" }}
+              >
+                <p className="text-[15px] leading-relaxed text-[#2a2a2a]">
+                  {section.note}
+                </p>
+              </div>
+            )}
+          </div>
+
+          {/* Image Side */}
+          <div
+            ref={imageRef}
+            className={`flex-1 transition-all duration-1000 delay-200 ${
+              imageVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            <div className="overflow-hidden rounded-3xl">
+              <img
+                src={UNSPLASH_IMAGES[`feature${Math.floor(Math.random() * 7) + 1}` as keyof typeof UNSPLASH_IMAGES]}
+                alt={section.heading}
+                className="h-auto w-full object-cover"
+                style={{ minHeight: "400px", maxHeight: "500px" }}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ImageSection({ section, study }: { section: any; study: CaseStudy }) {
+  const [ref, isVisible] = useScrollReveal();
+
+  return (
+    <section className="bg-white py-0">
+      <div
+        ref={ref}
+        className={`mx-auto max-w-[1800px] px-6 md:px-12 transition-all duration-1000 ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
+      >
+        {section.heading && (
+          <h2 className="mb-6 text-[28px] font-bold leading-tight text-[#1A1A1A]" style={{ color: study.accent, fontFamily: "Hanken Grotesk, sans-serif" }}>
+            {section.heading}
+          </h2>
+        )}
+        {section.intro && (
+          <p className="mb-6 text-[16px] leading-relaxed text-[#555555] md:text-[18px]" style={{ fontFamily: "Inter, sans-serif" }}>
+            {section.intro}
+          </p>
+        )}
+        <div className="grid gap-0 sm:grid-cols-1">
+          {section.images.map((img: any, i: number) => (
+            <figure key={i} className="overflow-hidden">
+              <img src={img.src} alt={img.caption || "Case study visual"} className="h-auto w-full object-contain" loading="lazy" style={{ maxHeight: "1000px" }} />
+              {img.caption && (
+                <figcaption className="p-3 text-center text-[13px] italic text-[#666]" style={{ fontFamily: "Inter, sans-serif" }}>
+                  {img.caption}
+                </figcaption>
+              )}
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TableSection({ section, study, isEven }: { section: any; study: CaseStudy; isEven: boolean }) {
+  const [ref, isVisible] = useScrollReveal();
+
+  return (
+    <section className={`py-24 ${isEven ? "bg-white" : "bg-[#fafafa]"}`}>
+      <div
+        ref={ref}
+        className={`mx-auto max-w-[1400px] px-6 md:px-12 transition-all duration-1000 ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
+      >
+        <h2 className="text-[28px] font-bold leading-tight text-[#1A1A1A]" style={{ color: study.accent, fontFamily: "Hanken Grotesk, sans-serif" }}>
+          {section.heading}
+        </h2>
+        <div className="mt-6 overflow-x-auto rounded-2xl border">
+          <table className="w-full min-w-[560px] border-collapse text-left text-[16px]" style={{ fontFamily: "Inter, sans-serif", borderColor: "#0f1728/12" }}>
+            <thead>
+              <tr style={{ background: `${study.accent}14` }}>
+                {section.columns.map((c: string, i: number) => (
+                  <th
+                    key={i}
+                    className="p-4 text-[14px] font-exabold uppercase tracking-wide"
+                    style={i === section.columns.length - 1 ? { color: study.accent } : { color: "#1a1a1a" }}
+                  >
+                    {c}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {section.rows.map((row: string[], ri: number) => (
+                <tr key={ri} style={{ borderColor: "#0f1728/10" }}>
+                  {row.map((cell, ci) => (
+                    <td
+                      key={ci}
+                      className={`p-4 align-top ${ci === 0 ? "font-bold text-fg" : ci === row.length - 1 ? "font-semibold text-fg" : "font-medium text-[#555]"}`}
+                    >
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function QuoteSection({ section, study }: { section: any; study: CaseStudy }) {
+  const [ref, isVisible] = useScrollReveal();
+
+  return (
+    <section className="bg-[#fafafa] py-24">
+      <div
+        ref={ref}
+        className={`mx-auto max-w-[900px] px-6 text-center transition-all duration-1000 ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
+      >
+        <span className="mx-auto grid h-16 w-16 place-items-center rounded-2xl text-[30px] font-bold text-white shadow-lg" style={{ background: study.accent }}>
+          &rdquo;
+        </span>
+        <blockquote className="mt-6">
+          <p className="mx-auto max-w-2xl text-[21px] font-semibold italic leading-relaxed text-[#1A1A1A] md:text-[24px]" style={{ fontFamily: "Inter, sans-serif" }}>
+            &ldquo;{section.text}&rdquo;
+          </p>
+          <figcaption className="mt-6">
+            <span className="block text-[18px] font-bold text-[#1A1A1A]" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+              {section.name}
+            </span>
+            <span className="mt-1 block text-[12px] font-semibold uppercase tracking-[0.2em]" style={{ color: study.accent, fontFamily: "Geist, sans-serif" }}>
+              {section.role}
+            </span>
+          </figcaption>
+        </blockquote>
+      </div>
+    </section>
+  );
+}
+
 // CONTENT SECTIONS RENDERER
 function ContentSections({ study }: { study: CaseStudy }) {
   return (
     <>
       {study.sections.map((section, sectionIndex) => {
-        const [ref, isVisible] = useScrollReveal();
         const isEven = sectionIndex % 2 === 0;
 
         if (section.type === "text") {
-          return (
-            <section key={sectionIndex} className={`py-24 ${isEven ? "bg-white" : "bg-[#fafafa]"}`}>
-              <div
-                ref={ref}
-                className={`mx-auto max-w-[1400px] px-6 md:px-12 transition-all duration-1000 ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
-              >
-                <h2 className="text-[28px] font-bold leading-tight text-[#1A1A1A] md:text-[36px]" style={{ color: study.accent, fontFamily: "Hanken Grotesk, sans-serif" }}>
-                  {section.heading}
-                </h2>
-                <div className="mt-8 space-y-6">
-                  {section.body.map((p, i) => (
-                    <p key={i} className="text-[16px] leading-relaxed text-[#555555] md:text-[18px]" style={{ fontFamily: "Inter, sans-serif" }}>
-                      {p}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            </section>
-          );
+          return <TextSection key={sectionIndex} section={section} study={study} isEven={isEven} />;
         }
 
         if (section.type === "list") {
-          const [imgRef, imgVisible] = useScrollReveal();
-
-          return (
-            <section key={sectionIndex} className={`py-24 ${isEven ? "bg-white" : "bg-[#fafafa]"}`}>
-              <div className="mx-auto max-w-[1400px] px-6 md:px-12">
-                <div className={`flex flex-col gap-12 lg:flex-row ${!isEven ? "lg:flex-row-reverse" : ""}`}>
-                  {/* Content Side */}
-                  <div
-                    ref={ref}
-                    className={`flex-1 transition-all duration-1000 ${
-                      isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                    }`}
-                  >
-                    <span className="text-[11px] font-semibold uppercase tracking-[0.25em]" style={{ color: study.accent, fontFamily: "Inter, sans-serif" }}>
-                      {section.heading}
-                    </span>
-
-                    {section.intro && (
-                      <p className="mt-4 text-[16px] leading-relaxed text-[#555555] md:text-[18px]" style={{ fontFamily: "Inter, sans-serif" }}>
-                        {section.intro}
-                      </p>
-                    )}
-
-                    <ol className="mt-8 space-y-6">
-                      {section.items.map((it, i) => (
-                        <li key={i} className="flex gap-4">
-                          <span
-                            className="grid h-9 w-9 shrink-0 place-items-center rounded-xl text-[15px] font-exabold text-white"
-                            style={{ background: study.accent, fontFamily: "Hanken Grotesk, sans-serif" }}
-                          >
-                            {String(i + 1).padStart(2, "0")}
-                          </span>
-                          <div className="pt-1">
-                            {it.label && <span className="font-bold text-[#1A1A1A]">{it.label}: </span>}
-                            {it.text && <span className="font-medium text-[#3a3a3a]">{it.text}</span>}
-                            {it.sub && (
-                              <ul className="mt-3 space-y-2">
-                                {it.sub.map((s, j) => (
-                                  <li key={j} className="flex items-start gap-3 text-[15px] font-medium text-[#444]">
-                                    <span className="mt-[9px] h-2 w-2 shrink-0 rounded-full" style={{ background: study.accent }} />
-                                    {s}
-                                  </li>
-                                ))}
-                              </ul>
-                            )}
-                          </div>
-                        </li>
-                      ))}
-                    </ol>
-
-                    {section.note && (
-                      <div
-                        className="mt-8 rounded-xl border-l-4 px-5 py-4 italic"
-                        style={{ borderColor: study.accent, background: `${study.accent}12`, fontFamily: "Inter, sans-serif" }}
-                      >
-                        <p className="text-[15px] leading-relaxed text-[#2a2a2a]">
-                          {section.note}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Image Side */}
-                  <div
-                    ref={imgRef}
-                    className={`flex-1 transition-all duration-1000 delay-200 ${
-                      imgVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                    }`}
-                  >
-                    <div className="overflow-hidden rounded-3xl">
-                      <img
-                        src={UNSPLASH_IMAGES[`feature${(sectionIndex % 7) + 1}` as keyof typeof UNSPLASH_IMAGES]}
-                        alt={section.heading}
-                        className="h-auto w-full object-cover"
-                        style={{ minHeight: "400px", maxHeight: "500px" }}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-          );
+          return <ListSection key={sectionIndex} section={section} study={study} isEven={isEven} />;
         }
 
         if (section.type === "image") {
-          return (
-            <section key={sectionIndex} className="bg-[#fafafa] py-24">
-              <div
-                ref={ref}
-                className={`mx-auto max-w-[1400px] px-6 md:px-12 transition-all duration-1000 ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
-              >
-                {section.heading && (
-                  <h2 className="mb-6 text-[28px] font-bold leading-tight text-[#1A1A1A]" style={{ color: study.accent, fontFamily: "Hanken Grotesk, sans-serif" }}>
-                    {section.heading}
-                  </h2>
-                )}
-                {section.intro && (
-                  <p className="mb-6 text-[16px] leading-relaxed text-[#555555] md:text-[18px]" style={{ fontFamily: "Inter, sans-serif" }}>
-                    {section.intro}
-                  </p>
-                )}
-                <div className="grid gap-6 sm:grid-cols-2">
-                  {section.images.map((img) => (
-                    <figure key={img.src} className="overflow-hidden rounded-2xl border bg-[#faf7f0]" style={{ borderColor: "#0f1728/10" }}>
-                      <img src={img.src} alt={img.caption || "Case study visual"} className="h-auto w-full object-contain" loading="lazy" />
-                      {img.caption && (
-                        <figcaption className="p-3 text-center text-[13px] italic text-[#666]" style={{ fontFamily: "Inter, sans-serif" }}>
-                          {img.caption}
-                        </figcaption>
-                      )}
-                    </figure>
-                  ))}
-                </div>
-              </div>
-            </section>
-          );
+          return <ImageSection key={sectionIndex} section={section} study={study} />;
         }
 
         if (section.type === "table") {
-          return (
-            <section key={sectionIndex} className={`py-24 ${isEven ? "bg-white" : "bg-[#fafafa]"}`}>
-              <div
-                ref={ref}
-                className={`mx-auto max-w-[1400px] px-6 md:px-12 transition-all duration-1000 ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
-              >
-                <h2 className="text-[28px] font-bold leading-tight text-[#1A1A1A]" style={{ color: study.accent, fontFamily: "Hanken Grotesk, sans-serif" }}>
-                  {section.heading}
-                </h2>
-                <div className="mt-6 overflow-x-auto rounded-2xl border">
-                  <table className="w-full min-w-[560px] border-collapse text-left text-[16px]" style={{ fontFamily: "Inter, sans-serif", borderColor: "#0f1728/12" }}>
-                    <thead>
-                      <tr style={{ background: `${study.accent}14` }}>
-                        {section.columns.map((c, i) => (
-                          <th
-                            key={i}
-                            className="p-4 text-[14px] font-exabold uppercase tracking-wide"
-                            style={i === section.columns.length - 1 ? { color: study.accent } : { color: "#1a1a1a" }}
-                          >
-                            {c}
-                          </th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {section.rows.map((row, ri) => (
-                        <tr key={ri} style={{ borderColor: "#0f1728/10" }}>
-                          {row.map((cell, ci) => (
-                            <td
-                              key={ci}
-                              className={`p-4 align-top ${ci === 0 ? "font-bold text-fg" : ci === row.length - 1 ? "font-semibold text-fg" : "font-medium text-[#555]"}`}
-                            >
-                              {cell}
-                            </td>
-                          ))}
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </section>
-          );
+          return <TableSection key={sectionIndex} section={section} study={study} isEven={isEven} />;
         }
 
         // Quote section
-        return (
-          <section key={sectionIndex} className="bg-[#fafafa] py-24">
-            <div
-              ref={ref}
-              className={`mx-auto max-w-[900px] px-6 text-center transition-all duration-1000 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-            >
-              <span className="mx-auto grid h-16 w-16 place-items-center rounded-2xl text-[30px] font-bold text-white shadow-lg" style={{ background: study.accent }}>
-                &rdquo;
-              </span>
-              <blockquote className="mt-6">
-                <p className="mx-auto max-w-2xl text-[21px] font-semibold italic leading-relaxed text-[#1A1A1A] md:text-[24px]" style={{ fontFamily: "Inter, sans-serif" }}>
-                  &ldquo;{section.text}&rdquo;
-                </p>
-                <figcaption className="mt-6">
-                  <span className="block text-[18px] font-bold text-[#1A1A1A]" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
-                    {section.name}
-                  </span>
-                  <span className="mt-1 block text-[12px] font-semibold uppercase tracking-[0.2em]" style={{ color: study.accent, fontFamily: "Geist, sans-serif" }}>
-                    {section.role}
-                  </span>
-                </figcaption>
-              </blockquote>
-            </div>
-          </section>
-        );
+        return <QuoteSection key={sectionIndex} section={section} study={study} />;
       })}
     </>
   );
 }
 
 // QUOTE SECTION (if separate)
-function QuoteSection({ study }: { study: CaseStudy }) {
+function DefaultQuoteSection({ study }: { study: CaseStudy }) {
   const [ref, isVisible] = useScrollReveal();
 
   return (
@@ -460,7 +490,7 @@ export default function PremiumCaseStudy({ study }: { study: CaseStudy }) {
       {study.slug === "ritm-hospitality-institute-website" && <RITMImageSection />}
       <ProjectInfoSection study={study} />
       <ContentSections study={study} />
-      <QuoteSection study={study} />
+      <DefaultQuoteSection study={study} />
     </main>
   );
 }

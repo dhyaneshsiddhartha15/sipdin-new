@@ -224,6 +224,14 @@ const CASE_STUDIES: CaseStudy[] = [
         ],
       },
       {
+        type: "image",
+        images: [
+          {
+            src: "/case-study/Doha-bus/1.jpg"
+          }
+        ],
+      },
+      {
         type: "list",
         heading: "The Challenge",
         intro:
@@ -605,6 +613,14 @@ const CASE_STUDIES: CaseStudy[] = [
           { text: "Every homepage section built to tell a single, escalating story — hero, training environments, offerings, career roadmap, placements, alumni, and the course catalog." },
           { text: "A narrative structure that gives the site a sense of intentionality and polish, not dependent on production value alone." },
           { text: "Editorial framing of kitchens, culinary training, and campus life to feel aspirational rather than like generic stock." },
+        ],
+      },
+      {
+        type: "image",
+        images: [
+          {
+            src: "/case-study/RITM/1.jpg"
+          }
         ],
       },
       {
