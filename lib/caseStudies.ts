@@ -794,6 +794,520 @@ const CASE_STUDIES: CaseStudy[] = [
       },
     ],
   },
+  {
+    slug: "wafeeq-inclusive-digital-learning",
+    product: "Wafeeq",
+    tag: "EdTech · Accessibility · E-learning",
+    title: "Wafeeq – Making Digital Learning More Inclusive",
+    description:
+      "Wafeeq is an inclusive digital learning platform created to make education, professional training, and career development more accessible to Deaf and Hard-of-Hearing learners.",
+    accent: "#2C7DA0",
+    bannerColor: "#F4A261",
+    productInitial: "W",
+    watchUrl: "#",
+    stats: [
+      { value: "Multiple", label: "Course Categories" },
+      { value: "Deaf & HOH", label: "Primary Audience" },
+      { value: "Sign Language", label: "Core Accessibility" },
+      { value: "Career-Focused", label: "Learning Approach" },
+    ],
+    sections: [
+      {
+        type: "text",
+        heading: "Project Overview",
+        body: [
+          "Wafeeq is an inclusive digital learning platform created to make education, professional training, and career development more accessible to Deaf and Hard-of-Hearing learners.",
+          "Built around sign language and accessible digital learning, Wafeeq brings learners, certified trainers, educational content, and organizations together in one platform. The platform offers training across areas such as computer science, languages, business, design, photography, education, and more—helping learners build practical skills that can support their education and career journey.",
+          "Industry: EdTech · Accessibility · E-learning | Audience: Deaf & Hard-of-Hearing learners, trainers, organizations | Platform: Web | Services: Product Design · UI/UX · Digital Experience",
+        ],
+      },
+      {
+        type: "text",
+        heading: "The Challenge",
+        body: [
+          "For many Deaf and Hard-of-Hearing learners, access to education is not simply about having information available online.",
+          "The bigger challenge is how that information is communicated.",
+          "Traditional online learning platforms are largely designed around spoken instruction, audio, and text-heavy experiences. This can create barriers for learners who rely on sign language as their primary form of communication.",
+          "At the same time, professional and technical training opportunities specifically designed around the needs of the Deaf community remain limited.",
+          "Wafeeq was created to address this gap: How can digital education become more accessible, inclusive, and relevant to Deaf and Hard-of-Hearing learners?",
+        ],
+      },
+      {
+        type: "text",
+        heading: "The Vision",
+        body: [
+          "Wafeeq's vision goes beyond creating another online course platform. It aims to build a digital library of accessible educational content and help integrate Deaf and Hard-of-Hearing individuals into education and employment.",
+          "The platform works toward this through accessible training content, professional sign-language trainers and interpreters, practical skill development, digital learning resources, certification, organizational training, and a growing ecosystem of educators and learners.",
+          "Wafeeq describes its mission around empowering Deaf and Hard-of-Hearing people with professional training and reducing barriers between trainers and learners.",
+        ],
+      },
+      {
+        type: "list",
+        heading: "Understanding the Ecosystem",
+        intro: "Wafeeq is designed around multiple stakeholders rather than a single user type:",
+        items: [
+          {
+            label: "Learners",
+            text: "People looking to develop new skills, improve their education, or strengthen their career opportunities.",
+          },
+          {
+            label: "Trainers",
+            text: "Certified sign-language experts and instructors who create and deliver educational content.",
+          },
+          {
+            label: "Organizations",
+            text: "Businesses and institutions that need accessible training and professional development for Deaf and Hard-of-Hearing employees.",
+          },
+          {
+            label: "The Accessibility Layer",
+            text: "Sign language sits at the center of the ecosystem, helping transform conventional digital education into a more inclusive learning experience.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "The Learning Experience",
+        intro: "Wafeeq provides structured online courses across multiple categories. The current platform includes areas such as:",
+        items: [
+          { text: "Computer Science" },
+          { text: "Languages" },
+          { text: "Arts & Design" },
+          { text: "Business Management" },
+          { text: "Education" },
+          { text: "Photography" },
+          { text: "Mental & Psychological Health" },
+          { text: "Sales & Marketing" },
+        ],
+        note: "Courses range from beginner-level digital skills to specialized professional subjects. Learners can explore a course, review its content and instructor information, enroll, complete the lessons, and receive certification after successfully completing the required assessment.",
+      },
+      {
+        type: "text",
+        heading: "Complete Learning Journey",
+        body: [
+          "Wafeeq creates a complete journey: Discover → Learn → Practice → Assess → Get Certified → Grow",
+          "This structured approach ensures that learners not only access content but also gain recognition for their achievements and build a foundation for career advancement.",
+        ],
+      },
+      {
+        type: "list",
+        heading: "Learning Through Expert Instructors",
+        intro: "One of Wafeeq's strongest aspects is its instructor ecosystem. Rather than treating accessibility as an additional feature, Wafeeq builds its educational experience around people with expertise in sign-language education and Deaf training.",
+        items: [
+          {
+            label: "Expert Instructor Network",
+            text: "The platform currently showcases instructors with backgrounds spanning sign-language interpretation, computer education, graphic design, photography, Arabic language, and professional training.",
+          },
+          {
+            label: "Discovery-Based Learning",
+            text: "This allows learners to discover not only courses, but also the people behind them.",
+          },
+          {
+            label: "Instructor Opportunities",
+            text: "The instructor model also creates an opportunity for experts to contribute knowledge and create accessible educational content for the community.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "Designed Around Different Learning Needs",
+        intro: "Wafeeq supports multiple levels of learning, from beginner to advanced. Its course ecosystem combines:",
+        items: [
+          {
+            label: "Video-based learning",
+            text: "Structured lessons allow learners to access content online at their own pace.",
+          },
+          {
+            label: "Sign-language expertise",
+            text: "Courses are delivered with the needs of Deaf and Hard-of-Hearing learners in mind.",
+          },
+          {
+            label: "Assessments",
+            text: "Learners can complete assessments as part of their learning journey.",
+          },
+          {
+            label: "Certification",
+            text: "Successful learners receive digital certificates after completing the required course requirements.",
+          },
+          {
+            label: "Feedback",
+            text: "Learners can rate courses and provide feedback, allowing the platform to continuously improve its educational content.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "From Learning to Career Development",
+        intro: "Education is only one part of Wafeeq's larger objective. The platform is designed to help Deaf and Hard-of-Hearing individuals develop skills that can translate into real-world career opportunities.",
+        items: [
+          {
+            label: "Practical Skills Focus",
+            text: "Courses such as computer fundamentals, Windows, Adobe Illustrator, photography, Arabic, communication, and business-related subjects focus on practical knowledge that learners can use beyond the platform.",
+          },
+          {
+            label: "Capability Building",
+            text: "This makes Wafeeq less about simply consuming educational content and more about building capabilities.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "A Platform for Organizations Too",
+        intro: "Wafeeq also extends beyond individual learners. Organizations can work with Wafeeq to provide customized learning paths and training programs based on their specific needs.",
+        items: [
+          {
+            label: "Customized Training",
+            text: "Its customized offering includes tailored learning paths, priority support, and partner resources.",
+          },
+          {
+            label: "Broader Ecosystem",
+            text: "This creates an opportunity for organizations to make their own training programs more inclusive.",
+            sub: ["Learners ↔ Trainers ↔ Organizations"],
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "Empowerment Beyond the Platform",
+        intro: "Accessibility is also reflected in Wafeeq's educational sponsorship model. The platform provides educational bundles that give beneficiaries access to multiple online training courses from certified trainers.",
+        items: [
+          {
+            label: "Educational Bundles",
+            text: "The current program provides three courses per bundle, with certificates available after course completion.",
+          },
+          {
+            label: "Active Support Mechanism",
+            text: "This turns the platform into more than a learning marketplace. It creates a mechanism for organizations and individuals to actively support access to education.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "Building an Inclusive Digital Ecosystem",
+        intro: "Wafeeq's approach combines three important ideas:",
+        items: [
+          {
+            label: "Accessibility",
+            text: "Education should be available in a format that works for Deaf and Hard-of-Hearing learners.",
+          },
+          {
+            label: "Skill Development",
+            text: "Learning should translate into practical knowledge and professional capabilities.",
+          },
+          {
+            label: "Opportunity",
+            text: "Better access to education can create stronger pathways into employment and career development.",
+          },
+        ],
+        note: "Together, these form the foundation of Wafeeq's digital ecosystem.",
+      },
+      {
+        type: "text",
+        heading: "The Impact",
+        body: [
+          "The real value of Wafeeq is not measured only by the number of courses available. It is measured by the opportunities those courses can create.",
+          "Every accessible lesson can represent: A new skill. A new qualification. A new career possibility. A stronger connection to the workforce.",
+          "And ultimately, a step toward a more inclusive digital and professional environment.",
+        ],
+      },
+      {
+        type: "list",
+        heading: "What Makes Wafeeq Different",
+        intro: "Most learning platforms optimize for convenience. Wafeeq optimizes for inclusion.",
+        items: [
+          {
+            label: "Accessibility-First Design",
+            text: "Instead of asking Deaf and Hard-of-Hearing learners to adapt to conventional online education, Wafeeq builds an educational ecosystem around their communication needs.",
+          },
+          {
+            label: "Focused Purpose",
+            text: "Its combination of Sign Language + Professional Training + Digital Learning + Certified Instructors + Career Development creates a focused platform with a clear social and educational purpose.",
+          },
+        ],
+      },
+      {
+        type: "text",
+        heading: "The Bigger Picture",
+        body: [
+          "Wafeeq's ambition extends beyond becoming an online course platform. Its stated vision is to become a leading source of digital sign-language content across the Arab world and globally, while helping Deaf and Hard-of-Hearing individuals integrate into governmental and non-governmental workplaces.",
+          "That makes the platform part of a much larger movement: Making digital education accessible to everyone.",
+          "Because accessibility isn't an extra layer of technology. It is part of the experience itself.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "The Outcome",
+        body: [
+          "Wafeeq brings together education, accessibility, and opportunity into one digital ecosystem.",
+          "From discovering a course to learning from specialized instructors, completing assessments, earning certificates, and developing career-ready skills, the platform creates a more inclusive path for Deaf and Hard-of-Hearing learners.",
+          "Wafeeq is not simply helping people learn. It is helping make learning—and the opportunities that come with it—more accessible.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Project Snapshot",
+        body: [
+          "**Wafeeq** - Inclusive EdTech Platform",
+          "**Focus**: Accessible education & professional development",
+          "**Users**: Deaf & Hard-of-Hearing learners · Trainers · Organizations",
+          "**Core Experience**: Courses · Sign-language training · Assessments · Certification · Instructor ecosystem · Organizational training",
+          "**Vision**: A more inclusive digital learning ecosystem where accessibility becomes a pathway to education, skills, and opportunity.",
+        ],
+      },
+      {
+        type: "quote",
+        text: "Accessibility isn't an extra layer of technology — it is part of the experience itself. Wafeeq optimizes for inclusion, not convenience.",
+        name: "Wafeeq",
+        role: "Inclusive Digital Learning Platform",
+      },
+    ],
+  },
+  {
+    slug: "camera-market-dehradun-photography-e-commerce",
+    product: "Camera Market Dehradun",
+    tag: "E-commerce · Photography · Consumer Electronics",
+    title: "Camera Market Dehradun – Bringing a Local Camera Store Online",
+    description:
+      "A photography equipment store built for creators, photographers, filmmakers, and enthusiasts looking for reliable camera gear and accessories.",
+    accent: "#1E3A8A",
+    bannerColor: "#F59E0B",
+    productInitial: "C",
+    watchUrl: "#",
+    stats: [
+      { value: "7+ Years", label: "Retail Experience" },
+      { value: "Multiple", label: "Product Categories" },
+      { value: "New & Pre-Owned", label: "Equipment Options" },
+      { value: "24/7", label: "Online Support" },
+    ],
+    sections: [
+      {
+        type: "text",
+        heading: "Project Overview",
+        body: [
+          "Camera Market Dehradun is a photography equipment store built for creators, photographers, filmmakers, and enthusiasts looking for reliable camera gear and accessories.",
+          "With a wide product range spanning cameras, lenses, action cameras, drones, gimbals, lighting equipment, audio gear, tripods, bags, and accessories, the business brings a specialized photography retail experience to an online audience.",
+          "The digital platform extends the store experience beyond its physical location—allowing customers to discover products, explore specifications, compare options, and purchase photography equipment online.",
+          "Industry: E-commerce · Photography · Consumer Electronics | Audience: Photographers · Creators · Filmmakers · Vloggers · Photography Enthusiasts | Platform: E-commerce Website | Services: Digital Experience · UI/UX · E-commerce",
+        ],
+      },
+      {
+        type: "text",
+        heading: "The Challenge",
+        body: [
+          "Buying camera equipment is very different from buying everyday products. A camera, lens, microphone, gimbal, or lighting setup can represent a significant investment. Customers often need to understand specifications, compatibility, use cases, pricing, and available alternatives before making a decision.",
+          "For a specialized local camera retailer, the challenge was therefore bigger than simply putting products online.",
+          "The digital experience needed to communicate: What is the product? Is it right for me? How much does it cost? What alternatives are available? Can I trust the seller?",
+          "The goal was to create an online shopping experience that could carry the trust and expertise of a physical camera store into the digital space.",
+        ],
+      },
+      {
+        type: "image",
+        images: [
+          {
+            src: "/case-study/camera/1.jpg"
+          }
+        ],
+      },
+      {
+        type: "text",
+        heading: "The Objective",
+        body: [
+          "The objective was to establish a strong digital storefront for Camera Market Dehradun that could serve both experienced professionals and customers buying their first piece of camera equipment.",
+          "The experience needed to make it easy to discover photography equipment, navigate large product categories, find specific cameras and accessories, understand product information, identify deals and new arrivals, explore pre-owned equipment, make purchasing decisions confidently, and complete purchases online.",
+          "The broader goal was simple: Turn a local photography store into an accessible digital shopping destination for creators.",
+        ],
+      },
+      {
+        type: "list",
+        heading: "Understanding the Product Ecosystem",
+        intro: "Camera equipment is rarely purchased as a single category. A photographer might begin with a camera and then need a lens. A filmmaker may need a camera, gimbal, microphone, lights, and tripod. The platform therefore organizes its catalog around a broad photography ecosystem:",
+        items: [
+          {
+            label: "Cameras",
+            text: "DSLR, mirrorless, instant cameras, and instant printers.",
+          },
+          {
+            label: "Lenses",
+            text: "Different lens types and focal lengths for different photography requirements.",
+          },
+          {
+            label: "Action Cameras",
+            text: "Compact cameras designed for travel, sports, outdoor content, and vlogging.",
+          },
+          {
+            label: "Drones",
+            text: "Aerial photography and videography equipment.",
+          },
+          {
+            label: "Gimbals",
+            text: "Mobile and DSLR stabilization equipment.",
+          },
+          {
+            label: "Accessories",
+            text: "Lights, tripods, microphones, softboxes, flashes, camera bags, straps, and other equipment.",
+          },
+          {
+            label: "Pre-Owned",
+            text: "Previously owned equipment for customers looking for alternative price points.",
+          },
+        ],
+        note: "The current navigation reflects this category-driven approach, allowing shoppers to move directly into major product groups.",
+      },
+      {
+        type: "text",
+        heading: "Creating a Digital Storefront",
+        body: [
+          "The homepage acts as the starting point for the shopping journey. Instead of overwhelming visitors with the entire catalog, the experience introduces key product categories, promotional offers, brands, and products.",
+          "The homepage highlights shopping opportunities such as flash deals, cameras, action cameras, microphones, lenses, lights, gimbals, tripods, and accessories.",
+          "This creates multiple entry points depending on what the customer already knows. A customer can start with a product category, a specific product, a deal, or a brand and continue deeper into the catalog.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Product Discovery",
+        body: [
+          "Product discovery is one of the most important parts of the experience. Camera Market's catalog covers a wide range of products, from professional full-frame cameras to compact action cameras and everyday accessories.",
+          "The product listing experience provides users with key information such as: Product name → Pricing → Sale information → Availability → Purchase action",
+          "For example, the camera category currently includes products from brands and product lines such as Sony, Nikon, Panasonic, Fujifilm, DJI, and Insta360. This allows users to quickly scan the catalog and identify products worth exploring further.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Helping Customers Make Better Decisions",
+        body: [
+          "Photography equipment often requires more consideration than a normal e-commerce purchase. A product page therefore needs to answer more than just 'How much does it cost?' It needs to answer: 'What can I do with it?'",
+          "Product pages provide detailed product descriptions and specifications to help customers understand the equipment before purchasing.",
+          "For example, product information for the DJI Osmo Nano explains its sensor, 4K recording capability, wide-angle field of view, battery life, portability, and connectivity features. This transforms the product page from a simple sales page into a decision-making tool.",
+        ],
+      },
+      {
+        type: "list",
+        heading: "Building Trust Through Product Information",
+        intro: "When customers are purchasing high-value equipment online, trust becomes a major part of the experience. Camera Market communicates this through multiple signals:",
+        items: [
+          { text: "Product specifications" },
+          { text: "Pricing transparency" },
+          { text: "Sale pricing" },
+          { text: "Stock information" },
+          { text: "Product imagery" },
+          { text: "Shipping information" },
+          { text: "Returns" },
+          { text: "Customer support" },
+          { text: "Secure payment messaging" },
+        ],
+        note: "The website currently highlights free shipping, a 7-day return policy, 24/7 online support, and payment security as part of its shopping experience. These details help reduce uncertainty at the point of purchase.",
+      },
+      {
+        type: "text",
+        heading: "Bringing the Physical Store Online",
+        body: [
+          "One of the strongest aspects of Camera Market is its connection to a physical retail presence. The company describes itself as a photography destination in Dehradun with more than seven years of experience, serving beginners, professional photographers, and photography enthusiasts.",
+          "The online experience therefore isn't intended to replace the physical store. Instead, it extends the relationship.",
+          "A customer can discover products online, understand what they need, and then make a purchase—or use the digital platform as a starting point for a conversation with the store.",
+          "This creates a bridge between: Physical expertise + Digital convenience",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Designed for Beginners and Professionals",
+        body: [
+          "Photography communities are diverse. One customer may be buying their first camera. Another may already understand sensor sizes, focal lengths, codecs, stabilization, and lens compatibility.",
+          "The platform needs to serve both. For beginners, clear categories and product descriptions help reduce complexity.",
+          "For experienced users, detailed product information and brand/product discovery allow them to move quickly toward the equipment they need.",
+          "The result is an experience that doesn't assume every customer has the same level of technical knowledge.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Beyond Cameras",
+        body: [
+          "A camera store is rarely just about cameras. The platform reflects this by treating the wider creator ecosystem as part of the catalog.",
+          "A customer can move from: Camera → Lens → Tripod → Light → Microphone → Bag, or: Action Camera → Mount → Microphone → Accessories",
+          "This creates opportunities for customers to discover complementary products while building a complete setup.",
+          "The catalog currently spans cameras, lenses, drones, action cameras, gimbals, binoculars, and multiple accessory categories.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "New & Pre-Owned Equipment",
+        body: [
+          "Another important part of the ecosystem is the presence of pre-owned equipment. For photography enthusiasts, pre-owned gear can provide access to higher-end equipment at a different price point.",
+          "Camera Market includes a dedicated pre-owned section alongside its new product catalog. This broadens the platform's appeal beyond customers who are only looking for brand-new equipment.",
+        ],
+      },
+      {
+        type: "list",
+        heading: "The Commerce Journey",
+        intro: "The overall shopping journey can be understood as:",
+        items: [
+          {
+            label: "Discover",
+            text: "Explore categories, deals, brands, and new products.",
+          },
+          {
+            label: "Explore",
+            text: "Browse products and identify relevant equipment.",
+          },
+          {
+            label: "Evaluate",
+            text: "Review images, specifications, pricing, availability, and product information.",
+          },
+          {
+            label: "Decide",
+            text: "Choose the right equipment based on requirements and budget.",
+          },
+          {
+            label: "Purchase",
+            text: "Add the product to cart and proceed through checkout.",
+          },
+          {
+            label: "Continue",
+            text: "Return for accessories, upgrades, or additional equipment as the customer's photography journey evolves.",
+          },
+        ],
+        note: "This creates an ecosystem rather than a one-time transaction.",
+      },
+      {
+        type: "list",
+        heading: "The Business Opportunity",
+        intro: "Moving a specialized camera store online creates opportunities beyond geographical reach. The digital storefront can:",
+        items: [
+          { text: "Expand the customer base beyond Dehradun" },
+          { text: "Make the catalog accessible 24/7" },
+          { text: "Showcase new arrivals instantly" },
+          { text: "Promote deals and offers" },
+          { text: "Support product discovery" },
+          { text: "Create a searchable product catalog" },
+          { text: "Enable direct online purchasing" },
+          { text: "Build a stronger digital presence for the brand" },
+        ],
+        note: "The result is a business that can operate across both local retail and digital commerce.",
+      },
+      {
+        type: "text",
+        heading: "The Result",
+        body: [
+          "Camera Market Dehradun's digital presence transforms a specialized local camera retailer into an online destination for photography equipment.",
+          "The platform brings together: Products + Expertise + Discovery + Convenience + Trust",
+          "From a first-time creator looking for a compact camera to an experienced photographer searching for a professional lens, the platform provides a digital path to explore and purchase photography equipment.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "More Than an Online Store",
+        body: [
+          "Camera Market's story is ultimately about making specialized photography equipment easier to discover and access.",
+          "The platform takes the expertise and product range of a local camera store and extends it into a digital environment where customers can browse, evaluate, and purchase equipment from anywhere.",
+          "From a local destination for photographers to a digital storefront for creators.",
+        ],
+      },
+      {
+        type: "quote",
+        text: "From a local destination for photographers to a digital storefront for creators — helping them find the gear to capture their next story.",
+        name: "Camera Market Dehradun",
+        role: "Photography Equipment Retailer",
+      },
+    ],
+  },
 ];
 
 export function getAllCaseStudies(): CaseStudy[] {
