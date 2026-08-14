@@ -11,15 +11,20 @@ import { motion, useAnimation, useMotionValue, useTransform, PanInfo } from "fra
 import AIConsultationModal from "@/components/contact/AIConsultationModal";
 import { getAllCaseStudies } from "@/lib/caseStudies";
 
-// Get case studies
-const CASE_STUDIES = getAllCaseStudies();
+// Get only specific case studies: Dohabus, Rudradharma, Camera Market, Wafeeq
+const ALL_CASE_STUDIES = getAllCaseStudies();
+const CASE_STUDIES = ALL_CASE_STUDIES.filter(cs =>
+  cs.slug === "dohabus-qatar-tourism-platform" ||
+  cs.slug === "rudradharma-spiritual-ecommerce" ||
+  cs.slug === "camera-market-dehradun-photography-e-commerce" ||
+  cs.slug === "wafeeq-inclusive-digital-learning"
+);
 
 const PROJECTS = CASE_STUDIES.map((cs) => ({
   id: cs.slug,
   name: cs.product,
   category: cs.tag,
-  gradient: `linear-gradient(135deg, ${cs.accent} 0%, ${cs.bannerColor || cs.accent}CC 100%)`,
-  glowColor: cs.accent,
+  color: cs.accent,
   description: cs.description,
   stats: cs.stats,
   image: cs.heroImage || "https://images.unsplash.com/photo-15566567932-02371d2713ef?w=800&q=80",
@@ -45,8 +50,6 @@ function ProjectCard({
   index: number;
   isMobile?: boolean;
 }) {
-  const glowColor = THEME_COLORS[index % THEME_COLORS.length];
-
   return (
     <motion.div
       className="relative shrink-0"
@@ -59,91 +62,22 @@ function ProjectCard({
         transition: { duration: 0.3 },
       }}
     >
-      {/* Radial Glow */}
-      <motion.div
-        className="absolute left-1/2 top-1/2 -z-10 h-[450px] w-[450px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[100px]"
-        style={{ background: glowColor }}
-        animate={{
-          opacity: [0.3, 0.5, 0.3],
-          scale: [1, 1.15, 1],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: index * 0.2,
-        }}
-      />
-
-      {/* Premium Glass Card */}
+      {/* Plain Card */}
       <div
-        className="relative h-full w-full overflow-hidden rounded-[28px] p-[1px]"
+        className="relative h-full w-full overflow-hidden rounded-[28px]"
         style={{
-          background: `linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%)`,
-          border: "1px solid rgba(255,255,255,0.08)",
-          boxShadow: "0 40px 120px rgba(0,0,0,0.25)",
+          background: project.color,
+          boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
         }}
       >
-        {/* Inner Card with Gradient */}
-        <div
-          className="relative h-full w-full rounded-[27px]"
-          style={{ background: project.gradient }}
-        >
-          {/* Noise Texture */}
-          <div
-            className="absolute inset-0 rounded-[27px]"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-              opacity: 0.05,
-            }}
-          />
-
-          {/* Mesh Gradient Overlay */}
-          <div
-            className="absolute inset-0 rounded-[27px]"
-            style={{
-              background: `radial-gradient(circle at 30% 20%, rgba(255,255,255,0.15) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(0,0,0,0.15) 0%, transparent 50%)`,
-            }}
-          />
-
-          {/* Vignette */}
-          <div
-            className="absolute inset-0 rounded-[27px]"
-            style={{
-              background: "radial-gradient(circle at 50% 50%, transparent 40%, rgba(0,0,0,0.2) 100%)",
-            }}
-          />
-
-          {/* Inner Highlight */}
-          <div
-            className="absolute inset-0 rounded-[27px]"
-            style={{
-              background: "linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 45%)",
-            }}
-          />
 
           {/* Card Content - 2 Column Layout */}
           <div className="relative z-10 grid h-full grid-cols-1 md:grid-cols-2">
             {/* LEFT - Device Mockup */}
             <div className="relative flex items-center justify-center p-8">
-              {/* Floating Shadow */}
-              <motion.div
-                className="absolute bottom-12 left-1/2 -z-10 h-[100px] w-[180px] -translate-x-1/2 rounded-full bg-black/40 blur-[50px]"
-                animate={{ opacity: [0.4, 0.6, 0.4], scale: [1, 1.2, 1] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              />
-
-              {/* Device Frame with 3D Rotation */}
+              {/* Device Frame */}
               <motion.div
                 className="relative h-[380px] w-[180px] overflow-hidden rounded-[32px] border-4 border-white/30 bg-black shadow-2xl"
-                animate={{
-                  y: [0, -8, 0],
-                  rotateZ: isMobile ? [0, 0, 0] : [-2, 1, -2],
-                }}
-                transition={{
-                  y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
-                  rotateZ: { duration: 6, repeat: Infinity, ease: "easeInOut" },
-                }}
                 whileHover={{
                   y: -15,
                   transition: { duration: 0.4 },
@@ -154,15 +88,6 @@ function ProjectCard({
                   src={project.image}
                   alt={project.alt}
                   className="h-full w-full object-cover"
-                />
-
-                {/* Device Overlay Effects */}
-                <div className="absolute inset-0 rounded-[28px] border-2 border-black/20" />
-                <div
-                  className="absolute inset-0 rounded-[28px]"
-                  style={{
-                    background: "linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 50%)",
-                  }}
                 />
 
                 {/* Notch */}
@@ -249,7 +174,6 @@ function ProjectCard({
               </motion.a>
             </div>
           </div>
-        </div>
       </div>
     </motion.div>
   );
@@ -357,8 +281,8 @@ export default function AiPortfolio() {
               style={{ fontFamily: "Hanken Grotesk, sans-serif" }}
             >
               AI Projects We've Built for{" "}
-              <span className="bg-gradient-to-r from-[#6366f1] to-[#a855f7] bg-clip-text text-transparent">
-                Global Clients
+              <span className="bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] bg-clip-text text-transparent">
+                Clients
               </span>
             </h2>
 
