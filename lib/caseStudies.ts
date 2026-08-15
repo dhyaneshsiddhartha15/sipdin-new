@@ -1071,6 +1071,7 @@ const CASE_STUDIES: CaseStudy[] = [
     accent: "#1E3A8A",
     bannerColor: "#F59E0B",
     productInitial: "C",
+    heroImage: "/ai-card/ai-poster.jpg",
     watchUrl: "#",
     stats: [
       { value: "7+ Years", label: "Retail Experience" },
