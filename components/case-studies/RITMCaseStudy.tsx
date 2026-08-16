@@ -628,13 +628,7 @@ function DefaultQuoteSection({ study }: { study: CaseStudy }) {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
-        <div className="mb-8 text-[64px] font-bold leading-none" style={{ color: study.accent, fontFamily: "Hanken Grotesk, sans-serif" }}>{" "}</div>
-        <p className="text-[20px] font-semibold italic leading-relaxed text-[#1A1A1A] md:text-[28px]" style={{ fontFamily: "Inter, sans-serif" }}>
-          Transforming hospitality education into digital excellence
-        </p>
-        <div className="mt-6 text-[18px] font-bold text-[#1A1A1A]" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
-          {study.title}
-        </div>
+        {/* Content removed as requested */}
       </div>
     </section>
   );

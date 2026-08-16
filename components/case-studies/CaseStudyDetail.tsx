@@ -184,26 +184,69 @@ function SectionBlock({ section, accent }: { section: Section; accent: string })
   }
 
   // quote
-  return (
-    <Card accent={accent} className="text-center">
-      <span className="mx-auto grid h-16 w-16 place-items-center rounded-2xl text-[30px] font-bold text-white shadow-lg" style={{ background: accent }}>
-        &rdquo;
-      </span>
-      <blockquote className="mt-6">
-        <p className="mx-auto max-w-2xl text-[21px] font-semibold italic leading-relaxed text-fg md:text-[24px]" style={{ fontFamily: "Inter, sans-serif" }}>
-          &ldquo;{section.text}&rdquo;
-        </p>
-        <figcaption className="mt-6">
-          <span className="block text-[18px] font-bold text-fg" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
-            {section.name}
-          </span>
-          <span className="mt-1 block text-[12px] font-semibold uppercase tracking-[0.2em]" style={{ color: accent, fontFamily: "Geist, sans-serif" }}>
-            {section.role}
-          </span>
-        </figcaption>
-      </blockquote>
-    </Card>
-  );
+  if (section.type === "quote") {
+    return (
+      <Card accent={accent} className="text-center">
+        <span className="mx-auto grid h-16 w-16 place-items-center rounded-2xl text-[30px] font-bold text-white shadow-lg" style={{ background: accent }}>
+          &rdquo;
+        </span>
+        <blockquote className="mt-6">
+          <p className="mx-auto max-w-2xl text-[21px] font-semibold italic leading-relaxed text-fg md:text-[24px]" style={{ fontFamily: "Inter, sans-serif" }}>
+            &ldquo;{section.text}&rdquo;
+          </p>
+          <figcaption className="mt-6">
+            <span className="block text-[18px] font-bold text-fg" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+              {section.name}
+            </span>
+            <span className="mt-1 block text-[12px] font-semibold uppercase tracking-[0.2em]" style={{ color: accent, fontFamily: "Geist, sans-serif" }}>
+              {section.role}
+            </span>
+          </figcaption>
+        </blockquote>
+      </Card>
+    );
+  }
+
+  // journey section
+  if (section.type === "journey") {
+    return (
+      <Card accent={accent}>
+        <Heading accent={accent}>{section.heading}</Heading>
+        {section.intro && (
+          <p className="mt-6 text-[18px] font-medium leading-[1.8] text-[#333] md:text-[20px]" style={{ fontFamily: "Inter, sans-serif" }}>
+            {section.intro}
+          </p>
+        )}
+        <div className="mt-8 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {section.steps.map((step, i) => (
+            <div key={i} className="relative">
+              <div className="text-5xl font-bold text-[#f0f0f0] absolute -top-4 -left-2 -z-10" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+                {step.number}
+              </div>
+              <div className="relative pl-6">
+                <h4 className="text-[16px] font-bold text-fg mb-2" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+                  {step.title}
+                </h4>
+                <p className="text-[14px] leading-relaxed text-[#555]" style={{ fontFamily: "Inter, sans-serif" }}>
+                  {step.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+        {section.conclusion && (
+          <div className="mt-8 rounded-xl border-l-4 px-5 py-4 italic" style={{ borderColor: accent, background: `${accent}12`, fontFamily: "Inter, sans-serif" }}>
+            <p className="text-[15px] leading-relaxed text-[#2a2a2a]">
+              {section.conclusion}
+            </p>
+          </div>
+        )}
+      </Card>
+    );
+  }
+
+  // Fallback for unknown section types
+  return null;
 }
 
 export default function CaseStudyDetail({ study }: { study: CaseStudy }) {

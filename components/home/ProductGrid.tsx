@@ -161,9 +161,8 @@ export default function ProductGrid() {
 
                 {/* Accent line on bottom */}
                 <div
-                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-transparent via-gray-300 to-transparent transition-all duration-300 group-hover:via-gray-900"
+                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-transparent via-gray-300 to-transparent transition-all duration-300 group-hover:via-gray-900 group-hover:w-full"
                   style={{ width: "0%", transition: "width 400ms ease" }}
-                  className="group-hover:w-full"
                 />
               </Link>
             );

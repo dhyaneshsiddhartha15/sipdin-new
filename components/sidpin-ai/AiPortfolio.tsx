@@ -30,7 +30,7 @@ const PROJECTS = CASE_STUDIES.map((cs) => ({
   backgroundImage: cs.slug === "wafeeq-inclusive-digital-learning" ? "/ai-card/ai-wafeeq.png" :
                   cs.slug === "rudradharma-spiritual-ecommerce" ? "/ai-card/ai-rudra.png" :
                   cs.slug === "dohabus-qatar-tourism-platform" ? "/ai-card/ai-doha.png" : null,
-  deviceType: cs.slug === "wafeeq-inclusive-digital-learning" ? "laptop" : "phone",
+  deviceType: (cs.slug === "wafeeq-inclusive-digital-learning" ? "laptop" : "phone") as "phone" | "laptop",
   alt: `${cs.product} case study`,
   slug: cs.slug,
 }));

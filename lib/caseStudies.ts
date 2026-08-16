@@ -10,12 +10,15 @@ export type Stat = { value: string; label: string };
 
 export type ListItem = { label?: string; text?: string; sub?: string[] };
 
+export type JourneyStep = { number: string; title: string; description: string; icon?: string };
+
 export type Section =
   | { type: "text"; heading: string; body: string[] }
-  | { type: "list"; heading: string; intro?: string; items: ListItem[]; note?: string }
+  | { type: "list"; heading: string; intro?: string; items: ListItem[]; note?: string; solutionHeading?: string; solutionIntro?: string; solutionItems?: ListItem[] }
   | { type: "table"; heading: string; columns: string[]; rows: string[][] }
   | { type: "image"; heading?: string; intro?: string; images: { src: string; caption?: string }[] }
-  | { type: "quote"; text: string; name: string; role: string };
+  | { type: "quote"; text: string; name: string; role: string }
+  | { type: "journey"; heading: string; intro: string; steps: JourneyStep[]; conclusion?: string };
 
 export type CaseStudy = {
   slug: string;
@@ -224,14 +227,6 @@ const CASE_STUDIES: CaseStudy[] = [
         ],
       },
       {
-        type: "image",
-        images: [
-          {
-            src: "/case-study/Doha-bus/1.jpg"
-          }
-        ],
-      },
-      {
         type: "list",
         heading: "The Challenge",
         intro:
@@ -256,6 +251,16 @@ const CASE_STUDIES: CaseStudy[] = [
         ],
         note:
           "Core challenge: how can a tourism brand build a digital platform that converts international tourists into bookings while reflecting the premium tourism experience of Qatar?",
+        solutionHeading: "Our Solution",
+        solutionIntro: "Sidpin Digital designed and developed a conversion-focused website that positions Dohabus as a premium sightseeing brand while simplifying tour discovery and booking. Key deliverables:",
+        solutionItems: [
+          { label: "Tour Discovery Platform", text: "A structured site to browse tours by category — city tours, desert safaris, airport transfers, private transport." },
+          { label: "Online Booking Integration", text: "A seamless booking flow to reserve tours directly online, reducing reliance on third-party platforms." },
+          { label: "Mobile-Optimized Experience", text: "A fully responsive design for tourists browsing on smartphones and tablets." },
+          { label: "Premium Brand Positioning", text: "A modern visual design aligned with Qatar's luxury tourism identity, building trust with travelers." },
+          { label: "Multi-Service Showcase", text: "Clear presentation of the fleet and tour portfolio — from double-decker buses to luxury transport." },
+          { label: "SEO & Global Discoverability", text: "A search-optimized structure so international tourists find Dohabus through relevant travel searches." },
+        ],
       },
       {
         type: "list",
@@ -268,20 +273,6 @@ const CASE_STUDIES: CaseStudy[] = [
           { label: "Airport Transfers", text: "Seamless pickup and drop services from Hamad International Airport." },
           { label: "Cruise & Night Tours", text: "Dhow harbor cruises and evening tours showcasing Doha's illuminated skyline." },
           { label: "Corporate & Diplomatic Transport", text: "Tailored transportation for corporate delegations and diplomatic missions." },
-        ],
-      },
-      {
-        type: "list",
-        heading: "Our Solution",
-        intro:
-          "Sidpin Digital designed and developed a conversion-focused website that positions Dohabus as a premium sightseeing brand while simplifying tour discovery and booking. Key deliverables:",
-        items: [
-          { label: "Tour Discovery Platform", text: "A structured site to browse tours by category — city tours, desert safaris, airport transfers, private transport." },
-          { label: "Online Booking Integration", text: "A seamless booking flow to reserve tours directly online, reducing reliance on third-party platforms." },
-          { label: "Mobile-Optimized Experience", text: "A fully responsive design for tourists browsing on smartphones and tablets." },
-          { label: "Premium Brand Positioning", text: "A modern visual design aligned with Qatar's luxury tourism identity, building trust with travelers." },
-          { label: "Multi-Service Showcase", text: "Clear presentation of the fleet and tour portfolio — from double-decker buses to luxury transport." },
-          { label: "SEO & Global Discoverability", text: "A search-optimized structure so international tourists find Dohabus through relevant travel searches." },
         ],
       },
       {
@@ -569,7 +560,7 @@ const CASE_STUDIES: CaseStudy[] = [
     slug: "ritm-hospitality-institute-website",
     product: "RITM",
     tag: "Website Design & Development",
-    title: "Building a Premium Digital Presence on a Lean Budget",
+    title: "RITM Hospitality Institute Website",
     description:
       "How we delivered a globally competitive website for Raboche Institute of Technology & Management (RITM), a hospitality education institute, without a premium budget to match.",
     accent: "#0E8A80",
@@ -813,12 +804,20 @@ const CASE_STUDIES: CaseStudy[] = [
     ],
     sections: [
       {
+        type: "image",
+        images: [
+          {
+            src: "/case-study/wafeeq/1.png"
+          }
+        ]
+      },
+      {
         type: "text",
         heading: "Project Overview",
         body: [
           "Wafeeq is an inclusive digital learning platform created to make education, professional training, and career development more accessible to Deaf and Hard-of-Hearing learners.",
           "Built around sign language and accessible digital learning, Wafeeq brings learners, certified trainers, educational content, and organizations together in one platform. The platform offers training across areas such as computer science, languages, business, design, photography, education, and more—helping learners build practical skills that can support their education and career journey.",
-          "Industry: EdTech · Accessibility · E-learning | Audience: Deaf & Hard-of-Hearing learners, trainers, organizations | Platform: Web | Services: Product Design · UI/UX · Digital Experience",
+          "Industry: EdTech · Accessibility · E-learning | Audience: Deaf & Hard-of-Hearing learners, trainers, organizations | Platform: Web & App | Services: Website & App Development · Admin Dashboard · Educator Dashboard · Learner Dashboard · AI Chat Integration · Product Design · UI/UX · Digital Experience",
         ],
       },
       {
@@ -862,30 +861,6 @@ const CASE_STUDIES: CaseStudy[] = [
             label: "The Accessibility Layer",
             text: "Sign language sits at the center of the ecosystem, helping transform conventional digital education into a more inclusive learning experience.",
           },
-        ],
-      },
-      {
-        type: "list",
-        heading: "The Learning Experience",
-        intro: "Wafeeq provides structured online courses across multiple categories. The current platform includes areas such as:",
-        items: [
-          { text: "Computer Science" },
-          { text: "Languages" },
-          { text: "Arts & Design" },
-          { text: "Business Management" },
-          { text: "Education" },
-          { text: "Photography" },
-          { text: "Mental & Psychological Health" },
-          { text: "Sales & Marketing" },
-        ],
-        note: "Courses range from beginner-level digital skills to specialized professional subjects. Learners can explore a course, review its content and instructor information, enroll, complete the lessons, and receive certification after successfully completing the required assessment.",
-      },
-      {
-        type: "text",
-        heading: "Complete Learning Journey",
-        body: [
-          "Wafeeq creates a complete journey: Discover → Learn → Practice → Assess → Get Certified → Grow",
-          "This structured approach ensures that learners not only access content but also gain recognition for their achievements and build a foundation for career advancement.",
         ],
       },
       {
@@ -1181,23 +1156,6 @@ const CASE_STUDIES: CaseStudy[] = [
         ],
       },
       {
-        type: "list",
-        heading: "Building Trust Through Product Information",
-        intro: "When customers are purchasing high-value equipment online, trust becomes a major part of the experience. Camera Market communicates this through multiple signals:",
-        items: [
-          { text: "Product specifications" },
-          { text: "Pricing transparency" },
-          { text: "Sale pricing" },
-          { text: "Stock information" },
-          { text: "Product imagery" },
-          { text: "Shipping information" },
-          { text: "Returns" },
-          { text: "Customer support" },
-          { text: "Secure payment messaging" },
-        ],
-        note: "The website currently highlights free shipping, a 7-day return policy, 24/7 online support, and payment security as part of its shopping experience. These details help reduce uncertainty at the point of purchase.",
-      },
-      {
         type: "text",
         heading: "Bringing the Physical Store Online",
         body: [
@@ -1219,16 +1177,6 @@ const CASE_STUDIES: CaseStudy[] = [
       },
       {
         type: "text",
-        heading: "Beyond Cameras",
-        body: [
-          "A camera store is rarely just about cameras. The platform reflects this by treating the wider creator ecosystem as part of the catalog.",
-          "A customer can move from: Camera → Lens → Tripod → Light → Microphone → Bag, or: Action Camera → Mount → Microphone → Accessories",
-          "This creates opportunities for customers to discover complementary products while building a complete setup.",
-          "The catalog currently spans cameras, lenses, drones, action cameras, gimbals, binoculars, and multiple accessory categories.",
-        ],
-      },
-      {
-        type: "text",
         heading: "New & Pre-Owned Equipment",
         body: [
           "Another important part of the ecosystem is the presence of pre-owned equipment. For photography enthusiasts, pre-owned gear can provide access to higher-end equipment at a different price point.",
@@ -1236,36 +1184,48 @@ const CASE_STUDIES: CaseStudy[] = [
         ],
       },
       {
-        type: "list",
-        heading: "The Commerce Journey",
+        type: "journey",
+        heading: "THE COMMERCE JOURNEY",
         intro: "The overall shopping journey can be understood as:",
-        items: [
+        steps: [
           {
-            label: "Discover",
-            text: "Explore categories, deals, brands, and new products.",
+            number: "01",
+            title: "Discover",
+            description: "Explore categories, deals, brands, and new products.",
+            icon: "compass"
           },
           {
-            label: "Explore",
-            text: "Browse products and identify relevant equipment.",
+            number: "02",
+            title: "Explore",
+            description: "Browse products and identify relevant equipment.",
+            icon: "search"
           },
           {
-            label: "Evaluate",
-            text: "Review images, specifications, pricing, availability, and product information.",
+            number: "03",
+            title: "Evaluate",
+            description: "Review images, specifications, pricing, availability, and product information.",
+            icon: "clipboard-check"
           },
           {
-            label: "Decide",
-            text: "Choose the right equipment based on requirements and budget.",
+            number: "04",
+            title: "Decide",
+            description: "Choose the right equipment based on requirements and budget.",
+            icon: "check-circle"
           },
           {
-            label: "Purchase",
-            text: "Add the product to cart and proceed through checkout.",
+            number: "05",
+            title: "Purchase",
+            description: "Add the product to cart and proceed through checkout.",
+            icon: "shopping-cart"
           },
           {
-            label: "Continue",
-            text: "Return for accessories, upgrades, or additional equipment as the customer's photography journey evolves.",
-          },
+            number: "06",
+            title: "Continue",
+            description: "Return for accessories, upgrades, or additional equipment as the customer's photography journey evolves.",
+            icon: "refresh-cw"
+          }
         ],
-        note: "This creates an ecosystem rather than a one-time transaction.",
+        conclusion: "This creates an ecosystem rather than a one-time transaction.",
       },
       {
         type: "list",
