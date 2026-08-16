@@ -10,6 +10,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Sparkles, Eye, Database, Check, ArrowRight } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import AiEcosystemBackground from "./AiEcosystemBackground";
 
 type Capability = {
   title: string;
@@ -37,6 +38,9 @@ export default function AiPoweredSystem() {
       >
         {/* Left — dark AI visual */}
         <div className="relative min-h-[280px] overflow-hidden lg:min-h-full">
+          {/* Ecosystem background */}
+          <AiEcosystemBackground density="medium" />
+
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={AI_IMG}

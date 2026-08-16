@@ -33,7 +33,7 @@ const SITES: Site[] = [
     gradient: "linear-gradient(160deg, #5AA9F0 0%, #2E6FD6 100%)",
   },
   {
-    src: "/case-study/camera/13.png",
+    src: "/case-study/camera/2.jpg",
     name: "Camera Market Dehradun",
     description: "Bringing a Local Camera Store Online — Modern e-commerce for photography equipment.",
     gradient: "linear-gradient(160deg, #FF6B6B 0%, #C92A2A 100%)",
@@ -66,7 +66,7 @@ const getOffset = (index: number, activeIndex: number, total: number) => {
 
 // Get position props based on offset (reduced spacing for tighter layout)
 const getPositionProps = (offset: number) => {
-  const cardWidth = 420;
+  const cardWidth = 480;
   const gap = 30; // Reduced from 40
   const baseOffset = cardWidth + gap; // Now 450 instead of 460
 
@@ -141,7 +141,7 @@ function CarouselCard({
 
   return (
     <motion.div
-      className="absolute left-1/2 top-[52%] -translate-x-1/2 -translate-y-1/2 w-[300px] shrink-0 overflow-hidden rounded-[22px] cursor-pointer will-change-transform sm:w-[360px] md:w-[420px]"
+      className="absolute left-1/2 top-[52%] -translate-x-1/2 -translate-y-1/2 w-[300px] shrink-0 overflow-hidden rounded-[22px] cursor-pointer will-change-transform sm:w-[380px] md:w-[480px]"
       style={{
         background: site.gradient,
         zIndex: props.zIndex,
