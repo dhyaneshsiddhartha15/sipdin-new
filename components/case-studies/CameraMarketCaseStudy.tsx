@@ -37,7 +37,8 @@ const GALLERY_IMAGES = [
   '/case-study/camera/8.jpg',
   '/case-study/camera/9.jpg',
   '/case-study/camera/10.jpg',
-  '/case-study/camera/11.jpg'
+  '/case-study/camera/11.jpg',
+  '/case-study/camera/13.png'
 ];
 
 // === CAMERA MARKET BRAND IDENTITY SHOWCASE SECTION ===

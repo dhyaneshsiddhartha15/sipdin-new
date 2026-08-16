@@ -254,14 +254,14 @@ export default function AiIndustries() {
                 deployment and beyond.
               </p>
               <a
-                href="#contact"
+                href="/contact"
                 className="inline-flex items-center gap-3 rounded-full px-8 py-4 text-[15px] font-bold text-white transition-all duration-300 hover:-translate-y-0.5"
                 style={{
                   background: "linear-gradient(100deg, #1E3A8A 0%, #4169E1 55%, #00B8FF 100%)",
                   boxShadow: "0 16px 40px -14px rgba(0,184,255,0.55)",
                 }}
               >
-                Book A Free Assessment
+                Contact Us
                 <ChevronRight size={18} strokeWidth={2.5} />
               </a>
             </div>

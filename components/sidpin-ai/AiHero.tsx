@@ -11,7 +11,6 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight } from "lucide-react";
-import AIConsultationModal from "@/components/contact/AIConsultationModal";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -80,7 +79,6 @@ function MagneticButton({
 }
 
 export default function AiHero() {
-  const [modalOpen, setModalOpen] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
@@ -242,14 +240,9 @@ export default function AiHero() {
               Start Building
               <ArrowRight size={17} strokeWidth={2.5} />
             </MagneticButton>
-            <MagneticButton variant="ghost" onClick={() => setModalOpen(true)}>
-              Book Consultation
-            </MagneticButton>
           </div>
         </div>
       </div>
-
-      <AIConsultationModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </section>
   );
 }

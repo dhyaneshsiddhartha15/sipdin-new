@@ -99,7 +99,7 @@ function HeroSection({ study }: { study: CaseStudy }) {
             }`}
           >
             <img
-              src={study.slug === "ritm-hospitality-institute-website" ? "/case-study/RITM/RITM-2.png" : (study.heroImage || UNSPLASH_IMAGES.hero)}
+              src={study.slug === "ritm-hospitality-institute-website" ? "/case-study/RITM/RITM-2.png" : study.slug === "camera-market-dehradun-photography-e-commerce" ? "/case-study/camera/13.png" : (study.heroImage || UNSPLASH_IMAGES.hero)}
               alt={study.title}
               className="h-full w-full object-contain"
               style={{ minHeight: "400px" }}
@@ -150,7 +150,7 @@ function RITMImageSection() {
 // PROJECT INFORMATION GRID
 function ProjectInfoSection({ study }: { study: CaseStudy }) {
   return (
-    <section className="bg-white pb-24">
+    <section className="bg-white pt-12 pb-24">
       <div className="mx-auto max-w-[1400px] px-6 md:px-12">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <div className="rounded-2xl border bg-white p-6 transition-all duration-300 hover:shadow-lg" style={{ borderColor: `${study.accent}20` }}>
