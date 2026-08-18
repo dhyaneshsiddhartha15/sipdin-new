@@ -11,7 +11,27 @@ import { motion, useAnimation, useMotionValue, useTransform, PanInfo } from "fra
 import AIConsultationModal from "@/components/contact/AIConsultationModal";
 import { getAllCaseStudies } from "@/lib/caseStudies";
 
-// Get only specific case studies: Dohabus, Rudradharma, Camera Market, Wafeeq
+// Rudradharma app screens for cycling
+const RUDRADHARMA_SCRENS = [
+  '/case-study/1.png',
+  '/case-study/2.png',
+  '/case-study/3.png',
+  '/case-study/4.png',
+  '/case-study/5.png',
+  '/case-study/6.png',
+];
+
+// Dohabus app screens for cycling
+const DOHABUS_SCREENS = [
+  '/case-study/Doha-bus/8.jpg',
+  '/case-study/Doha-bus/9.jpg',
+  '/case-study/Doha-bus/10.jpg',
+  '/case-study/Doha-bus/11.jpg',
+  '/case-study/Doha-bus/12.jpg',
+  '/case-study/Doha-bus/13.jpg',
+];
+
+// Get only specific case studies: Dohabus, Rudradharma, Wafeeq
 const ALL_CASE_STUDIES = getAllCaseStudies();
 const CASE_STUDIES = ALL_CASE_STUDIES.filter(cs =>
   cs.slug === "dohabus-qatar-tourism-platform" ||
@@ -57,12 +77,41 @@ function ProjectCard({
   onClick?: () => void;
   isFocused?: boolean;
 }) {
+  // Dynamic screen cycling for Rudradharma and Dohabus
+  const [currentScreenIndex, setCurrentScreenIndex] = useState(0);
+  const [screenOpacity, setScreenOpacity] = useState(1);
+
+  // Auto-cycle through screens every 2 seconds
+  useEffect(() => {
+    if (project.slug === "rudradharma-spiritual-ecommerce") {
+      const interval = setInterval(() => {
+        setScreenOpacity(0);
+        setTimeout(() => {
+          setCurrentScreenIndex((prev) => (prev + 1) % 6); // 6 screens total
+          setScreenOpacity(1);
+        }, 300); // Wait for fade out
+      }, 2000); // Change every 2 seconds
+
+      return () => clearInterval(interval);
+    } else if (project.slug === "dohabus-qatar-tourism-platform") {
+      const interval = setInterval(() => {
+        setScreenOpacity(0);
+        setTimeout(() => {
+          setCurrentScreenIndex((prev) => (prev + 1) % 6); // 6 screens total
+          setScreenOpacity(1);
+        }, 300); // Wait for fade out
+      }, 2000); // Change every 2 seconds
+
+      return () => clearInterval(interval);
+    }
+  }, [project.slug]);
+
   return (
     <motion.div
       className="relative shrink-0 cursor-pointer"
       style={{
         width: isMobile ? "100%" : "650px",
-        height: isMobile ? "480px" : "520px",
+        height: isMobile ? "600px" : "650px",
       }}
       whileHover={{
         y: isMobile ? 0 : -10,
@@ -92,9 +141,100 @@ function ProjectCard({
 
           {/* Card Content - 2 Column Layout */}
           <div className="relative z-10 grid h-full grid-cols-1 md:grid-cols-2">
-            {/* LEFT - Empty Space (Device Mockup Removed) */}
-            <div className="relative flex items-end justify-center p-8">
-              {/* Device mockup temporarily removed */}
+            {/* LEFT - Large Mobile Phone Mockup with App Screens */}
+            <div className="relative flex items-center justify-center p-6 bg-gradient-to-br from-gray-50/10 to-gray-100/10">
+              {/* Large Mobile Phone Frame - Rudradharma Style */}
+              <div className="relative">
+                {/* Realistic phone shadow */}
+                <div className="absolute inset-0 bg-black/20 rounded-[3.5rem] blur-2xl transform scale-105 translate-y-4"></div>
+
+                {/* Main phone body - Larger size like Rudradharma case study */}
+                <div className="relative w-[276px] bg-gradient-to-b from-gray-900 to-gray-800 rounded-[3rem] p-3 shadow-2xl">
+                  <div className="w-full aspect-[357/735] bg-white rounded-[2.4rem] overflow-hidden relative">
+                    {/* Project specific app screens */}
+                    {project.slug === "rudradharma-spiritual-ecommerce" ? (
+                      // Rudradharma app screens with cycling
+                      <div className="relative h-full">
+                        <img
+                          src={`/case-study/${currentScreenIndex + 1}.png`}
+                          alt={`Rudradharma app screen ${currentScreenIndex + 1}`}
+                          className="w-full h-full object-cover object-top transition-opacity duration-300 ease-in-out"
+                          style={{ opacity: screenOpacity }}
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.parentElement!.style.background = `linear-gradient(135deg, ${project.color}40, ${project.color}60)`;
+                          }}
+                        />
+                        {/* Screen indicator dots */}
+                        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
+                          {[0, 1, 2, 3, 4, 5].map((i) => (
+                            <div
+                              key={i}
+                              className={`w-2 h-2 rounded-full transition-all ${
+                                i === currentScreenIndex ? 'bg-white' : 'bg-white/30'
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    ) : project.slug === "dohabus-qatar-tourism-platform" ? (
+                      // Dohabus app screens with cycling
+                      <div className="relative h-full">
+                        <img
+                          src={DOHABUS_SCREENS[currentScreenIndex]}
+                          alt={`Dohabus app screen ${currentScreenIndex + 1}`}
+                          className="w-full h-full object-cover object-top transition-opacity duration-300 ease-in-out"
+                          style={{ opacity: screenOpacity }}
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.parentElement!.style.background = `linear-gradient(135deg, ${project.color}40, ${project.color}60)`;
+                          }}
+                        />
+                        {/* Screen indicator dots */}
+                        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
+                          {[0, 1, 2, 3, 4, 5].map((i) => (
+                            <div
+                              key={i}
+                              className={`w-2 h-2 rounded-full transition-all ${
+                                i === currentScreenIndex ? 'bg-white' : 'bg-white/30'
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    ) : project.slug === "wafeeq-inclusive-digital-learning" ? (
+                      // Wafeeq app screens
+                      <div className="relative h-full">
+                        <img
+                          src="/case-studies/dharohar/wafeeq-mobile.jpg"
+                          alt="Wafeeq app screen"
+                          className="w-full h-full object-cover object-top"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.parentElement!.style.background = `linear-gradient(135deg, ${project.color}40, ${project.color}60)`;
+                          }}
+                        />
+                      </div>
+                    ) : (
+                      // Default fallback
+                      <div className="relative h-full">
+                        <img
+                          src="/case-studies/dharohar/rudradharma-mobile.jpg"
+                          alt="App screen"
+                          className="w-full h-full object-cover object-top"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.parentElement!.style.background = `linear-gradient(135deg, ${project.color}40, ${project.color}60)`;
+                          }}
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Phone reflection/shadow */}
+                <div className="absolute -bottom-8 left-8 right-8 h-12 bg-black/30 rounded-full blur-2xl"></div>
+              </div>
             </div>
 
             {/* RIGHT - Content */}

@@ -211,21 +211,21 @@ export default function AiDevelopmentSection() {
   const FEATURES = [
     {
       Icon: Zap,
-      title: "Business Automation",
+      title: "Intelligent Business Automation",
       description:
-        "Automate repetitive workflows, customer support, document processing, and internal operations.",
+        "Transform manual workflows into intelligent automation — handle customer support 24/7, streamline document processing, and optimize internal operations with AI-powered efficiency.",
     },
     {
       Icon: BarChart3,
-      title: "Smarter Decision Making",
+      title: "Data-Driven Decision Intelligence",
       description:
-        "Use predictive analytics and AI models to transform business data into actionable insights.",
+        "Harness the power of predictive analytics and machine learning models that transform complex business data into clear, actionable insights — giving you the competitive edge to make smarter decisions faster.",
     },
     {
       Icon: Cpu,
-      title: "Scalable AI Solutions",
+      title: "Enterprise-Grade AI Infrastructure",
       description:
-        "Deploy secure AI applications that scale with your business while maintaining speed, compliance, and reliability.",
+        "Deploy production-ready AI applications that scale seamlessly with your growth — built on secure, compliant cloud infrastructure that delivers maximum performance and reliability for mission-critical operations.",
     },
   ];
 
@@ -236,11 +236,11 @@ export default function AiDevelopmentSection() {
     >
       <div className="relative z-10 mx-auto max-w-[1440px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
-          {/* Left Column - Editorial Content (45%) */}
-          <div className="lg:col-span-5 lg:col-start-1 space-y-10">
+          {/* Left Column - Editorial Content (Full Width) */}
+          <div className="lg:col-span-12 space-y-10">
             {/* Badge */}
             <div className="ai-dev-badge">
-              <span className="inline-block text-[11px] font-medium uppercase tracking-[0.35em] text-fg-3">
+              <span className="inline-block text-[11px] font-medium uppercase tracking-[0.35em] text-[#4169E1]">
                 AI Development
               </span>
             </div>
@@ -260,16 +260,10 @@ export default function AiDevelopmentSection() {
 
             {/* Description */}
             <p
-              className="ai-dev-description text-[17px] md:text-[18px] leading-[1.75] text-fg-2 max-w-[520px]"
+              className="ai-dev-description text-[17px] md:text-[18px] leading-[1.75] text-fg-2 max-w-[900px]"
               style={{ fontFamily: "Inter, sans-serif", fontWeight: 400 }}
             >
-              Artificial Intelligence development is the process of building
-              software that can understand information, learn from data, and
-              continuously improve. Modern AI combines machine learning,
-              natural language processing, and generative models to create
-              intelligent systems that reduce manual work and accelerate growth.
-              From AI assistants to predictive analytics, AI is becoming the
-              foundation of the next generation of digital businesses.
+              Artificial Intelligence development represents the transformative process of creating intelligent software systems that can understand complex information, learn from data patterns, and continuously improve performance. Modern AI integrates cutting-edge machine learning algorithms, advanced natural language processing, and powerful generative models to build systems that dramatically reduce manual workload while accelerating business growth. From sophisticated AI assistants that handle customer inquiries to predictive analytics that forecast market trends, AI has emerged as the foundational technology driving the next generation of digital innovation and competitive advantage across every industry.
             </p>
 
             {/* Feature Rows with Thin Dividers */}
@@ -307,186 +301,6 @@ export default function AiDevelopmentSection() {
                 See Our Process
                 <ArrowRight size={17} strokeWidth={2} />
               </PremiumButton>
-            </div>
-          </div>
-
-          {/* Right Column - Large Framed Image (55%) */}
-          <div className="lg:col-span-6 lg:col-start-7 relative">
-            {/* Background blur behind frame */}
-            <div
-              className="absolute inset-0 rounded-[32px] opacity-60"
-              style={{
-                background: "radial-gradient(circle at 50% 50%, rgba(65,105,225,0.15), transparent 70%)",
-                filter: "blur(60px)",
-                transform: "scale(0.9)",
-              }}
-            />
-
-            {/* Luxury Frame */}
-            <div
-              ref={imageFrameRef}
-              className="ai-dev-image-frame relative rounded-[28px] overflow-hidden"
-              style={{
-                background: "#0F1626",
-                border: "1px solid rgba(65,105,225,0.12)",
-                boxShadow:
-                  "0 4px 24px rgba(0,0,0,0.06), 0 80px 120px -40px rgba(65,105,225,0.15), inset 0 1px 0 rgba(255,255,255,0.06)",
-                transform: `perspective(1200px) rotateX(${rotateX}°) rotateY(${rotateY}°)`,
-                transition: "transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
-                height: "640px",
-              }}
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
-            >
-              {/* Image Container with Zoom Animation */}
-              <motion.div
-                ref={imageRef}
-                className="absolute inset-0"
-                initial={{ scale: 1 }}
-                whileInView={{ scale: 1.08 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 8, ease: "easeOut" }}
-              >
-                {/* Premium AI workspace image representation */}
-                <div className="w-full h-full relative overflow-hidden">
-                  {/* Dark gradient base */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#0A0F1D] via-[#121C33] to-[#080C16]" />
-
-                  {/* Subtle grid overlay */}
-                  <div
-                    className="absolute inset-0 opacity-10"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(rgba(110,140,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(110,140,255,0.2) 1px, transparent 1px)",
-                      backgroundSize: "48px 48px",
-                    }}
-                  />
-
-                  {/* Ambient lighting */}
-                  <div
-                    className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[60%]"
-                    style={{
-                      background: "radial-gradient(ellipse at 50% 0%, rgba(65,105,225,0.12), transparent 60%)",
-                      filter: "blur(80px)",
-                    }}
-                  />
-
-                  {/* Elegant abstract AI visualization */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    {/* Central glow */}
-                    <div
-                      className="absolute w-64 h-64 rounded-full"
-                      style={{
-                        background: "radial-gradient(circle, rgba(110,140,255,0.2), transparent 70%)",
-                        filter: "blur(40px)",
-                      }}
-                    />
-
-                    {/* Neural network pattern */}
-                    <svg
-                      className="w-full h-full opacity-30"
-                      viewBox="0 0 400 500"
-                      fill="none"
-                    >
-                      {/* Connection lines */}
-                      {Array.from({ length: 12 }).map((_, i) => (
-                        <motion.line
-                          key={`line-${i}`}
-                          x1={100 + (i % 4) * 80}
-                          y1={80 + Math.floor(i / 4) * 120}
-                          x2={180 + ((i + 1) % 4) * 60}
-                          y2={140 + Math.floor((i + 1) / 4) * 100}
-                          stroke="rgba(110,140,255,0.3)"
-                          strokeWidth="1"
-                          initial={{ pathLength: 0, opacity: 0 }}
-                          animate={{ pathLength: 1, opacity: 0.5 }}
-                          transition={{ duration: 1.5, delay: i * 0.1, ease: "easeOut" }}
-                        />
-                      ))}
-
-                      {/* Nodes */}
-                      {Array.from({ length: 9 }).map((_, i) => (
-                        <motion.circle
-                          key={`node-${i}`}
-                          cx={120 + (i % 3) * 80}
-                          cy={120 + Math.floor(i / 3) * 100}
-                          r="4"
-                          fill="rgba(143,181,255,0.6)"
-                          initial={{ scale: 0, opacity: 0 }}
-                          animate={{ scale: 1, opacity: 1 }}
-                          transition={{ duration: 0.6, delay: 0.5 + i * 0.08, ease: "easeOut" }}
-                        />
-                      ))}
-                    </svg>
-
-                    {/* Elegant typography element */}
-                    <div className="absolute bottom-16 left-12 space-y-1">
-                      <motion.div
-                        className="text-[11px] uppercase tracking-[0.3em] text-brand/60 font-medium"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 1, duration: 0.8 }}
-                      >
-                        Neural Architecture
-                      </motion.div>
-                      <motion.div
-                        className="text-[28px] font-light text-white/90 tracking-tight"
-                        style={{ fontFamily: "Hanken Grotesk, sans-serif" }}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 1.1, duration: 0.8 }}
-                      >
-                        v2.4
-                      </motion.div>
-                    </div>
-
-                    {/* Data points visualization */}
-                    <div className="absolute top-16 right-12">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <motion.div
-                          key={i}
-                          className="flex items-center gap-2 mb-2"
-                          initial={{ opacity: 0, x: 10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.8 + i * 0.1, duration: 0.6 }}
-                        >
-                          <div className="h-1 w-8 bg-brand/30 rounded-full overflow-hidden">
-                            <motion.div
-                              className="h-full bg-brand/60 rounded-full"
-                              initial={{ width: 0 }}
-                              animate={{ width: `${progressValues[i]}%` }}
-                              transition={{ delay: 1 + i * 0.15, duration: 0.8, ease: "easeOut" }}
-                            />
-                          </div>
-                          <span className="text-[10px] text-fg-3 font-mono">
-                            {dataValues[i].toFixed(2)}
-                          </span>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Light Sweep Effect */}
-              <LightSweep />
-
-              {/* Soft gradient overlay */}
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background:
-                    "linear-gradient(180deg, rgba(0,0,0,0.1) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.2) 100%)",
-                }}
-              />
-
-              {/* Subtle inner glow */}
-              <div
-                className="absolute inset-0 pointer-events-none rounded-[28px]"
-                style={{
-                  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(0,0,0,0.3)",
-                }}
-              />
             </div>
           </div>
         </div>

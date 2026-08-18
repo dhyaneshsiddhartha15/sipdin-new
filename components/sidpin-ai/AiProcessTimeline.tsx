@@ -113,72 +113,79 @@ function BentoCard({
 
   return (
     <motion.div
-      className={`bento-item ${getGridClass()} relative overflow-hidden rounded-2xl ${item.background} ${getMinHeight()} p-5 lg:p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}
+      className={`bento-item ${getGridClass()} relative overflow-hidden rounded-2xl bg-white dark:bg-[#0a0a0f] ${getMinHeight()} p-6 lg:p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl`}
       style={{
-        border: "1px solid rgba(255,255,255,0.1)",
-        boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03)",
+        border: "1px solid rgba(0,0,0,0.08) dark:rgba(255,255,255,0.08)",
+        boxShadow: "0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04)",
       }}
       initial={{ opacity: 0, y: 20, scale: 0.98 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.1, 0.25, 1] as any }}
-      whileHover={{ boxShadow: "0 4px 16px rgba(0,0,0,0.08)" }}
+      whileHover={{ boxShadow: "0 8px 32px rgba(65,105,225,0.12)" }}
     >
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-start">
-        {/* Step number pill */}
-        <div className="mb-4 inline-flex items-center rounded-full bg-white/90 px-3 py-1.5 shadow-sm">
-          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-700">
+        {/* Step number pill - Enhanced with Dark Mode */}
+        <div className="mb-5 inline-flex items-center rounded-full bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 px-4 py-2 shadow-sm border border-blue-100 dark:border-blue-700/50">
+          <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-blue-700 dark:text-blue-400">
             {item.phase}
           </span>
         </div>
 
-        {/* Icon container */}
-        <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-white shadow-sm">
-          <Icon size={20} className="text-gray-700" />
+        {/* Icon container - Enhanced with Dark Mode */}
+        <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 dark:from-blue-600 dark:to-indigo-700 shadow-md">
+          <Icon size={22} className="text-white" />
         </div>
 
-        {/* Title and description */}
-        <h3 className="text-[18px] font-bold leading-tight text-gray-900 mb-2" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+        {/* Title and description - Dark Mode Typography */}
+        <h3 className="text-[20px] font-bold leading-tight text-gray-900 dark:text-white mb-3" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
           {item.title}
         </h3>
-        <p className="text-[13px] leading-relaxed text-gray-600 mb-4">
+        <p className="text-[14px] leading-relaxed text-gray-600 dark:text-gray-400 mb-5">
           {item.description}
         </p>
 
-        {/* Features for dominant card - positioned toward lower portion */}
-        {item.features && item.type === "dominant" && (
-          <div className="mt-auto space-y-2.5 pt-6">
+        {/* Features for wide card - Dark Mode Support */}
+        {item.features && item.type === "wide" && (
+          <div className="mt-auto space-y-3 pt-6">
             {item.features.map((feature, i) => (
-              <div key={i} className="flex items-center gap-2.5 text-[13px] text-gray-700">
-                <Check size={14} className="text-blue-600 flex-shrink-0" strokeWidth={2.5} />
+              <div key={i} className="flex items-center gap-3 text-[14px] text-gray-700 dark:text-gray-300">
+                <div className="flex-shrink-0 h-5 w-5 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-600 dark:to-indigo-700 flex items-center justify-center">
+                  <Check size={12} className="text-white" strokeWidth={2.5} />
+                </div>
                 <span className="font-medium">{feature}</span>
               </div>
             ))}
           </div>
         )}
 
-        {/* Metric for compact cards - visually stronger */}
-        {item.metric && item.type !== "dominant" && (
-          <div className="mt-auto pt-3">
-            <div className="text-[11px] text-gray-500 mb-1.5 uppercase tracking-wide font-medium">{item.metric}</div>
-            <div className="text-[28px] font-bold text-gray-900 leading-none">12+</div>
+        {/* Metric for compact cards - Dark Mode Support */}
+        {item.metric && item.type !== "wide" && (
+          <div className="mt-auto pt-4">
+            <div className="text-[11px] text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wide font-medium">{item.metric}</div>
+            <div className="flex items-baseline gap-1">
+              <div className="text-[36px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-700 dark:from-blue-500 dark:to-indigo-600 leading-none">12+</div>
+            </div>
           </div>
         )}
 
-        {/* CTA for wide launch card */}
+        {/* CTA for wide launch card - Dark Mode Support */}
         {item.cta && (
           <motion.a
             href="#contact"
-            className="mt-auto inline-flex items-center justify-center gap-2 w-full px-6 py-3 rounded-full bg-gradient-to-r from-[#4169E1] to-[#3b5dbd] text-white text-[14px] font-semibold shadow-md transition-all duration-300 hover:shadow-lg hover:from-[#3b5dbd] hover:to-[#2e4aa8]"
-            whileHover={{ scale: 1.01 }}
-            whileTap={{ scale: 0.99 }}
+            className="mt-auto inline-flex items-center justify-center gap-3 w-full px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-700 dark:from-blue-700 dark:to-indigo-800 text-white text-[15px] font-bold shadow-lg transition-all duration-300 hover:shadow-xl hover:from-blue-700 hover:to-indigo-800 dark:hover:from-blue-800 dark:hover:to-indigo-900"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
             {item.cta}
-            <ArrowRight size={16} />
+            <ArrowRight size={18} />
           </motion.a>
         )}
       </div>
+
+      {/* Decorative gradient overlay with Dark Mode */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-indigo-600/5 dark:from-blue-600/10 dark:via-transparent dark:to-indigo-700/10 pointer-events-none" />
     </motion.div>
   );
 }
@@ -205,12 +212,12 @@ export default function AiProcessTimeline() {
             Our Process
           </span>
           <h2
-            className="text-[36px] md:text-[46px] font-bold leading-tight text-white"
+            className="text-[36px] md:text-[46px] font-bold leading-tight text-black dark:text-white"
             style={{ fontFamily: "Hanken Grotesk, sans-serif" }}
           >
             How We Build AI That Works
           </h2>
-          <p className="text-[15px] md:text-[16px] text-white/70 max-w-[580px] mx-auto leading-relaxed">
+          <p className="text-[15px] md:text-[16px] text-black/70 dark:text-white/70 max-w-[580px] mx-auto leading-relaxed">
             A proven, systematic approach to developing AI solutions that
             deliver measurable business results.
           </p>

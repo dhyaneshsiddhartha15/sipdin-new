@@ -1,16 +1,15 @@
 "use client";
 
 /**
- * AiHero — cinematic full-bleed scene, text + background only (the 3D
- * energy-halo visualization has been removed from the page; the component
- * still exists at ./AiEnergyHalo if it's wanted back later).
+ * AiHero — Modern cinematic hero with enhanced typography and visual design
+ * Clean, professional layout without 3D elements
  */
 
 import { useLayoutEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, Shield, TrendingUp } from "lucide-react";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -25,7 +24,7 @@ function MagneticButton({
   children: React.ReactNode;
   onClick?: () => void;
   href?: string;
-  variant: "primary" | "ghost";
+  variant: "primary" | "secondary";
 }) {
   const ref = useRef<HTMLButtonElement & HTMLAnchorElement>(null);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
@@ -43,18 +42,19 @@ function MagneticButton({
 
   const className =
     variant === "primary"
-      ? "relative inline-flex items-center gap-2 rounded-full px-8 py-4 text-[15px] font-semibold text-white"
-      : "relative inline-flex items-center gap-2 rounded-full px-8 py-4 text-[15px] font-semibold text-white/70";
+      ? "relative inline-flex items-center gap-3 rounded-full px-9 py-4 text-[16px] font-bold text-white"
+      : "relative inline-flex items-center gap-3 rounded-full px-9 py-4 text-[16px] font-bold text-white/80 border border-white/20 text-left";
 
   const style =
     variant === "primary"
       ? {
-          background: "linear-gradient(135deg, rgba(93,124,255,0.9), rgba(143,181,255,0.75))",
-          boxShadow: "0 0 44px rgba(93,124,255,0.45)",
+          background: "linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%)",
+          boxShadow: "0 8px 32px rgba(59,130,246,0.5), 0 0 0 1px rgba(255,255,255,0.1) inset",
         }
       : {
-          background: "transparent",
-          border: "1px solid rgba(255,255,255,0.16)",
+          background: "rgba(255,255,255,0.08)",
+          backdropFilter: "blur(12px)",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1) inset",
         };
 
   const Comp = href ? motion.a : motion.button;
@@ -68,13 +68,37 @@ function MagneticButton({
       onMouseLeave={reset}
       animate={{ x: offset.x, y: offset.y }}
       transition={{ type: "spring", stiffness: 220, damping: 16, mass: 0.4 }}
-      whileHover={{ scale: 1.045 }}
-      whileTap={{ scale: 0.96 }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
       className={className}
       style={style}
     >
       {children}
     </Comp>
+  );
+}
+
+function FeatureBadge({ icon: Icon, text }: { icon: any; text: string }) {
+  return (
+    <motion.div
+      className="flex items-center gap-3 px-5 py-3 rounded-full"
+      style={{
+        background: "rgba(59,130,246,0.08)",
+        border: "1px solid rgba(59,130,246,0.2)",
+        backdropFilter: "blur(12px)",
+        textAlign: "left",
+      }}
+      whileHover={{
+        background: "rgba(59,130,246,0.15)",
+        scale: 1.05,
+      }}
+      transition={{ duration: 0.3 }}
+    >
+      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-blue-600">
+        <Icon size={16} className="text-white" strokeWidth={2} />
+      </div>
+      <span className="text-[14px] font-medium text-white/90">{text}</span>
+    </motion.div>
   );
 }
 
@@ -92,38 +116,40 @@ export default function AiHero() {
 
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-        tl.fromTo(".ai-hero-bg", { opacity: 0 }, { opacity: 1, duration: reduceMotion ? 0 : 1.8 }, 0)
+        tl.fromTo(".ai-hero-bg", { opacity: 0 }, { opacity: 1, duration: reduceMotion ? 0 : 2 }, 0)
           .fromTo(
             ".ai-hero-eyebrow",
-            { opacity: 0, y: 14, filter: "blur(8px)" },
-            { opacity: 1, y: 0, filter: "blur(0px)", duration: reduceMotion ? 0 : 0.9 },
-            0.5
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: reduceMotion ? 0 : 1 },
+            0.8
           )
           .fromTo(
             ".ai-hero-heading",
-            { opacity: 0, y: 24, scale: 0.95, filter: "blur(14px)" },
-            { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: reduceMotion ? 0 : 1.1 },
-            0.65
+            { opacity: 0, y: 30, scale: 0.98 },
+            { opacity: 1, y: 0, scale: 1, duration: reduceMotion ? 0 : 1.2 },
+            1
+          )
+          .fromTo(
+            ".ai-hero-subheading",
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: reduceMotion ? 0 : 0.9 },
+            1.4
+          )
+          .fromTo(
+            ".ai-hero-features > *",
+            { opacity: 0, y: 15 },
+            { opacity: 1, y: 0, stagger: reduceMotion ? 0 : 0.15, duration: reduceMotion ? 0 : 0.7 },
+            1.7
           )
           .fromTo(
             ".ai-hero-cta > *",
-            { opacity: 0, y: 14 },
+            { opacity: 0, y: 15 },
             { opacity: 1, y: 0, stagger: reduceMotion ? 0 : 0.12, duration: reduceMotion ? 0 : 0.7 },
-            1.1
+            2
           );
 
         if (!reduceMotion) {
-          gsap.to(".ai-hero-bg-parallax", {
-            yPercent: 10,
-            ease: "none",
-            scrollTrigger: { trigger: heroRef.current, start: "top top", end: "bottom top", scrub: 0.6 },
-          });
-
-          gsap.to(".ai-hero-text-parallax", {
-            yPercent: -12,
-            ease: "none",
-            scrollTrigger: { trigger: heroRef.current, start: "top top", end: "bottom top", scrub: 0.6 },
-          });
+          // Parallax effects removed for cleaner design
         }
 
         return () => {};
@@ -138,111 +164,138 @@ export default function AiHero() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-[100svh] overflow-hidden"
-      style={{ background: "#050816", fontFamily: "Inter, -apple-system, sans-serif" }}
+      className="relative min-h-[100vh] overflow-hidden"
+      style={{ background: "#0a0f1e", fontFamily: "Inter, -apple-system, sans-serif" }}
     >
-      <style>{`
-        @keyframes aihero2-drift-a { 0%,100% { transform: translate(-5%,-3%) scale(1); } 50% { transform: translate(5%,4%) scale(1.12); } }
-        @keyframes aihero2-drift-b { 0%,100% { transform: translate(4%,5%) scale(1.04); } 50% { transform: translate(-5%,-4%) scale(0.94); } }
-        @keyframes aihero2-dust { 0%,100% { transform: translateY(0); opacity: 0.2; } 50% { transform: translateY(-18px); opacity: 0.6; } }
-        @keyframes aihero2-grid-fade { from { opacity: 0; } to { opacity: 1; } }
-      `}</style>
-
-      {/* Background — near-black navy, subtle grid, volumetric fog, tiny dust. No obvious gradients. */}
-      <div className="ai-hero-bg ai-hero-bg-parallax pointer-events-none absolute inset-0">
+      {/* Image Background */}
+      <div className="ai-hero-bg pointer-events-none absolute inset-0">
         <div
-          className="absolute left-1/2 top-[10%] h-[70%] w-[90%] -translate-x-1/2"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            background: "radial-gradient(closest-side, rgba(93,124,255,0.10), transparent 72%)",
-            filter: "blur(60px)",
-            animation: "aihero2-drift-a 26s ease-in-out infinite",
+            backgroundImage: "url('/sidpin-ai-image.png')",
           }}
         />
-        <div
-          className="absolute -bottom-[10%] left-1/2 h-[60%] w-[70%] -translate-x-1/2"
-          style={{
-            background: "radial-gradient(closest-side, rgba(9,13,31,0.9), transparent 75%)",
-            filter: "blur(40px)",
-            animation: "aihero2-drift-b 30s ease-in-out infinite",
-          }}
-        />
+        {/* Dark overlay for text readability */}
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-            maskImage: "radial-gradient(ellipse 65% 60% at 50% 40%, black 20%, transparent 82%)",
-            WebkitMaskImage: "radial-gradient(ellipse 65% 60% at 50% 40%, black 20%, transparent 82%)",
-            animation: "aihero2-grid-fade 1.8s ease-out both",
+            background: "linear-gradient(to bottom, rgba(10,15,30,0.7) 0%, rgba(10,15,30,0.5) 50%, rgba(10,15,30,0.8) 100%)",
           }}
         />
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.035] mix-blend-overlay"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-          }}
-        />
-        {[
-          { top: "16%", left: "14%", size: 2 },
-          { top: "26%", left: "84%", size: 2 },
-          { top: "60%", left: "8%", size: 2 },
-          { top: "70%", left: "90%", size: 2 },
-        ].map((p, i) => (
-          <span
-            key={i}
-            className="absolute rounded-full bg-[#8fb5ff]"
-            style={{
-              top: p.top,
-              left: p.left,
-              width: p.size,
-              height: p.size,
-              boxShadow: "0 0 8px rgba(143,181,255,0.6)",
-              animation: `aihero2-dust ${7 + i}s ease-in-out infinite`,
-              animationDelay: `${i * 0.6}s`,
-            }}
-          />
-        ))}
       </div>
 
-      {/* Type — minimal, centered */}
-      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-6 py-[12vh] text-center">
-        <div className="ai-hero-text-parallax flex flex-col items-center">
-          <span
-            className="ai-hero-eyebrow mb-5 inline-block text-[11px] font-semibold uppercase text-[#8FB5FF]"
-            style={{ letterSpacing: "0.4em", fontFamily: "Geist, sans-serif" }}
-          >
-            Introducing
-          </span>
+      {/* Add custom animations */}
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          33% { transform: translate(40px, -60px) scale(1.15); }
+          66% { transform: translate(-30px, 30px) scale(0.85); }
+        }
+        @keyframes particle {
+          0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+          10% { opacity: 1; }
+          50% { transform: translateY(-50vh) translateX(30px) scale(1.2); }
+          90% { opacity: 1; }
+          100% { transform: translateY(-120vh) translateX(60px) scale(0.8); opacity: 0; }
+        }
+        @keyframes shimmer {
+          0%, 100% { opacity: 0.2; transform: translateY(0) scale(1); }
+          50% { opacity: 0.8; transform: translateY(-20px) scale(1.5); }
+        }
+        @keyframes rotate {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      `}</style>
 
-          <h1
-            className="ai-hero-heading font-bold leading-[1.02] tracking-tight"
+      {/* Modern Content Layout */}
+      <div className="relative z-10 min-h-[100vh] flex flex-col items-start justify-center px-6 md:px-12 lg:px-20 py-[16vh]" style={{alignItems: 'flex-start', justifyContent: 'flex-start'}}>
+        <div className="w-full" style={{textAlign: 'left', marginLeft: '0 !important', marginRight: 'auto !important', alignItems: 'flex-start', maxWidth: '80%'}}>
+          {/* Enhanced Badge */}
+          <motion.div
+            className="ai-hero-eyebrow mb-8 inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[12px] font-semibold uppercase tracking-[0.3em]"
             style={{
-              fontSize: "clamp(42px, 7.5vw, 96px)",
+              fontFamily: "Geist, sans-serif",
+              background: "rgba(59,130,246,0.12)",
+              border: "1px solid rgba(59,130,246,0.35)",
+              color: "#93C5FD",
+              alignSelf: "flex-start",
+            }}
+            whileHover={{
+              background: "rgba(59,130,246,0.18)",
+              scale: 1.05,
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            <Sparkles size={14} strokeWidth={2} />
+            Introducing Sidpin.ai
+          </motion.div>
+
+          {/* Enhanced Heading */}
+          <h1
+            className="ai-hero-heading font-bold leading-[1.05] tracking-tight mb-8 text-left"
+            style={{
+              fontSize: "clamp(48px, 8vw, 110px)",
               fontFamily: "Hanken Grotesk, sans-serif",
-              color: "rgba(255,255,255,0.95)",
+              color: "rgba(255,255,255,0.98)",
+              textAlign: "left",
             }}
           >
-            Sidpin
+            AI-Powered
+            <br />
             <span
               style={{
-                color: "#8FB5FF",
-                textShadow: "0 0 30px rgba(143,181,255,0.6), 0 0 70px rgba(93,124,255,0.4)",
+                background: "linear-gradient(135deg, #93C5FD 0%, #3b82f6 50%, #2563eb 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
               }}
             >
-              .ai
+              Digital Excellence
             </span>
           </h1>
 
-          <div className="ai-hero-cta mt-9 flex flex-wrap items-center justify-center gap-4">
-            <MagneticButton variant="primary" href="#capabilities">
-              Start Building
-              <ArrowRight size={17} strokeWidth={2.5} />
+          {/* Enhanced Subheading */}
+          <motion.p
+            className="ai-hero-subheading text-[18px] md:text-[20px] leading-relaxed max-w-2xl mb-12 text-left"
+            style={{
+              color: "rgba(255,255,255,0.7)",
+              fontFamily: "Inter, sans-serif",
+              textAlign: "left",
+            }}
+          >
+            Transform your business with intelligent AI solutions that automate workflows,
+            enhance decision-making, and drive sustainable growth in the digital age.
+          </motion.p>
+
+          {/* Feature Badges */}
+          <div className="ai-hero-features flex flex-wrap items-center justify-start gap-4 mb-12 w-full">
+            <FeatureBadge icon={Zap} text="Lightning Fast" />
+            <FeatureBadge icon={Shield} text="Enterprise Secure" />
+            <FeatureBadge icon={TrendingUp} text="Scalable Growth" />
+          </div>
+
+          {/* Enhanced CTA Buttons */}
+          <div className="ai-hero-cta flex flex-wrap items-center justify-start gap-5 w-full" style={{alignSelf: 'flex-start'}}>
+            <MagneticButton variant="primary" href="#contact">
+              Start Your AI Journey
+              <ArrowRight size={18} strokeWidth={2.5} />
+            </MagneticButton>
+            <MagneticButton variant="secondary" href="#capabilities">
+              Explore Solutions
+              <ArrowRight size={18} strokeWidth={2.5} />
             </MagneticButton>
           </div>
         </div>
       </div>
+
+      {/* Bottom Gradient Fade */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
+        style={{
+          background: "linear-gradient(to top, #0a0f1e, transparent)",
+        }}
+      />
     </section>
   );
 }
