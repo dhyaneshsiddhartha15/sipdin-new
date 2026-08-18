@@ -15,14 +15,15 @@ export default function Navbar() {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const pathname = usePathname();
 
-  const navLinks = useMemo<{ nameKey: TranslationKey; href: string }[]>(() => [
+  // `external` links point off-site (Studio lives on sidpin.media) and open in a new tab.
+  const navLinks = useMemo<{ nameKey: TranslationKey; href: string; external?: boolean }[]>(() => [
     { nameKey: "nav.home", href: "/" },
     { nameKey: "nav.about", href: "/about" },
     { nameKey: "nav.services", href: "/services" },
     { nameKey: "nav.caseStudies", href: "/case-studies" },
     // { nameKey: "nav.products", href: "/our-products" }, // hidden for now
     { nameKey: "nav.pricing", href: "/pricing" },
-    { nameKey: "nav.studio", href: "/studio" },
+    { nameKey: "nav.studio", href: "https://sidpin.media", external: true },
     { nameKey: "nav.sidpinAi", href: "/sidpin-ai" },
   ], []);
 
@@ -77,6 +78,8 @@ export default function Navbar() {
                 >
                   <a
                     href={link.href}
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noopener noreferrer" : undefined}
                     className={`nav-pill-link inline-block py-3 font-['Inter'] text-[15.5px] font-medium transition-colors duration-200 ${
                       isSidpinAi
                         ? "text-[#4169E1] hover:text-[#2E4FB8]"
@@ -252,6 +255,8 @@ export default function Navbar() {
                   <a
                     key={link.nameKey}
                     href={link.href}
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noopener noreferrer" : undefined}
                     onClick={() => setMenuOpen(false)}
                     className={
                       link.href === "/sidpin-ai"
