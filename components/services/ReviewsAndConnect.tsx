@@ -3,51 +3,10 @@
 import { useEffect, useState } from "react";
 import { Quote, Star } from "lucide-react";
 import CustomSolutionForm from "@/components/services/CustomSolutionForm";
+import { clientReviews } from "@/lib/testimonials";
 
-const reviews = [
-  {
-    quote:
-      "Sidpin took our 70-year Rudraksha legacy online with complete authenticity. Our sales and customer trust have never been stronger.",
-    name: "Avish Bansal",
-    role: "Rudradharma",
-  },
-  {
-    quote:
-      "Our brand finally looks as strong as our training. Enquiries went up the moment the new site went live — great work team.",
-    name: "Ankit Rawat",
-    role: "AG Fitness",
-  },
-  {
-    quote:
-      "They understood our vision instantly and turned it into a calm, beautiful digital experience. Our bookings keep growing month on month.",
-    name: "Rohan Rawat",
-    role: "Yog Adhyayan",
-  },
-  {
-    quote:
-      "On a lean budget they delivered a website that competes with global hospitality brands. Prospective students notice the difference immediately.",
-    name: "Shubham Rayal",
-    role: "Raboche Institute of Technology & Management",
-  },
-  {
-    quote:
-      "Sidpin captured the spirit of our journeys perfectly. The content and reach they created brought in a whole new audience.",
-    name: "Akshat Trivedi",
-    role: "Panchbhootyatra",
-  },
-  {
-    quote:
-      "Professional, transparent, and genuinely invested in our mission. The results spoke for themselves within weeks.",
-    name: "Anuj Dhasmana",
-    role: "Rescue by Anuj",
-  },
-  {
-    quote:
-      "Our bookings and online presence transformed completely. Guests now find and trust us before they ever arrive.",
-    name: "Krishna Singh Rawat",
-    role: "Mazri Grant Resort",
-  },
-];
+// Shared with the service detail "Reviews" section — see lib/testimonials.ts.
+const reviews = clientReviews;
 
 export default function ReviewsAndConnect(_props: { currentService?: string }) {
   const [active, setActive] = useState(0);
