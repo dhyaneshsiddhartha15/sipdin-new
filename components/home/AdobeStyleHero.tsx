@@ -26,7 +26,6 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import IntegrationGrid from "./IntegrationGrid";
-import AIConsultationModal from "@/components/contact/AIConsultationModal";
 import StatsSection from "@/components/home/StatsSection";
 import { useLocale } from "@/contexts/LocaleContext";
 import type { TranslationKey } from "@/lib/translations";
@@ -142,7 +141,6 @@ export default function AdobeStyleHero() {
   const { t } = useLocale();
   const [active, setActive] = useState(0);
   const [playing, setPlaying] = useState(true);
-  const [consultOpen, setConsultOpen] = useState(false);
 
   const next = () => setActive((i) => (i + 1) % SLIDES.length);
   const slide = SLIDES[active];
@@ -230,14 +228,6 @@ export default function AdobeStyleHero() {
                 {t(slide.ctaKey)}
                 <ArrowRight size={18} strokeWidth={2.5} />
               </a>
-              <button
-                type="button"
-                onClick={() => setConsultOpen(true)}
-                className="inline-flex items-center gap-2 rounded-full bg-[#4169E1] px-7 py-3.5 text-[15px] font-semibold text-white transition-transform duration-300 hover:scale-[1.04] hover:bg-[#2E4FB8]"
-              >
-                Book a Free AI Consultation
-                <ArrowRight size={18} strokeWidth={2.5} />
-              </button>
             </div>
           </div>
 
@@ -311,8 +301,6 @@ export default function AdobeStyleHero() {
           <StatsSection />
         </div>
       </div>
-
-      <AIConsultationModal open={consultOpen} onClose={() => setConsultOpen(false)} />
     </section>
   );
 }

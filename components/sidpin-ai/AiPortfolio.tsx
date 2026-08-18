@@ -11,18 +11,46 @@ import { motion, useAnimation, useMotionValue, useTransform, PanInfo } from "fra
 import AIConsultationModal from "@/components/contact/AIConsultationModal";
 import { getAllCaseStudies } from "@/lib/caseStudies";
 
-// Get case studies
-const CASE_STUDIES = getAllCaseStudies();
+// Rudradharma app screens for cycling
+const RUDRADHARMA_SCRENS = [
+  '/case-study/1.png',
+  '/case-study/2.png',
+  '/case-study/3.png',
+  '/case-study/4.png',
+  '/case-study/5.png',
+  '/case-study/6.png',
+];
+
+// Dohabus app screens for cycling
+const DOHABUS_SCREENS = [
+  '/case-study/Doha-bus/8.jpg',
+  '/case-study/Doha-bus/9.jpg',
+  '/case-study/Doha-bus/10.jpg',
+  '/case-study/Doha-bus/11.jpg',
+  '/case-study/Doha-bus/12.jpg',
+  '/case-study/Doha-bus/13.jpg',
+];
+
+// Get only specific case studies: Dohabus, Rudradharma, Wafeeq
+const ALL_CASE_STUDIES = getAllCaseStudies();
+const CASE_STUDIES = ALL_CASE_STUDIES.filter(cs =>
+  cs.slug === "dohabus-qatar-tourism-platform" ||
+  cs.slug === "rudradharma-spiritual-ecommerce" ||
+  cs.slug === "wafeeq-inclusive-digital-learning"
+);
 
 const PROJECTS = CASE_STUDIES.map((cs) => ({
   id: cs.slug,
   name: cs.product,
   category: cs.tag,
-  gradient: `linear-gradient(135deg, ${cs.accent} 0%, ${cs.bannerColor || cs.accent}CC 100%)`,
-  glowColor: cs.accent,
+  color: cs.accent,
   description: cs.description,
   stats: cs.stats,
   image: cs.heroImage || "https://images.unsplash.com/photo-15566567932-02371d2713ef?w=800&q=80",
+  backgroundImage: cs.slug === "wafeeq-inclusive-digital-learning" ? "/ai-card/ai-wafeeq.png" :
+                  cs.slug === "rudradharma-spiritual-ecommerce" ? "/ai-card/ai-rudra.png" :
+                  cs.slug === "dohabus-qatar-tourism-platform" ? "/ai-card/ai-doha.png" : null,
+  deviceType: (cs.slug === "wafeeq-inclusive-digital-learning" ? "laptop" : "phone") as "phone" | "laptop",
   alt: `${cs.product} case study`,
   slug: cs.slug,
 }));
@@ -40,146 +68,203 @@ function ProjectCard({
   project,
   index,
   isMobile = false,
+  onClick,
+  isFocused = false,
 }: {
-  project: typeof PROJECTS[0];
+  project: typeof PROJECTS[0] & { deviceType?: 'phone' | 'laptop' };
   index: number;
   isMobile?: boolean;
+  onClick?: () => void;
+  isFocused?: boolean;
 }) {
-  const glowColor = THEME_COLORS[index % THEME_COLORS.length];
+  // Dynamic screen cycling for Rudradharma and Dohabus
+  const [currentScreenIndex, setCurrentScreenIndex] = useState(0);
+  const [screenOpacity, setScreenOpacity] = useState(1);
+
+  // Auto-cycle through screens every 2 seconds
+  useEffect(() => {
+    if (project.slug === "rudradharma-spiritual-ecommerce") {
+      const interval = setInterval(() => {
+        setScreenOpacity(0);
+        setTimeout(() => {
+          setCurrentScreenIndex((prev) => (prev + 1) % 6); // 6 screens total
+          setScreenOpacity(1);
+        }, 300); // Wait for fade out
+      }, 2000); // Change every 2 seconds
+
+      return () => clearInterval(interval);
+    } else if (project.slug === "dohabus-qatar-tourism-platform") {
+      const interval = setInterval(() => {
+        setScreenOpacity(0);
+        setTimeout(() => {
+          setCurrentScreenIndex((prev) => (prev + 1) % 6); // 6 screens total
+          setScreenOpacity(1);
+        }, 300); // Wait for fade out
+      }, 2000); // Change every 2 seconds
+
+      return () => clearInterval(interval);
+    }
+  }, [project.slug]);
 
   return (
     <motion.div
-      className="relative shrink-0"
+      className="relative shrink-0 cursor-pointer"
       style={{
         width: isMobile ? "100%" : "650px",
-        height: isMobile ? "480px" : "520px",
+        height: isMobile ? "600px" : "650px",
       }}
       whileHover={{
         y: isMobile ? 0 : -10,
+        scale: isFocused ? 1.05 : 1,
         transition: { duration: 0.3 },
       }}
+      onClick={() => onClick && onClick()}
+      animate={{
+        scale: isFocused ? 1.08 : 1,
+        zIndex: isFocused ? 20 : 1,
+      }}
     >
-      {/* Radial Glow */}
-      <motion.div
-        className="absolute left-1/2 top-1/2 -z-10 h-[450px] w-[450px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[100px]"
-        style={{ background: glowColor }}
-        animate={{
-          opacity: [0.3, 0.5, 0.3],
-          scale: [1, 1.15, 1],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: index * 0.2,
-        }}
-      />
-
-      {/* Premium Glass Card */}
+      {/* Plain Card */}
       <div
-        className="relative h-full w-full overflow-hidden rounded-[28px] p-[1px]"
+        className="relative h-full w-full overflow-hidden rounded-[28px]"
         style={{
-          background: `linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%)`,
-          border: "1px solid rgba(255,255,255,0.08)",
-          boxShadow: "0 40px 120px rgba(0,0,0,0.25)",
+          background: project.backgroundImage
+            ? `url(${project.backgroundImage}) center/cover`
+            : project.color,
+          boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
         }}
       >
-        {/* Inner Card with Gradient */}
-        <div
-          className="relative h-full w-full rounded-[27px]"
-          style={{ background: project.gradient }}
-        >
-          {/* Noise Texture */}
-          <div
-            className="absolute inset-0 rounded-[27px]"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-              opacity: 0.05,
-            }}
-          />
-
-          {/* Mesh Gradient Overlay */}
-          <div
-            className="absolute inset-0 rounded-[27px]"
-            style={{
-              background: `radial-gradient(circle at 30% 20%, rgba(255,255,255,0.15) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(0,0,0,0.15) 0%, transparent 50%)`,
-            }}
-          />
-
-          {/* Vignette */}
-          <div
-            className="absolute inset-0 rounded-[27px]"
-            style={{
-              background: "radial-gradient(circle at 50% 50%, transparent 40%, rgba(0,0,0,0.2) 100%)",
-            }}
-          />
-
-          {/* Inner Highlight */}
-          <div
-            className="absolute inset-0 rounded-[27px]"
-            style={{
-              background: "linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 45%)",
-            }}
-          />
+        {/* Background Overlay for Image Cards */}
+        {project.backgroundImage && (
+          <div className="absolute inset-0 bg-black/15" />
+        )}
 
           {/* Card Content - 2 Column Layout */}
           <div className="relative z-10 grid h-full grid-cols-1 md:grid-cols-2">
-            {/* LEFT - Device Mockup */}
-            <div className="relative flex items-center justify-center p-8">
-              {/* Floating Shadow */}
-              <motion.div
-                className="absolute bottom-12 left-1/2 -z-10 h-[100px] w-[180px] -translate-x-1/2 rounded-full bg-black/40 blur-[50px]"
-                animate={{ opacity: [0.4, 0.6, 0.4], scale: [1, 1.2, 1] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              />
+            {/* LEFT - Large Mobile Phone Mockup with App Screens */}
+            <div className="relative flex items-center justify-center p-6 bg-gradient-to-br from-gray-50/10 to-gray-100/10">
+              {/* Large Mobile Phone Frame - Rudradharma Style */}
+              <div className="relative">
+                {/* Realistic phone shadow */}
+                <div className="absolute inset-0 bg-black/20 rounded-[3.5rem] blur-2xl transform scale-105 translate-y-4"></div>
 
-              {/* Device Frame with 3D Rotation */}
-              <motion.div
-                className="relative h-[380px] w-[180px] overflow-hidden rounded-[32px] border-4 border-white/30 bg-black shadow-2xl"
-                animate={{
-                  y: [0, -8, 0],
-                  rotateZ: isMobile ? [0, 0, 0] : [-2, 1, -2],
-                }}
-                transition={{
-                  y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
-                  rotateZ: { duration: 6, repeat: Infinity, ease: "easeInOut" },
-                }}
-                whileHover={{
-                  y: -15,
-                  transition: { duration: 0.4 },
-                }}
-              >
-                {/* Screen Image */}
-                <img
-                  src={project.image}
-                  alt={project.alt}
-                  className="h-full w-full object-cover"
-                />
+                {/* Main phone body - Larger size like Rudradharma case study */}
+                <div className="relative w-[276px] bg-gradient-to-b from-gray-900 to-gray-800 rounded-[3rem] p-3 shadow-2xl">
+                  <div className="w-full aspect-[357/735] bg-white rounded-[2.4rem] overflow-hidden relative">
+                    {/* Project specific app screens */}
+                    {project.slug === "rudradharma-spiritual-ecommerce" ? (
+                      // Rudradharma app screens with cycling
+                      <div className="relative h-full">
+                        <img
+                          src={`/case-study/${currentScreenIndex + 1}.png`}
+                          alt={`Rudradharma app screen ${currentScreenIndex + 1}`}
+                          className="w-full h-full object-cover object-top transition-opacity duration-300 ease-in-out"
+                          style={{ opacity: screenOpacity }}
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.parentElement!.style.background = `linear-gradient(135deg, ${project.color}40, ${project.color}60)`;
+                          }}
+                        />
+                        {/* Screen indicator dots */}
+                        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
+                          {[0, 1, 2, 3, 4, 5].map((i) => (
+                            <div
+                              key={i}
+                              className={`w-2 h-2 rounded-full transition-all ${
+                                i === currentScreenIndex ? 'bg-white' : 'bg-white/30'
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    ) : project.slug === "dohabus-qatar-tourism-platform" ? (
+                      // Dohabus app screens with cycling
+                      <div className="relative h-full">
+                        <img
+                          src={DOHABUS_SCREENS[currentScreenIndex]}
+                          alt={`Dohabus app screen ${currentScreenIndex + 1}`}
+                          className="w-full h-full object-cover object-top transition-opacity duration-300 ease-in-out"
+                          style={{ opacity: screenOpacity }}
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.parentElement!.style.background = `linear-gradient(135deg, ${project.color}40, ${project.color}60)`;
+                          }}
+                        />
+                        {/* Screen indicator dots */}
+                        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
+                          {[0, 1, 2, 3, 4, 5].map((i) => (
+                            <div
+                              key={i}
+                              className={`w-2 h-2 rounded-full transition-all ${
+                                i === currentScreenIndex ? 'bg-white' : 'bg-white/30'
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    ) : project.slug === "wafeeq-inclusive-digital-learning" ? (
+                      // Wafeeq app screens
+                      <div className="relative h-full">
+                        <img
+                          src="/case-studies/dharohar/wafeeq-mobile.jpg"
+                          alt="Wafeeq app screen"
+                          className="w-full h-full object-cover object-top"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.parentElement!.style.background = `linear-gradient(135deg, ${project.color}40, ${project.color}60)`;
+                          }}
+                        />
+                      </div>
+                    ) : (
+                      // Default fallback
+                      <div className="relative h-full">
+                        <img
+                          src="/case-studies/dharohar/rudradharma-mobile.jpg"
+                          alt="App screen"
+                          className="w-full h-full object-cover object-top"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.parentElement!.style.background = `linear-gradient(135deg, ${project.color}40, ${project.color}60)`;
+                          }}
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
 
-                {/* Device Overlay Effects */}
-                <div className="absolute inset-0 rounded-[28px] border-2 border-black/20" />
-                <div
-                  className="absolute inset-0 rounded-[28px]"
-                  style={{
-                    background: "linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 50%)",
-                  }}
-                />
-
-                {/* Notch */}
-                <div className="absolute left-1/2 top-0 h-[24px] w-[80px] -translate-x-1/2 rounded-b-[12px] bg-black border-b border-l border-r border-white/20" />
-              </motion.div>
+                {/* Phone reflection/shadow */}
+                <div className="absolute -bottom-8 left-8 right-8 h-12 bg-black/30 rounded-full blur-2xl"></div>
+              </div>
             </div>
 
             {/* RIGHT - Content */}
-            <div className="flex flex-col justify-center p-8 text-white">
+            <div
+              className="flex flex-col justify-center p-8"
+              style={{
+                color: project.slug === "rudradharma-spiritual-ecommerce" ? "#8B4513" :
+                       project.slug === "dohabus-qatar-tourism-platform" ? "#000000" : "white"
+              }}
+            >
               {/* Category Badge */}
               <motion.div
-                className="inline-flex w-fit items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-[12px] font-semibold uppercase tracking-wider backdrop-blur-md"
+                className="inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 text-[12px] font-semibold uppercase tracking-wider backdrop-blur-md"
+                style={{
+                  backgroundColor: project.slug === "rudradharma-spiritual-ecommerce" ? "rgba(139, 69, 19, 0.15)" :
+                                    project.slug === "dohabus-qatar-tourism-platform" ? "rgba(0, 0, 0, 0.1)" : "rgba(255, 255, 255, 0.15)",
+                  color: project.slug === "rudradharma-spiritual-ecommerce" ? "#8B4513" :
+                         project.slug === "dohabus-qatar-tourism-platform" ? "#000000" : "white"
+                }}
                 initial={{ opacity: 0, x: -15 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
               >
-                <Smartphone size={14} />
+                <Smartphone
+                  size={14}
+                  style={{
+                    color: project.slug === "rudradharma-spiritual-ecommerce" ? "#8B4513" :
+                           project.slug === "dohabus-qatar-tourism-platform" ? "#000000" : "white"
+                  }}
+                />
                 {project.category}
               </motion.div>
 
@@ -212,7 +297,14 @@ function ProjectCard({
                 transition={{ delay: 0.5, duration: 0.5 }}
               >
                 {project.stats.slice(0, 2).map((stat, i) => (
-                  <div key={i} className="rounded-xl bg-white/10 p-3 backdrop-blur-sm">
+                  <div
+                    key={i}
+                    className="rounded-xl p-3 backdrop-blur-sm"
+                    style={{
+                      backgroundColor: project.slug === "rudradharma-spiritual-ecommerce" ? "rgba(139, 69, 19, 0.15)" :
+                                       project.slug === "dohabus-qatar-tourism-platform" ? "rgba(0, 0, 0, 0.1)" : "rgba(255, 255, 255, 0.1)"
+                    }}
+                  >
                     <div
                       className="text-[22px] font-bold leading-none"
                       style={{ fontFamily: "Hanken Grotesk, sans-serif" }}
@@ -229,18 +321,32 @@ function ProjectCard({
               {/* CTA Button */}
               <motion.a
                 href={`/case-studies/${project.slug}`}
-                className="mt-auto inline-flex w-fit items-center gap-3 self-start rounded-full bg-white px-6 py-3.5 text-[14px] font-bold text-[#1A1730] transition-all duration-300"
-                style={{ fontFamily: "Inter, sans-serif" }}
+                className="mt-auto inline-flex w-fit items-center gap-3 self-start rounded-full px-6 py-3.5 text-[14px] font-bold transition-all duration-300"
+                style={{
+                  fontFamily: "Inter, sans-serif",
+                  backgroundColor: project.slug === "rudradharma-spiritual-ecommerce" ? "#8B4513" :
+                                 project.slug === "dohabus-qatar-tourism-platform" ? "#000000" : "white",
+                  color: project.slug === "rudradharma-spiritual-ecommerce" ? "white" :
+                         project.slug === "dohabus-qatar-tourism-platform" ? "white" : "#1A1730"
+                }}
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.55, duration: 0.5 }}
                 whileHover={{
-                  boxShadow: "0 20px 50px rgba(255,255,255,0.3)",
+                  boxShadow: project.slug === "rudradharma-spiritual-ecommerce"
+                    ? "0 20px 50px rgba(139, 69, 19, 0.4)"
+                    : project.slug === "dohabus-qatar-tourism-platform"
+                    ? "0 20px 50px rgba(0, 0, 0, 0.4)"
+                    : "0 20px 50px rgba(255,255,255,0.3)",
                 }}
               >
                 View Case Study
                 <motion.span
-                  className="rounded-full bg-[#1A1730]/10 p-1.5"
+                  className="rounded-full p-1.5"
+                  style={{
+                    backgroundColor: project.slug === "rudradharma-spiritual-ecommerce" ? "rgba(139, 69, 19, 0.2)" :
+                                   project.slug === "dohabus-qatar-tourism-platform" ? "rgba(0, 0, 0, 0.2)" : "rgba(26, 23, 48, 0.1)"
+                  }}
                   whileHover={{ x: 4 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -249,7 +355,6 @@ function ProjectCard({
               </motion.a>
             </div>
           </div>
-        </div>
       </div>
     </motion.div>
   );
@@ -258,6 +363,7 @@ function ProjectCard({
 export default function AiPortfolio() {
   const [modalOpen, setModalOpen] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [focusedCardIndex, setFocusedCardIndex] = useState<number | null>(null);
   const controls = useAnimation();
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -295,14 +401,40 @@ export default function AiPortfolio() {
       });
     };
 
-    if (!isPaused) {
+    if (!isPaused && focusedCardIndex === null) {
       animate();
     } else {
       controls.stop();
     }
 
     return () => controls.stop();
-  }, [controls, isPaused, isMobile, totalWidth]);
+  }, [controls, isPaused, isMobile, totalWidth, focusedCardIndex]);
+
+  // Handle card click to center it
+  const handleCardClick = (index: number) => {
+    if (isMobile) return;
+
+    setIsPaused(true);
+    setFocusedCardIndex(index);
+
+    // Calculate position to center the card
+    const containerWidth = containerRef.current?.parentElement?.offsetWidth || 0;
+    const centeredPosition = -(index * (cardWidth + gap)) + (containerWidth / 2) - (cardWidth / 2);
+
+    controls.start({
+      x: centeredPosition,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1],
+      },
+    });
+  };
+
+  // Reset to normal scrolling
+  const resetScrolling = () => {
+    setIsPaused(false);
+    setFocusedCardIndex(null);
+  };
 
   // Mobile drag state
   const [mobileIndex, setMobileIndex] = useState(0);
@@ -357,8 +489,8 @@ export default function AiPortfolio() {
               style={{ fontFamily: "Hanken Grotesk, sans-serif" }}
             >
               AI Projects We've Built for{" "}
-              <span className="bg-gradient-to-r from-[#6366f1] to-[#a855f7] bg-clip-text text-transparent">
-                Global Clients
+              <span className="bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] bg-clip-text text-transparent">
+                Clients
               </span>
             </h2>
 
@@ -371,20 +503,37 @@ export default function AiPortfolio() {
 
           {/* Desktop Marquee */}
           {!isMobile ? (
-            <div className="overflow-hidden" style={{ maskImage: "linear-gradient(to right, transparent, black 5%, black 95%, transparent)" }}>
-              <motion.div
-                ref={containerRef}
-                className="flex gap-6"
-                animate={controls}
-                style={{ gap: "24px" }}
-                onHoverStart={() => setIsPaused(true)}
-                onHoverEnd={() => setIsPaused(false)}
-              >
-                {displayProjects.map((project, index) => (
-                  <ProjectCard key={`${project.id}-${index}`} project={project} index={index % PROJECTS.length} />
-                ))}
-              </motion.div>
-            </div>
+            <>
+              {focusedCardIndex !== null && (
+                <motion.button
+                  className="absolute top-4 right-4 z-30 rounded-full bg-white/10 px-4 py-2 text-white backdrop-blur-md hover:bg-white/20 transition-all"
+                  onClick={resetScrolling}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                >
+                  ← Back to Scrolling
+                </motion.button>
+              )}
+              <div className="overflow-hidden" style={{ maskImage: "linear-gradient(to right, transparent, black 5%, black 95%, transparent)" }}>
+                <motion.div
+                  ref={containerRef}
+                  className="flex gap-6"
+                  animate={controls}
+                  style={{ gap: "24px" }}
+                >
+                  {displayProjects.map((project, index) => (
+                    <ProjectCard
+                      key={`${project.id}-${index}`}
+                      project={project}
+                      index={index % PROJECTS.length}
+                      onClick={() => handleCardClick(index % PROJECTS.length)}
+                      isFocused={focusedCardIndex === index % PROJECTS.length}
+                    />
+                  ))}
+                </motion.div>
+              </div>
+            </>
           ) : (
             /* Mobile Swipeable */
             <div className="overflow-hidden">

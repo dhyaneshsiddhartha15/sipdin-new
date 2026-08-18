@@ -870,59 +870,148 @@ function BrandIdentitySection() {
           </div>
         </div>
 
-        {/* PRODUCT IMAGERY STYLE */}
-        <div className={`mt-20 transition-all duration-1000 delay-600 ${
-          logoVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}>
-          <h3 className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1A1A1A] mb-6 text-center" style={{ fontFamily: "Inter, sans-serif" }}>
-            Product Imagery
-          </h3>
-          <p className="text-[14px] text-[#666666] mb-8 text-center max-w-2xl mx-auto" style={{ fontFamily: "Inter, sans-serif" }}>
-            Authentic Rudraksha photography with warm, natural tones.
-          </p>
+      </div>
 
-          {/* Product images grid */}
-          <div className="grid grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div className="bg-white rounded-xl p-4 border border-[#E5E5E5] shadow-sm hover:shadow-md transition-shadow">
-              <img
-                src="/case-study/rudradharma-1.png"
-                alt="Rudraksha Product"
-                className="w-full h-32 object-contain"
-              />
-            </div>
-            <div className="bg-white rounded-xl p-4 border border-[#E5E5E5] shadow-sm hover:shadow-md transition-shadow">
-              <img
-                src="/case-study/rudradharma-3.png"
-                alt="Rudraksha Mala"
-                className="w-full h-32 object-contain"
-              />
-            </div>
-            <div className="bg-white rounded-xl p-4 border border-[#E5E5E5] shadow-sm hover:shadow-md transition-shadow">
-              <img
-                src="/case-study/rudradharma-4.png"
-                alt="Rudraksha Detail"
-                className="w-full h-32 object-contain"
-              />
-            </div>
-          </div>
+      {/* Bottom accent line */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#E08A34]/20 to-transparent" />
+    </section>
+  );
+}
+
+// === APP SCREENS FOR THE SHOWCASE GALLERY ===
+const RUDRADHARMA_SCREENS = [
+  '/case-study/1.png',
+  '/case-study/2.png',
+  '/case-study/3.png',
+  '/case-study/4.png',
+  '/case-study/5.png',
+  '/case-study/6.png',
+];
+
+// === RUDRADHARMA APP GALLERY SHOWCASE (center phone mirrors the passing screen) ===
+function RudradharmaAppGallerySection() {
+  const [headingRef, headingVisible] = useScrollReveal();
+
+  const [currentPhoneImage, setCurrentPhoneImage] = useState(RUDRADHARMA_SCREENS[0]);
+  const [phoneImageOpacity, setPhoneImageOpacity] = useState(1);
+  const galleryRef = useRef<HTMLDivElement>(null);
+
+  // Center phone mirrors whichever scrolling screen is passing through the
+  // center of the mockup — the passing screen "enters" the phone (rAF-driven).
+  useEffect(() => {
+    const container = galleryRef.current;
+    if (!container) return;
+
+    let raf = 0;
+    let lastIndex = -1;
+    let fadeTimer: ReturnType<typeof setTimeout>;
+
+    const tick = () => {
+      const cRect = container.getBoundingClientRect();
+      const centerX = cRect.left + cRect.width / 2;
+
+      let closest: HTMLElement | null = null;
+      let min = Infinity;
+      container.querySelectorAll<HTMLElement>(".gallery-item").forEach((it) => {
+        const r = it.getBoundingClientRect();
+        const d = Math.abs(r.left + r.width / 2 - centerX);
+        if (d < min) {
+          min = d;
+          closest = it;
+        }
+      });
+
+      if (closest) {
+        const idx =
+          parseInt((closest as HTMLElement).dataset.imageIndex || "0") % RUDRADHARMA_SCREENS.length;
+        if (idx !== lastIndex) {
+          lastIndex = idx;
+          setPhoneImageOpacity(0);
+          clearTimeout(fadeTimer);
+          fadeTimer = setTimeout(() => {
+            setCurrentPhoneImage(RUDRADHARMA_SCREENS[idx]);
+            setPhoneImageOpacity(1);
+          }, 180);
+        }
+      }
+
+      raf = requestAnimationFrame(tick);
+    };
+
+    raf = requestAnimationFrame(tick);
+    return () => {
+      cancelAnimationFrame(raf);
+      clearTimeout(fadeTimer);
+    };
+  }, []);
+
+  return (
+    <section className="relative bg-[#fafafa] py-32 overflow-hidden">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-12 relative z-10">
+        <div
+          ref={headingRef}
+          className={`text-center transition-all duration-1000 ${
+            headingVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <h3 className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#E08A34] mb-6" style={{ fontFamily: "Inter, sans-serif" }}>
+            Product Gallery
+          </h3>
+          <p className="text-[14px] text-[#666666] mb-12 max-w-2xl mx-auto" style={{ fontFamily: "Inter, sans-serif" }}>
+            Explore the Rudradharma shopping experience — authentic Rudraksha, rich product detail, and a trusted checkout.
+          </p>
         </div>
 
-        {/* SPIRITUAL VISUAL LANGUAGE */}
-        <div className={`mt-16 text-center transition-all duration-1000 delay-700 ${
-          logoVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}>
-          <div className="inline-flex items-center gap-3 px-6 py-4 bg-white rounded-full border border-[#E08A34]/20">
-            <div className="w-8 h-8 rounded-full bg-[#E08A34]/10 flex items-center justify-center">
-              <div className="text-[16px] text-[#E08A34]/60" style={{ fontFamily: 'serif' }}>
-                ॐ
+        {/* GALLERY CONTAINER */}
+        <div className="relative overflow-hidden py-20" style={{ height: '44rem' }} ref={galleryRef as any}>
+
+          {/* Layer 1: Continuous Scrolling App Screens - RIGHT → LEFT */}
+          <div className="absolute inset-0 flex items-center">
+            <div className="flex animate-gallery-scroll items-center gap-10" id="galleryTrack">
+              {[...Array(6)].fill(null).map((_, setIndex) => (
+                <div key={`scroll-${setIndex}`} className="flex gap-10">
+                  {RUDRADHARMA_SCREENS.map((src, imgIndex) => (
+                    <div
+                      key={`scroll-${setIndex}-${imgIndex}`}
+                      className="gallery-item flex-shrink-0 w-[248px] h-[512px] rounded-[2.25rem] overflow-hidden bg-white ring-1 ring-black/5 shadow-[0_30px_60px_-15px_rgba(224,138,52,0.28)] brightness-[0.97] transition-all duration-500"
+                      data-image-index={imgIndex}
+                    >
+                      <img
+                        src={src}
+                        alt={`Rudradharma app screen ${imgIndex + 1}`}
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Layer 2: Fixed Center Phone Mockup with Dynamic Screen */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30">
+            <div className="relative">
+              {/* Realistic phone shadow */}
+              <div className="absolute inset-0 bg-black/20 rounded-[3.5rem] blur-2xl transform scale-105 translate-y-4"></div>
+
+              {/* Main phone body — screen matches the screenshot aspect (357:735) so the FULL image shows with no crop */}
+              <div className="w-[276px] bg-gradient-to-b from-gray-900 to-gray-800 rounded-[3rem] p-3 shadow-2xl relative z-10">
+                <div className="w-full aspect-[357/735] bg-white rounded-[2.4rem] overflow-hidden relative">
+                  <img
+                    src={currentPhoneImage}
+                    alt="Rudradharma app screen"
+                    className="w-full h-full object-cover object-top transition-opacity duration-200 ease-in-out"
+                    style={{ opacity: phoneImageOpacity }}
+                  />
+                </div>
               </div>
             </div>
-            <div className="text-[12px] text-[#666666]" style={{ fontFamily: "Inter, sans-serif" }}>
-              Subtle spiritual motifs • Traditional Indian elegance • Premium minimalism
-            </div>
           </div>
-        </div>
 
+          {/* Layer 3: Strong Edge Fade Masks */}
+          <div className="absolute left-0 top-0 bottom-0 w-72 bg-gradient-to-r from-[#fafafa] via-[#fafafa]/60 to-transparent z-20"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-72 bg-gradient-to-l from-[#fafafa] via-[#fafafa]/60 to-transparent z-20"></div>
+        </div>
       </div>
 
       {/* Bottom accent line */}
@@ -951,6 +1040,7 @@ export default function RudradharmaCaseStudy() {
 
       <QuoteSection />
       <BrandIdentitySection />
+      <RudradharmaAppGallerySection />
     </main>
   );
 }

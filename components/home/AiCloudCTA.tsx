@@ -9,7 +9,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Sparkles, Cloud, ShieldCheck, Bot, ArrowRight } from "lucide-react";
-import AIConsultationModal from "@/components/contact/AIConsultationModal";
 
 const FEATURES = [
   { label: "AI Automation", Icon: Bot },
@@ -18,7 +17,6 @@ const FEATURES = [
 ];
 
 export default function AiCloudCTA() {
-  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <>
@@ -157,36 +155,6 @@ export default function AiCloudCTA() {
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="mt-8 flex flex-wrap items-center gap-4"
-            >
-              <button
-                type="button"
-                onClick={() => setModalOpen(true)}
-                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full px-7 py-3.5 text-[15px] font-bold text-white transition-transform duration-300 hover:-translate-y-0.5"
-                style={{
-                  background: "linear-gradient(100deg, #1E3A8A 0%, #4169E1 55%, #00B8FF 100%)",
-                  boxShadow: "0 16px 40px -14px rgba(0,184,255,0.55)",
-                }}
-              >
-                <span
-                  aria-hidden
-                  className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                  style={{
-                    background:
-                      "linear-gradient(100deg, transparent 40%, rgba(255,255,255,0.4) 50%, transparent 60%)",
-                    animation: "acta-shimmer 1.2s ease-in-out infinite",
-                  }}
-                />
-                <span className="relative">Book Consultation</span>
-                <ArrowRight size={17} strokeWidth={2.5} className="relative" />
-              </button>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mt-10 flex flex-wrap gap-3"
             >
@@ -226,8 +194,6 @@ export default function AiCloudCTA() {
           </div>
         </div>
       </div>
-
-      <AIConsultationModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </>
   );
 }

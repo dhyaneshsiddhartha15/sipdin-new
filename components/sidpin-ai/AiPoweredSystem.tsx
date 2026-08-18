@@ -10,7 +10,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Sparkles, Eye, Database, Check, ArrowRight } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import AIConsultationModal from "@/components/contact/AIConsultationModal";
+import AiEcosystemBackground from "./AiEcosystemBackground";
 
 type Capability = {
   title: string;
@@ -29,7 +29,6 @@ const AI_IMG =
   "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1100&h=1100&fit=crop&q=80";
 
 export default function AiPoweredSystem() {
-  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <section className="px-[24px] py-[72px] md:px-[80px] md:py-[100px]" style={{ background: "#050816" }}>
@@ -39,6 +38,9 @@ export default function AiPoweredSystem() {
       >
         {/* Left — dark AI visual */}
         <div className="relative min-h-[280px] overflow-hidden lg:min-h-full">
+          {/* Ecosystem background */}
+          <AiEcosystemBackground density="medium" />
+
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={AI_IMG}
@@ -134,17 +136,16 @@ export default function AiPoweredSystem() {
 
           {/* CTAs */}
           <div className="mt-9 flex flex-wrap items-center gap-4">
-            <button
-              type="button"
-              onClick={() => setModalOpen(true)}
+            <Link
+              href="/contact"
               className="inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-[14px] font-semibold text-white transition-transform duration-300 hover:scale-[1.03]"
               style={{
                 background: "linear-gradient(135deg, rgba(93,124,255,0.95), rgba(143,181,255,0.8))",
                 boxShadow: "0 0 40px rgba(93,124,255,0.4)",
               }}
             >
-              Book A Free AI Consultation
-            </button>
+              Contact Us
+            </Link>
             <Link
               href="/case-studies"
               className="inline-flex items-center gap-2 rounded-full border border-white/20 px-7 py-3.5 text-[14px] font-semibold text-white/80 transition-colors duration-300 hover:border-white/40 hover:text-white"
@@ -155,8 +156,6 @@ export default function AiPoweredSystem() {
           </div>
         </div>
       </div>
-
-      <AIConsultationModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </section>
   );
 }

@@ -1,11 +1,8 @@
 "use client";
 
 /**
- * ProductGrid — "Tools that work for you" section, modeled on the Adobe.com
- * homepage. It opens with a full-bleed cinematic header that reveals on scroll
- * (the background image zooms + brightens and the heading fades up as the
- * section enters the viewport), then a dark 3-column grid of service cards whose
- * background image + arrow reveal on hover. Sidpin content + /public imagery.
+ * ProductGrid — "Tools that work for you" section, modern premium design
+ * with cinematic header and sophisticated service cards.
  */
 
 import Link from "next/link";
@@ -27,7 +24,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-// Full-bleed cinematic background behind the header — swap for any image/photo.
+// Cinematic background for the header
 const HEADER_BG = "/expertise/web-development.jpg";
 
 type Product = {
@@ -57,127 +54,116 @@ const PRODUCTS: Product[] = [
 
 export default function ProductGrid() {
   const { ref, p } = useScrollReveal<HTMLDivElement>();
-  // Section-level scroll progress drives the "rise up as a card" motion.
   const { ref: sectionRef, p: sectionP } = useScrollReveal<HTMLElement>();
-  const lift = (1 - Math.min(1, sectionP * 1.9)) * 80; // 80px → 0 as it enters
+  const lift = (1 - Math.min(1, sectionP * 1.9)) * 80;
 
   return (
-    // Rounded-card reveal: the dark section physically rises up (parallax lift)
-    // over the light section above it, overlapping it (negative margin) with big
-    // rounded top corners + a soft top shadow — so it "comes up as a card" and
-    // reveals the light background at the corners, adobe.com style.
     <section
       ref={sectionRef}
-      className="relative z-10 overflow-hidden rounded-t-[32px] bg-black text-white shadow-[0_-30px_70px_rgba(0,0,0,0.28)] md:rounded-t-[56px]"
-      style={{ marginTop: "-56px", transform: `translateY(${lift}px)`, willChange: "transform" }}
+      className="relative z-10 overflow-hidden rounded-t-[32px] text-gray-900 shadow-[0_-30px_70px_rgba(0,0,0,0.15)] md:rounded-t-[56px]"
+      style={{ marginTop: "120px", transform: `translateY(${lift}px)`, willChange: "transform" }}
     >
       {/* Cinematic scroll-reveal header */}
       <div
         ref={ref}
-        className="relative flex items-center justify-center overflow-hidden"
-        style={{ minHeight: "clamp(560px, 82vh, 900px)" }}
+        className="relative flex items-center overflow-hidden"
+        style={{ minHeight: "clamp(300px, 50vh, 500px)" }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={HEADER_BG}
-          alt=""
-          aria-hidden
-          className="absolute inset-0 h-full w-full object-cover"
-          style={{
-            transform: `scale(${1.05 + p * 0.16}) translateY(${(1 - p) * 26}px)`,
-            filter: `brightness(${0.45 + p * 0.5})`,
-            willChange: "transform, filter",
-          }}
-        />
-        {/* Legibility overlays */}
+        {/* Header content with premium typography */}
         <div
-          className="absolute inset-0 bg-black"
-          style={{ opacity: 0.72 - p * 0.42 }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
-        {/* Brand-toned ambient glow for a richer backdrop */}
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(900px 460px at 18% 12%, rgba(65,105,225,0.35), transparent), radial-gradient(760px 460px at 85% 90%, rgba(124,58,237,0.28), transparent)",
-          }}
-        />
-
-        {/* Header copy — rises up + fades in on scroll (adobe.com style) */}
-        <div
-          className="relative z-10 mx-auto max-w-3xl px-6 text-center"
+          className="relative z-10 max-w-4xl pl-16 pr-6 pt-12 text-left"
           style={{
             opacity: Math.min(1, p * 2.2),
-            transform: `translateY(${(0.5 - p) * 80}px)`,
+            transform: `translateY(${(0.5 - p) * 40}px)`,
             willChange: "transform, opacity",
           }}
         >
+          <span
+            className="inline-block mb-6 font-semibold tracking-[0.4em] uppercase text-xs"
+            style={{ color: "#4169E1", fontFamily: "Geist, sans-serif" }}
+          >
+            END-TO-END DIGITAL SOLUTIONS
+          </span>
           <h2
-            className="font-semibold leading-[1.08] tracking-tight"
-            style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: "clamp(34px, 4.6vw, 62px)" }}
+            className="font-bold leading-[1.1] tracking-tight mb-6"
+            style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: "clamp(38px, 5.2vw, 64px)", color: "#1a1a1a" }}
           >
             End-to-End Digital
-            <br /> Marketing Solutions
+            <br />
+            Solutions That{" "}
+            <span style={{ color: "#4169E1" }}>
+              Drive Growth
+            </span>
           </h2>
           <p
-            className="mx-auto mt-5 max-w-2xl text-white/80"
-            style={{ fontFamily: "Inter, sans-serif", fontSize: "clamp(15px, 1.3vw, 19px)", lineHeight: 1.7 }}
+            className="mb-10 text-gray-600"
+            style={{ fontFamily: "Inter, sans-serif", fontSize: "clamp(16px, 1.4vw, 19px)", lineHeight: 1.7 }}
           >
-            We provide comprehensive digital marketing solutions designed to help businesses grow
-            faster, generate qualified leads, and build a commanding online presence.
+            We deliver comprehensive digital solutions across multiple domains to help businesses innovate, scale, and stay ahead in a digital world.
           </p>
           <Link
             href="/services"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-[15px] font-semibold text-black transition-transform duration-300 hover:scale-[1.04]"
+            className="inline-flex items-center gap-3 rounded-full bg-gray-900 px-8 py-4 text-[15px] font-semibold text-white transition-all duration-300 hover:bg-gray-800 hover:scale-[1.02] hover:shadow-xl"
+            style={{ fontFamily: "Inter, sans-serif" }}
           >
-            See all services
+            Explore All Solutions
+            <ArrowRight size={18} strokeWidth={2.5} />
           </Link>
         </div>
       </div>
 
-      {/* Grid */}
-      <div className="mx-auto max-w-[1440px] px-[24px] pb-[80px] pt-[64px] md:px-[80px] md:pb-[120px] md:pt-[80px]">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Premium Grid */}
+      <div className="mx-auto max-w-[1440px] px-[24px] pb-[100px] pt-[64px] md:px-[80px] md:pb-[140px] md:pt-[80px]">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {PRODUCTS.map((prod) => {
             const Icon = prod.Icon;
             return (
               <Link
                 key={prod.key}
                 href={prod.href}
-                className="group relative flex min-h-[240px] flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-white/25"
+                className="group relative flex min-h-[200px] flex-col justify-between overflow-hidden rounded-2xl border border-gray-200 bg-white p-7 transition-all duration-400 hover:-translate-y-2 hover:border-gray-300 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.12)]"
               >
-                {/* Hover background image */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
+                {/* Subtle background image on hover */}
                 <img
                   src={prod.image}
                   alt=""
                   aria-hidden
-                  className="absolute inset-0 h-full w-full scale-105 object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-30"
+                  className="absolute inset-0 h-full w-full scale-105 object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-15"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/60 to-white/30 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-                {/* Icon */}
-                <span
-                  className="relative grid h-11 w-11 place-items-center rounded-xl shadow-lg"
-                  style={{ background: prod.color }}
-                >
-                  <Icon size={22} strokeWidth={2} color="#fff" />
-                </span>
+                {/* Icon with colored background */}
+                <div className="relative z-10">
+                  <span
+                    className="inline-grid h-12 w-12 place-items-center rounded-xl"
+                    style={{ background: `${prod.color}15` }}
+                  >
+                    <Icon size={24} strokeWidth={2} style={{ color: prod.color }} />
+                  </span>
+                </div>
 
-                {/* Copy */}
-                <div className="relative mt-auto pt-8">
-                  <h3 className="flex items-center gap-2 text-[20px] font-semibold" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+                {/* Content */}
+                <div className="relative z-10 mt-auto">
+                  <h3 className="flex items-center gap-2 text-[19px] font-bold text-gray-900 mb-2" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
                     {prod.name}
-                    <ArrowRight
-                      size={18}
-                      className="translate-x-[-6px] opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-                    />
                   </h3>
-                  <p className="mt-2 text-[14px] leading-relaxed text-white/70" style={{ fontFamily: "Inter, sans-serif" }}>
+                  <p className="text-[14px] leading-relaxed text-gray-600" style={{ fontFamily: "Inter, sans-serif" }}>
                     {prod.desc}
                   </p>
+                  <div className="mt-4 flex items-center gap-2 text-sm font-semibold text-gray-400 group-hover:text-gray-900 transition-colors duration-300">
+                    <span>Learn more</span>
+                    <ArrowRight
+                      size={16}
+                      className="transition-transform duration-300 group-hover:translate-x-1"
+                    />
+                  </div>
                 </div>
+
+                {/* Accent line on bottom */}
+                <div
+                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-transparent via-gray-300 to-transparent transition-all duration-300 group-hover:via-gray-900 group-hover:w-full"
+                  style={{ width: "0%", transition: "width 400ms ease" }}
+                />
               </Link>
             );
           })}

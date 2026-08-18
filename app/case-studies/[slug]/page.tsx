@@ -4,6 +4,9 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CaseStudyDetail, { PAPER_BG } from "@/components/case-studies/CaseStudyDetail";
 import RudradharmaCaseStudy from "@/components/case-studies/RudradharmaCaseStudy";
+import DohabusCaseStudy from "@/components/case-studies/DohabusCaseStudy";
+import RITMCaseStudy from "@/components/case-studies/RITMCaseStudy";
+import CameraMarketCaseStudy from "@/components/case-studies/CameraMarketCaseStudy";
 import PremiumCaseStudy from "@/components/case-studies/PremiumCaseStudy";
 import CaseStudyCard from "@/components/case-studies/CaseStudyCard";
 import { getAllCaseStudies, getCaseStudyBySlug } from "@/lib/caseStudies";
@@ -38,9 +41,15 @@ export default async function CaseStudyPage({
     <>
       <Navbar />
       <main>
-        {/* Rudradharma uses custom layout, others use premium layout */}
+        {/* Rudradharma, Dohabus, RITM, and Camera Market use custom layouts with Brand Identity sections, others use premium layout */}
         {slug === "rudradharma-spiritual-ecommerce" ? (
           <RudradharmaCaseStudy />
+        ) : slug === "dohabus-qatar-tourism-platform" ? (
+          <DohabusCaseStudy study={study} />
+        ) : slug === "ritm-hospitality-institute-website" ? (
+          <RITMCaseStudy study={study} />
+        ) : slug === "camera-market-dehradun-photography-e-commerce" ? (
+          <CameraMarketCaseStudy study={study} />
         ) : (
           <PremiumCaseStudy study={study} />
         )}

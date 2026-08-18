@@ -178,7 +178,7 @@ export default function AiFAQ() {
 
             {/* CTA Button */}
             <motion.a
-              href="#contact"
+              href="/contact"
               className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full px-8 py-4 text-[16px] font-semibold text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
               style={{
                 background: "linear-gradient(100deg, #1E3A8A 0%, #4169E1 55%, #00B8FF 100%)",
@@ -187,7 +187,7 @@ export default function AiFAQ() {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
             >
-              Book a Free Strategy Call
+              Contact Us
               <motion.span
                 className="transition-transform duration-300 group-hover:translate-x-1"
               >

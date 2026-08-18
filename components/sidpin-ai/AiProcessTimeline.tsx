@@ -1,435 +1,256 @@
 "use client";
 
 /**
- * AiProcessTimeline — Premium stacking scroll animation section.
- * 6 process cards that stack vertically as user scrolls, using GSAP ScrollTrigger pinning.
- * Each card has left content (badge, heading, description, checklist) and right side image.
+ * AiProcessTimeline — Bento box style process grid
+ * Modern grid layout with varied card sizes showcasing the 6-step AI development process
  */
 
-import { useLayoutEffect, useRef, useState, useCallback } from "react";
 import { motion } from "framer-motion";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Check, ArrowRight } from "lucide-react";
+import { useLayoutEffect, useRef } from "react";
+import { Check, ArrowRight, Target, BarChart3, Zap, Shield, Users, Rocket } from "lucide-react";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
-// Process data
-const PROCESS_STEPS = [
+// Bento grid process data with proper card hierarchy and dark mode colors
+const BENTO_ITEMS = [
   {
     id: 1,
     phase: "01",
     title: "Discovery & Strategy",
-    description:
-      "We dive deep into your business — understanding goals, workflows, and where AI can deliver real impact.",
-    checklist: [
-      "Business goals assessment",
-      "AI opportunity mapping",
-      "Technical feasibility study",
-      "ROI projections",
-      "Implementation roadmap",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&q=80",
-    alt: "Business strategy meeting",
+    description: "Understanding your business and AI opportunities",
+    type: "wide",
+    icon: Target,
+    background: "bg-white/[0.98]",
+    features: ["Goals assessment", "AI opportunity mapping", "ROI projections"]
   },
   {
     id: 2,
     phase: "02",
-    title: "Data & Knowledge Base",
-    description:
-      "Building your RAG foundation — we gather, clean, and structure your data so AI responses are accurate and grounded.",
-    checklist: [
-      "Data source inventory",
-      "Quality assessment & cleaning",
-      "Privacy & compliance review",
-      "Pipeline architecture",
-      "Storage optimization",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
-    alt: "Data analytics dashboard",
+    title: "Data Foundation",
+    description: "Building your RAG knowledge base",
+    type: "standard",
+    icon: BarChart3,
+    background: "bg-white/[0.98]",
+    metric: "Data Sources Integrated"
   },
   {
     id: 3,
     phase: "03",
-    title: "Model Development & Training",
-    description:
-      "Training AI on your brand voice, processes, and knowledge — creating agents that think like your team.",
-    checklist: [
-      "Model selection & validation",
-      "Infrastructure design",
-      "Custom training setup",
-      "Security architecture",
-      "Performance optimization",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80",
-    alt: "AI neural network visualization",
+    title: "Model Training",
+    description: "Custom AI for your business",
+    type: "standard",
+    icon: Zap,
+    background: "bg-white/[0.98]",
+    metric: "Models Deployed"
   },
   {
     id: 4,
     phase: "04",
-    title: "Integration & Workflow",
-    description:
-      "Connecting AI to your existing tools — CRM, calendars, email, and other systems for seamless automation.",
-    checklist: [
-      "System integration",
-      "API connections",
-      "User interface setup",
-      "Monitoring configuration",
-      "Documentation & handover",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=1200&q=80",
-    alt: "AI engineer at work",
+    title: "System Integration",
+    description: "Connecting all your tools seamlessly",
+    type: "standard",
+    icon: Shield,
+    background: "bg-white/[0.98]",
+    metric: "APIs Connected"
   },
   {
     id: 5,
     phase: "05",
-    title: "Testing & Optimization",
-    description:
-      "Rigorous testing across scenarios, refining responses, and ensuring reliability before launch.",
-    checklist: [
-      "Validation & testing",
-      "Performance benchmarking",
-      "Error analysis & refinement",
-      "Quality assurance",
-      "User acceptance testing",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80",
-    alt: "Cloud infrastructure deployment",
+    title: "Testing & Quality",
+    description: "Rigorous validation and optimization",
+    type: "standard",
+    icon: Users,
+    background: "bg-white/[0.98]",
+    metric: "Test Scenarios"
   },
   {
     id: 6,
     phase: "06",
-    title: "Launch & Support",
-    description:
-      "Deploying to production with monitoring, continuous improvement, and ongoing support.",
-    checklist: [
-      "Performance monitoring",
-      "Feedback collection",
-      "Model retraining",
-      "Feature enhancement",
-      "Ongoing support",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&q=80",
-    alt: "Analytics dashboard monitoring",
-  },
+    title: "Launch & Scale",
+    description: "Deploy with ongoing support",
+    type: "wide-cta",
+    icon: Rocket,
+    background: "bg-white/[0.98]",
+    cta: "Start Your AI Journey"
+  }
 ];
 
-// Checklist item component
-function ChecklistItem({ text, delay }: { text: string; delay: number }) {
+// Premium bento card component with subtle styling
+function BentoCard({
+  item,
+  index
+}: {
+  item: typeof BENTO_ITEMS[0];
+  index: number;
+}) {
+  const Icon = item.icon;
+
+  // Grid placement based on card type - simple 3-row layout
+  const getGridClass = () => {
+    switch (item.type) {
+      case "wide":
+        return "lg:col-span-2";
+      case "wide-cta":
+        return "lg:col-span-3";
+      case "standard":
+        return "lg:col-span-1";
+      default:
+        return "lg:col-span-1";
+    }
+  };
+
+  // Height based on card type
+  const getMinHeight = () => {
+    switch (item.type) {
+      case "wide":
+        return "min-h-[180px]";
+      case "wide-cta":
+        return "min-h-[160px]";
+      case "standard":
+        return "min-h-[180px]";
+      default:
+        return "min-h-[180px]";
+    }
+  };
+
   return (
     <motion.div
-      className="flex items-center gap-3"
-      initial={{ opacity: 0, x: -12 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay, duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as any }}
-    >
-      <div className="h-5 w-5 rounded-full bg-brand/10 flex items-center justify-center flex-shrink-0">
-        <Check size={12} className="text-brand" strokeWidth={2.5} />
-      </div>
-      <span className="text-[15px] text-fg-2">{text}</span>
-    </motion.div>
-  );
-}
-
-// Image card component with tilt
-function ImageCard({
-  src,
-  alt,
-}: {
-  src: string;
-  alt: string;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [rotateX, setRotateX] = useState(0);
-  const [rotateY, setRotateY] = useState(0);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    const percentX = (e.clientX - centerX) / (rect.width / 2);
-    const percentY = (e.clientY - centerY) / (rect.height / 2);
-    setRotateY(Math.max(-2, Math.min(2, percentX * 2)));
-    setRotateX(Math.max(-2, Math.min(2, -percentY * 2)));
-  };
-
-  const handleMouseLeave = () => {
-    setRotateX(0);
-    setRotateY(0);
-  };
-
-  return (
-    <div
-      ref={ref}
-      className="relative h-full w-full rounded-[24px] overflow-hidden"
+      className={`bento-item ${getGridClass()} relative overflow-hidden rounded-2xl bg-white dark:bg-[#0a0a0f] ${getMinHeight()} p-6 lg:p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl`}
       style={{
-        transform: `perspective(1000px) rotateX(${rotateX}°) rotateY(${rotateY}°)`,
-        transition: "transform 0.3s ease-out",
+        border: "1px solid rgba(0,0,0,0.08) dark:rgba(255,255,255,0.08)",
+        boxShadow: "0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04)",
       }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      initial={{ opacity: 0, y: 20, scale: 0.98 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.1, 0.25, 1] as any }}
+      whileHover={{ boxShadow: "0 8px 32px rgba(65,105,225,0.12)" }}
     >
-      {/* Image with zoom animation */}
-      <motion.div
-        className="absolute inset-0"
-        initial={{ scale: 1 }}
-        whileInView={{ scale: 1.08 }}
-        viewport={{ once: true }}
-        transition={{ duration: 10, ease: [0.25, 0.1, 0.25, 1] as any }}
-      >
-        <img
-          src={src}
-          alt={alt}
-          className="h-full w-full object-cover"
-          loading="lazy"
-        />
-      </motion.div>
+      {/* Content */}
+      <div className="relative z-10 h-full flex flex-col items-start">
+        {/* Step number pill - Enhanced with Dark Mode */}
+        <div className="mb-5 inline-flex items-center rounded-full bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 px-4 py-2 shadow-sm border border-blue-100 dark:border-blue-700/50">
+          <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-blue-700 dark:text-blue-400">
+            {item.phase}
+          </span>
+        </div>
 
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+        {/* Icon container - Enhanced with Dark Mode */}
+        <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 dark:from-blue-600 dark:to-indigo-700 shadow-md">
+          <Icon size={22} className="text-white" />
+        </div>
 
-      {/* Subtle border */}
-      <div className="absolute inset-0 rounded-[24px] border border-white/10 pointer-events-none" />
-    </div>
-  );
-}
+        {/* Title and description - Dark Mode Typography */}
+        <h3 className="text-[20px] font-bold leading-tight text-gray-900 dark:text-white mb-3" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+          {item.title}
+        </h3>
+        <p className="text-[14px] leading-relaxed text-gray-600 dark:text-gray-400 mb-5">
+          {item.description}
+        </p>
 
-// Individual process card
-function ProcessCard({
-  step,
-  index,
-  totalCards,
-}: {
-  step: (typeof PROCESS_STEPS)[0];
-  index: number;
-  totalCards: number;
-}) {
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  return (
-    <div
-      ref={cardRef}
-      className="process-card absolute inset-0 flex items-center justify-center px-6 md:px-[80px] py-12"
-      style={{ zIndex: totalCards - index }}
-    >
-      <div className="w-full max-w-[1440px] grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center min-h-[70vh]">
-        {/* Left Content */}
-        <div className="lg:col-span-5 space-y-8">
-          {/* Phase Badge */}
-          <motion.div
-            className="inline-block"
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as any }}
-          >
-            <span className="inline-block px-4 py-2 rounded-full bg-surface-2 border border-line/50">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-fg-3">
-                {step.phase}
-              </span>
-            </span>
-          </motion.div>
-
-          {/* Heading */}
-          <motion.h2
-            className="text-[38px] md:text-[44px] font-bold leading-tight text-fg"
-            style={{ fontFamily: "Hanken Grotesk, sans-serif" }}
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] as any }}
-          >
-            {step.title}
-          </motion.h2>
-
-          {/* Description */}
-          <motion.p
-            className="text-[17px] leading-relaxed text-fg-2"
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] as any }}
-          >
-            {step.description}
-          </motion.p>
-
-          {/* Checklist */}
-          <div className="space-y-3 pt-2">
-            {step.checklist.map((item, i) => (
-              <ChecklistItem key={item} text={item} delay={0.3 + i * 0.08} />
+        {/* Features for wide card - Dark Mode Support */}
+        {item.features && item.type === "wide" && (
+          <div className="mt-auto space-y-3 pt-6">
+            {item.features.map((feature, i) => (
+              <div key={i} className="flex items-center gap-3 text-[14px] text-gray-700 dark:text-gray-300">
+                <div className="flex-shrink-0 h-5 w-5 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-600 dark:to-indigo-700 flex items-center justify-center">
+                  <Check size={12} className="text-white" strokeWidth={2.5} />
+                </div>
+                <span className="font-medium">{feature}</span>
+              </div>
             ))}
           </div>
+        )}
 
-          {/* Optional CTA for last card */}
-          {index === totalCards - 1 && (
-            <motion.div
-              className="pt-4"
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.7, ease: [0.25, 0.1, 0.25, 1] as any }}
-            >
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#1a1a2e] to-[#2a2a4e] dark:from-[#0F1626] dark:to-[#1a2338] text-white border border-white/10 hover:border-white/20 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5"
-              >
-                Start Your AI Journey
-                <ArrowRight size={17} strokeWidth={2} />
-              </a>
-            </motion.div>
-          )}
-        </div>
+        {/* Metric for compact cards - Dark Mode Support */}
+        {item.metric && item.type !== "wide" && (
+          <div className="mt-auto pt-4">
+            <div className="text-[11px] text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wide font-medium">{item.metric}</div>
+            <div className="flex items-baseline gap-1">
+              <div className="text-[36px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-700 dark:from-blue-500 dark:to-indigo-600 leading-none">12+</div>
+            </div>
+          </div>
+        )}
 
-        {/* Right Side - Image Card */}
-        <div className="lg:col-span-7 h-[500px] md:h-[600px]">
-          <ImageCard src={step.image} alt={step.alt} />
-        </div>
+        {/* CTA for wide launch card - Dark Mode Support */}
+        {item.cta && (
+          <motion.a
+            href="#contact"
+            className="mt-auto inline-flex items-center justify-center gap-3 w-full px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-700 dark:from-blue-700 dark:to-indigo-800 text-white text-[15px] font-bold shadow-lg transition-all duration-300 hover:shadow-xl hover:from-blue-700 hover:to-indigo-800 dark:hover:from-blue-800 dark:hover:to-indigo-900"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            {item.cta}
+            <ArrowRight size={18} />
+          </motion.a>
+        )}
       </div>
-    </div>
+
+      {/* Decorative gradient overlay with Dark Mode */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-indigo-600/5 dark:from-blue-600/10 dark:via-transparent dark:to-indigo-700/10 pointer-events-none" />
+    </motion.div>
   );
 }
 
 export default function AiProcessTimeline() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  // Callback ref to populate the array
-  const setCardRef = useCallback((index: number) => (el: HTMLDivElement | null) => {
-    cardRefs.current[index] = el;
-  }, []);
-
-  useLayoutEffect(() => {
-    if (!sectionRef.current || !containerRef.current) return;
-
-    const ctx = gsap.context(() => {
-      const mm = gsap.matchMedia();
-
-      mm.add("(min-width: 1024px)", () => {
-        const cards = cardRefs.current.filter(Boolean) as HTMLDivElement[];
-        const total = cards.length;
-        if (!total) return;
-
-        // Initial state: the first card is visible, every later card is stacked
-        // just below the frame and hidden — they slide up one at a time.
-        cards.forEach((card, index) => {
-          gsap.set(
-            card,
-            index === 0
-              ? { yPercent: 0, opacity: 1 }
-              : { yPercent: 100, opacity: 0 }
-          );
-        });
-
-        // A single master timeline scrubbed by the pinned scroll distance. Each
-        // subsequent card gets its own equal slice of the scroll, so all phases
-        // (01 → 06) are shown in order instead of jumping straight to the last.
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top top",
-            // Explicit pixel distance (one viewport per remaining card) so the
-            // pin reserves the right amount of scroll — a "%" end resolved to 0
-            // here, collapsing every phase into a single jump.
-            end: () => "+=" + window.innerHeight * (total - 1),
-            pin: containerRef.current,
-            scrub: 1,
-            invalidateOnRefresh: true,
-          },
-        });
-
-        cards.forEach((card, index) => {
-          if (index === 0) return;
-          tl.to(
-            card,
-            {
-              yPercent: 0,
-              opacity: 1,
-              duration: 1,
-              ease: "power2.inOut" as any,
-            },
-            index - 1
-          );
-        });
-
-        // Images are lazy-loaded and fonts swap in, both of which change layout
-        // heights after this effect runs — refresh once things settle so the pin
-        // distance is measured correctly.
-        ScrollTrigger.refresh();
-      });
-
-      return () => mm.revert();
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="relative bg-bg min-h-[100vh]"
+      className="relative bg-bg py-24 md:py-32 px-6 md:px-[80px]"
       style={{ fontFamily: "Inter, sans-serif" }}
     >
       {/* Section Header */}
-      <div className="relative z-10 px-6 py-24 md:px-[80px]">
-        <div className="mx-auto max-w-[1440px]">
-          <motion.div
-            className="text-center space-y-6"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as any }}
+      <div className="mx-auto max-w-[1440px] mb-16">
+        <motion.div
+          className="text-center space-y-6"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as any }}
+        >
+          <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.35em] text-[#4169E1]">
+            Our Process
+          </span>
+          <h2
+            className="text-[36px] md:text-[46px] font-bold leading-tight text-black dark:text-white"
+            style={{ fontFamily: "Hanken Grotesk, sans-serif" }}
           >
-            <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.35em] text-brand">
-              Our Process
-            </span>
-            <h2
-              className="text-[42px] md:text-[52px] font-bold text-fg"
-              style={{ fontFamily: "Hanken Grotesk, sans-serif" }}
-            >
-              How We Build AI That Works
-            </h2>
-            <p className="text-[18px] text-fg-2 max-w-[600px] mx-auto">
-              A proven, systematic approach to developing AI solutions that
-              deliver measurable business results.
-            </p>
-          </motion.div>
-        </div>
+            How We Build AI That Works
+          </h2>
+          <p className="text-[15px] md:text-[16px] text-black/70 dark:text-white/70 max-w-[580px] mx-auto leading-relaxed">
+            A proven, systematic approach to developing AI solutions that
+            deliver measurable business results.
+          </p>
+        </motion.div>
       </div>
 
-      {/* Stacking Cards Container */}
-      <div ref={containerRef} className="relative h-[90vh] overflow-hidden">
-        {/* Base card background - white premium card */}
-        <div className="absolute inset-4 md:inset-6 rounded-[30px] bg-surface border border-line/30 shadow-[0_8px_40px_rgba(0,0,0,0.08),0_120px_160px_-40px_rgba(65,105,225,0.12)]" />
-
-        {/* Process Cards */}
-        {PROCESS_STEPS.map((step, index) => (
-          <div
-            key={step.id}
-            ref={setCardRef(index)}
-            className="process-card-inner absolute inset-4 md:inset-6 rounded-[30px] bg-surface border border-line/30 overflow-hidden"
-            style={{
-              boxShadow:
-                "0 4px 24px rgba(0,0,0,0.06), 0 80px 120px -40px rgba(65,105,225,0.1)",
-            }}
-          >
-            <ProcessCard
-              step={step}
-              index={index}
-              totalCards={PROCESS_STEPS.length}
-            />
+      {/* Premium Bento Grid - 3-row layout */}
+      <div className="mx-auto max-w-[1200px]">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-5 auto-rows-auto">
+          {/* Row 1: Discovery (2 cols) + Data Foundation (1 col) */}
+          <div className="col-span-1 lg:col-span-2">
+            <BentoCard item={BENTO_ITEMS[0]} index={0} />
           </div>
-        ))}
+          <div className="col-span-1">
+            <BentoCard item={BENTO_ITEMS[1]} index={1} />
+          </div>
+
+          {/* Row 2: Model Training + System Integration + Testing Quality (all 1 col each) */}
+          <div className="col-span-1">
+            <BentoCard item={BENTO_ITEMS[2]} index={2} />
+          </div>
+          <div className="col-span-1">
+            <BentoCard item={BENTO_ITEMS[3]} index={3} />
+          </div>
+          <div className="col-span-1">
+            <BentoCard item={BENTO_ITEMS[4]} index={4} />
+          </div>
+
+          {/* Row 3: Launch & Scale (3 cols - full width) */}
+          <div className="col-span-1 lg:col-span-3">
+            <BentoCard item={BENTO_ITEMS[5]} index={5} />
+          </div>
+        </div>
       </div>
     </section>
   );
