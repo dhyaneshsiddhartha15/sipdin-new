@@ -1,3 +1,8 @@
+// DISABLED — the navbar's "Studio" link now points at https://sidpin.media, so this page
+// should no longer be reachable. The folder is named `_studio`: App Router treats a leading
+// underscore as a private folder and does not create a route for it. The page itself is
+// untouched — rename the folder back to `app/studio` to bring it live again.
+
 import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";

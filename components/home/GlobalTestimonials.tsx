@@ -15,8 +15,9 @@ type Testimonial = {
 const P = (id: string) =>
   `https://images.unsplash.com/photo-${id}?w=520&h=720&fit=crop&crop=faces&q=80`;
 
-const A = (id: string) =>
-  `https://images.unsplash.com/photo-${id}?w=120&h=120&fit=crop&crop=faces&q=80`;
+// Avatar helper — unused while the stat card's photo cluster is hidden.
+// const A = (id: string) =>
+//   `https://images.unsplash.com/photo-${id}?w=120&h=120&fit=crop&crop=faces&q=80`;
 
 const TESTIMONIALS: Testimonial[] = [
   {
@@ -70,20 +71,23 @@ const TESTIMONIALS: Testimonial[] = [
   },
 ];
 
-const STAT_AVATARS = [
-  A("1500648767791-00dcc994a43e"),
-  A("1494790108377-be9c29b29330"),
-  A("1507003211169-0a1dd7228f2d"),
-  A("1633332755192-727a05c4013d"),
-  A("1544005313-94ddf0286df2"),
-  A("1506794778202-cad84cf45f1d"),
-];
+// const STAT_AVATARS = [
+//   A("1500648767791-00dcc994a43e"),
+//   A("1494790108377-be9c29b29330"),
+//   A("1507003211169-0a1dd7228f2d"),
+//   A("1633332755192-727a05c4013d"),
+//   A("1544005313-94ddf0286df2"),
+//   A("1506794778202-cad84cf45f1d"),
+// ];
 
 function TestimonialCard({ t }: { t: Testimonial }) {
+  // Photos are hidden for now — the card gradient stands in for the portrait so the copy
+  // stays readable. Drop that gradient when the <img> below is uncommented.
   return (
-    <article className="relative h-[400px] w-[268px] shrink-0 overflow-hidden rounded-[20px] shadow-[0_18px_50px_-24px_rgba(15,23,42,0.5)]">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={t.image} alt={t.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+    <article className="relative h-[400px] w-[268px] shrink-0 overflow-hidden rounded-[20px] bg-gradient-to-b from-[#1f2937] to-[#0f172a] shadow-[0_18px_50px_-24px_rgba(15,23,42,0.5)]">
+      {/* Portrait — hidden for now. Restore with an `eslint-disable-next-line
+      @next/next/no-img-element` directive above it:
+      <img src={t.image} alt={t.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover" /> */}
       {/* Play badge */}
       <span className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-white/25 text-white backdrop-blur-md ring-1 ring-white/40">
         <Play className="h-4 w-4 translate-x-[1px] fill-white" aria-hidden />
@@ -92,7 +96,8 @@ function TestimonialCard({ t }: { t: Testimonial }) {
       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent px-5 pb-5 pt-16">
         <p className="font-['Hanken_Grotesk'] text-[16px] font-bold text-white">{t.name}</p>
         <p className="mb-2 text-[11px] font-medium text-white/70">{t.role}</p>
-        <p className="line-clamp-2 font-['Inter'] text-[12.5px] leading-snug text-white/85">{t.quote}</p>
+        {/* Clamp lifted while the photo is hidden — there is room for the whole quote now. */}
+        <p className="font-['Inter'] text-[12.5px] leading-snug text-white/85">{t.quote}</p>
       </div>
     </article>
   );
@@ -101,9 +106,9 @@ function TestimonialCard({ t }: { t: Testimonial }) {
 function StatCard() {
   return (
     <div className="relative flex h-[400px] w-[268px] shrink-0 flex-col overflow-hidden rounded-[20px] bg-white p-6 shadow-[0_18px_50px_-24px_rgba(15,23,42,0.5)] dark:bg-[#111827]">
-      {/* Avatar cluster */}
+      {/* Avatar cluster — photos hidden for now; the spacer keeps the stat pinned to the bottom. */}
       <div className="relative flex-1">
-        {[
+        {/* {[
           { t: "8%", l: "14%", s: 46 },
           { t: "4%", l: "58%", s: 40 },
           { t: "30%", l: "38%", s: 52 },
@@ -120,7 +125,7 @@ function StatCard() {
             className="absolute rounded-full object-cover ring-2 ring-white dark:ring-[#111827]"
             style={{ top: pos.t, left: pos.l, width: pos.s, height: pos.s }}
           />
-        ))}
+        ))} */}
       </div>
       <div>
         <p className="font-['Hanken_Grotesk'] text-[40px] font-bold leading-none text-[#111111] dark:text-white">

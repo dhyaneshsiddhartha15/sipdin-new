@@ -54,24 +54,22 @@ const PRODUCTS: Product[] = [
 
 export default function ProductGrid() {
   const { ref, p } = useScrollReveal<HTMLDivElement>();
-  const { ref: sectionRef, p: sectionP } = useScrollReveal<HTMLElement>();
-  const lift = (1 - Math.min(1, sectionP * 1.9)) * 80;
 
   return (
+    // Sits flush against the black section above — the old 120px top margin plus the
+    // scroll "lift" transform left a white strip of page background in between.
     <section
-      ref={sectionRef}
       className="relative z-10 overflow-hidden rounded-t-[32px] text-gray-900 shadow-[0_-30px_70px_rgba(0,0,0,0.15)] md:rounded-t-[56px]"
-      style={{ marginTop: "120px", transform: `translateY(${lift}px)`, willChange: "transform" }}
     >
       {/* Cinematic scroll-reveal header */}
       <div
         ref={ref}
-        className="relative flex items-center overflow-hidden"
+        className="relative flex items-center justify-center overflow-hidden"
         style={{ minHeight: "clamp(300px, 50vh, 500px)" }}
       >
         {/* Header content with premium typography */}
         <div
-          className="relative z-10 max-w-4xl pl-16 pr-6 pt-12 text-left"
+          className="relative z-10 mx-auto max-w-4xl px-6 pt-12 text-center"
           style={{
             opacity: Math.min(1, p * 2.2),
             transform: `translateY(${(0.5 - p) * 40}px)`,
@@ -84,9 +82,10 @@ export default function ProductGrid() {
           >
             END-TO-END DIGITAL SOLUTIONS
           </span>
+          {/* Colour lives in classes, not the inline style, so the dark variant can apply. */}
           <h2
-            className="font-bold leading-[1.1] tracking-tight mb-6"
-            style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: "clamp(38px, 5.2vw, 64px)", color: "#1a1a1a" }}
+            className="mb-6 font-bold leading-[1.1] tracking-tight text-[#1a1a1a] dark:text-white"
+            style={{ fontFamily: "Hanken Grotesk, sans-serif", fontSize: "clamp(38px, 5.2vw, 64px)" }}
           >
             End-to-End Digital
             <br />
@@ -96,7 +95,7 @@ export default function ProductGrid() {
             </span>
           </h2>
           <p
-            className="mb-10 text-gray-600"
+            className="mx-auto mb-10 max-w-[680px] text-gray-600"
             style={{ fontFamily: "Inter, sans-serif", fontSize: "clamp(16px, 1.4vw, 19px)", lineHeight: 1.7 }}
           >
             We deliver comprehensive digital solutions across multiple domains to help businesses innovate, scale, and stay ahead in a digital world.
