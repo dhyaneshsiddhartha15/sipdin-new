@@ -20,9 +20,11 @@ import ServiceTestimonialWall from "./detail/ServiceTestimonialWall";
 import ServiceWhatWeDo from "./detail/ServiceWhatWeDo";
 import ServiceWorkGallery from "./detail/ServiceWorkGallery";
 import ServiceProof from "./detail/ServiceProof";
+import ServiceWebDevProof from "./detail/ServiceWebDevProof";
 import ServiceComparison from "./detail/ServiceComparison";
 import ServiceProcess from "./detail/ServiceProcess";
 import ServiceReviews from "./detail/ServiceReviews";
+import ServiceWebDevPricing from "./detail/ServiceWebDevPricing";
 
 // Relevant photo for each service, used as the lead visual in "What we do".
 const serviceImages: Record<string, string> = {
@@ -57,10 +59,14 @@ export default function ServiceDetail({
       <ServiceLogoWall />
       <ServiceTestimonialWall />
       <ServiceWhatWeDo service={service} serviceImage={serviceImages[service.slug]} />
-      <ServiceWorkGallery serviceName={service.name} />
-      <ServiceProof />
-      <ServiceComparison />
-      <ServiceProcess />
+      {/* Hide ServiceWorkGallery for web development, show for others */}
+      {service.slug !== 'web-development' && <ServiceWorkGallery serviceName={service.name} />}
+      {/* Use web development proof for web-dev service, regular proof for others */}
+      {service.slug === 'web-development' ? <ServiceWebDevProof /> : <ServiceProof />}
+      <ServiceComparison service={service} />
+      {/* Custom pricing table for web development */}
+      {service.slug === 'web-development' && <ServiceWebDevPricing />}
+      <ServiceProcess service={service} />
       <ServiceReviews />
 
       {/* ============ FAQ ============ */}

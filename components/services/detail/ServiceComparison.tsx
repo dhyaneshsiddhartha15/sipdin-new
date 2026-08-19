@@ -4,19 +4,38 @@
  */
 
 import { Check, X } from "lucide-react";
-import { COMPARISON_ROWS } from "@/lib/serviceDetail";
+import { COMPARISON_ROWS, WEBDEV_COMPARISON_ROWS } from "@/lib/serviceDetail";
 import SectionHeading from "./SectionHeading";
+import type { Service } from "@/lib/services";
 
-export default function ServiceComparison() {
+interface ServiceComparisonProps {
+  service?: Service;
+}
+
+export default function ServiceComparison({ service }: ServiceComparisonProps = {}) {
+  // Use web development specific content for web development service
+  const isWebDev = service?.slug === 'web-development';
+  const comparisonRows = isWebDev ? WEBDEV_COMPARISON_ROWS : COMPARISON_ROWS;
+
+  const title = isWebDev
+    ? "No lock-ins. No templates."
+    : "No lock-ins. No black boxes.";
+  const accent = isWebDev
+    ? "No shortcuts."
+    : "No excuses.";
+  const intro = isWebDev
+    ? "Everything below is already stated somewhere on this site. Here it is side by side for web development."
+    : "Everything below is already stated somewhere on this site. Here it is side by side.";
+
   return (
     <section className="bg-surface-2/40 px-6 py-[88px] md:px-[80px]">
       <div className="mx-auto max-w-[1440px]">
         <SectionHeading
           index="04"
           label="How we're different"
-          title="No lock-ins. No black boxes."
-          accent="No excuses."
-          intro="Everything below is already stated somewhere on this site. Here it is side by side."
+          title={title}
+          accent={accent}
+          intro={intro}
         />
 
         <div className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,180px)_minmax(0,1fr)_minmax(0,1fr)] lg:gap-6">
@@ -43,7 +62,7 @@ export default function ServiceComparison() {
           </div>
 
           {/* Rows */}
-          {COMPARISON_ROWS.map((row) => (
+          {comparisonRows.map((row) => (
             <div key={row.label} className="contents">
               <p className="font-['Geist'] pt-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-fg-3 lg:border-t lg:border-line/40">
                 {row.label}

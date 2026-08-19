@@ -147,3 +147,109 @@ export const PROCESS_ASK = {
   body: "Access to your accounts, 30 minutes for a kickoff call, and a yes on the plan.",
   highlight: "We do the rest.",
 };
+
+// Web Development specific process content
+export const WEBDEV_PROCESS_STEPS: ProcessStep[] = [
+  {
+    number: "01",
+    title: "Discovery",
+    description:
+      "We learn your business, goals, and users — technical requirements, design preferences, and what success looks like.",
+    note: "Free consultation — no commitment required.",
+  },
+  {
+    number: "02",
+    title: "Planning",
+    description:
+      "Site architecture, content structure, and technical stack — mapped out and approved before development begins.",
+    note: "Clear scope, timeline, and deliverables agreed upfront.",
+  },
+  {
+    number: "03",
+    title: "Design",
+    description:
+      "Visual design, user experience, and responsive layouts — crafted to convert and built for performance.",
+    note: "Pixel-perfect designs optimized for all devices.",
+  },
+  {
+    number: "04",
+    title: "Development",
+    description:
+      "Clean code, fast performance, and SEO optimization — built by senior developers, not outsourced juniors.",
+    note: "Every feature tested before deployment.",
+  },
+  {
+    number: "05",
+    title: "Launch & Support",
+    description:
+      "Deployment, training, and ongoing support — your site goes live with monitoring and maintenance in place.",
+    note: "Growth-ready from day one.",
+  },
+];
+
+export const WEBDEV_PROCESS_BULLETS = [
+  {
+    title: "Code built by senior developers.",
+    body: "Clean, maintainable code that scales — no shortcuts that break later.",
+  },
+  {
+    title: "Design and development in-house.",
+    body: "Designers and developers work together — no communication gaps or handoff delays.",
+  },
+  {
+    title: "Performance guaranteed.",
+    body: "Fast load times, proper SEO, and responsive design built in from the start.",
+  },
+];
+
+export const WEBDEV_PROCESS_ASK = {
+  title: "And what we need from you:",
+  body: "Your brand assets, basic content, and 30 minutes for requirements discussion.",
+  highlight: "We handle the technical work.",
+};
+
+// Web Development specific comparison content
+export const WEBDEV_COMPARISON_ROWS: ComparisonRow[] = [
+  {
+    label: "Contract",
+    typical: "12 months, locked",
+    sidpin: "Month to month",
+    sidpinNote: "Scope agreed per phase, no lock-in",
+  },
+  {
+    label: "Your code & design",
+    typical: "Theirs. You leave with nothing",
+    sidpin: "Yours — always",
+    sidpinNote: "Source code, designs, and assets fully owned",
+  },
+  {
+    label: "Pricing",
+    typical: "Vague quotes, hidden costs",
+    sidpin: "Flat, published on this site",
+    sidpinNote: "See pricing tables before you call",
+  },
+  {
+    label: "Communication",
+    typical: "Black box, no updates",
+    sidpin: "Weekly, in writing",
+    sidpinNote: "Progress updates, demo links, clear milestones",
+  },
+  {
+    label: "Quality standards",
+    typical: "Template-based, slow loading",
+    sidpin: "Custom, performance-optimized",
+    sidpinNote: "Fast load times, proper SEO, responsive design",
+  },
+  {
+    label: "Who does the work",
+    typical: "Junior freelancers or outsourced",
+    sidpin: "Senior in-house team",
+    sidpinNote: "Designers and developers work together",
+  },
+  {
+    label: "Delivery process",
+    typical: "'We'll get back to you'",
+    sidpin: "Agile sprints, weekly demos",
+    sidpinNote: "See progress every week, not just at launch",
+  },
+];
