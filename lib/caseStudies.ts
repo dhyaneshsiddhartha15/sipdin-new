@@ -14,9 +14,12 @@ export type JourneyStep = { number: string; title: string; description: string; 
 
 export type Section =
   | { type: "text"; heading: string; body: string[] }
-  | { type: "list"; heading: string; intro?: string; items: ListItem[]; note?: string; solutionHeading?: string; solutionIntro?: string; solutionItems?: ListItem[] }
+  /** `hideImage` drops the stock photo beside the copy, leaving a text-only section. */
+  | { type: "list"; heading: string; intro?: string; items: ListItem[]; note?: string; hideImage?: boolean; solutionHeading?: string; solutionIntro?: string; solutionItems?: ListItem[] }
   | { type: "table"; heading: string; columns: string[]; rows: string[][] }
   | { type: "image"; heading?: string; intro?: string; images: { src: string; caption?: string }[] }
+  /** Full-bleed shot pinned with `background-attachment: fixed` (see FixedImagePanel). */
+  | { type: "fixedImage"; src: string; alt: string; grayscaleUntilHover?: boolean; aspectRatio?: number }
   | { type: "quote"; text: string; name: string; role: string }
   | { type: "journey"; heading: string; intro: string; steps: JourneyStep[]; conclusion?: string };
 
@@ -227,6 +230,12 @@ const CASE_STUDIES: CaseStudy[] = [
         ],
       },
       {
+        type: "fixedImage",
+        src: "/case-study/Doha-bus/1.jpg",
+        alt: "Dohabus platform visual",
+        aspectRatio: 1280 / 1011,
+      },
+      {
         type: "list",
         heading: "The Challenge",
         intro:
@@ -265,6 +274,7 @@ const CASE_STUDIES: CaseStudy[] = [
       {
         type: "list",
         heading: "Services Offered by Dohabus",
+        hideImage: true,
         items: [
           { label: "Hop-On Hop-Off Sightseeing Tours", text: "Open-top double-decker bus tours with 24-hour passes and multilingual audio guides." },
           { label: "Desert Safari Experiences", text: "Dune-bashing adventures including the Inland Sea (Khor Al Udaid) and the famous Monster Bus off-road safari." },
@@ -291,6 +301,7 @@ const CASE_STUDIES: CaseStudy[] = [
       {
         type: "list",
         heading: "Results & Impact",
+        hideImage: true,
         intro: "The new website successfully established a strong digital presence for Qatar's leading sightseeing company:",
         items: [
           { label: "Unified Digital Platform", text: "All services now accessible from a single, brand-owned website." },
@@ -607,12 +618,10 @@ const CASE_STUDIES: CaseStudy[] = [
         ],
       },
       {
-        type: "image",
-        images: [
-          {
-            src: "/case-study/RITM/1.jpg"
-          }
-        ],
+        type: "fixedImage",
+        src: "/case-study/RITM/1.jpg",
+        alt: "RITM website design",
+        aspectRatio: 1280 / 993,
       },
       {
         type: "list",
@@ -843,6 +852,7 @@ const CASE_STUDIES: CaseStudy[] = [
       {
         type: "list",
         heading: "Understanding the Ecosystem",
+        hideImage: true,
         intro: "Wafeeq is designed around multiple stakeholders rather than a single user type:",
         items: [
           {
@@ -866,6 +876,7 @@ const CASE_STUDIES: CaseStudy[] = [
       {
         type: "list",
         heading: "Learning Through Expert Instructors",
+        hideImage: true,
         intro: "One of Wafeeq's strongest aspects is its instructor ecosystem. Rather than treating accessibility as an additional feature, Wafeeq builds its educational experience around people with expertise in sign-language education and Deaf training.",
         items: [
           {
@@ -885,6 +896,7 @@ const CASE_STUDIES: CaseStudy[] = [
       {
         type: "list",
         heading: "Designed Around Different Learning Needs",
+        hideImage: true,
         intro: "Wafeeq supports multiple levels of learning, from beginner to advanced. Its course ecosystem combines:",
         items: [
           {
@@ -912,6 +924,7 @@ const CASE_STUDIES: CaseStudy[] = [
       {
         type: "list",
         heading: "From Learning to Career Development",
+        hideImage: true,
         intro: "Education is only one part of Wafeeq's larger objective. The platform is designed to help Deaf and Hard-of-Hearing individuals develop skills that can translate into real-world career opportunities.",
         items: [
           {
@@ -927,6 +940,7 @@ const CASE_STUDIES: CaseStudy[] = [
       {
         type: "list",
         heading: "A Platform for Organizations Too",
+        hideImage: true,
         intro: "Wafeeq also extends beyond individual learners. Organizations can work with Wafeeq to provide customized learning paths and training programs based on their specific needs.",
         items: [
           {
@@ -943,6 +957,7 @@ const CASE_STUDIES: CaseStudy[] = [
       {
         type: "list",
         heading: "Empowerment Beyond the Platform",
+        hideImage: true,
         intro: "Accessibility is also reflected in Wafeeq's educational sponsorship model. The platform provides educational bundles that give beneficiaries access to multiple online training courses from certified trainers.",
         items: [
           {
@@ -958,6 +973,7 @@ const CASE_STUDIES: CaseStudy[] = [
       {
         type: "list",
         heading: "Building an Inclusive Digital Ecosystem",
+        hideImage: true,
         intro: "Wafeeq's approach combines three important ideas:",
         items: [
           {
@@ -987,6 +1003,7 @@ const CASE_STUDIES: CaseStudy[] = [
       {
         type: "list",
         heading: "What Makes Wafeeq Different",
+        hideImage: true,
         intro: "Most learning platforms optimize for convenience. Wafeeq optimizes for inclusion.",
         items: [
           {
@@ -1076,12 +1093,10 @@ const CASE_STUDIES: CaseStudy[] = [
         ],
       },
       {
-        type: "image",
-        images: [
-          {
-            src: "/case-study/camera/1.jpg"
-          }
-        ],
+        type: "fixedImage",
+        src: "/case-study/camera/1.jpg",
+        alt: "Camera Market Dehradun storefront design",
+        aspectRatio: 1280 / 1011,
       },
       {
         type: "text",
@@ -1095,6 +1110,7 @@ const CASE_STUDIES: CaseStudy[] = [
       {
         type: "list",
         heading: "Understanding the Product Ecosystem",
+        hideImage: true,
         intro: "Camera equipment is rarely purchased as a single category. A photographer might begin with a camera and then need a lens. A filmmaker may need a camera, gimbal, microphone, lights, and tripod. The platform therefore organizes its catalog around a broad photography ecosystem:",
         items: [
           {
@@ -1230,6 +1246,7 @@ const CASE_STUDIES: CaseStudy[] = [
       {
         type: "list",
         heading: "The Business Opportunity",
+        hideImage: true,
         intro: "Moving a specialized camera store online creates opportunities beyond geographical reach. The digital storefront can:",
         items: [
           { text: "Expand the customer base beyond Dehradun" },

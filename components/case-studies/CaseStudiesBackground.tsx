@@ -11,9 +11,9 @@ export default function CaseStudiesBackground({ children }: { children: React.Re
     <div
       className="relative min-h-screen bg-cover bg-center bg-fixed"
       style={{
-        backgroundImage: "url('/case-bg.png')",
-        /* Shown while the image loads — sampled from the image's upper sky. */
-        backgroundColor: "#7fb9ef",
+        backgroundImage: "url('/do.jpg')",
+        /* Shown while the image loads — matches the artwork's black field. */
+        backgroundColor: "#040604",
       }}
     >
       {children}

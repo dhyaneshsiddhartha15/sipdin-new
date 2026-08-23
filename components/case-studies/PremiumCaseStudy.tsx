@@ -8,6 +8,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { CaseStudy } from "@/lib/caseStudies";
 import JourneyTimelineSection from "./JourneyTimelineSection";
+import FixedImagePanel from "./FixedImagePanel";
 
 // === UNSPLASH IMAGES (TEMPORARY PLACEHOLDERS) ===
 const UNSPLASH_IMAGES = {
@@ -249,6 +250,9 @@ function ListSection({ section, study, isEven, index = 0 }: { section: any; stud
 
   // Check if this section should be horizontal timeline (Process & Timeline sections)
   const isHorizontalTimeline = section.heading === "Process & Timeline";
+
+  // Sections that opt out of the generic stock photo beside the copy.
+  const showImage = !isHorizontalTimeline && !section.hideImage;
 
   return (
     <section className={`py-24 ${isEven ? "bg-white" : "bg-[#fafafa]"}`}>
@@ -530,10 +534,10 @@ function ListSection({ section, study, isEven, index = 0 }: { section: any; stud
         ) : (
           /* Original Layout with Image */
           <div className={`flex flex-col gap-12 lg:flex-row ${!isEven ? "lg:flex-row-reverse" : ""}`}>
-            {/* Content Side */}
+            {/* Content Side — capped when alone so the copy keeps a readable line length. */}
             <div
               ref={contentRef}
-              className={`flex-1 transition-all duration-1000 ${
+              className={`flex-1 transition-all duration-1000 ${showImage ? "" : "lg:max-w-4xl"} ${
                 contentVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
             >
@@ -586,8 +590,8 @@ function ListSection({ section, study, isEven, index = 0 }: { section: any; stud
               )}
             </div>
 
-            {/* Image Side - Hide for Process & Timeline sections */}
-            {!isHorizontalTimeline && (
+            {/* Image Side — skipped for Process & Timeline and `hideImage` sections */}
+            {showImage && (
               <div
                 ref={imageRef}
                 className={`flex-1 transition-all duration-1000 delay-200 ${
@@ -919,6 +923,18 @@ function ContentSections({ study }: { study: CaseStudy }) {
 
         if (section.type === "image") {
           return <ImageSection key={sectionIndex} section={section} study={study} />;
+        }
+
+        if (section.type === "fixedImage") {
+          return (
+            <FixedImagePanel
+              key={sectionIndex}
+              src={section.src}
+              alt={section.alt}
+              grayscaleUntilHover={section.grayscaleUntilHover}
+              aspectRatio={section.aspectRatio}
+            />
+          );
         }
 
         if (section.type === "table") {

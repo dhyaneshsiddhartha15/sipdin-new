@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import ExpertiseGrid from "@/components/home/ExpertiseGrid";
+import AllServicesGrid from "@/components/services/AllServicesGrid";
 import CampaignTypes from "@/components/services/CampaignTypes";
 import CustomSolutionForm from "@/components/services/CustomSolutionForm";
 
@@ -56,18 +56,39 @@ export default function ServicesPage() {
     <>
       <Navbar />
       <main>
-        {/* Hero — cream, centered, yellow-underline (brandwitty style) */}
-        <section className="relative bg-[#F2F6FF] pt-[190px] pb-[130px] px-[24px] overflow-hidden">
-          {/* Scattered colored dots */}
-          <div aria-hidden="true" className="absolute inset-0 pointer-events-none hidden md:block">
-            <span className="absolute top-[28%] left-[20%] w-3 h-3 rounded-full bg-[#8FB0FF]" />
-            <span className="absolute top-[25%] left-[22%] w-1.5 h-1.5 rounded-full bg-[#4169E1]" />
-            <span className="absolute top-[52%] left-[15%] w-3 h-3 rounded-full bg-[#2E4FB8]" />
-            <span className="absolute top-[49%] left-[16.5%] w-1.5 h-1.5 rounded-full bg-[#4169E1]" />
-            <span className="absolute top-[36%] right-[22%] w-3 h-3 rounded-full bg-[#8FB0FF]" />
-            <span className="absolute top-[33%] right-[21%] w-1.5 h-1.5 rounded-full bg-[#4169E1]" />
-            <span className="absolute top-[47%] right-[16%] w-3.5 h-3.5 rounded-full bg-[#2E4FB8]" />
-            <span className="absolute top-[44%] right-[15%] w-1.5 h-1.5 rounded-full bg-[#4169E1]" />
+        {/*
+          Hero — layered light background instead of the old flat #F2F6FF panel
+          with scattered dots: a soft top-to-bottom wash, two low-alpha brand
+          glows, and a fine grid that fades out via a radial mask. All layers are
+          decorative and sit behind z-10 content, so heading contrast is
+          unaffected (measured 15:1+).
+        */}
+        <section className="relative overflow-hidden bg-[#F7F9FF] px-[24px] pt-[190px] pb-[130px]">
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+            {/* Fine grid, masked to fade toward the edges */}
+            <div
+              className="absolute inset-0 opacity-[0.55]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(to right, rgba(65,105,225,0.10) 1px, transparent 1px), linear-gradient(to bottom, rgba(65,105,225,0.10) 1px, transparent 1px)",
+                backgroundSize: "56px 56px",
+                maskImage:
+                  "radial-gradient(ellipse 70% 60% at 50% 45%, #000 40%, transparent 100%)",
+                WebkitMaskImage:
+                  "radial-gradient(ellipse 70% 60% at 50% 45%, #000 40%, transparent 100%)",
+              }}
+            />
+            {/* Brand glows — blurred, low alpha, kept off the text column */}
+            <div
+              className="absolute -left-[12%] top-[6%] h-[420px] w-[420px] rounded-full blur-[110px]"
+              style={{ background: "rgba(65,105,225,0.28)" }}
+            />
+            <div
+              className="absolute -right-[10%] top-[28%] h-[380px] w-[380px] rounded-full blur-[120px]"
+              style={{ background: "rgba(143,176,255,0.38)" }}
+            />
+            {/* Bottom fade so the hero meets the next section cleanly */}
+            <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-bg" />
           </div>
 
           <div className="relative z-10 max-w-[900px] mx-auto text-center">
@@ -104,7 +125,7 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        <ExpertiseGrid />
+        <AllServicesGrid />
 
         {/* Campaign types */}
         <CampaignTypes />

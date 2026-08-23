@@ -7,6 +7,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { CaseStudy } from "@/lib/caseStudies";
+import FixedImagePanel from "./FixedImagePanel";
 
 // === ANIMATION HOOK ===
 function useScrollReveal() {
@@ -434,18 +435,22 @@ function TextSection({ section, study, isEven }: { section: any; study: CaseStud
   );
 }
 
+/**
+ * Text-only list section. Every one of these used to repeat the same photo
+ * (`/case-study/RITM/1.jpg`) beside the copy, so the image side — and the
+ * alternating left/right layout that existed for it — was removed.
+ */
 function ListSection({ section, study, isEven }: { section: any; study: CaseStudy; isEven: boolean }) {
   const [contentRef, contentVisible] = useScrollReveal();
-  const [imageRef, imageVisible] = useScrollReveal();
 
   return (
     <section className={`py-24 ${isEven ? "bg-white" : "bg-[#fafafa]"}`}>
       <div className="mx-auto max-w-[1400px] px-6 md:px-12">
-        <div className={`flex flex-col gap-12 lg:flex-row ${!isEven ? "lg:flex-row-reverse" : ""}`}>
-          {/* Content Side */}
+        <div>
+          {/* Content — capped so body copy keeps a readable line length. */}
           <div
             ref={contentRef}
-            className={`flex-1 transition-all duration-1000 ${
+            className={`w-full transition-all duration-1000 lg:max-w-4xl ${
               contentVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
@@ -496,23 +501,6 @@ function ListSection({ section, study, isEven }: { section: any; study: CaseStud
                 </p>
               </div>
             )}
-          </div>
-
-          {/* Image Side */}
-          <div
-            ref={imageRef}
-            className={`flex-1 transition-all duration-1000 delay-200 ${
-              imageVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
-            <div className="overflow-hidden rounded-3xl">
-              <img
-                src="/case-study/RITM/1.jpg"
-                alt={section.heading}
-                className="h-auto w-full object-cover"
-                style={{ minHeight: "400px", maxHeight: "500px" }}
-              />
-            </div>
           </div>
         </div>
       </div>
@@ -607,6 +595,18 @@ function ContentSections({ study }: { study: CaseStudy }) {
 
         if (section.type === "image") {
           return <ImageSection key={sectionIndex} section={section} study={study} />;
+        }
+
+        if (section.type === "fixedImage") {
+          return (
+            <FixedImagePanel
+              key={sectionIndex}
+              src={section.src}
+              alt={section.alt}
+              grayscaleUntilHover={section.grayscaleUntilHover}
+              aspectRatio={section.aspectRatio}
+            />
+          );
         }
 
         // Quote section

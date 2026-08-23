@@ -8,13 +8,16 @@
  */
 import type { CaseStudy, Section } from "@/lib/caseStudies";
 
-/** Background images for case-study listing + detail pages - light and dark mode. */
+/**
+ * Background for the "More Case Studies" strip — kept in step with the
+ * /case-studies listing so both read as the same surface.
+ */
 export const PAPER_BG = {
-  backgroundImage: "url('/case-bg.png')",
+  backgroundImage: "url('/do.jpg')",
   backgroundSize: "cover",
   backgroundPosition: "center",
   backgroundAttachment: "fixed",
-  backgroundColor: "#1e3a8a",
+  backgroundColor: "#040604",
 } as const;
 
 export const PAPER_BG_DARK = {

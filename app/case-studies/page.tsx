@@ -24,11 +24,12 @@ export default function CaseStudiesPage() {
             <span className="text-[11px] font-semibold uppercase tracking-[0.4em] text-brand" style={{ fontFamily: "Geist, sans-serif" }}>
               Case Studies
             </span>
-            <h1 className="mt-4 max-w-3xl text-[40px] font-bold leading-[1.05] tracking-tight text-fg md:text-[64px]" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+            {/* Light text: this block sits directly on the dark bg.jpg artwork. */}
+            <h1 className="mt-4 max-w-3xl text-[40px] font-bold leading-[1.05] tracking-tight text-white md:text-[64px]" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
               Products we built.
               <br /> Results we delivered.
             </h1>
-            <p className="mt-5 max-w-xl text-[16px] leading-relaxed text-fg-2" style={{ fontFamily: "Inter, sans-serif" }}>
+            <p className="mt-5 max-w-xl text-[16px] leading-relaxed text-white/75" style={{ fontFamily: "Inter, sans-serif" }}>
               A look inside how Sidpin partners with brands and products — the problem, the strategy,
               the build, and the numbers that followed.
             </p>

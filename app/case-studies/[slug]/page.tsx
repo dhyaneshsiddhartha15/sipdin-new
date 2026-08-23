@@ -58,7 +58,8 @@ export default async function CaseStudyPage({
         {more.length > 0 && (
           <section style={PAPER_BG}>
             <div className="mx-auto max-w-[1500px] px-[24px] pb-28 md:px-[40px]">
-              <h2 className="mb-8 text-[28px] font-semibold text-fg md:text-[36px]" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
+              {/* Light text: this strip sits on the dark do.jpg artwork. */}
+              <h2 className="mb-8 text-[28px] font-semibold text-white md:text-[36px]" style={{ fontFamily: "Hanken Grotesk, sans-serif" }}>
                 More Case Studies
               </h2>
               <div className="grid gap-8 md:grid-cols-2">

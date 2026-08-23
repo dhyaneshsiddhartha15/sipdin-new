@@ -7,21 +7,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-
-// === UNSPLASH IMAGES (TEMPORARY PLACEHOLDERS) ===
-// These can be easily replaced with actual project images later
-const UNSPLASH_IMAGES = {
-  hero: "https://images.unsplash.com/photo-1609766858322-7b021092f2c1?w=1200&q=80",
-  showcase: "https://images.unsplash.com/photo-1610049521610-1d3d3ef254b9?w=1600&q=80",
-  gallery1: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&q=80",
-  gallery2: "https://images.unsplash.com/photo-1610049521610-1d3d3ef254b9?w=800&q=80",
-  gallery3: "https://images.unsplash.com/photo-1621600411688-4be93cd685f6?w=1000&q=80",
-  gallery4: "https://images.unsplash.com/photo-1609949848964-4cf4eb72b0d8?w=800&q=80",
-  feature1: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1000&q=80",
-  feature2: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1000&q=80",
-  feature3: "https://images.unsplash.com/photo-1556742502-ec7370e76d11?w=1000&q=80",
-  feature4: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1000&q=80",
-};
+import FixedImagePanel from "./FixedImagePanel";
 
 // === RUDRADHARMA CASE STUDY DATA ===
 const CASE_STUDY = {
@@ -384,88 +370,37 @@ function AboutProjectSection() {
   );
 }
 
-// 5. IMAGE GALLERY SECTION (PREMIUM STICKY PARALLAX LIKE AGENCY SITES)
+// 5. IMAGE GALLERY SECTION — the layout shot is pinned with a fixed background
+// (same treatment as the /case-studies listing), replacing the old sticky + JS
+// parallax that moved the image instead of holding it still.
 function GallerySection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const imgRef = useRef<HTMLImageElement>(null);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    const img = imgRef.current;
-    if (!section || !img) return;
-
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) return;
-
-    let rafId: number;
-
-    const updateParallax = () => {
-      const rect = section.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-      const isDesktop = window.innerWidth >= 1024;
-
-      // Scroll progress (0 to 1) as the section moves through the viewport
-      const scrollProgress = Math.max(0, Math.min(1, (viewportHeight - rect.top) / (viewportHeight + rect.height)));
-
-      // Clean vertical drift only
-      const parallaxOffset = isDesktop ? 120 : 50;
-      const parallaxY = scrollProgress * parallaxOffset - (parallaxOffset / 2);
-
-      img.style.transform = `translate3d(0, ${parallaxY}px, 0)`;
-      img.style.willChange = "transform";
-    };
-
-    const handleScroll = () => {
-      cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(updateParallax);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    updateParallax();
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      cancelAnimationFrame(rafId);
-    };
-  }, []);
-
-  // Image effects: (1) sticky, (2) parallax vertical drift, (3) grayscale → color on hover.
   return (
-    <section ref={sectionRef} data-gallery-section className="bg-transparent lg:sticky lg:top-0 z-10 overflow-visible">
-      <div className="mx-auto max-w-[1700px] px-6 md:px-12 relative">
-        <div className="relative overflow-visible rounded-3xl">
-          <img
-            ref={imgRef}
-            src="/case-study/rudradharma-layout.png"
-            alt="Rudradharma Layout"
-            className="relative z-30 h-auto w-full max-w-[1600px] mx-auto object-cover grayscale transition-[filter] duration-500 ease-out hover:grayscale-0"
-            style={{ filter: "grayscale(100%)" }}
-            onMouseEnter={(e) => e.currentTarget.style.filter = "grayscale(0%)"}
-            onMouseLeave={(e) => e.currentTarget.style.filter = "grayscale(100%)"}
-          />
-        </div>
-      </div>
-    </section>
+    <div data-gallery-section>
+      <FixedImagePanel
+        src="/case-study/rudradharma-layout.png"
+        alt="Rudradharma Layout"
+        aspectRatio={1366 / 1079}
+        grayscaleUntilHover
+      />
+    </div>
   );
 }
 
-// 6. FEATURE SECTION WITH ALTERNATING LAYOUTS
+// 6. FEATURE SECTION — text only. Every feature previously carried a generic
+// Unsplash stock photo beside it; none related to the project, so the image side
+// (and the alternating left/right layout it existed for) was removed.
 function FeatureSection({ feature, index }: { feature: typeof CASE_STUDY.features[0]; index: number }) {
-  const [textRef, textVisible] = useScrollReveal();
   const [categoryRef, categoryVisible] = useScrollReveal();
   const [titleRef, titleVisible] = useScrollReveal();
   const [contentRef, contentVisible] = useScrollReveal();
-  const [imageRef, imageVisible] = useScrollReveal();
   const sectionRef = useRef<HTMLElement>(null);
-  const isEven = index % 2 === 0; // 0, 2, 4... = text left | 1, 3, 5... = image left
 
   useEffect(() => {
     const section = sectionRef.current;
     const categoryEl = categoryRef.current;
     const titleEl = titleRef.current;
     const contentEl = contentRef.current;
-    const imageEl = imageRef.current;
-    if (!section || (!categoryEl && !titleEl && !contentEl && !imageEl)) return;
+    if (!section || (!categoryEl && !titleEl && !contentEl)) return;
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) return;
@@ -480,14 +415,13 @@ function FeatureSection({ feature, index }: { feature: typeof CASE_STUDY.feature
       // Scroll progress (0 to 1) as the section moves through the viewport
       const scrollProgress = Math.max(0, Math.min(1, (viewportHeight - rect.top) / (viewportHeight + rect.height)));
 
-      // Clean vertical drift — image moves a touch more than text for subtle depth
+      // Clean vertical drift — each line moves a touch more for subtle depth
       const parallaxOffset = isDesktop ? 120 : 50;
       const parallaxY = scrollProgress * parallaxOffset - (parallaxOffset / 2);
 
       if (categoryEl) categoryEl.style.transform = `translate3d(0, ${parallaxY * 0.4}px, 0)`;
       if (titleEl) titleEl.style.transform = `translate3d(0, ${parallaxY * 0.5}px, 0)`;
       if (contentEl) contentEl.style.transform = `translate3d(0, ${parallaxY * 0.6}px, 0)`;
-      if (imageEl) imageEl.style.transform = `translate3d(0, ${parallaxY}px, 0)`;
     };
 
     const handleScroll = () => {
@@ -502,14 +436,14 @@ function FeatureSection({ feature, index }: { feature: typeof CASE_STUDY.feature
       window.removeEventListener("scroll", handleScroll);
       cancelAnimationFrame(rafId);
     };
-  }, [categoryRef, titleRef, contentRef, imageRef]);
+  }, [categoryRef, titleRef, contentRef]);
 
   return (
     <section ref={sectionRef} className={`py-24 ${index % 2 === 0 ? "bg-white" : "bg-[#fafafa]"}`}>
       <div className="mx-auto max-w-[1400px] px-6 md:px-12">
-        <div className={`flex flex-col gap-12 lg:flex-row ${isEven ? "" : "lg:flex-row-reverse"}`}>
-          {/* Content Side */}
-          <div className="flex flex-col justify-center">
+        <div>
+          {/* Content — capped so body copy keeps a readable line length. */}
+          <div className="flex w-full flex-col justify-center lg:max-w-4xl">
             <span
               ref={categoryRef}
               className={`inline-block text-[14px] font-semibold uppercase tracking-[0.25em] text-[#E08A34] transition-all duration-1000 delay-100 ${
@@ -585,22 +519,6 @@ function FeatureSection({ feature, index }: { feature: typeof CASE_STUDY.feature
             )}
           </div>
 
-          {/* Image Side */}
-          <div
-            ref={imageRef}
-            className={`transition-opacity duration-1000 delay-200 ${
-              imageVisible ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <div className="overflow-hidden rounded-3xl">
-              <img
-                src={UNSPLASH_IMAGES[`feature${index + 1}` as keyof typeof UNSPLASH_IMAGES]}
-                alt={`${feature.category} Feature`}
-                className="h-auto w-full object-cover"
-                style={{ minHeight: "400px", maxHeight: "500px" }}
-              />
-            </div>
-          </div>
         </div>
       </div>
     </section>
