@@ -8,13 +8,21 @@
  */
 import type { CaseStudy, Section } from "@/lib/caseStudies";
 
-/** Blue wavy background shared by the case-study listing + detail pages. */
+/** Background images for case-study listing + detail pages - light and dark mode. */
 export const PAPER_BG = {
-  backgroundImage: "url('/wavy-baclh.webp')",
+  backgroundImage: "url('/case-bg.png')",
   backgroundSize: "cover",
   backgroundPosition: "center",
   backgroundAttachment: "fixed",
-  backgroundColor: "#1666e6",
+  backgroundColor: "#1e3a8a",
+} as const;
+
+export const PAPER_BG_DARK = {
+  backgroundImage: "url('/case-bg-dark.png')",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  backgroundAttachment: "fixed",
+  backgroundColor: "#0f172a",
 } as const;
 
 /** Frosted-white card used to hold readable content on the blue background. */
