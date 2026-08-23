@@ -11,6 +11,27 @@ import {
   WEBDEV_PROCESS_ASK,
   WEBDEV_PROCESS_BULLETS,
   WEBDEV_PROCESS_STEPS,
+  APP_PROCESS_ASK,
+  APP_PROCESS_BULLETS,
+  APP_PROCESS_STEPS,
+  SOFTWARE_PROCESS_ASK,
+  SOFTWARE_PROCESS_BULLETS,
+  SOFTWARE_PROCESS_STEPS,
+  AI_PROCESS_ASK,
+  AI_PROCESS_BULLETS,
+  AI_PROCESS_STEPS,
+  CHATBOT_PROCESS_ASK,
+  CHATBOT_PROCESS_BULLETS,
+  CHATBOT_PROCESS_STEPS,
+  SAAS_PROCESS_ASK,
+  SAAS_PROCESS_BULLETS,
+  SAAS_PROCESS_STEPS,
+  INTEGRATION_PROCESS_ASK,
+  INTEGRATION_PROCESS_BULLETS,
+  INTEGRATION_PROCESS_STEPS,
+  GENERATIVE_PROCESS_ASK,
+  GENERATIVE_PROCESS_BULLETS,
+  GENERATIVE_PROCESS_STEPS,
 } from "@/lib/serviceDetail";
 import SectionHeading from "./SectionHeading";
 import type { Service } from "@/lib/services";
@@ -20,20 +41,91 @@ interface ServiceProcessProps {
 }
 
 export default function ServiceProcess({ service }: ServiceProcessProps = {}) {
-  // Use web development specific content for web development service
+  // Use service-specific content
   const isWebDev = service?.slug === 'web-development';
-  const steps = isWebDev ? WEBDEV_PROCESS_STEPS : PROCESS_STEPS;
-  const bullets = isWebDev ? WEBDEV_PROCESS_BULLETS : PROCESS_BULLETS;
-  const ask = isWebDev ? WEBDEV_PROCESS_ASK : PROCESS_ASK;
+  const isAppDev = service?.slug === 'app-development';
+  const isSoftwareDev = service?.slug === 'software-development';
+  const isAIDev = service?.slug === 'ai-development';
+  const isChatbot = service?.slug === 'ai-chatbot';
+  const isSaaS = service?.slug === 'ai-saas';
+  const isIntegration = service?.slug === 'ai-integration';
+  const isGenerative = service?.slug === 'generative-ai';
+
+  const steps = isWebDev ? WEBDEV_PROCESS_STEPS :
+                isAppDev ? APP_PROCESS_STEPS :
+                isSoftwareDev ? SOFTWARE_PROCESS_STEPS :
+                isAIDev ? AI_PROCESS_STEPS :
+                isChatbot ? CHATBOT_PROCESS_STEPS :
+                isSaaS ? SAAS_PROCESS_STEPS :
+                isIntegration ? INTEGRATION_PROCESS_STEPS :
+                isGenerative ? GENERATIVE_PROCESS_STEPS : PROCESS_STEPS;
+  const bullets = isWebDev ? WEBDEV_PROCESS_BULLETS :
+                  isAppDev ? APP_PROCESS_BULLETS :
+                  isSoftwareDev ? SOFTWARE_PROCESS_BULLETS :
+                  isAIDev ? AI_PROCESS_BULLETS :
+                  isChatbot ? CHATBOT_PROCESS_BULLETS :
+                  isSaaS ? SAAS_PROCESS_BULLETS :
+                  isIntegration ? INTEGRATION_PROCESS_BULLETS :
+                  isGenerative ? GENERATIVE_PROCESS_BULLETS : PROCESS_BULLETS;
+  const ask = isWebDev ? WEBDEV_PROCESS_ASK :
+              isAppDev ? APP_PROCESS_ASK :
+              isSoftwareDev ? SOFTWARE_PROCESS_ASK :
+              isAIDev ? AI_PROCESS_ASK :
+              isChatbot ? CHATBOT_PROCESS_ASK :
+              isSaaS ? SAAS_PROCESS_ASK :
+              isIntegration ? INTEGRATION_PROCESS_ASK :
+              isGenerative ? GENERATIVE_PROCESS_ASK : PROCESS_ASK;
 
   const headingTitle = isWebDev
     ? "Web development, done"
+    : isAppDev
+    ? "App development, done"
+    : isSoftwareDev
+    ? "Software development, done"
+    : isAIDev
+    ? "AI development, done"
+    : isChatbot
+    ? "Chatbot development, done"
+    : isSaaS
+    ? "AI SaaS development, done"
+    : isIntegration
+    ? "AI integration, done"
+    : isGenerative
+    ? "Generative AI, done"
     : "Marketing and engineering,";
   const headingAccent = isWebDev
+    ? "the right way."
+    : isAppDev
+    ? "the right way."
+    : isSoftwareDev
+    ? "the right way."
+    : isAIDev
+    ? "the right way."
+    : isChatbot
+    ? "the right way."
+    : isSaaS
+    ? "the right way."
+    : isIntegration
+    ? "the right way."
+    : isGenerative
     ? "the right way."
     : "run the same way.";
   const headingIntro = isWebDev
     ? "The same engineering discipline that powers modern SaaS products now builds your website: clean code, proven process, and measurable results."
+    : isAppDev
+    ? "The same engineering discipline that powers top-rated apps now builds your mobile application: clean architecture, proven process, and store-ready delivery."
+    : isSoftwareDev
+    ? "The same engineering discipline that powers enterprise systems now builds your custom software: business-first architecture, clean code, and scalable solutions."
+    : isAIDev
+    ? "The same engineering discipline that powers production AI systems now builds your AI applications: validated models, proper monitoring, and real-world performance."
+    : isChatbot
+    ? "The same engineering discipline that powers customer support platforms now builds your AI chatbot: grounded responses, seamless handoff, and consistent experience."
+    : isSaaS
+    ? "The same engineering discipline that powers scalable SaaS products now builds your AI platform: multi-tenant architecture, unit economics, and growth-ready infrastructure."
+    : isIntegration
+    ? "The same engineering discipline that powers enterprise integrations now adds AI to your stack: seamless workflows, cost controls, and governed deployment."
+    : isGenerative
+    ? "The same engineering discipline that powers production AI systems now builds your generative AI: grounded RAG, proper guardrails, and cost-optimized deployment."
     : "The discipline that ships software now runs your project: documented decisions, weekly cycles, and numbers you can check yourself.";
 
   return (

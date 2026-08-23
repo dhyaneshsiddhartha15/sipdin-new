@@ -1,0 +1,183 @@
+/**
+ * ServiceSaaSPricing — Custom pricing table for AI SaaS services
+ * Designed to match the reference dark table UI
+ */
+
+import Link from "next/link";
+
+const SAAS_PLANS = [
+  {
+    name: "AI SaaS MVP",
+    features: "Core AI functionality, basic multi-tenant architecture, subscription billing, admin dashboard, essential monitoring",
+    price: "₹8,00,000 - ₹15,00,000",
+    timeline: "12-16 weeks"
+  },
+  {
+    name: "Complete AI SaaS",
+    features: "Full multi-tenant system, advanced AI capabilities, comprehensive billing, analytics dashboards, scaling infrastructure",
+    price: "₹15,00,000 - ₹25,00,000",
+    timeline: "16-20 weeks"
+  },
+  {
+    name: "Enterprise AI Platform",
+    features: "Advanced multi-tenant, custom AI models, enterprise billing and analytics, high-scale infrastructure, comprehensive support",
+    price: "₹25,00,000+",
+    timeline: "20+ weeks"
+  }
+];
+
+const SAAS_FEATURES = [
+  "Multi-tenant architecture design",
+  "AI integration and optimization",
+  "Subscription and usage-based billing",
+  "Customer and admin dashboards",
+  "User authentication and security",
+  "Monitoring and analytics setup",
+  "Infrastructure for scaling",
+  "Documentation and deployment"
+];
+
+export default function ServiceSaaSPricing() {
+  return (
+    <section className="bg-surface-2/40 px-6 py-[88px] md:px-[80px]">
+      <div className="mx-auto max-w-[1240px]">
+        {/* Section Header */}
+        <div className="mb-12 text-center">
+          <span className="font-['Geist'] block text-[11px] font-semibold uppercase tracking-[0.35em] text-brand">
+            Pricing
+          </span>
+          <h2 className="font-['Hanken_Grotesk'] mt-6 text-[32px] font-bold leading-[1.1] tracking-tight text-fg md:text-[42px]">
+            AI SaaS Development{" "}
+            <em className="not-italic text-brand md:italic">Packages and Pricing</em>
+          </h2>
+          <p className="font-['Inter'] mx-auto mt-5 max-w-2xl text-[15px] leading-relaxed text-fg-2">
+            AI SaaS development costs depend on architecture complexity, AI capabilities, and scaling requirements. Below is an honest breakdown of what different types of AI SaaS products cost, what's included, and timeline expectations.
+          </p>
+        </div>
+
+        {/* Dark Pricing Table */}
+        <div className="rounded-xl overflow-hidden border border-line/30 bg-[#0f172a]">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left">
+              {/* Table Header */}
+              <thead>
+                <tr className="border-b border-[#1e293b] bg-[#1e293b]/50">
+                  <th className="px-6 py-4 font-['Hanken_Grotesk'] text-sm font-semibold text-white">
+                    Package
+                  </th>
+                  <th className="px-6 py-4 font-['Hanken_Grotesk'] text-sm font-semibold text-white">
+                    What's Included
+                  </th>
+                  <th className="px-6 py-4 font-['Hanken_Grotesk'] text-sm font-semibold text-white">
+                    Price (INR)
+                  </th>
+                  <th className="px-6 py-4 font-['Hanken_Grotesk'] text-sm font-semibold text-white">
+                    Timeline
+                  </th>
+                </tr>
+              </thead>
+
+              {/* Table Body */}
+              <tbody>
+                {SAAS_PLANS.map((plan, index) => (
+                  <tr
+                    key={index}
+                    className={`border-b border-[#1e293b] ${
+                      index === SAAS_PLANS.length - 1 ? '' : ''
+                    } hover:bg-white/5 transition-colors`}
+                  >
+                    <td className="px-6 py-4">
+                      <div className="font-['Hanken_Grotesk'] font-semibold text-white">
+                        {plan.name}
+                      </div>
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="font-['Inter'] text-sm text-gray-300">
+                        {plan.features}
+                      </div>
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="font-['Hanken_Grotesk'] font-semibold text-brand">
+                        {plan.price}
+                      </div>
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="font-['Geist'] text-sm text-gray-300">
+                        {plan.timeline}
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* What's Included Section */}
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="rounded-xl border border-line/30 bg-surface p-6">
+            <h3 className="font-['Hanken_Grotesk'] text-lg font-semibold text-fg mb-4">
+              What's Included in All Packages
+            </h3>
+            <ul className="space-y-3">
+              {SAAS_FEATURES.map((feature, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <span className="text-brand mt-1">✓</span>
+                  <span className="font-['Inter'] text-sm text-fg-2">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="rounded-xl border border-line/30 bg-surface p-6">
+            <h3 className="font-['Hanken_Grotesk'] text-lg font-semibold text-fg mb-4">
+              What Affects Pricing
+            </h3>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3">
+                <span className="text-fg-3 mt-1">•</span>
+                <span className="font-['Inter'] text-sm text-fg-2">
+                  <strong>Architecture:</strong> Simple multi-tenant vs complex enterprise systems
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-fg-3 mt-1">•</span>
+                <span className="font-['Inter'] text-sm text-fg-2">
+                  <strong>AI Complexity:</strong> Basic AI vs advanced models and custom training
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-fg-3 mt-1">•</span>
+                <span className="font-['Inter'] text-sm text-fg-2">
+                  <strong>Billing Complexity:</strong> Simple subscriptions vs usage-based pricing
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-fg-3 mt-1">•</span>
+                <span className="font-['Inter'] text-sm text-fg-2">
+                  <strong>Scaling Requirements:</strong> Expected user base and growth projections
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-fg-3 mt-1">•</span>
+                <span className="font-['Inter'] text-sm text-fg-2">
+                  <strong>Infrastructure:</strong> Basic hosting vs enterprise-grade scaling and monitoring
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="mt-10 rounded-xl border-l-4 border-brand bg-surface p-6">
+          <p className="font-['Inter'] text-sm text-fg-2">
+            <strong className="text-fg">Every AI SaaS is unique.</strong> These ranges reflect real AI SaaS products we've built and launched.
+            <Link href="/contact" className="text-brand hover:underline ml-2">
+              Get a detailed consultation →
+            </Link>
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}

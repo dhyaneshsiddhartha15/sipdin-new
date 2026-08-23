@@ -64,7 +64,6 @@ export const servicesMenuColumns: MegaMenuColumn[] = [
       { name: "Website Development", description: "Full Stack Systems", href: "/services/web-development", icon: Globe },
       { name: "Mobile App Development", description: "Native & Hybrid Apps", href: "/services/app-development", icon: Smartphone },
       { name: "Software Development", description: "Custom Enterprise Tools", href: "/services/software-development", icon: Code2 },
-      { name: "Blockchain Development", description: "Smart contracts & dApps", href: "/services/blockchain-development", icon: Boxes },
     ],
   },
   {

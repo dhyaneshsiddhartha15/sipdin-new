@@ -4,7 +4,7 @@
  */
 
 import { Check, X } from "lucide-react";
-import { COMPARISON_ROWS, WEBDEV_COMPARISON_ROWS } from "@/lib/serviceDetail";
+import { COMPARISON_ROWS, WEBDEV_COMPARISON_ROWS, APP_COMPARISON_ROWS, SOFTWARE_COMPARISON_ROWS, AI_COMPARISON_ROWS, CHATBOT_COMPARISON_ROWS, SAAS_COMPARISON_ROWS, INTEGRATION_COMPARISON_ROWS, GENERATIVE_COMPARISON_ROWS } from "@/lib/serviceDetail";
 import SectionHeading from "./SectionHeading";
 import type { Service } from "@/lib/services";
 
@@ -13,18 +13,75 @@ interface ServiceComparisonProps {
 }
 
 export default function ServiceComparison({ service }: ServiceComparisonProps = {}) {
-  // Use web development specific content for web development service
+  // Use service-specific comparison content
   const isWebDev = service?.slug === 'web-development';
-  const comparisonRows = isWebDev ? WEBDEV_COMPARISON_ROWS : COMPARISON_ROWS;
+  const isAppDev = service?.slug === 'app-development';
+  const isSoftwareDev = service?.slug === 'software-development';
+  const isAIDev = service?.slug === 'ai-development';
+  const isChatbot = service?.slug === 'ai-chatbot';
+  const isSaaS = service?.slug === 'ai-saas';
+  const isIntegration = service?.slug === 'ai-integration';
+  const isGenerative = service?.slug === 'generative-ai';
+
+  const comparisonRows = isWebDev ? WEBDEV_COMPARISON_ROWS :
+                        isAppDev ? APP_COMPARISON_ROWS :
+                        isSoftwareDev ? SOFTWARE_COMPARISON_ROWS :
+                        isAIDev ? AI_COMPARISON_ROWS :
+                        isChatbot ? CHATBOT_COMPARISON_ROWS :
+                        isSaaS ? SAAS_COMPARISON_ROWS :
+                        isIntegration ? INTEGRATION_COMPARISON_ROWS :
+                        isGenerative ? GENERATIVE_COMPARISON_ROWS : COMPARISON_ROWS;
 
   const title = isWebDev
     ? "No lock-ins. No templates."
+    : isAppDev
+    ? "No lock-ins. No ownership battles."
+    : isSoftwareDev
+    ? "No lock-ins. No IP battles."
+    : isAIDev
+    ? "No demos that never ship."
+    : isChatbot
+    ? "No generic responses."
+    : isSaaS
+    ? "No unprofitable scaling."
+    : isIntegration
+    ? "No disruption required."
+    : isGenerative
+    ? "No hallucinations."
     : "No lock-ins. No black boxes.";
   const accent = isWebDev
     ? "No shortcuts."
+    : isAppDev
+    ? "No fine print."
+    : isSoftwareDev
+    ? "No compromises."
+    : isAIDev
+    ? "Production-grade AI."
+    : isChatbot
+    ? "Grounded on your knowledge."
+    : isSaaS
+    ? "Built for profitability."
+    : isIntegration
+    ? "Smarter existing tools."
+    : isGenerative
+    ? "Grounded and guarded."
     : "No excuses.";
   const intro = isWebDev
     ? "Everything below is already stated somewhere on this site. Here it is side by side for web development."
+    : isAppDev
+    ? "Everything below is already stated somewhere on this site. Here it is side by side for mobile app development."
+    : isSoftwareDev
+    ? "Everything below is already stated somewhere on this site. Here it is side by side for custom software development."
+    : isAIDev
+    ? "Everything below is already stated somewhere on this site. Here it is side by side for AI development."
+    : isChatbot
+    ? "Everything below is already stated somewhere on this site. Here it is side by side for AI chatbot development."
+    : isSaaS
+    ? "Everything below is already stated somewhere on this site. Here it is side by side for AI SaaS development."
+    : isIntegration
+    ? "Everything below is already stated somewhere on this site. Here it is side by side for AI integration."
+    : isGenerative
+    ? "Everything below is already stated somewhere on this site. Here it is side by side for generative AI development."
     : "Everything below is already stated somewhere on this site. Here it is side by side.";
 
   return (
