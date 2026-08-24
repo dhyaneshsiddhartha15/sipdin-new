@@ -797,7 +797,7 @@ const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "wafeeq-inclusive-digital-learning",
     product: "Wafeeq",
-    tag: "EdTech · Accessibility · E-learning",
+    tag: "EdTech · Accessibility · E-learning · Applied AI",
     title: "Wafeeq – Making Digital Learning More Inclusive",
     description:
       "Wafeeq is an inclusive digital learning platform created to make education, professional training, and career development more accessible to Deaf and Hard-of-Hearing learners.",
@@ -806,10 +806,10 @@ const CASE_STUDIES: CaseStudy[] = [
     productInitial: "W",
     watchUrl: "#",
     stats: [
-      { value: "Multiple", label: "Course Categories" },
-      { value: "Deaf & HOH", label: "Primary Audience" },
-      { value: "Sign Language", label: "Core Accessibility" },
-      { value: "Career-Focused", label: "Learning Approach" },
+      { value: "227", label: "Screens Across Platform" },
+      { value: "3", label: "Role-Based AI Agents" },
+      { value: "Arabic + English", label: "Full Bilingual + RTL" },
+      { value: "Applied AI", label: "Sign Practice + Agents" },
     ],
     sections: [
       {
@@ -825,51 +825,327 @@ const CASE_STUDIES: CaseStudy[] = [
         heading: "Project Overview",
         body: [
           "Wafeeq is an inclusive digital learning platform created to make education, professional training, and career development more accessible to Deaf and Hard-of-Hearing learners.",
-          "Built around sign language and accessible digital learning, Wafeeq brings learners, certified trainers, educational content, and organizations together in one platform. The platform offers training across areas such as computer science, languages, business, design, photography, education, and more—helping learners build practical skills that can support their education and career journey.",
-          "Industry: EdTech · Accessibility · E-learning | Audience: Deaf & Hard-of-Hearing learners, trainers, organizations | Platform: Web & App | Services: Website & App Development · Admin Dashboard · Educator Dashboard · Learner Dashboard · AI Chat Integration · Product Design · UI/UX · Digital Experience",
+          "Built around sign language and accessible digital learning, Wafeeq brings learners, certified trainers, educational content, and organizations together in one platform — spanning computer science, languages, business, design, photography, and education.",
+          "But Wafeeq is not a course catalogue with captions added. It is a full sign-language learning ecosystem: a bilingual dictionary, a school curriculum, camera-based signing practice with real feedback, learning games, live trainer sessions, B2B billing, and an AI layer that runs through all of it.",
+          "Industry: EdTech · Accessibility · E-learning · Applied AI | Audience: Deaf & Hard-of-Hearing learners, trainers, organizations, sponsors | Platform: Web & App (Arabic + English, full RTL) | Services: Website & App Development · Admin, Educator & Learner Dashboards · AI Sign Recognition · Role-Based AI Agents · AI Chat & Knowledge Base · Sign Language Dictionary · Digital Curriculum · Learning Games · Trainer Booking & Payments · Billing & Invoicing · Certification · Product Design · UI/UX",
         ],
       },
       {
         type: "text",
         heading: "The Challenge",
         body: [
-          "For many Deaf and Hard-of-Hearing learners, access to education is not simply about having information available online.",
-          "The bigger challenge is how that information is communicated.",
-          "Traditional online learning platforms are largely designed around spoken instruction, audio, and text-heavy experiences. This can create barriers for learners who rely on sign language as their primary form of communication.",
-          "At the same time, professional and technical training opportunities specifically designed around the needs of the Deaf community remain limited.",
-          "Wafeeq was created to address this gap: How can digital education become more accessible, inclusive, and relevant to Deaf and Hard-of-Hearing learners?",
+          "For many Deaf and Hard-of-Hearing learners, access to education is not simply about having information available online. The bigger challenge is how that information is communicated.",
+          "Traditional online learning platforms are designed around spoken instruction, audio, and text-heavy experiences. Captions help, but they assume the learner's first language is written text. For many Deaf learners it is not — sign language is.",
+          "There is a second, quieter gap. Learning a sign language requires practice with feedback. You can watch a sign a hundred times and still perform it wrong, because nothing tells you what you got wrong. Most accessible-learning tools are one-directional: they show, they don't respond.",
+          "And there is a third, on the operations side. A platform serving this community needs educators, approvals, payouts, curriculum, bookings, sponsorships and billing — a large surface that must stay manageable for a small team.",
+          "Wafeeq was built to answer all three.",
         ],
       },
       {
         type: "text",
         heading: "The Vision",
         body: [
-          "Wafeeq's vision goes beyond creating another online course platform. It aims to build a digital library of accessible educational content and help integrate Deaf and Hard-of-Hearing individuals into education and employment.",
-          "The platform works toward this through accessible training content, professional sign-language trainers and interpreters, practical skill development, digital learning resources, certification, organizational training, and a growing ecosystem of educators and learners.",
-          "Wafeeq describes its mission around empowering Deaf and Hard-of-Hearing people with professional training and reducing barriers between trainers and learners.",
+          "Wafeeq's vision goes beyond another online course platform. It aims to build a digital library of accessible educational content and help integrate Deaf and Hard-of-Hearing individuals into education and employment — through accessible content, professional trainers, practical skill development, certification, organizational training, and a growing ecosystem of educators and learners.",
         ],
       },
       {
         type: "list",
         heading: "Understanding the Ecosystem",
         hideImage: true,
-        intro: "Wafeeq is designed around multiple stakeholders rather than a single user type:",
+        intro: "Wafeeq is designed around multiple stakeholders, each with a dedicated dashboard, permission model, and — uniquely — their own AI assistant.",
         items: [
           {
-            label: "Learners",
-            text: "People looking to develop new skills, improve their education, or strengthen their career opportunities.",
+            label: "01 · Learners",
+            text: "People developing new skills, continuing their education, or strengthening career opportunities.",
           },
           {
-            label: "Trainers",
-            text: "Certified sign-language experts and instructors who create and deliver educational content.",
+            label: "02 · Trainers & Educators",
+            text: "Certified sign-language experts who create courses, publish dictionary content, run live sessions, and earn from their work.",
           },
           {
-            label: "Organizations",
-            text: "Businesses and institutions that need accessible training and professional development for Deaf and Hard-of-Hearing employees.",
+            label: "03 · Organizations & Sponsors",
+            text: "Businesses and institutions funding accessible training, for their own employees or as sponsored access for others.",
           },
           {
-            label: "The Accessibility Layer",
-            text: "Sign language sits at the center of the ecosystem, helping transform conventional digital education into a more inclusive learning experience.",
+            label: "04 · Administrators",
+            text: "A full operations layer: content approval, curriculum management, payouts, disputes, billing, analytics, and support.",
+          },
+          {
+            label: "05 · The Accessibility Layer",
+            text: "Sign language sits at the centre, transforming conventional digital education into an inclusive learning experience.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "Learning by Doing: AI-Powered Sign Practice",
+        hideImage: true,
+        intro: "This is where Wafeeq departs most sharply from conventional e-learning.",
+        items: [
+          {
+            label: "From Watching to Doing",
+            text: "Watching a sign is not the same as being able to produce one. Wafeeq's AI Practice lets learners practise signing with their camera and receive scored feedback — turning passive viewing into active recall.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "Two Practice Modes",
+        hideImage: true,
+        intro: "The system supports both receptive and productive practice:",
+        items: [
+          {
+            label: "Sign Recognition",
+            text: "The learner watches a real signed video from the dictionary and identifies its meaning. Receptive skill, scored exactly.",
+          },
+          {
+            label: "Sign Challenge",
+            text: "The learner picks a sign, watches the reference, then performs it on camera. The system compares their attempt against reference recordings and returns a similarity score plus structured diagnostics: which phase of the movement drifted, which hand contributed more error, whether the fault was handshape or hand path, and whether the timing was rushed or slow.",
+          },
+        ],
+        note: "That diagnostic breakdown is the point. A score of \"72%\" teaches nothing. \"Your handshape is right but your hand travelled too far left in the second half\" teaches something.",
+      },
+      {
+        type: "list",
+        heading: "How It Works",
+        hideImage: true,
+        intro: "The recognition system is built for real-world conditions:",
+        items: [
+          {
+            label: "Hand Tracking with MediaPipe",
+            text: "Hand landmarks are tracked with MediaPipe, then normalised — translated to the wrist and scaled by the hand's own size — so that a learner sitting closer to the camera, or simply with larger hands, isn't penalised for it.",
+          },
+          {
+            label: "Dynamic Time Warping Comparison",
+            text: "Attempts are compared using Dynamic Time Warping, which aligns two sequences before measuring, so a correct sign performed slowly scores as correct.",
+          },
+          {
+            label: "Multi-Signal Matching",
+            text: "Comparison blends two signals: joint positions for where the hand travels, and bone angles for the shape it holds.",
+          },
+          {
+            label: "Consistent Training Data",
+            text: "Reference templates are extracted from the platform's own dictionary videos using the same tracking model the learner runs in their browser — a mismatch between the two would shift the coordinates just enough to poison the metric.",
+          },
+          {
+            label: "Multiple Reference Templates",
+            text: "Each sign carries several reference templates rather than one, because a single recording makes the score measure \"how closely do you resemble that specific signer\" as much as \"did you sign this correctly.\" Matching takes the distance to the closest template, so a learner whose style resembles any valid performance is scored on merit.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "Privacy by Architecture, Not by Policy",
+        hideImage: true,
+        intro: "Privacy is fundamental to the design:",
+        items: [
+          {
+            label: "Browser-Only Processing",
+            text: "Matching runs entirely in the learner's browser. Reference templates are sent to the device; the camera feed never leaves it.",
+          },
+          {
+            label: "No Video Upload",
+            text: "Video is never uploaded at all. Only coordinate landmarks can be stored — and only when a learner has both rated the attempt themselves and explicitly opted in to contribute it.",
+          },
+          {
+            label: "Built for This Audience",
+            text: "That detail matters for this audience. A platform asking Deaf users to sign into a camera is asking for something personal. Wafeeq is built so the sensitive part never travels.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "Progress That Reflects Reality",
+        hideImage: true,
+        intro: "Every attempt feeds a per-sign progress record:",
+        items: [
+          {
+            label: "Comprehensive Tracking",
+            text: "Accuracy, mastery level, improvement trend, and streaks are all tracked.",
+          },
+          {
+            label: "Personal Dashboard",
+            text: "The learner's progress dashboard shows weakest signs surfaced by name, accuracy by category, a seven-day activity history, and achievements computed from real numbers rather than displayed as decoration.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "An AI Assistant for Every Role",
+        hideImage: true,
+        intro: "Most platforms add a chatbot that answers FAQs. Wafeeq built something different: three distinct AI agents that can actually operate the platform, each scoped to what its user is permitted to do.",
+        items: [
+          {
+            label: "Shared Architecture, Different Scopes",
+            text: "They share one architecture and one safety model. What differs is what each can see and touch.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "The Admin Agent — Operations by Conversation",
+        hideImage: true,
+        intro: "Running a marketplace means constant review work: educator applications, course approvals, payout requests, revenue questions. The admin agent turns that into conversation.",
+        items: [
+          {
+            label: "Dashboard Statistics",
+            text: "It can pull dashboard statistics, revenue summaries by month and by course, educator earnings breakdowns, and payout positions.",
+          },
+          {
+            label: "Review and Act",
+            text: "It can inspect a pending educator or course and check it against requirements before recommending a decision. And it can act — approving or rejecting educators and courses, requesting changes, scheduling interviews, suspending or reactivating users, and releasing or rejecting withdrawals.",
+          },
+          {
+            label: "Twenty-Five Capabilities",
+            text: "Twenty-five capabilities in total, so an administrator can ask \"which courses are waiting on me and do any of them fail requirements?\" and get an answer grounded in live data rather than a dashboard hunt.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "The Educator Agent — A Business Assistant",
+        hideImage: true,
+        intro: "Educators are running a small business on the platform, and most of their questions are financial or operational.",
+        items: [
+          {
+            label: "Direct Answers",
+            text: "The educator agent answers them directly: earnings summaries, earnings by course, wallet balance, withdrawal history and eligibility, payout details, upcoming bookings, quiz analytics, and which submissions are waiting to be graded.",
+          },
+          {
+            label: "Act on Behalf",
+            text: "It can also act on the educator's behalf — requesting or cancelling a withdrawal, creating a course, or submitting one for review.",
+          },
+          {
+            label: "Checks Before Acting",
+            text: "Critically, it checks before it acts. Asked to submit a course, it first verifies the course actually meets submission requirements and reports blockers instead of pushing through a rejection.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "The Learner Agent — A Study Coach",
+        hideImage: true,
+        intro: "The learner agent is built around one question: what should I practise next?",
+        items: [
+          {
+            label: "Personalized Recommendations",
+            text: "It reads the learner's own practice history — weakest signs, strongest signs, signs not yet started — and recommends a next target.",
+          },
+          {
+            label: "Progress and Support",
+            text: "It reports streaks, badges, and learning-dashboard progress, searches the course catalogue, checks refund eligibility, and can set a daily practice reminder.",
+          },
+          {
+            label: "Role-Based Access",
+            text: "Every one of its tools is pinned to the caller. A learner's agent is structurally incapable of reading another learner's data.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "The Safety Model Behind the Agents",
+        hideImage: true,
+        intro: "Giving an AI the ability to approve educators and release payouts is only responsible if the guardrails are real. Four layers make it so.",
+        items: [
+          {
+            label: "Permission-Filtered Toolboxes",
+            text: "Admin tools are filtered through the caller's role-based access scopes before the model ever sees them. If an administrator lacks a permission, the corresponding tool isn't hidden — it doesn't exist in that conversation. The model cannot attempt what it was never offered.",
+          },
+          {
+            label: "Ownership Verification",
+            text: "Educator tools are filtered by approval state, with ownership verified on every individual call.",
+          },
+          {
+            label: "Staged Execution",
+            text: "Nothing that changes data executes immediately. Every mutating action is staged, not run. The agent produces a plain-language summary of exactly what will happen and a confirmation token; the human presses Confirm.",
+          },
+          {
+            label: "Token Security",
+            text: "Tokens expire after five minutes and are consumed exactly once, backed by the database so the guarantee holds even across multiple server processes.",
+          },
+          {
+            label: "Comprehensive Logging",
+            text: "Each action writes an audit record — who acted, in what role, which tool, against which target, with what arguments, success or failure, the error if any, and the confirmation token that authorised it. Administrators review this in a dedicated Agent Actions view.",
+          },
+          {
+            label: "Grounded Answers",
+            text: "The agents answer from tool results, not from memory. Where a question needs platform knowledge rather than live data, retrieval runs over Wafeeq's own knowledge base using semantic search, with a text-search fallback when the active AI provider doesn't support embeddings.",
+          },
+          {
+            label: "Context Injection",
+            text: "Live account context is injected per role — and deliberately withheld from the agent path, so it fetches authoritative figures through tools instead of estimating from a summary.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "AI Chat Across the Platform",
+        hideImage: true,
+        intro: "Alongside the agents, a general assistant runs site-wide — available to visitors and learners, in Arabic and English, answering questions about courses, pricing, educators, sponsorship, and how the platform works, grounded in the platform's own content.",
+        items: [
+          {
+            label: "Provider-Independent",
+            text: "Claude, OpenAI and Gemini sit behind a common interface. The active provider is configurable from the admin dashboard, and the system adapts to what each one supports — falling back gracefully where a capability like embeddings or tool-calling is unavailable.",
+          },
+          {
+            label: "Cost-Controlled",
+            text: "Every request is metered against per-role daily token budgets, split by operation type, with spend and cost reported to administrators. Budgets are measured before they are ever enforced, so limits can be calibrated against real traffic rather than guessed at.",
+          },
+          {
+            label: "Resilient by Design",
+            text: "When the AI is unavailable, over budget, or timing out, the platform doesn't show an error. A fallback layer detects what the user was asking about, answers from the knowledge base where it can, and returns a helpful bilingual response with relevant links — so an outage in a third-party API degrades the experience instead of breaking it.",
+          },
+          {
+            label: "Observable",
+            text: "Conversation volume, token spend and cost by provider, role and feature, latency percentiles, error and fallback rates, and per-tool agent usage all surface in an admin analytics view.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "The Sign Language Dictionary",
+        hideImage: true,
+        intro: "A searchable bilingual dictionary sits at the heart of the platform, browsable by word, by letter, and by handshape — the way sign language is actually organised, rather than only alphabetically.",
+        items: [
+          {
+            label: "Comprehensive Content",
+            text: "It includes a full fingerspelling alphabet, handshape references, a rotating Sign of the Day, and per-word signed video in both Arabic and English.",
+          },
+          {
+            label: "Personal and Professional",
+            text: "Learners favourite words and build personal vocabulary; educators and admins publish and maintain entries from their own dashboards.",
+          },
+          {
+            label: "Content Spine",
+            text: "The dictionary is not a silo. It is the content spine feeding the practice engine, the games, and the curriculum.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "Sign Academy: A Full Curriculum",
+        hideImage: true,
+        intro: "Beyond individual courses, Wafeeq includes a structured academic layer — grade levels, subjects, and lessons, with access gated by the learner's enrolled grade.",
+        items: [
+          {
+            label: "School Infrastructure",
+            text: "This reframes the platform from \"skills marketplace\" to \"school infrastructure\": a Deaf learner can follow a curriculum year by year, not just pick isolated courses.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "Learning Through Play",
+        hideImage: true,
+        intro: "Sign language is a motor skill, and motor skills need repetition. Repetition needs motivation.",
+        items: [
+          {
+            label: "Engaging Games",
+            text: "Wafeeq includes learning games that drill vocabulary without feeling like drilling: fingerspelling challenges, guess-the-sign, learn-my-name, number and arithmetic practice, country and landmark discovery, monologue comprehension, and foundational modules.",
+          },
+          {
+            label: "Progress Tracking",
+            text: "A leaderboard layer tracks progress and competition.",
           },
         ],
       },
@@ -877,19 +1153,39 @@ const CASE_STUDIES: CaseStudy[] = [
         type: "list",
         heading: "Learning Through Expert Instructors",
         hideImage: true,
-        intro: "One of Wafeeq's strongest aspects is its instructor ecosystem. Rather than treating accessibility as an additional feature, Wafeeq builds its educational experience around people with expertise in sign-language education and Deaf training.",
+        intro: "Rather than treating accessibility as a feature, Wafeeq builds its educational experience around people with genuine expertise in sign-language education.",
         items: [
           {
             label: "Expert Instructor Network",
-            text: "The platform currently showcases instructors with backgrounds spanning sign-language interpretation, computer education, graphic design, photography, Arabic language, and professional training.",
+            text: "Instructors span sign-language interpretation, computer education, graphic design, photography, Arabic language, and professional training.",
           },
           {
             label: "Discovery-Based Learning",
-            text: "This allows learners to discover not only courses, but also the people behind them.",
+            text: "Learners discover not only courses, but the people behind them.",
           },
           {
-            label: "Instructor Opportunities",
-            text: "The instructor model also creates an opportunity for experts to contribute knowledge and create accessible educational content for the community.",
+            label: "A Real Earnings System",
+            text: "Educators aren't just contributors. The platform runs a complete earnings ledger, revenue split, withdrawal requests, and admin-managed payouts. Teaching on Wafeeq is a livelihood, not a donation.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "Live Training: Hire a Trainer",
+        hideImage: true,
+        intro: "Recorded content cannot answer a question. For that, Wafeeq includes one-to-one live training.",
+        items: [
+          {
+            label: "Seamless Booking",
+            text: "Learners browse trainer profiles, book hourly sessions, and pay through the platform.",
+          },
+          {
+            label: "Trainer Tools",
+            text: "Trainers manage availability and requests from their dashboard.",
+          },
+          {
+            label: "Admin Oversight",
+            text: "Admins oversee bookings, commissions, session completion, and a formal dispute process with a defined resolution window.",
           },
         ],
       },
@@ -897,27 +1193,47 @@ const CASE_STUDIES: CaseStudy[] = [
         type: "list",
         heading: "Designed Around Different Learning Needs",
         hideImage: true,
-        intro: "Wafeeq supports multiple levels of learning, from beginner to advanced. Its course ecosystem combines:",
+        intro: "Wafeeq supports multiple levels of learning, from beginner to advanced:",
         items: [
           {
-            label: "Video-based learning",
-            text: "Structured lessons allow learners to access content online at their own pace.",
+            label: "01 · Video-based learning",
+            text: "Structured lessons at the learner's own pace.",
           },
           {
-            label: "Sign-language expertise",
-            text: "Courses are delivered with the needs of Deaf and Hard-of-Hearing learners in mind.",
+            label: "02 · Sign-language expertise",
+            text: "Content built for Deaf learners by default, not adapted afterwards.",
           },
           {
-            label: "Assessments",
-            text: "Learners can complete assessments as part of their learning journey.",
+            label: "03 · Assessments",
+            text: "Quizzes and evaluations as part of the journey.",
           },
           {
-            label: "Certification",
-            text: "Successful learners receive digital certificates after completing the required course requirements.",
+            label: "04 · Certification",
+            text: "Verifiable digital certificates with public verification links and QR codes.",
           },
           {
-            label: "Feedback",
-            text: "Learners can rate courses and provide feedback, allowing the platform to continuously improve its educational content.",
+            label: "05 · Feedback",
+            text: "Learners rate courses, feeding continuous improvement.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "Built Bilingual, Not Translated",
+        hideImage: true,
+        intro: "Wafeeq is fully bilingual in Arabic and English, including complete right-to-left layout — across the marketing site, all dashboards, the dictionary, the AI assistants, and the practice tools.",
+        items: [
+          {
+            label: "Independent Recordings",
+            text: "Dictionary entries carry signed video in both languages, meaning each sign has two independent recordings rather than one recording with a translated label.",
+          },
+          {
+            label: "Proper RTL Documents",
+            text: "Invoices, receipts and certificates generate as genuine Arabic documents, not mirrored English layouts.",
+          },
+          {
+            label: "Structural Property",
+            text: "For a platform targeting the Arab world, this is a structural property of the content model, not a localisation pass added at the end.",
           },
         ],
       },
@@ -925,15 +1241,15 @@ const CASE_STUDIES: CaseStudy[] = [
         type: "list",
         heading: "From Learning to Career Development",
         hideImage: true,
-        intro: "Education is only one part of Wafeeq's larger objective. The platform is designed to help Deaf and Hard-of-Hearing individuals develop skills that can translate into real-world career opportunities.",
+        intro: "Practical skills focus that translates into real opportunities:",
         items: [
           {
             label: "Practical Skills Focus",
-            text: "Courses such as computer fundamentals, Windows, Adobe Illustrator, photography, Arabic, communication, and business-related subjects focus on practical knowledge that learners can use beyond the platform.",
+            text: "Computer fundamentals, Windows, Adobe Illustrator, photography, Arabic, communication, and business subjects: knowledge usable beyond the platform.",
           },
           {
             label: "Capability Building",
-            text: "This makes Wafeeq less about simply consuming educational content and more about building capabilities.",
+            text: "Less about consuming content, more about building capability — and proving it with certification.",
           },
         ],
       },
@@ -941,32 +1257,189 @@ const CASE_STUDIES: CaseStudy[] = [
         type: "list",
         heading: "A Platform for Organizations Too",
         hideImage: true,
-        intro: "Wafeeq also extends beyond individual learners. Organizations can work with Wafeeq to provide customized learning paths and training programs based on their specific needs.",
+        intro: "Organizations can work with Wafeeq for customized learning paths and training programs, with tailored curricula, priority support, partner resources, and CSR reporting for sponsors who need to demonstrate impact.",
         items: [
           {
-            label: "Customized Training",
-            text: "Its customized offering includes tailored learning paths, priority support, and partner resources.",
+            label: "Connected Ecosystem",
+            text: "Learners ↔ Trainers ↔ Organizations",
+          },
+        ],
+      },
+      {
+        type: "text",
+        heading: "Billing Built In, Not Bolted On",
+        body: [
+          "Selling training to an organization is a different transaction from a learner buying a course. It involves quotes, purchase approvals, finance departments, and paperwork that has to look official.",
+        ],
+      },
+      {
+        type: "list",
+        heading: "Invoice Creation",
+        hideImage: true,
+        intro: "Administrators build professional invoices with complete control:",
+        items: [
+          {
+            label: "Full Customisation",
+            text: "Itemised line items with quantities and rates, custom service titles, currency selection, issue and due dates, and notes.",
           },
           {
-            label: "Broader Ecosystem",
-            text: "This creates an opportunity for organizations to make their own training programs more inclusive.",
-            sub: ["Learners ↔ Trainers ↔ Organizations"],
+            label: "Live Calculation",
+            text: "Totals calculate live, and the PDF previews before anything is saved or sent.",
           },
         ],
       },
       {
         type: "list",
-        heading: "Empowerment Beyond the Platform",
+        heading: "Signed and Stamped",
         hideImage: true,
-        intro: "Accessibility is also reflected in Wafeeq's educational sponsorship model. The platform provides educational bundles that give beneficiaries access to multiple online training courses from certified trainers.",
+        intro: "Each invoice carries the professionalism that finance departments expect:",
         items: [
           {
-            label: "Educational Bundles",
-            text: "The current program provides three courses per bundle, with certificates available after course completion.",
+            label: "Digital Signature",
+            text: "Each invoice carries a digital signature drawn in the browser.",
           },
           {
-            label: "Active Support Mechanism",
-            text: "This turns the platform into more than a learning marketplace. It creates a mechanism for organizations and individuals to actively support access to education.",
+            label: "Company Stamp",
+            text: "A company stamp and a named preparer with title.",
+          },
+          {
+            label: "Professional Output",
+            text: "The output is a document a finance department will accept, not a styled web page.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "Bilingual Documents, Properly Typeset",
+        hideImage: true,
+        intro: "Invoices and receipts generate in English and Arabic, rendered through a headless browser from a data-driven template with embedded fonts:",
+        items: [
+          {
+            label: "Genuine Arabic Documents",
+            text: "The Arabic version is a genuine RTL translation with its own wordmark — not the English layout mirrored.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "Paid by Link, No Account Needed",
+        hideImage: true,
+        intro: "Organizations can pay without joining the platform:",
+        items: [
+          {
+            label: "Public Token System",
+            text: "Every invoice gets a unique public token. The client opens a link, reads the invoice, and pays by card — without registering or being onboarded.",
+          },
+          {
+            label: "Download Access",
+            text: "They download the invoice before paying and the receipt after.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "Reconciliation That Holds Up",
+        hideImage: true,
+        intro: "An invoice can become paid three independent ways:",
+        items: [
+          {
+            label: "Three Payment Paths",
+            text: "The client's inline payment, the payment provider's webhook, or an administrator manually reconciling.",
+          },
+          {
+            label: "Atomic Latch",
+            text: "All three converge on a single atomic latch, so whichever arrives first sends notifications and the rest safely do nothing. No duplicate emails, no double-counted revenue.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "Everyone Hears at Once",
+        hideImage: true,
+        intro: "When payment lands, everyone gets notified:",
+        items: [
+          {
+            label: "Billing Team",
+            text: "The billing team is emailed with amount and transaction reference and the receipt attached.",
+          },
+          {
+            label: "Administrators",
+            text: "Every administrator gets an in-app notification deep-linked to the invoice.",
+          },
+          {
+            label: "Client",
+            text: "The client receives their receipt in both languages.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "Learner Receipts Too",
+        hideImage: true,
+        intro: "Every learner payment produces its own downloadable invoice, accessible from their dashboard.",
+        items: [],
+      },
+      {
+        type: "list",
+        heading: "Empowerment Beyond the Platform",
+        hideImage: true,
+        intro: "Sponsors — individual or corporate — fund educational bundles giving beneficiaries access to multiple courses from certified trainers, with certificates on completion.",
+        items: [
+          {
+            label: "Sponsor Tools",
+            text: "Sponsors receive redeemable coupon codes, activation flows, and reporting on how their sponsorship was used. Gift cards extend the same idea to individuals.",
+          },
+          {
+            label: "Working Mechanism",
+            text: "This creates a working mechanism for organizations and individuals to actively fund access to education — and to see where it went.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "Under the Hood",
+        hideImage: true,
+        intro: "The platform is a production system, not a prototype.",
+        items: [
+          {
+            label: "227 Distinct Screens",
+            text: "152 across the admin, educator and learner dashboards; 66 across the public experience.",
+          },
+          {
+            label: "Three AI Agents",
+            text: "Role-scoped with 55 combined capabilities, permission-filtered toolsets, staged confirmation for every mutation, and a full audit trail.",
+          },
+          {
+            label: "Multi-Provider AI Layer",
+            text: "Claude, OpenAI and Gemini behind one interface, with token budgeting, cost analytics, and a layered offline fallback.",
+          },
+          {
+            label: "On-Device Sign Recognition",
+            text: "MediaPipe tracking with DTW matching, running entirely in the browser.",
+          },
+          {
+            label: "Role-Based Access Control",
+            text: "With granular permissions and a dedicated admin role editor.",
+          },
+          {
+            label: "Dual Payment Gateways",
+            text: "PayPal and Sadad Qatar, with refunds, coupons, gift cards, and live transaction monitoring.",
+          },
+          {
+            label: "Full B2B Invoicing",
+            text: "Bilingual PDF generation, digital signatures, public pay-by-link, and idempotent reconciliation across three settlement paths.",
+          },
+          {
+            label: "Automated Certificate Generation",
+            text: "With public verification.",
+          },
+          {
+            label: "Security Throughout",
+            text: "Rate limiting, input sanitisation, injection and XSS protection, JWT authentication.",
+          },
+          {
+            label: "Full Operations Layer",
+            text: "Support ticketing, notifications, badges, events, analytics, earnings reconciliation and payout management.",
           },
         ],
       },
@@ -974,22 +1447,21 @@ const CASE_STUDIES: CaseStudy[] = [
         type: "list",
         heading: "Building an Inclusive Digital Ecosystem",
         hideImage: true,
-        intro: "Wafeeq's approach combines three important ideas:",
+        intro: "Wafeeq's approach combines three ideas:",
         items: [
           {
-            label: "Accessibility",
-            text: "Education should be available in a format that works for Deaf and Hard-of-Hearing learners.",
+            label: "01 · Accessibility",
+            text: "Education should exist in a format that works for Deaf and Hard-of-Hearing learners from the start.",
           },
           {
-            label: "Skill Development",
-            text: "Learning should translate into practical knowledge and professional capabilities.",
+            label: "02 · Skill Development",
+            text: "Learning should translate into practical capability.",
           },
           {
-            label: "Opportunity",
-            text: "Better access to education can create stronger pathways into employment and career development.",
+            label: "03 · Opportunity",
+            text: "Better access to education creates stronger pathways into employment.",
           },
         ],
-        note: "Together, these form the foundation of Wafeeq's digital ecosystem.",
       },
       {
         type: "text",
@@ -1008,11 +1480,19 @@ const CASE_STUDIES: CaseStudy[] = [
         items: [
           {
             label: "Accessibility-First Design",
-            text: "Instead of asking Deaf and Hard-of-Hearing learners to adapt to conventional online education, Wafeeq builds an educational ecosystem around their communication needs.",
+            text: "Instead of asking Deaf learners to adapt to conventional online education, Wafeeq builds the ecosystem around their communication needs.",
           },
           {
-            label: "Focused Purpose",
-            text: "Its combination of Sign Language + Professional Training + Digital Learning + Certified Instructors + Career Development creates a focused platform with a clear social and educational purpose.",
+            label: "Interactive, Not Just Accessible",
+            text: "Most accessible-learning tools present content. Wafeeq responds — watching a learner sign and telling them how they did. That shift, from broadcast to feedback, is the difference between a library and a teacher.",
+          },
+          {
+            label: "AI That Does the Work, Not Just Answers Questions",
+            text: "The assistants don't only explain the platform; they operate it, within permissions, behind confirmation, on the record. That is a materially harder thing to build than a chatbot, and it is what keeps a platform this broad manageable by a small team.",
+          },
+          {
+            label: "Built for the Language, Not Retrofitted",
+            text: "Browsing by handshape, two independent signed recordings per word, facial expression treated as content rather than decoration: decisions only a platform designed around sign language would make.",
           },
         ],
       },
@@ -1020,8 +1500,8 @@ const CASE_STUDIES: CaseStudy[] = [
         type: "text",
         heading: "The Bigger Picture",
         body: [
-          "Wafeeq's ambition extends beyond becoming an online course platform. Its stated vision is to become a leading source of digital sign-language content across the Arab world and globally, while helping Deaf and Hard-of-Hearing individuals integrate into governmental and non-governmental workplaces.",
-          "That makes the platform part of a much larger movement: Making digital education accessible to everyone.",
+          "Wafeeq's ambition is to become a leading source of digital sign-language content across the Arab world and globally, while helping Deaf and Hard-of-Hearing individuals integrate into governmental and non-governmental workplaces.",
+          "That makes the platform part of a larger movement: making digital education accessible to everyone.",
           "Because accessibility isn't an extra layer of technology. It is part of the experience itself.",
         ],
       },
@@ -1030,19 +1510,8 @@ const CASE_STUDIES: CaseStudy[] = [
         heading: "The Outcome",
         body: [
           "Wafeeq brings together education, accessibility, and opportunity into one digital ecosystem.",
-          "From discovering a course to learning from specialized instructors, completing assessments, earning certificates, and developing career-ready skills, the platform creates a more inclusive path for Deaf and Hard-of-Hearing learners.",
-          "Wafeeq is not simply helping people learn. It is helping make learning—and the opportunities that come with it—more accessible.",
-        ],
-      },
-      {
-        type: "text",
-        heading: "Project Snapshot",
-        body: [
-          "**Wafeeq** - Inclusive EdTech Platform",
-          "**Focus**: Accessible education & professional development",
-          "**Users**: Deaf & Hard-of-Hearing learners · Trainers · Organizations",
-          "**Core Experience**: Courses · Sign-language training · Assessments · Certification · Instructor ecosystem · Organizational training",
-          "**Vision**: A more inclusive digital learning ecosystem where accessibility becomes a pathway to education, skills, and opportunity.",
+          "From discovering a course, to learning from specialized instructors, to practising signs on camera with real feedback, to asking an AI coach what to work on next — through assessments, verifiable certificates, live training, and career-ready skills — the platform creates a genuinely more inclusive path for Deaf and Hard-of-Hearing learners.",
+          "Wafeeq is not simply helping people learn. It is helping make learning — and the opportunities that come with it — more accessible.",
         ],
       },
       {
