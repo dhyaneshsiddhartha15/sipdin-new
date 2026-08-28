@@ -8,7 +8,7 @@ export default function CaseStudyCard({ study }: { study: CaseStudy }) {
   return (
     <Link
       href={`/case-studies/${study.slug}`}
-      className="group block overflow-hidden rounded-2xl border border-line bg-surface transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_-28px_rgba(17,24,39,0.35)]"
+      className="group block overflow-hidden rounded-2xl border border-line/50 bg-white shadow-[0_8px_30px_-12px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_32px_70px_-24px_rgba(0,50,100,0.25)]"
     >
       <div className="aspect-[16/10] w-full overflow-hidden">
         <CaseStudyBanner study={study} />

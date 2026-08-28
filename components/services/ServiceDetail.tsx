@@ -20,9 +20,20 @@ import ServiceTestimonialWall from "./detail/ServiceTestimonialWall";
 import ServiceWhatWeDo from "./detail/ServiceWhatWeDo";
 import ServiceWorkGallery from "./detail/ServiceWorkGallery";
 import ServiceProof from "./detail/ServiceProof";
+import ServiceWebDevProof from "./detail/ServiceWebDevProof";
+import ServiceAppProof from "./detail/ServiceAppProof";
+import ServiceSoftwareProof from "./detail/ServiceSoftwareProof";
 import ServiceComparison from "./detail/ServiceComparison";
 import ServiceProcess from "./detail/ServiceProcess";
 import ServiceReviews from "./detail/ServiceReviews";
+import ServiceWebDevPricing from "./detail/ServiceWebDevPricing";
+import ServiceAppDevPricing from "./detail/ServiceAppDevPricing";
+import ServiceSoftwarePricing from "./detail/ServiceSoftwarePricing";
+import ServiceAIDevPricing from "./detail/ServiceAIDevPricing";
+import ServiceChatbotPricing from "./detail/ServiceChatbotPricing";
+import ServiceSaaSPricing from "./detail/ServiceSaaSPricing";
+import ServiceIntegrationPricing from "./detail/ServiceIntegrationPricing";
+import ServiceGenerativePricing from "./detail/ServiceGenerativePricing";
 
 // Relevant photo for each service, used as the lead visual in "What we do".
 const serviceImages: Record<string, string> = {
@@ -57,10 +68,24 @@ export default function ServiceDetail({
       <ServiceLogoWall />
       <ServiceTestimonialWall />
       <ServiceWhatWeDo service={service} serviceImage={serviceImages[service.slug]} />
-      <ServiceWorkGallery serviceName={service.name} />
-      <ServiceProof />
-      <ServiceComparison />
-      <ServiceProcess />
+      {/* Hide ServiceWorkGallery for specialized services, show for others */}
+      {(service.slug !== 'web-development' && service.slug !== 'app-development' && service.slug !== 'software-development' &&
+        service.slug !== 'ai-development' && service.slug !== 'ai-chatbot' && service.slug !== 'ai-saas' && service.slug !== 'ai-integration' && service.slug !== 'generative-ai') && <ServiceWorkGallery serviceName={service.name} />}
+      {/* Use service-specific proof components */}
+      {service.slug === 'web-development' ? <ServiceWebDevProof /> :
+       service.slug === 'app-development' ? <ServiceAppProof /> :
+       service.slug === 'software-development' ? <ServiceSoftwareProof /> : <ServiceProof />}
+      <ServiceComparison service={service} />
+      {/* Custom pricing table for specialized services */}
+      {service.slug === 'web-development' && <ServiceWebDevPricing />}
+      {service.slug === 'app-development' && <ServiceAppDevPricing />}
+      {service.slug === 'software-development' && <ServiceSoftwarePricing />}
+      {service.slug === 'ai-development' && <ServiceAIDevPricing />}
+      {service.slug === 'ai-chatbot' && <ServiceChatbotPricing />}
+      {service.slug === 'ai-saas' && <ServiceSaaSPricing />}
+      {service.slug === 'ai-integration' && <ServiceIntegrationPricing />}
+      {service.slug === 'generative-ai' && <ServiceGenerativePricing />}
+      <ServiceProcess service={service} />
       <ServiceReviews />
 
       {/* ============ FAQ ============ */}

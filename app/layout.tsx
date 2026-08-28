@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Hanken_Grotesk, Inter, Geist } from "next/font/google";
+import { Hanken_Grotesk, Inter, Geist, Dancing_Script } from "next/font/google";
 import Script from "next/script";
 import CookieConsent from "@/components/ui/CookieConsent";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
@@ -27,6 +27,14 @@ const geist = Geist({
   display: "swap",
 });
 
+/** Script face used for accent words in headings (e.g. the Sidpin.ai hero). */
+const dancingScript = Dancing_Script({
+  variable: "--font-script",
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "SIDPIN Digital | Stories That Move Brands Forward",
   description: "We create cinematic content, digital experiences, and growth systems that help modern brands stand out, connect, and grow.",
@@ -41,7 +49,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${hankenGrotesk.variable} ${inter.variable} ${geist.variable} antialiased`}
+      className={`${hankenGrotesk.variable} ${inter.variable} ${geist.variable} ${dancingScript.variable} antialiased`}
     >
       <head>
         <link

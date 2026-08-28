@@ -241,7 +241,23 @@ export default function AiHero() {
               textAlign: "left",
             }}
           >
-            AI-Powered
+            {/* Script face for the accent word — sized up because Dancing Script
+                runs visually smaller than Hanken Grotesk at the same px. */}
+            <span
+              style={{
+                fontFamily: "var(--font-script), cursive",
+                fontWeight: 700,
+                fontSize: "1.18em",
+                lineHeight: 1.1,
+                display: "inline-block",
+                /* Script descenders/flourishes are taller than the h1's 1.05
+                   leading allows — without this the two lines' boxes collide. */
+                paddingBottom: "0.06em",
+                marginBottom: "0.14em",
+              }}
+            >
+              AI-Powered
+            </span>
             <br />
             <span
               style={{

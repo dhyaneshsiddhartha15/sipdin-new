@@ -4,24 +4,144 @@
  */
 
 import { Clock } from "lucide-react";
-import { PROCESS_ASK, PROCESS_BULLETS, PROCESS_STEPS } from "@/lib/serviceDetail";
+import {
+  PROCESS_ASK,
+  PROCESS_BULLETS,
+  PROCESS_STEPS,
+  WEBDEV_PROCESS_ASK,
+  WEBDEV_PROCESS_BULLETS,
+  WEBDEV_PROCESS_STEPS,
+  APP_PROCESS_ASK,
+  APP_PROCESS_BULLETS,
+  APP_PROCESS_STEPS,
+  SOFTWARE_PROCESS_ASK,
+  SOFTWARE_PROCESS_BULLETS,
+  SOFTWARE_PROCESS_STEPS,
+  AI_PROCESS_ASK,
+  AI_PROCESS_BULLETS,
+  AI_PROCESS_STEPS,
+  CHATBOT_PROCESS_ASK,
+  CHATBOT_PROCESS_BULLETS,
+  CHATBOT_PROCESS_STEPS,
+  SAAS_PROCESS_ASK,
+  SAAS_PROCESS_BULLETS,
+  SAAS_PROCESS_STEPS,
+  INTEGRATION_PROCESS_ASK,
+  INTEGRATION_PROCESS_BULLETS,
+  INTEGRATION_PROCESS_STEPS,
+  GENERATIVE_PROCESS_ASK,
+  GENERATIVE_PROCESS_BULLETS,
+  GENERATIVE_PROCESS_STEPS,
+} from "@/lib/serviceDetail";
 import SectionHeading from "./SectionHeading";
+import type { Service } from "@/lib/services";
 
-export default function ServiceProcess() {
+interface ServiceProcessProps {
+  service?: Service;
+}
+
+export default function ServiceProcess({ service }: ServiceProcessProps = {}) {
+  // Use service-specific content
+  const isWebDev = service?.slug === 'web-development';
+  const isAppDev = service?.slug === 'app-development';
+  const isSoftwareDev = service?.slug === 'software-development';
+  const isAIDev = service?.slug === 'ai-development';
+  const isChatbot = service?.slug === 'ai-chatbot';
+  const isSaaS = service?.slug === 'ai-saas';
+  const isIntegration = service?.slug === 'ai-integration';
+  const isGenerative = service?.slug === 'generative-ai';
+
+  const steps = isWebDev ? WEBDEV_PROCESS_STEPS :
+                isAppDev ? APP_PROCESS_STEPS :
+                isSoftwareDev ? SOFTWARE_PROCESS_STEPS :
+                isAIDev ? AI_PROCESS_STEPS :
+                isChatbot ? CHATBOT_PROCESS_STEPS :
+                isSaaS ? SAAS_PROCESS_STEPS :
+                isIntegration ? INTEGRATION_PROCESS_STEPS :
+                isGenerative ? GENERATIVE_PROCESS_STEPS : PROCESS_STEPS;
+  const bullets = isWebDev ? WEBDEV_PROCESS_BULLETS :
+                  isAppDev ? APP_PROCESS_BULLETS :
+                  isSoftwareDev ? SOFTWARE_PROCESS_BULLETS :
+                  isAIDev ? AI_PROCESS_BULLETS :
+                  isChatbot ? CHATBOT_PROCESS_BULLETS :
+                  isSaaS ? SAAS_PROCESS_BULLETS :
+                  isIntegration ? INTEGRATION_PROCESS_BULLETS :
+                  isGenerative ? GENERATIVE_PROCESS_BULLETS : PROCESS_BULLETS;
+  const ask = isWebDev ? WEBDEV_PROCESS_ASK :
+              isAppDev ? APP_PROCESS_ASK :
+              isSoftwareDev ? SOFTWARE_PROCESS_ASK :
+              isAIDev ? AI_PROCESS_ASK :
+              isChatbot ? CHATBOT_PROCESS_ASK :
+              isSaaS ? SAAS_PROCESS_ASK :
+              isIntegration ? INTEGRATION_PROCESS_ASK :
+              isGenerative ? GENERATIVE_PROCESS_ASK : PROCESS_ASK;
+
+  const headingTitle = isWebDev
+    ? "Web development, done"
+    : isAppDev
+    ? "App development, done"
+    : isSoftwareDev
+    ? "Software development, done"
+    : isAIDev
+    ? "AI development, done"
+    : isChatbot
+    ? "Chatbot development, done"
+    : isSaaS
+    ? "AI SaaS development, done"
+    : isIntegration
+    ? "AI integration, done"
+    : isGenerative
+    ? "Generative AI, done"
+    : "Marketing and engineering,";
+  const headingAccent = isWebDev
+    ? "the right way."
+    : isAppDev
+    ? "the right way."
+    : isSoftwareDev
+    ? "the right way."
+    : isAIDev
+    ? "the right way."
+    : isChatbot
+    ? "the right way."
+    : isSaaS
+    ? "the right way."
+    : isIntegration
+    ? "the right way."
+    : isGenerative
+    ? "the right way."
+    : "run the same way.";
+  const headingIntro = isWebDev
+    ? "The same engineering discipline that powers modern SaaS products now builds your website: clean code, proven process, and measurable results."
+    : isAppDev
+    ? "The same engineering discipline that powers top-rated apps now builds your mobile application: clean architecture, proven process, and store-ready delivery."
+    : isSoftwareDev
+    ? "The same engineering discipline that powers enterprise systems now builds your custom software: business-first architecture, clean code, and scalable solutions."
+    : isAIDev
+    ? "The same engineering discipline that powers production AI systems now builds your AI applications: validated models, proper monitoring, and real-world performance."
+    : isChatbot
+    ? "The same engineering discipline that powers customer support platforms now builds your AI chatbot: grounded responses, seamless handoff, and consistent experience."
+    : isSaaS
+    ? "The same engineering discipline that powers scalable SaaS products now builds your AI platform: multi-tenant architecture, unit economics, and growth-ready infrastructure."
+    : isIntegration
+    ? "The same engineering discipline that powers enterprise integrations now adds AI to your stack: seamless workflows, cost controls, and governed deployment."
+    : isGenerative
+    ? "The same engineering discipline that powers production AI systems now builds your generative AI: grounded RAG, proper guardrails, and cost-optimized deployment."
+    : "The discipline that ships software now runs your project: documented decisions, weekly cycles, and numbers you can check yourself.";
+
   return (
     <section className="bg-bg px-6 py-[88px] md:px-[80px]">
       <div className="mx-auto max-w-[1440px]">
         <SectionHeading
           index="05"
           label="How we work"
-          title="Marketing and engineering,"
-          accent="run the same way."
-          intro="The discipline that ships software now runs your project: documented decisions, weekly cycles, and numbers you can check yourself."
+          title={headingTitle}
+          accent={headingAccent}
+          intro={headingIntro}
         />
 
         {/* Timeline */}
         <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-5">
-          {PROCESS_STEPS.map((step) => (
+          {steps.map((step) => (
             <div key={step.number} className="border-t-2 border-line/60 pt-5">
               <span className="mb-4 block h-[3px] w-9 rounded-full bg-brand" />
               <span className="font-['Geist'] block text-[12px] font-semibold text-brand">
@@ -43,7 +163,7 @@ export default function ServiceProcess() {
         {/* Bullets + ask */}
         <div className="mt-16 grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-14">
           <div className="flex flex-col">
-            {PROCESS_BULLETS.map((bullet) => (
+            {bullets.map((bullet) => (
               <div
                 key={bullet.title}
                 className="flex items-start gap-3 border-b border-line/40 py-5 first:pt-0"
@@ -63,11 +183,11 @@ export default function ServiceProcess() {
 
           <div className="self-start rounded-[18px] border-l-4 border-brand bg-surface px-6 py-6 ring-1 ring-line/50">
             <p className="font-['Hanken_Grotesk'] text-[16px] font-semibold text-fg">
-              {PROCESS_ASK.title}
+              {ask.title}
             </p>
             <p className="font-['Inter'] mt-3 text-[14px] leading-relaxed text-fg-2">
-              {PROCESS_ASK.body}{" "}
-              <strong className="font-semibold text-brand">{PROCESS_ASK.highlight}</strong>
+              {ask.body}{" "}
+              <strong className="font-semibold text-brand">{ask.highlight}</strong>
             </p>
           </div>
         </div>

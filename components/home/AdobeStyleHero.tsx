@@ -97,8 +97,9 @@ const SLIDES: Slide[] = [
     href: "/contact",
     tabKey: "hero.crm.tab",
     Icon: Database,
-    image: "/expertise/app-development.jpg",
-    video: "/crm.mp4",
+    // Still image instead of /crm.mp4 — analytics dashboard, which reads as a
+    // sales pipeline under the hero's dark gradient.
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=2000&q=80",
   },
   {
     key: "branding",

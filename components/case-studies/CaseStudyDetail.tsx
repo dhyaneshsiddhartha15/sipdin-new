@@ -8,13 +8,24 @@
  */
 import type { CaseStudy, Section } from "@/lib/caseStudies";
 
-/** Blue wavy background shared by the case-study listing + detail pages. */
+/**
+ * Background for the "More Case Studies" strip — kept in step with the
+ * /case-studies listing so both read as the same surface.
+ */
 export const PAPER_BG = {
-  backgroundImage: "url('/wavy-baclh.webp')",
+  backgroundImage: "url('/do.jpg')",
   backgroundSize: "cover",
   backgroundPosition: "center",
   backgroundAttachment: "fixed",
-  backgroundColor: "#1666e6",
+  backgroundColor: "#040604",
+} as const;
+
+export const PAPER_BG_DARK = {
+  backgroundImage: "url('/case-bg-dark.png')",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  backgroundAttachment: "fixed",
+  backgroundColor: "#0f172a",
 } as const;
 
 /** Frosted-white card used to hold readable content on the blue background. */
