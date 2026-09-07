@@ -7,6 +7,7 @@ import RudradharmaCaseStudy from "@/components/case-studies/RudradharmaCaseStudy
 import DohabusCaseStudy from "@/components/case-studies/DohabusCaseStudy";
 import RITMCaseStudy from "@/components/case-studies/RITMCaseStudy";
 import CameraMarketCaseStudy from "@/components/case-studies/CameraMarketCaseStudy";
+import WafeeqCaseStudy from "@/components/case-studies/WafeeqCaseStudy";
 import PremiumCaseStudy from "@/components/case-studies/PremiumCaseStudy";
 import CaseStudyCard from "@/components/case-studies/CaseStudyCard";
 import { getAllCaseStudies, getCaseStudyBySlug } from "@/lib/caseStudies";
@@ -50,6 +51,8 @@ export default async function CaseStudyPage({
           <RITMCaseStudy study={study} />
         ) : slug === "camera-market-dehradun-photography-e-commerce" ? (
           <CameraMarketCaseStudy study={study} />
+        ) : slug === "wafeeq-inclusive-digital-learning" ? (
+          <WafeeqCaseStudy study={study} />
         ) : (
           <PremiumCaseStudy study={study} />
         )}

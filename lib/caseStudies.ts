@@ -17,7 +17,7 @@ export type Section =
   /** `hideImage` drops the stock photo beside the copy, leaving a text-only section. */
   | { type: "list"; heading: string; intro?: string; items: ListItem[]; note?: string; hideImage?: boolean; solutionHeading?: string; solutionIntro?: string; solutionItems?: ListItem[] }
   | { type: "table"; heading: string; columns: string[]; rows: string[][] }
-  | { type: "image"; heading?: string; intro?: string; images: { src: string; caption?: string }[] }
+  | { type: "image"; heading?: string; intro?: string; align?: "left"; sideImage?: { src: string; alt?: string }; images: { src: string; caption?: string }[] }
   /** Full-bleed shot pinned with `background-attachment: fixed` (see FixedImagePanel). */
   | { type: "fixedImage"; src: string; alt: string; grayscaleUntilHover?: boolean; aspectRatio?: number }
   | { type: "quote"; text: string; name: string; role: string }
@@ -814,9 +814,14 @@ const CASE_STUDIES: CaseStudy[] = [
     sections: [
       {
         type: "image",
+        align: "left",
+        sideImage: {
+          src: "/case-study/wafeeq/wafeeq-hero-5.png",
+          alt: "Wafeeq Mobile App Screens",
+        },
         images: [
           {
-            src: "/case-study/wafeeq/1.png"
+            src: "/case-study/wafeeq/hero-wafeeq.png"
           }
         ]
       },
@@ -847,6 +852,12 @@ const CASE_STUDIES: CaseStudy[] = [
         body: [
           "Wafeeq's vision goes beyond another online course platform. It aims to build a digital library of accessible educational content and help integrate Deaf and Hard-of-Hearing individuals into education and employment — through accessible content, professional trainers, practical skill development, certification, organizational training, and a growing ecosystem of educators and learners.",
         ],
+      },
+      {
+        type: "fixedImage",
+        src: "/case-study/wafeeq/bg-wafeeq.png",
+        alt: "Wafeeq Platform Screens",
+        aspectRatio: 1366 / 1060,
       },
       {
         type: "list",
