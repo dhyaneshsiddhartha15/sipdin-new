@@ -8,7 +8,10 @@ import { getAllCaseStudies } from "@/lib/caseStudies";
 import SectionHeading from "./SectionHeading";
 
 export default function ServiceProof() {
-  const studies = getAllCaseStudies().slice(0, 3);
+  // AI-facing projects first: tags with a whole-word "AI" (Applied AI, AI agents…)
+  const studies = getAllCaseStudies().filter(cs => /\bai\b/i.test(cs.tag ?? ''))
+    .concat(getAllCaseStudies().filter(cs => !/\bai\b/i.test(cs.tag ?? '')))
+    .slice(0, 3);
   if (studies.length === 0) return null;
 
   return (

@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1409" height="1116" viewBox="0 0 1409 1116">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F0FBFA"/>
+      <stop offset="55%" stop-color="#E6F7F5"/>
+      <stop offset="100%" stop-color="#FDF8EC"/>
+    </linearGradient>
+    <linearGradient id="teal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#14B8A6"/>
+      <stop offset="100%" stop-color="#0D9488"/>
+    </linearGradient>
+    <linearGradient id="navy" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B3D66"/>
+      <stop offset="100%" stop-color="#123f63"/>
+    </linearGradient>
+    <g id="dotgrid">
+      <circle r="3.2" fill="#0D9488"/>
+      <circle r="3.2" fill="#0D9488" cx="26"/>
+      <circle r="3.2" fill="#0D9488" cx="52"/>
+      <circle r="3.2" fill="#0D9488" cx="78"/>
+      <circle r="3.2" fill="#0D9488" cx="104"/>
+      <circle r="3.2" fill="#0D9488" cy="26"/>
+      <circle r="3.2" fill="#0D9488" cx="26" cy="26"/>
+      <circle r="3.2" fill="#0D9488" cx="52" cy="26"/>
+      <circle r="3.2" fill="#0D9488" cx="78" cy="26"/>
+      <circle r="3.2" fill="#0D9488" cx="104" cy="26"/>
+      <circle r="3.2" fill="#0D9488" cy="52"/>
+      <circle r="3.2" fill="#0D9488" cx="26" cy="52"/>
+      <circle r="3.2" fill="#0D9488" cx="52" cy="52"/>
+      <circle r="3.2" fill="#0D9488" cx="78" cy="52"/>
+      <circle r="3.2" fill="#0D9488" cx="104" cy="52"/>
+      <circle r="3.2" fill="#0D9488" cy="78"/>
+      <circle r="3.2" fill="#0D9488" cx="26" cy="78"/>
+      <circle r="3.2" fill="#0D9488" cx="52" cy="78"/>
+      <circle r="3.2" fill="#0D9488" cx="78" cy="78"/>
+      <circle r="3.2" fill="#0D9488" cx="104" cy="78"/>
+    </g>
+  </defs>
+
+  <rect width="1409" height="1116" fill="url(#bg)"/>
+
+  <!-- top-right organic blob -->
+  <path d="M1050 0 h359 v210 c-70 55 -150 80 -235 62 c-95 -20 -150 -95 -158 -178 c-4 -36 8 -68 34 -94z" fill="#14B8A6" opacity="0.18"/>
+  <path d="M1180 0 h229 v130 c-55 30 -118 38 -178 18 c-66 -22 -104 -78 -98 -132 c1 -6 3 -11 6 -16z" fill="#0D9488" opacity="0.30"/>
+
+  <!-- bottom-left organic blob -->
+  <path d="M0 880 c85 -18 165 8 210 72 c38 54 40 112 18 164 h-228z" fill="#0D9488" opacity="0.22"/>
+  <path d="M0 980 c60 -10 115 12 145 56 c22 32 26 58 20 80 h-165z" fill="url(#teal)" opacity="0.35"/>
+
+  <!-- flowing connector lines (network/automation motif) -->
+  <path d="M120 300 C 320 180, 560 420, 780 300 S 1200 180, 1330 300" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-dasharray="12 10" opacity="0.5"/>
+  <path d="M60 760 C 260 640, 500 880, 720 760 S 1140 640, 1360 760" fill="none" stroke="#0B3D66" stroke-width="2.5" stroke-dasharray="12 10" opacity="0.35"/>
+  <circle cx="780" cy="300" r="9" fill="#0D9488" opacity="0.75"/>
+  <circle cx="780" cy="300" r="17" fill="none" stroke="#0D9488" stroke-width="2" opacity="0.5"/>
+  <circle cx="120" cy="300" r="7" fill="#14B8A6" opacity="0.7"/>
+  <circle cx="1330" cy="300" r="7" fill="#14B8A6" opacity="0.7"/>
+  <circle cx="720" cy="760" r="9" fill="#F4BF4F" opacity="0.9"/>
+  <circle cx="720" cy="760" r="17" fill="none" stroke="#F4BF4F" stroke-width="2" opacity="0.6"/>
+  <circle cx="60" cy="760" r="7" fill="#0B3D66" opacity="0.55"/>
+
+  <!-- location pin (workspace/module node) -->
+  <g transform="translate(240 470)" opacity="0.9">
+    <path d="M0 -34 C -19 -34 -34 -19 -34 0 C -34 22 0 56 0 56 C 0 56 34 22 34 0 C 34 -19 19 -34 0 -34 Z" fill="#0D9488"/>
+    <circle cx="0" cy="-1" r="12" fill="#ffffff"/>
+  </g>
+  <path d="M274 500 C 400 560, 520 470, 660 520" fill="none" stroke="#0D9488" stroke-width="3" stroke-dasharray="10 9" opacity="0.65"/>
+
+  <!-- chat bubble (omnichannel inbox motif) -->
+  <g transform="translate(1090 560)" opacity="0.92">
+    <rect x="-70" y="-52" width="140" height="88" rx="26" fill="url(#navy)"/>
+    <path d="M-20 36 L 0 68 L 24 36 Z" fill="url(#navy)"/>
+    <circle cx="-32" cy="-8" r="8" fill="#F4BF4F"/>
+    <circle cx="0" cy="-8" r="8" fill="#14B8A6"/>
+    <circle cx="32" cy="-8" r="8" fill="#ffffff" opacity="0.85"/>
+  </g>
+  <path d="M1020 560 C 940 560, 900 520, 860 500" fill="none" stroke="#0B3D66" stroke-width="3" stroke-dasharray="10 9" opacity="0.5"/>
+
+  <!-- hexagon S-mark (SOLBiT logo motif) -->
+  <g transform="translate(420 860) scale(1.35)" opacity="0.95">
+    <path d="M44 -50 L 88 -25 L 88 25 L 44 50 L 0 25 L 0 -25 Z" fill="none" stroke="url(#teal)" stroke-width="13" stroke-linejoin="round"/>
+    <path d="M22 -25 L 66 0 L 44 25 L 22 12" fill="none" stroke="url(#teal)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+  </g>
+
+  <!-- ring accents -->
+  <circle cx="1180" cy="130" r="46" fill="none" stroke="#0D9488" stroke-width="2.5" opacity="0.5"/>
+  <circle cx="1240" cy="170" r="46" fill="none" stroke="#F4BF4F" stroke-width="2.5" opacity="0.65"/>
+  <circle cx="90" cy="120" r="34" fill="none" stroke="#14B8A6" stroke-width="2.5" opacity="0.55"/>
+
+  <!-- dot grids -->
+  <use href="#dotgrid" transform="translate(96 210)" opacity="0.55"/>
+  <use href="#dotgrid" transform="translate(1210 380)" opacity="0.45"/>
+  <use href="#dotgrid" transform="translate(150 620)" opacity="0.4"/>
+  <use href="#dotgrid" transform="translate(1180 920)" opacity="0.5"/>
+</svg>
