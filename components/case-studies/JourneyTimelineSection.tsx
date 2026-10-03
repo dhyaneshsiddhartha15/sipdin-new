@@ -151,8 +151,11 @@ export default function JourneyTimelineSection({
                 }}
               />
 
-              {/* Timeline Steps */}
-              <div className="relative grid grid-cols-6 gap-8">
+              {/* Timeline Steps — column count follows the number of steps */}
+              <div
+                className="relative grid gap-8"
+                style={{ gridTemplateColumns: `repeat(${steps.length}, minmax(0, 1fr))` }}
+              >
                 {steps.map((step, index) => (
                   <div
                     key={index}
@@ -235,8 +238,8 @@ export default function JourneyTimelineSection({
             </div>
 
 
-            {/* Mobile: Vertical Stepper */}
-            <div className="md:hidden lg:hidden">
+            {/* Mobile & Tablet: Vertical Stepper (horizontal timeline is lg+) */}
+            <div className="lg:hidden">
               <div className="space-y-6">
                 {steps.map((step, index) => (
                   <div

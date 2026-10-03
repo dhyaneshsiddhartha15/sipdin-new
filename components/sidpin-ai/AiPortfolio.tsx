@@ -7,36 +7,55 @@
 
 import { useState, useEffect, useRef } from "react";
 import { ArrowRight, Smartphone, Sparkles, TrendingUp, Award } from "lucide-react";
-import { motion, useAnimation, useMotionValue, useTransform, PanInfo } from "framer-motion";
+import { motion, useMotionValue, PanInfo } from "framer-motion";
 import AIConsultationModal from "@/components/contact/AIConsultationModal";
 import { getAllCaseStudies } from "@/lib/caseStudies";
 
-// Rudradharma app screens for cycling
-const RUDRADHARMA_SCRENS = [
-  '/case-study/1.png',
-  '/case-study/2.png',
-  '/case-study/3.png',
-  '/case-study/4.png',
-  '/case-study/5.png',
-  '/case-study/6.png',
-];
+// App screens cycled inside each card's phone mockup — one entry per project
+const PROJECT_SCREENS: Record<string, string[]> = {
+  "rudradharma-spiritual-ecommerce": [
+    '/case-study/1.png',
+    '/case-study/2.png',
+    '/case-study/3.png',
+    '/case-study/4.png',
+    '/case-study/5.png',
+    '/case-study/6.png',
+  ],
+  "dohabus-qatar-tourism-platform": [
+    '/case-study/Doha-bus/8.jpg',
+    '/case-study/Doha-bus/9.jpg',
+    '/case-study/Doha-bus/10.jpg',
+    '/case-study/Doha-bus/11.jpg',
+    '/case-study/Doha-bus/12.jpg',
+    '/case-study/Doha-bus/13.jpg',
+  ],
+  // Wafeeq mobile screens (same as case study gallery)
+  "wafeeq-inclusive-digital-learning": [
+    '/case-study/wafeeq/m-1.jpg',
+    '/case-study/wafeeq/m-2.jpg',
+    '/case-study/wafeeq/m-3.jpg',
+    '/case-study/wafeeq/m-4.jpg',
+    '/case-study/wafeeq/m-5.jpg',
+    '/case-study/wafeeq/m-6.jpg',
+  ],
+  // SOLBiT mobile screens (same as case study gallery)
+  "solbit-crm-ai-business-os": [
+    '/case-study/solbit/m-1.png',
+    '/case-study/solbit/m-2.png',
+    '/case-study/solbit/m-3.png',
+    '/case-study/solbit/m-4.png',
+    '/case-study/solbit/m-5.png',
+    '/case-study/solbit/m-6.png',
+  ],
+};
 
-// Dohabus app screens for cycling
-const DOHABUS_SCREENS = [
-  '/case-study/Doha-bus/8.jpg',
-  '/case-study/Doha-bus/9.jpg',
-  '/case-study/Doha-bus/10.jpg',
-  '/case-study/Doha-bus/11.jpg',
-  '/case-study/Doha-bus/12.jpg',
-  '/case-study/Doha-bus/13.jpg',
-];
-
-// Get only specific case studies: Dohabus, Rudradharma, Wafeeq
+// Get only specific case studies: Dohabus, Rudradharma, Wafeeq, SOLBiT
 const ALL_CASE_STUDIES = getAllCaseStudies();
 const CASE_STUDIES = ALL_CASE_STUDIES.filter(cs =>
   cs.slug === "dohabus-qatar-tourism-platform" ||
   cs.slug === "rudradharma-spiritual-ecommerce" ||
-  cs.slug === "wafeeq-inclusive-digital-learning"
+  cs.slug === "wafeeq-inclusive-digital-learning" ||
+  cs.slug === "solbit-crm-ai-business-os"
 );
 
 const PROJECTS = CASE_STUDIES.map((cs) => ({
@@ -49,7 +68,8 @@ const PROJECTS = CASE_STUDIES.map((cs) => ({
   image: cs.heroImage || "https://images.unsplash.com/photo-15566567932-02371d2713ef?w=800&q=80",
   backgroundImage: cs.slug === "wafeeq-inclusive-digital-learning" ? "/ai-card/ai-wafeeq.png" :
                   cs.slug === "rudradharma-spiritual-ecommerce" ? "/ai-card/ai-rudra.png" :
-                  cs.slug === "dohabus-qatar-tourism-platform" ? "/ai-card/ai-doha.png" : null,
+                  cs.slug === "dohabus-qatar-tourism-platform" ? "/ai-card/ai-doha.png" :
+                  cs.slug === "solbit-crm-ai-business-os" ? "/ai-card/ai-solbit.svg" : null,
   deviceType: (cs.slug === "wafeeq-inclusive-digital-learning" ? "laptop" : "phone") as "phone" | "laptop",
   alt: `${cs.product} case study`,
   slug: cs.slug,
@@ -77,34 +97,25 @@ function ProjectCard({
   onClick?: () => void;
   isFocused?: boolean;
 }) {
-  // Dynamic screen cycling for Rudradharma and Dohabus
+  // Dynamic screen cycling — every card with a PROJECT_SCREENS entry auto-cycles
+  const screens = PROJECT_SCREENS[project.slug];
   const [currentScreenIndex, setCurrentScreenIndex] = useState(0);
   const [screenOpacity, setScreenOpacity] = useState(1);
 
   // Auto-cycle through screens every 2 seconds
   useEffect(() => {
-    if (project.slug === "rudradharma-spiritual-ecommerce") {
-      const interval = setInterval(() => {
-        setScreenOpacity(0);
-        setTimeout(() => {
-          setCurrentScreenIndex((prev) => (prev + 1) % 6); // 6 screens total
-          setScreenOpacity(1);
-        }, 300); // Wait for fade out
-      }, 2000); // Change every 2 seconds
+    if (!screens) return;
 
-      return () => clearInterval(interval);
-    } else if (project.slug === "dohabus-qatar-tourism-platform") {
-      const interval = setInterval(() => {
-        setScreenOpacity(0);
-        setTimeout(() => {
-          setCurrentScreenIndex((prev) => (prev + 1) % 6); // 6 screens total
-          setScreenOpacity(1);
-        }, 300); // Wait for fade out
-      }, 2000); // Change every 2 seconds
+    const interval = setInterval(() => {
+      setScreenOpacity(0);
+      setTimeout(() => {
+        setCurrentScreenIndex((prev) => (prev + 1) % screens.length);
+        setScreenOpacity(1);
+      }, 300); // Wait for fade out
+    }, 2000); // Change every 2 seconds
 
-      return () => clearInterval(interval);
-    }
-  }, [project.slug]);
+    return () => clearInterval(interval);
+  }, [screens]);
 
   return (
     <motion.div
@@ -151,13 +162,12 @@ function ProjectCard({
                 {/* Main phone body - Larger size like Rudradharma case study */}
                 <div className="relative w-[276px] bg-gradient-to-b from-gray-900 to-gray-800 rounded-[3rem] p-3 shadow-2xl">
                   <div className="w-full aspect-[357/735] bg-white rounded-[2.4rem] overflow-hidden relative">
-                    {/* Project specific app screens */}
-                    {project.slug === "rudradharma-spiritual-ecommerce" ? (
-                      // Rudradharma app screens with cycling
+                    {/* Project app screens — auto-cycling for every project with a PROJECT_SCREENS entry */}
+                    {screens ? (
                       <div className="relative h-full">
                         <img
-                          src={`/case-study/${currentScreenIndex + 1}.png`}
-                          alt={`Rudradharma app screen ${currentScreenIndex + 1}`}
+                          src={screens[currentScreenIndex]}
+                          alt={`${project.name} app screen ${currentScreenIndex + 1}`}
                           className="w-full h-full object-cover object-top transition-opacity duration-300 ease-in-out"
                           style={{ opacity: screenOpacity }}
                           onError={(e) => {
@@ -167,7 +177,7 @@ function ProjectCard({
                         />
                         {/* Screen indicator dots */}
                         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
-                          {[0, 1, 2, 3, 4, 5].map((i) => (
+                          {screens.map((_, i) => (
                             <div
                               key={i}
                               className={`w-2 h-2 rounded-full transition-all ${
@@ -176,44 +186,6 @@ function ProjectCard({
                             />
                           ))}
                         </div>
-                      </div>
-                    ) : project.slug === "dohabus-qatar-tourism-platform" ? (
-                      // Dohabus app screens with cycling
-                      <div className="relative h-full">
-                        <img
-                          src={DOHABUS_SCREENS[currentScreenIndex]}
-                          alt={`Dohabus app screen ${currentScreenIndex + 1}`}
-                          className="w-full h-full object-cover object-top transition-opacity duration-300 ease-in-out"
-                          style={{ opacity: screenOpacity }}
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.parentElement!.style.background = `linear-gradient(135deg, ${project.color}40, ${project.color}60)`;
-                          }}
-                        />
-                        {/* Screen indicator dots */}
-                        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
-                          {[0, 1, 2, 3, 4, 5].map((i) => (
-                            <div
-                              key={i}
-                              className={`w-2 h-2 rounded-full transition-all ${
-                                i === currentScreenIndex ? 'bg-white' : 'bg-white/30'
-                              }`}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                    ) : project.slug === "wafeeq-inclusive-digital-learning" ? (
-                      // Wafeeq app screens
-                      <div className="relative h-full">
-                        <img
-                          src="/case-studies/dharohar/wafeeq-mobile.jpg"
-                          alt="Wafeeq app screen"
-                          className="w-full h-full object-cover object-top"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.parentElement!.style.background = `linear-gradient(135deg, ${project.color}40, ${project.color}60)`;
-                          }}
-                        />
                       </div>
                     ) : (
                       // Default fallback
@@ -362,10 +334,9 @@ function ProjectCard({
 
 export default function AiPortfolio() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
   const [focusedCardIndex, setFocusedCardIndex] = useState<number | null>(null);
-  const controls = useAnimation();
   const containerRef = useRef<HTMLDivElement>(null);
+  const marqueeX = useMotionValue(0);
   const [isMobile, setIsMobile] = useState(false);
 
   // Check if mobile
@@ -384,55 +355,60 @@ export default function AiPortfolio() {
   const cardWidth = 650;
   const gap = 24;
   const totalWidth = (cardWidth + gap) * PROJECTS.length;
+  // Duration scales with distance so the scroll speed stays constant
+  const marqueeDuration = (totalWidth / 674) * 22;
 
-  // Animation for desktop marquee
+  // Animation for desktop marquee — a CSS-free rAF loop on a motion value so
+  // pause/resume continues from the exact same pixel with no jump.
   useEffect(() => {
-    if (isMobile || !containerRef.current) return;
+    if (isMobile || focusedCardIndex !== null) return;
 
-    const animate = async () => {
-      await controls.start({
-        x: -totalWidth,
-        transition: {
-          duration: 22,
-          ease: "linear",
-          repeat: Infinity,
-          repeatType: "loop",
-        },
-      });
+    let raf = 0;
+    let last = performance.now();
+    // Speed: px/ms derived from totalWidth / marqueeDuration
+    const speed = totalWidth / (marqueeDuration * 1000);
+
+    const tick = (now: number) => {
+      const dt = now - last;
+      last = now;
+      let next = marqueeX.get() - speed * dt;
+      // Wrap seamlessly: one full set scrolled = jump back by totalWidth
+      if (next <= -totalWidth) next += totalWidth;
+      marqueeX.set(next);
+      raf = requestAnimationFrame(tick);
     };
 
-    if (!isPaused && focusedCardIndex === null) {
-      animate();
-    } else {
-      controls.stop();
-    }
-
-    return () => controls.stop();
-  }, [controls, isPaused, isMobile, totalWidth, focusedCardIndex]);
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [isMobile, focusedCardIndex, totalWidth, marqueeDuration, marqueeX]);
 
   // Handle card click to center it
   const handleCardClick = (index: number) => {
     if (isMobile) return;
 
-    setIsPaused(true);
     setFocusedCardIndex(index);
 
-    // Calculate position to center the card
+    // Calculate position to center the card, wrapped into the first set
     const containerWidth = containerRef.current?.parentElement?.offsetWidth || 0;
-    const centeredPosition = -(index * (cardWidth + gap)) + (containerWidth / 2) - (cardWidth / 2);
+    let centeredPosition = -(index * (cardWidth + gap)) + (containerWidth / 2) - (cardWidth / 2);
+    while (centeredPosition < -totalWidth) centeredPosition += totalWidth;
 
-    controls.start({
-      x: centeredPosition,
-      transition: {
-        duration: 0.8,
-        ease: [0.25, 0.1, 0.25, 1],
-      },
-    });
+    // Animate the motion value smoothly to the centered position
+    const from = marqueeX.get();
+    const startTime = performance.now();
+    const duration = 700;
+    const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
+
+    const step = (now: number) => {
+      const t = Math.min(1, (now - startTime) / duration);
+      marqueeX.set(from + (centeredPosition - from) * easeOut(t));
+      if (t < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
   };
 
   // Reset to normal scrolling
   const resetScrolling = () => {
-    setIsPaused(false);
     setFocusedCardIndex(null);
   };
 
@@ -519,8 +495,7 @@ export default function AiPortfolio() {
                 <motion.div
                   ref={containerRef}
                   className="flex gap-6"
-                  animate={controls}
-                  style={{ gap: "24px" }}
+                  style={{ gap: "24px", x: marqueeX }}
                 >
                   {displayProjects.map((project, index) => (
                     <ProjectCard

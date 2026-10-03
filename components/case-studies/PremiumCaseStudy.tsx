@@ -636,25 +636,38 @@ function ImageSection({ section, study }: { section: any; study: CaseStudy }) {
             {section.intro}
           </p>
         )}
-        <div className="grid gap-0 sm:grid-cols-1">
-          {section.images.map((img: any, i: number) => (
-            <figure key={i} className="overflow-hidden m-0 p-0">
-              <div className="w-full" style={{ marginLeft: "0", paddingLeft: "0" }}>
-                <img
-                  src={img.src}
-                  alt={img.caption || "Case study visual"}
-                  className="h-auto w-full object-contain"
-                  loading="lazy"
-                  style={{ maxHeight: "600px", objectFit: "cover" }}
-                />
-              </div>
-              {img.caption && (
-                <figcaption className="p-3 text-center text-[13px] italic text-[#666]" style={{ fontFamily: "Inter, sans-serif" }}>
-                  {img.caption}
-                </figcaption>
-              )}
-            </figure>
-          ))}
+        <div className={section.align === "left" ? "flex flex-col items-start md:flex-row md:items-center md:gap-10" : "grid gap-0 sm:grid-cols-1"}>
+          <div className={section.align === "left" ? "w-full md:w-[60%]" : "contents"}>
+            {section.images.map((img: any, i: number) => (
+              <figure key={i} className={section.align === "left" ? "overflow-hidden rounded-3xl m-0 p-0" : "overflow-hidden m-0 p-0"}>
+                <div className="w-full" style={{ marginLeft: "0", paddingLeft: "0" }}>
+                  <img
+                    src={img.src}
+                    alt={img.caption || "Case study visual"}
+                    className="h-auto w-full object-contain"
+                    loading="lazy"
+                    style={section.align === "left" ? { objectFit: "contain" } : { maxHeight: "600px", objectFit: "cover" }}
+                  />
+                </div>
+                {img.caption && (
+                  <figcaption className="p-3 text-center text-[13px] italic text-[#666]" style={{ fontFamily: "Inter, sans-serif" }}>
+                    {img.caption}
+                  </figcaption>
+                )}
+              </figure>
+            ))}
+          </div>
+          {section.align === "left" && section.sideImage && (
+            <div className="mt-8 w-full md:mt-0 md:w-[40%]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={section.sideImage.src}
+                alt={section.sideImage.alt || "Case study visual"}
+                className="h-auto w-full object-contain"
+                loading="lazy"
+              />
+            </div>
+          )}
         </div>
       </div>
     </section>
