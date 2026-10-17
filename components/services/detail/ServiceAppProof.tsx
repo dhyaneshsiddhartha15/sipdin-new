@@ -12,9 +12,9 @@ export default function ServiceAppProof() {
   const allCaseStudies = getAllCaseStudies();
   // \bapps?\b so tags like "Applied AI" don't false-match the "app" substring
   const appCaseStudies = allCaseStudies.filter(cs =>
-    cs.category?.toLowerCase().includes('mobile') ||
-    cs.category?.toLowerCase().includes('app') ||
-    /\bapps?\b/i.test(cs.tag ?? '') ||
+    cs.tag.toLowerCase().includes('mobile') ||
+    cs.tag.toLowerCase().includes('app') ||
+    /\bapps?\b/i.test(cs.tag) ||
     cs.slug.includes('mobile') ||
     cs.slug.includes('app')
   ).slice(0, 3);

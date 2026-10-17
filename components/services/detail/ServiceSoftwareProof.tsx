@@ -11,10 +11,9 @@ export default function ServiceSoftwareProof() {
   // Get software development case studies
   const allCaseStudies = getAllCaseStudies();
   const softwareCaseStudies = allCaseStudies.filter(cs =>
-    cs.category?.toLowerCase().includes('software') ||
-    cs.category?.toLowerCase().includes('platform') ||
-    cs.tag?.toLowerCase().includes('software') ||
-    cs.tag?.toLowerCase().includes('saas') ||
+    cs.tag.toLowerCase().includes('software') ||
+    cs.tag.toLowerCase().includes('platform') ||
+    cs.tag.toLowerCase().includes('saas') ||
     cs.slug.includes('software') ||
     cs.slug.includes('platform') ||
     cs.slug.includes('dashboard') ||
