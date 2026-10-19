@@ -57,12 +57,12 @@ export default function ServiceChatbotPricing() {
 
         {/* Dark Pricing Table */}
         <div className="rounded-xl overflow-hidden border border-line/30 bg-[#0f172a]">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left">
+          <div className="overflow-x-auto no-scrollbar">
+            <table className="w-full min-w-[640px] text-left">
               {/* Table Header */}
               <thead>
                 <tr className="border-b border-[#1e293b] bg-[#1e293b]/50">
-                  <th className="px-6 py-4 font-['Hanken_Grotesk'] text-sm font-semibold text-white">
+                  <th className="sticky left-0 z-10 bg-[#1e293b] px-4 py-4 font-['Hanken_Grotesk'] text-sm font-semibold text-white md:px-6">
                     Package
                   </th>
                   <th className="px-6 py-4 font-['Hanken_Grotesk'] text-sm font-semibold text-white">
@@ -111,6 +111,10 @@ export default function ServiceChatbotPricing() {
               </tbody>
             </table>
           </div>
+
+          <p className="mt-3 text-center text-[12px] text-gray-400 md:hidden" style={{ fontFamily: "Inter, sans-serif" }}>
+            ← Swipe to see full pricing →
+          </p>
         </div>
 
         {/* What's Included Section */}

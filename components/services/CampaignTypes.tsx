@@ -31,7 +31,7 @@ const campaigns = [
 
 export default function CampaignTypes() {
   return (
-    <section className="relative bg-white py-[120px] px-[24px] md:px-[64px] overflow-hidden">
+    <section className="relative bg-white py-[72px] md:py-[120px] px-[24px] md:px-[64px] overflow-hidden">
       {/* Faint vertical column lines */}
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none hidden lg:block">
         <span className="absolute top-0 bottom-0 left-[25%] w-px bg-[#f0ede6]" />

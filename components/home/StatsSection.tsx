@@ -129,15 +129,15 @@ function AnimatedIcon({
 export default function StatsSection() {
   return (
     <section className="bg-transparent py-3 px-6 md:px-12">
-      <div className="w-full max-w-[1800px] mx-auto grid grid-cols-2 md:grid-cols-6 gap-x-4 md:gap-x-0 gap-y-3 md:gap-y-0">
+      <div className="w-full max-w-[1800px] mx-auto grid grid-cols-2 gap-x-4 gap-y-3 md:grid-cols-3 lg:grid-cols-6 lg:gap-x-0 lg:gap-y-0">
         {stats.map((stat, i) => (
           <div
             key={stat.label}
-            className="flex items-center gap-3 px-2 md:px-3 py-2 md:relative"
+            className="flex items-center gap-3 px-2 py-2 lg:relative lg:px-3"
           >
             {/* Vertical divider on desktop only (not after last item) */}
             {i < stats.length - 1 && (
-              <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-8 w-px bg-[#D1DCE8]" />
+              <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 h-8 w-px bg-[#D1DCE8]" />
             )}
 
             {/* Icon */}

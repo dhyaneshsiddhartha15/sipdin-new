@@ -63,7 +63,7 @@ export default function ServicesPage() {
           decorative and sit behind z-10 content, so heading contrast is
           unaffected (measured 15:1+).
         */}
-        <section className="relative overflow-hidden bg-[#F7F9FF] px-[24px] pt-[190px] pb-[130px]">
+        <section className="relative overflow-hidden bg-[#F7F9FF] px-[24px] pt-[150px] pb-[80px] md:pt-[190px] md:pb-[130px]">
           <div aria-hidden="true" className="pointer-events-none absolute inset-0">
             {/* Fine grid, masked to fade toward the edges */}
             <div
@@ -131,9 +131,9 @@ export default function ServicesPage() {
         <CampaignTypes />
 
         {/* Custom Solutions — light band with request form */}
-        <section className="py-[140px] bg-[#F2F6FF] overflow-hidden">
+        <section className="py-[80px] md:py-[140px] bg-[#F2F6FF] overflow-hidden">
           <div className="max-w-[1440px] mx-auto px-[24px] md:px-[80px]">
-            <div className="grid md:grid-cols-2 gap-[80px] items-center">
+            <div className="grid md:grid-cols-2 gap-12 md:gap-[80px] items-center">
               <div>
                 <span className="font-['Geist'] text-xs font-medium text-[#4169E1] tracking-[0.2em] uppercase mb-4 block">
                   Bespoke Engineering
@@ -169,9 +169,9 @@ export default function ServicesPage() {
         </section>
 
         {/* Workflow */}
-        <section className="py-[160px] bg-surface overflow-hidden">
+        <section className="py-[80px] md:py-[160px] bg-surface overflow-hidden">
           <div className="max-w-[1440px] mx-auto px-[24px] md:px-[80px]">
-            <div className="text-center mb-24">
+            <div className="text-center mb-12 md:mb-24">
               <span className="font-['Geist'] text-xs font-medium text-[#4169E1] tracking-[0.2em] uppercase mb-4 block">
                 The Process
               </span>
@@ -203,9 +203,9 @@ export default function ServicesPage() {
         </section>
 
         {/* Final CTA */}
-        <section className="py-[200px] relative overflow-hidden bg-surface">
+        <section className="py-[100px] md:py-[200px] relative overflow-hidden bg-surface">
           <div className="max-w-[1440px] mx-auto px-[24px] md:px-[80px] text-center relative z-10">
-            <h2 className="font-['Hanken_Grotesk'] text-[48px] md:text-[80px] font-semibold leading-[1.1] tracking-tight text-fg mb-8 max-w-5xl mx-auto">
+            <h2 className="font-['Hanken_Grotesk'] text-[36px] md:text-[80px] font-semibold leading-[1.1] tracking-tight text-fg mb-8 max-w-5xl mx-auto">
               Let&apos;s Build The Right Solution For Your Business.
             </h2>
             <p className="font-['Inter'] text-lg leading-[1.6] text-fg-2 max-w-3xl mx-auto mb-16">
