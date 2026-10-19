@@ -631,7 +631,7 @@ function BrandIdentitySection() {
               </p>
 
               {/* Color swatches grid */}
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
                 {BRAND_COLORS.map((color, index) => (
                   <div key={color.hex} className="space-y-2">
                     {/* Color swatch */}
@@ -927,8 +927,8 @@ function RudradharmaAppGallerySection() {
           </div>
 
           {/* Layer 3: Strong Edge Fade Masks */}
-          <div className="absolute left-0 top-0 bottom-0 w-72 bg-gradient-to-r from-[#fafafa] via-[#fafafa]/60 to-transparent z-20"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-72 bg-gradient-to-l from-[#fafafa] via-[#fafafa]/60 to-transparent z-20"></div>
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r sm:w-40 md:w-72 from-[#fafafa] via-[#fafafa]/60 to-transparent z-20"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l sm:w-40 md:w-72 from-[#fafafa] via-[#fafafa]/60 to-transparent z-20"></div>
         </div>
       </div>
 

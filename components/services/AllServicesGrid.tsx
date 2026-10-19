@@ -18,9 +18,9 @@ const HIDDEN_CATEGORIES = new Set(["Consulting"]);
  */
 export default function AllServicesGrid() {
   return (
-    <section className="overflow-hidden bg-bg px-[24px] py-[160px] md:px-[64px]">
+    <section className="overflow-hidden bg-bg px-[24px] py-[80px] md:py-[160px] md:px-[64px]">
       <div className="mx-auto max-w-[1440px]">
-        <div className="mb-20 max-w-3xl">
+        <div className="mb-12 md:mb-20 max-w-3xl">
           <span className="mb-4 block font-['Geist'] text-xs font-medium uppercase tracking-[0.4em] text-[#4169E1]">
             Our Expertise
           </span>

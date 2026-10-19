@@ -9,7 +9,7 @@
 export default function CaseStudiesBackground({ children }: { children: React.ReactNode }) {
   return (
     <div
-      className="relative min-h-screen bg-cover bg-center bg-fixed"
+      className="relative min-h-screen bg-cover bg-center md:bg-fixed"
       style={{
         backgroundImage: "url('/do.jpg')",
         /* Shown while the image loads — matches the artwork's black field. */

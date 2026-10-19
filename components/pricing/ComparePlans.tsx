@@ -50,14 +50,14 @@ export default function ComparePlans() {
         })}
       </div>
 
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[860px] border-collapse text-left">
+      <div className="overflow-x-auto no-scrollbar">
+        <table className="w-full min-w-[640px] border-collapse text-left md:min-w-[860px]">
           <thead>
             <tr>
-              <th className="w-[28%] align-bottom" />
+              <th className="sticky left-0 z-10 w-[28%] bg-bg align-bottom" />
               {plans.map((p, i) => (
                 <th key={p.key} className={`w-[24%] px-4 pb-6 align-top ${i === popularIdx ? "rounded-t-2xl bg-brand/[0.06]" : ""}`}>
-                  <div className="flex h-[240px] flex-col justify-between">
+                  <div className="flex h-[190px] flex-col justify-between md:h-[240px]">
                     <div>
                       {p.popular && (
                         <span className="mb-2 inline-block rounded-full bg-brand px-3 py-1 text-[11px] font-bold text-white" style={{ fontFamily: "Geist, sans-serif" }}>
@@ -68,7 +68,7 @@ export default function ComparePlans() {
                         {p.name}
                       </div>
                       {p.tagline && (
-                        <p className="mt-1 text-[12px] leading-snug text-fg-3" style={{ fontFamily: "Inter, sans-serif" }}>
+                        <p className="mt-1 hidden text-[12px] leading-snug text-fg-3 md:block" style={{ fontFamily: "Inter, sans-serif" }}>
                           {p.tagline}
                         </p>
                       )}
@@ -106,7 +106,7 @@ export default function ComparePlans() {
 
             {features.map((f, ri) => (
               <tr key={f.label} className="border-t border-line">
-                <td className="py-4 pe-4 text-[15px] font-medium text-fg-2" style={{ fontFamily: "Inter, sans-serif" }}>
+                <td className="sticky left-0 z-10 border-t border-line bg-bg py-4 pe-4 text-[15px] font-medium text-fg-2" style={{ fontFamily: "Inter, sans-serif" }}>
                   {f.label}
                 </td>
                 {f.values.map((v, ci) => (
@@ -119,6 +119,11 @@ export default function ComparePlans() {
           </tbody>
         </table>
       </div>
+
+      {/* Mobile affordance — the table scrolls sideways on narrow screens */}
+      <p className="mt-3 text-center text-[12.5px] text-fg-3 md:hidden" style={{ fontFamily: "Inter, sans-serif" }}>
+        ← Swipe to compare plans →
+      </p>
     </div>
   );
 }

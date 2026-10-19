@@ -39,15 +39,17 @@ export default function FixedImagePanel({
         <div
           role="img"
           aria-label={alt}
-          className={`group mx-auto w-full overflow-hidden rounded-3xl bg-contain bg-center bg-no-repeat bg-fixed ${heightClassName}`}
+          className={`group mx-auto w-full overflow-hidden rounded-3xl bg-contain bg-center bg-no-repeat bg-scroll md:bg-fixed ${aspectRatio ? "" : heightClassName}`}
           style={{
             backgroundImage: `url('${src}')`,
             /* Shows only if the panel is wider than the contained image. */
             backgroundColor: "#f2f2f2",
-            /* The contained image paints at `100vh × ratio` wide on landscape
-               windows; capping the panel there makes it hug the picture. On tall
-               windows the image fits to width instead, and 100% wins. */
-            ...(aspectRatio ? { maxWidth: `calc(100vh * ${aspectRatio})` } : {}),
+            /* With a known ratio the panel itself takes the image's shape, so
+               `contain` fills it edge-to-edge (no grey letterboxing on mobile,
+               where the viewport-bound width is far below 100vh × ratio). */
+            ...(aspectRatio
+              ? { aspectRatio: String(aspectRatio), maxWidth: `calc(100vh * ${aspectRatio})` }
+              : {}),
           }}
         >
           {grayscaleUntilHover && (

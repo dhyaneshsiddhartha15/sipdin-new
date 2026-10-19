@@ -138,7 +138,7 @@ function RITMImageSection() {
     <section className="relative bg-white pb-16 ml-0 mr-0">
       <div
         ref={ref}
-        className={`grid grid-cols-2 gap-0 transition-all duration-1000 ${
+        className={`grid grid-cols-1 gap-4 sm:gap-0 sm:grid-cols-2 transition-all duration-1000 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
