@@ -26,12 +26,12 @@ export default function ServiceWebDevPricing() {
 
         {/* Dark Pricing Table */}
         <div className="rounded-xl overflow-hidden border border-line/30 bg-[#0f172a]">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left">
+          <div className="overflow-x-auto no-scrollbar">
+            <table className="w-full min-w-[640px] text-left">
               {/* Table Header */}
               <thead>
                 <tr className="border-b border-[#1e293b] bg-[#1e293b]/50">
-                  <th className="px-6 py-4 font-['Hanken_Grotesk'] text-sm font-semibold text-white">
+                  <th className="sticky left-0 z-10 bg-[#1e293b] px-4 py-4 font-['Hanken_Grotesk'] text-sm font-semibold text-white md:px-6">
                     Package
                   </th>
                   <th className="px-6 py-4 font-['Hanken_Grotesk'] text-sm font-semibold text-white">
@@ -51,15 +51,13 @@ export default function ServiceWebDevPricing() {
                 {WEBDEV_PLANS.map((plan, index) => (
                   <tr
                     key={plan.key}
-                    className={`border-b border-[#1e293b] last:border-b-0 ${
-                      index % 2 === 0 ? 'bg-[#0f172a]' : 'bg-[#1e293b]/20'
-                    }`}
+                    className="border-b border-[#1e293b] bg-[#0f172a] last:border-b-0"
                   >
                     {/* Package Name */}
-                    <td className="px-6 py-5">
+                    <td className="sticky left-0 z-10 bg-[#0f172a] px-4 py-5 md:px-6">
                       <div className="flex items-center gap-3">
                         {plan.popular && (
-                          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand text-[10px] font-bold text-white">
+                          <span className="hidden h-6 w-6 items-center justify-center rounded-full bg-brand text-[10px] font-bold text-white sm:flex">
                             ✓
                           </span>
                         )}
@@ -106,6 +104,10 @@ export default function ServiceWebDevPricing() {
               </tbody>
             </table>
           </div>
+
+          <p className="mt-3 text-center text-[12px] text-gray-400 md:hidden" style={{ fontFamily: "Inter, sans-serif" }}>
+            ← Swipe to see full pricing →
+          </p>
 
           {/* Table Footer Note */}
           <div className="border-t border-[#1e293b] bg-[#1e293b]/30 px-6 py-4">

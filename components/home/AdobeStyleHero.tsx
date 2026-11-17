@@ -10,7 +10,7 @@
  * existing /public assets. The original IntegrationHero is left intact.
  */
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Boxes,
   Search,
@@ -146,6 +146,25 @@ export default function AdobeStyleHero() {
   const next = () => setActive((i) => (i + 1) % SLIDES.length);
   const slide = SLIDES[active];
 
+  // Keep the active tab visible when the tab row overflows (tablet widths).
+  // Scroll ONLY the row's horizontal overflow — scrollIntoView here would also
+  // yank the window back to the hero every time the slide auto-advances.
+  const tabRowRef = useRef<HTMLDivElement>(null);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  useEffect(() => {
+    const row = tabRowRef.current;
+    const tab = tabRefs.current[active];
+    if (!row || !tab) return;
+    const pad = 16;
+    const left = tab.offsetLeft;
+    const right = left + tab.offsetWidth;
+    if (left - pad < row.scrollLeft) {
+      row.scrollTo({ left: Math.max(0, left - pad), behavior: "smooth" });
+    } else if (right + pad > row.scrollLeft + row.clientWidth) {
+      row.scrollTo({ left: right - row.clientWidth + pad, behavior: "smooth" });
+    }
+  }, [active]);
+
   return (
     <section
       className="relative w-full overflow-hidden bg-black text-white"
@@ -240,15 +259,20 @@ export default function AdobeStyleHero() {
           )}
         </div>
 
-        {/* Bottom tab carousel */}
-        <div className="pt-12 pb-24">
-          <div className="flex items-stretch gap-2.5 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {/* Bottom tab carousel — pb clears the absolute stats bar on lg+;
+            below lg stats flow in normal document order, so padding is tighter */}
+        <div className="pt-8 pb-6 lg:pt-12 lg:pb-24">
+          <div
+            ref={tabRowRef}
+            className="flex items-stretch gap-2.5 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
             {SLIDES.map((s, i) => {
               const isActive = i === active;
               const TabIcon = s.Icon;
               return (
                 <button
                   key={s.key}
+                  ref={(el) => { tabRefs.current[i] = el; }}
                   type="button"
                   onClick={() => setActive(i)}
                   aria-current={isActive ? "true" : undefined}
@@ -297,8 +321,8 @@ export default function AdobeStyleHero() {
           </div>
         </div>
 
-        {/* Stats Section - Compact horizontal bar */}
-        <div className="absolute bottom-0 left-0 right-0 z-20 mb-6">
+        {/* Stats Section — flows below tabs below lg, compact overlay bar on lg+ */}
+        <div className="relative z-20 mb-2 lg:absolute lg:bottom-0 lg:left-0 lg:right-0 lg:mb-6">
           <StatsSection />
         </div>
       </div>
