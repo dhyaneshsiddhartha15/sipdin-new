@@ -52,6 +52,18 @@ export default function RootLayout({
       className={`${hankenGrotesk.variable} ${inter.variable} ${geist.variable} ${dancingScript.variable} antialiased`}
     >
       <head>
+        {/* Google tag (GTM) */}
+        <Script
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-KQD6BWBD"
+          strategy="afterInteractive"
+        />
+        <Script id="gtm-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          `}
+        </Script>
         <link
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
           rel="stylesheet"
