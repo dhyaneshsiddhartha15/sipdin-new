@@ -6,12 +6,12 @@
  * ALL cards exist in DOM, only offset changes → smooth sliding.
  */
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion, PanInfo } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-type Site = { src: string; name: string; description: string; gradient: string };
+type Site = { src: string; name: string; /** Short label for the tab pills — long names overflow the scroll strip. */ short?: string; description: string; gradient: string };
 
 const SITES: Site[] = [
   {
@@ -49,6 +49,13 @@ const SITES: Site[] = [
     name: "Wafeeq",
     description: "An AI-powered sign language learning platform with real-time feedback.",
     gradient: "linear-gradient(160deg, #7C83F7 0%, #5A4FD6 100%)",
+  },
+  {
+    src: "/case-study/shyam/1.png",
+    name: "Shri Shyam Akhada Parishad",
+    short: "Shri Shyam Parishad",
+    description: "A spiritual organisation's digital home — faith, sacred ashrams, and social service brought together on one devotional platform.",
+    gradient: "linear-gradient(160deg, #F0A85A 0%, #C2410C 100%)",
   },
 ];
 
@@ -249,7 +256,18 @@ function CarouselCard({
 export default function MadeWithSidpin() {
   const [active, setActive] = useState(0);
   const [direction, setDirection] = useState(0);
+  const tabsStripRef = useRef<HTMLDivElement>(null);
   const total = SITES.length;
+
+  // Keep the active tab pill visible — scroll ONLY the strip, never the page.
+  useEffect(() => {
+    const strip = tabsStripRef.current;
+    if (!strip) return;
+    const el = strip.querySelector<HTMLElement>(`[data-tab-index="${active}"]`);
+    if (!el) return;
+    const target = el.offsetLeft - (strip.clientWidth - el.offsetWidth) / 2;
+    strip.scrollTo({ left: Math.max(0, target), behavior: "smooth" });
+  }, [active]);
 
   // Navigate with direction tracking
   const navigate = useCallback((newIndex: number, dir: number) => {
@@ -309,13 +327,14 @@ export default function MadeWithSidpin() {
           <ChevronLeft className="h-4 w-4" aria-hidden />
         </motion.button>
 
-        <div className="flex flex-1 items-center gap-2.5 overflow-x-auto py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div ref={tabsStripRef} className="flex flex-1 items-center gap-2.5 overflow-x-auto py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {SITES.map((s, i) => (
             <motion.button
               key={s.name}
               type="button"
+              data-tab-index={i}
               onClick={() => goTo(i)}
-              className={`shrink-0 rounded-full px-5 py-2.5 font-['Inter'] text-[14px] font-semibold transition-colors ${
+              className={`shrink-0 whitespace-nowrap rounded-full px-5 py-2.5 font-['Inter'] text-[14px] font-semibold transition-colors ${
                 i === active ? "bg-white text-[#0d0a24]" : "bg-white/[0.06] text-white/70 hover:bg-white/12 hover:text-white"
               }`}
               animate={{
@@ -329,7 +348,7 @@ export default function MadeWithSidpin() {
               whileHover={{ scale: i === active ? 1.08 : 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
-              {s.name}
+              {s.short ?? s.name}
             </motion.button>
           ))}
         </div>

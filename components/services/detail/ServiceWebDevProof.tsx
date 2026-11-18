@@ -31,15 +31,26 @@ const DOHABUS_SCRENS = [
   '/case-study/Doha-bus/13.jpg',
 ];
 
+// Shri Shyam Akhada Parishad mobile screens for cycling (same six as the case study gallery)
+const SHYAM_SCREENS = [
+  '/case-study/shyam/1M.png',
+  '/case-study/shyam/2M.png',
+  '/case-study/shyam/3M.png',
+  '/case-study/shyam/4M.png',
+  '/case-study/shyam/5M.png',
+  '/case-study/shyam/6M.png',
+];
+
 // Get web development case studies: Rudradharma, Dohabus, and add web-dev focused ones
 const ALL_CASE_STUDIES = getAllCaseStudies();
 const WEBDEV_CASE_STUDIES = ALL_CASE_STUDIES.filter(cs =>
   cs.slug === "dohabus-qatar-tourism-platform" ||
   cs.slug === "rudradharma-spiritual-ecommerce" ||
+  cs.slug === "akhil-bhartiya-shri-shyam-akhada-parishad" ||
   cs.slug === "wafeeq-inclusive-digital-learning" ||
   cs.slug === "ritm-hospitality-institute-website" ||
   cs.slug === "anvi-partners-landing-page"
-).slice(0, 3); // Start with 3 as requested
+).slice(0, 4); // Rudradharma, Parishad, Dohabus, Wafeeq
 
 const PROJECTS = WEBDEV_CASE_STUDIES.map((cs) => ({
   id: cs.slug,
@@ -51,7 +62,28 @@ const PROJECTS = WEBDEV_CASE_STUDIES.map((cs) => ({
   image: cs.heroImage || "https://images.unsplash.com/photo-15566567932-02371d2713ef?w=800&q=80",
   backgroundImage: cs.slug === "wafeeq-inclusive-digital-learning" ? "/ai-card/ai-wafeeq.png" :
                   cs.slug === "rudradharma-spiritual-ecommerce" ? "/ai-card/ai-rudra.png" :
-                  cs.slug === "dohabus-qatar-tourism-platform" ? "/ai-card/ai-doha.png" : null,
+                  cs.slug === "dohabus-qatar-tourism-platform" ? "/ai-card/ai-doha.png" :
+                  cs.slug === "akhil-bhartiya-shri-shyam-akhada-parishad" ? "/ai-card/ai-shyam.svg" : null,
+  // Light illustrated backgrounds need dark content; dark/photos get white.
+  contentColor: cs.slug === "rudradharma-spiritual-ecommerce" ? "#8B4513" :
+                cs.slug === "dohabus-qatar-tourism-platform" ? "#000000" :
+                cs.slug === "akhil-bhartiya-shri-shyam-akhada-parishad" ? "#6B1F1A" : "white",
+  badgeBg: cs.slug === "rudradharma-spiritual-ecommerce" ? "rgba(139, 69, 19, 0.15)" :
+           cs.slug === "dohabus-qatar-tourism-platform" ? "rgba(0, 0, 0, 0.1)" :
+           cs.slug === "akhil-bhartiya-shri-shyam-akhada-parishad" ? "rgba(107, 31, 26, 0.12)" : "rgba(255, 255, 255, 0.15)",
+  statBg: cs.slug === "rudradharma-spiritual-ecommerce" ? "rgba(139, 69, 19, 0.15)" :
+          cs.slug === "dohabus-qatar-tourism-platform" ? "rgba(0, 0, 0, 0.1)" :
+          cs.slug === "akhil-bhartiya-shri-shyam-akhada-parishad" ? "rgba(107, 31, 26, 0.1)" : "rgba(255, 255, 255, 0.1)",
+  ctaBg: cs.slug === "rudradharma-spiritual-ecommerce" ? "#8B4513" :
+         cs.slug === "dohabus-qatar-tourism-platform" ? "#000000" :
+         cs.slug === "akhil-bhartiya-shri-shyam-akhada-parishad" ? "#6B1F1A" : "white",
+  ctaText: cs.slug === "akhil-bhartiya-shri-shyam-akhada-parishad" || cs.slug === "rudradharma-spiritual-ecommerce" || cs.slug === "dohabus-qatar-tourism-platform" ? "white" : "#1A1730",
+  ctaShadow: cs.slug === "rudradharma-spiritual-ecommerce" ? "0 20px 50px rgba(139, 69, 19, 0.4)" :
+             cs.slug === "dohabus-qatar-tourism-platform" ? "0 20px 50px rgba(0, 0, 0, 0.4)" :
+             cs.slug === "akhil-bhartiya-shri-shyam-akhada-parishad" ? "0 20px 50px rgba(107, 31, 26, 0.4)" : "0 20px 50px rgba(255,255,255,0.3)",
+  chipBg: cs.slug === "rudradharma-spiritual-ecommerce" ? "rgba(139, 69, 19, 0.2)" :
+          cs.slug === "dohabus-qatar-tourism-platform" ? "rgba(0, 0, 0, 0.2)" :
+          cs.slug === "akhil-bhartiya-shri-shyam-akhada-parishad" ? "rgba(107, 31, 26, 0.2)" : "rgba(26, 23, 48, 0.1)",
   alt: `${cs.product} web development case study`,
   slug: cs.slug,
 }));
@@ -84,7 +116,7 @@ function ProjectCard({
         }, 300);
       }, 2000);
       return () => clearInterval(interval);
-    } else if (project.slug === "dohabus-qatar-tourism-platform") {
+    } else if (project.slug === "dohabus-qatar-tourism-platform" || project.slug === "akhil-bhartiya-shri-shyam-akhada-parishad") {
       const interval = setInterval(() => {
         setScreenOpacity(0);
         setTimeout(() => {
@@ -190,6 +222,30 @@ function ProjectCard({
                           ))}
                         </div>
                       </div>
+                    ) : project.slug === "akhil-bhartiya-shri-shyam-akhada-parishad" ? (
+                      <div className="relative h-full">
+                        <img
+                          src={SHYAM_SCREENS[currentScreenIndex]}
+                          alt={`Shri Shyam Akhada Parishad mobile screen ${currentScreenIndex + 1}`}
+                          className="w-full h-full object-cover object-top transition-opacity duration-300 ease-in-out"
+                          style={{ opacity: screenOpacity }}
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.parentElement!.style.background = `linear-gradient(135deg, ${project.color}40, ${project.color}60)`;
+                          }}
+                        />
+                        {/* Screen indicator dots */}
+                        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
+                          {[0, 1, 2, 3, 4, 5].map((i) => (
+                            <div
+                              key={i}
+                              className={`w-2 h-2 rounded-full transition-all ${
+                                i === currentScreenIndex ? 'bg-white' : 'bg-white/30'
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      </div>
                     ) : project.slug === "wafeeq-inclusive-digital-learning" ? (
                       <div className="relative h-full">
                         <img
@@ -222,19 +278,14 @@ function ProjectCard({
             {/* RIGHT - Content */}
             <div
               className="flex flex-col justify-center p-8"
-              style={{
-                color: project.slug === "rudradharma-spiritual-ecommerce" ? "#8B4513" :
-                       project.slug === "dohabus-qatar-tourism-platform" ? "#000000" : "white"
-              }}
+              style={{ color: project.contentColor }}
             >
               {/* Category Badge */}
               <motion.div
                 className="inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 text-[12px] font-semibold uppercase tracking-wider backdrop-blur-md"
                 style={{
-                  backgroundColor: project.slug === "rudradharma-spiritual-ecommerce" ? "rgba(139, 69, 19, 0.15)" :
-                                    project.slug === "dohabus-qatar-tourism-platform" ? "rgba(0, 0, 0, 0.1)" : "rgba(255, 255, 255, 0.15)",
-                  color: project.slug === "rudradharma-spiritual-ecommerce" ? "#8B4513" :
-                         project.slug === "dohabus-qatar-tourism-platform" ? "#000000" : "white"
+                  backgroundColor: project.badgeBg,
+                  color: project.contentColor
                 }}
                 initial={{ opacity: 0, x: -15 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -242,10 +293,7 @@ function ProjectCard({
               >
                 <Globe
                   size={14}
-                  style={{
-                    color: project.slug === "rudradharma-spiritual-ecommerce" ? "#8B4513" :
-                           project.slug === "dohabus-qatar-tourism-platform" ? "#000000" : "white"
-                  }}
+                  style={{ color: project.contentColor }}
                 />
                 {project.category}
               </motion.div>
@@ -282,10 +330,7 @@ function ProjectCard({
                   <div
                     key={i}
                     className="rounded-xl p-3 backdrop-blur-sm"
-                    style={{
-                      backgroundColor: project.slug === "rudradharma-spiritual-ecommerce" ? "rgba(139, 69, 19, 0.15)" :
-                                       project.slug === "dohabus-qatar-tourism-platform" ? "rgba(0, 0, 0, 0.1)" : "rgba(255, 255, 255, 0.1)"
-                    }}
+                    style={{ backgroundColor: project.statBg }}
                   >
                     <div
                       className="text-[22px] font-bold leading-none"
@@ -306,29 +351,18 @@ function ProjectCard({
                 className="mt-auto inline-flex w-fit items-center gap-3 self-start rounded-full px-6 py-3.5 text-[14px] font-bold transition-all duration-300"
                 style={{
                   fontFamily: "Inter, sans-serif",
-                  backgroundColor: project.slug === "rudradharma-spiritual-ecommerce" ? "#8B4513" :
-                                 project.slug === "dohabus-qatar-tourism-platform" ? "#000000" : "white",
-                  color: project.slug === "rudradharma-spiritual-ecommerce" ? "white" :
-                         project.slug === "dohabus-qatar-tourism-platform" ? "white" : "#1A1730"
+                  backgroundColor: project.ctaBg,
+                  color: project.ctaText
                 }}
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.55, duration: 0.5 }}
-                whileHover={{
-                  boxShadow: project.slug === "rudradharma-spiritual-ecommerce"
-                    ? "0 20px 50px rgba(139, 69, 19, 0.4)"
-                    : project.slug === "dohabus-qatar-tourism-platform"
-                    ? "0 20px 50px rgba(0, 0, 0, 0.4)"
-                    : "0 20px 50px rgba(255,255,255,0.3)",
-                }}
+                whileHover={{ boxShadow: project.ctaShadow }}
               >
                 View Case Study
                 <motion.span
                   className="rounded-full p-1.5"
-                  style={{
-                    backgroundColor: project.slug === "rudradharma-spiritual-ecommerce" ? "rgba(139, 69, 19, 0.2)" :
-                                   project.slug === "dohabus-qatar-tourism-platform" ? "rgba(0, 0, 0, 0.2)" : "rgba(26, 23, 48, 0.1)"
-                  }}
+                  style={{ backgroundColor: project.chipBg }}
                   whileHover={{ x: 4 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -371,6 +405,9 @@ export default function ServiceWebDevProof() {
     if (isMobile || !containerRef.current) return;
 
     const animate = async () => {
+      // Always begin the loop from x=0 — resuming from a mid-scroll offset
+      // makes every repeat cycle jump back to that offset (broken loop).
+      controls.set({ x: 0 });
       await controls.start({
         x: -totalWidth,
         transition: {

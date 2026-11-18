@@ -8,6 +8,9 @@
 import { useEffect, useRef, useState } from "react";
 import type { CaseStudy } from "@/lib/caseStudies";
 import JourneyTimelineSection from "./JourneyTimelineSection";
+import JourneyPathSection from "./JourneyPathSection";
+import BrandIdentitySection from "./BrandIdentitySection";
+import MobileAppGallerySection from "./MobileAppGallerySection";
 import FixedImagePanel from "./FixedImagePanel";
 
 // === UNSPLASH IMAGES (TEMPORARY PLACEHOLDERS) ===
@@ -112,21 +115,48 @@ function HeroSection({ study }: { study: CaseStudy }) {
           {!isWafeeq && (
             <div
               ref={imageRef}
-              className={`relative overflow-hidden rounded-3xl transition-all duration-1000 ${
+              className={`relative transition-all duration-1000 ${
                 imageVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
-              }`}
+              } ${study.slug === "akhil-bhartiya-shri-shyam-akhada-parishad" ? "flex items-center py-10" : "overflow-hidden rounded-3xl"}`}
             >
-              <img
-                src={study.slug === "ritm-hospitality-institute-website" ? "/case-study/RITM/RITM-2.png" : study.slug === "camera-market-dehradun-photography-e-commerce" ? "/case-study/camera/13.png" : study.slug === "dohabus-qatar-tourism-platform" ? "/case-study/Doha-bus/14.png" : (study.heroImage || UNSPLASH_IMAGES.hero)}
-                alt={study.title}
-                className="h-full w-full object-contain"
-                style={{ minHeight: "400px" }}
-              />
+              {study.slug === "akhil-bhartiya-shri-shyam-akhada-parishad" ? (
+                <LaptopMockup src="/case-study/shyam/1.png" alt={study.title} />
+              ) : (
+                <img
+                  src={study.slug === "ritm-hospitality-institute-website" ? "/case-study/RITM/RITM-2.png" : study.slug === "camera-market-dehradun-photography-e-commerce" ? "/case-study/camera/13.png" : study.slug === "dohabus-qatar-tourism-platform" ? "/case-study/Doha-bus/14.png" : (study.heroImage || UNSPLASH_IMAGES.hero)}
+                  alt={study.title}
+                  className="h-full w-full object-contain"
+                  style={{ minHeight: "400px" }}
+                />
+              )}
             </div>
           )}
         </div>
       </div>
     </section>
+  );
+}
+
+// LAPTOP MOCKUP — realistic CSS laptop frame wrapping a website screenshot
+function LaptopMockup({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="relative mx-auto w-full max-w-[620px]">
+      {/* Screen */}
+      <div className="overflow-hidden rounded-t-[20px] border-[12px] border-b-0 border-[#202124] bg-[#202124] shadow-[0_40px_90px_-25px_rgba(0,0,0,0.5)]">
+        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-t-[8px] bg-white">
+          <img src={src} alt={alt} className="absolute inset-0 h-full w-full object-cover object-top" />
+        </div>
+      </div>
+      {/* Base deck */}
+      <div
+        className="relative h-[15px] rounded-b-[16px] bg-gradient-to-b from-[#e2e4e8] via-[#b8bcc2] to-[#84888e] shadow-[0_18px_40px_-12px_rgba(0,0,0,0.45)]"
+        style={{ width: "113%", marginLeft: "-6.5%" }}
+      >
+        <div className="absolute left-1/2 top-0 h-[8px] w-[130px] -translate-x-1/2 rounded-b-[10px] bg-gradient-to-b from-[#c6c9ce] to-[#a6aab0]" />
+      </div>
+      {/* Ground shadow */}
+      <div className="mx-auto mt-1 h-7 w-[75%] rounded-[50%] bg-black/20 blur-2xl" />
+    </div>
   );
 }
 
@@ -950,12 +980,24 @@ function ContentSections({ study }: { study: CaseStudy }) {
           );
         }
 
+        if (section.type === "brandIdentity") {
+          return <BrandIdentitySection key={sectionIndex} section={section} study={study} />;
+        }
+
+        if (section.type === "mobileGallery") {
+          return <MobileAppGallerySection key={sectionIndex} section={section} accent={study.accent} />;
+        }
+
         if (section.type === "table") {
           return <TableSection key={sectionIndex} section={section} study={study} isEven={isEven} />;
         }
 
         if (section.type === "journey") {
-          return <JourneyTimelineSection key={sectionIndex} {...section} accent={study.accent} />;
+          return section.variant === "path" ? (
+            <JourneyPathSection key={sectionIndex} {...section} accent={study.accent} />
+          ) : (
+            <JourneyTimelineSection key={sectionIndex} {...section} accent={study.accent} />
+          );
         }
 
         // Quote section

@@ -2,19 +2,14 @@
 
 /**
  * AiBuildShowcase — "What We Do" services section.
- * AI services we offer.
+ * 2x2 box grid with gradient-border cards. Theme-aware: light + dark.
  */
 
 import { motion } from "framer-motion";
 import { Bot, Workflow, Database, Cloud } from "lucide-react";
-import { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import AiEcosystemBackground from "./AiEcosystemBackground";
+import { useRef } from "react";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+const EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
 const SERVICES = [
   {
@@ -50,82 +45,119 @@ const SERVICES = [
 export default function AiBuildShowcase() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  // GSAP animations removed to eliminate icon popup effects
-  useLayoutEffect(() => {
-    if (!sectionRef.current) return;
-
-    const ctx = gsap.context(() => {
-      // All card animations removed - no more popup effects
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
     <section
       id="what-we-do"
       ref={sectionRef}
-      className="bg-bg px-[24px] py-[100px] md:px-[80px] relative"
+      className="relative overflow-hidden bg-bg px-[24px] py-[100px] md:px-[80px] dark:bg-[#050816]"
     >
-      {/* Ecosystem background removed - no more floating icons */}
+      {/* Ambient glows */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-24 right-1/4 h-[380px] w-[640px] rounded-full bg-[#4169e1]/[0.06] blur-[150px] dark:bg-[#4169e1]/[0.14]" />
+        <div className="absolute bottom-0 left-1/4 h-[320px] w-[520px] rounded-full bg-[#6e8cff]/[0.04] blur-[150px] dark:bg-[#6e8cff]/[0.09]" />
+        {/* Faint dot grid */}
+        <div
+          className="absolute inset-0 hidden opacity-[0.05] dark:block"
+          style={{
+            backgroundImage: "radial-gradient(rgba(143,176,255,0.9) 1px, transparent 1px)",
+            backgroundSize: "36px 36px",
+          }}
+        />
+        <div
+          className="absolute inset-0 opacity-[0.04] dark:hidden"
+          style={{
+            backgroundImage: "radial-gradient(rgba(35,61,146,0.9) 1px, transparent 1px)",
+            backgroundSize: "36px 36px",
+          }}
+        />
+      </div>
 
-      <div className="mx-auto max-w-[1440px] relative z-10">
+      <div className="relative z-10 mx-auto max-w-[1440px]">
         {/* Header */}
-        <div className="mx-auto mb-12 max-w-2xl text-center lg:mb-16">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.35em] text-[#4169E1]">
+        <motion.div
+          className="mx-auto mb-12 max-w-2xl space-y-4 text-center lg:mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: EASE }}
+        >
+          <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.35em] text-[#4169e1] dark:text-[#6e8cff]">
             What We Do
           </span>
           <h2
-            className="mt-4 text-[32px] font-bold leading-tight text-black dark:text-white md:text-[40px]"
+            className="text-[32px] font-bold leading-tight text-fg dark:text-white md:text-[40px]"
             style={{ fontFamily: "Hanken Grotesk, sans-serif" }}
           >
             AI-Powered Solutions
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-black/60 dark:text-white/60 md:text-[16px]">
+          <p className="mx-auto max-w-xl text-[15px] leading-relaxed text-fg-2 dark:text-white/60 md:text-[16px]">
             Intelligent automation and conversational AI to transform your business.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Services Grid - 2x2 Modern Cards with Dark Mode */}
-        <div className="services-grid mx-auto max-w-5xl grid grid-cols-1 gap-4 sm:grid-cols-2 lg:gap-6">
-          {SERVICES.map((service) => {
+        {/* Services Grid - 2x2 gradient-border boxes */}
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 lg:gap-5">
+          {SERVICES.map((service, index) => {
             const Icon = service.icon;
             return (
               <motion.div
                 key={service.title}
-                className="service-item relative overflow-hidden rounded-2xl bg-white dark:bg-[#0a0a0f] p-6 transition-all duration-300 hover:shadow-[0_12px_40px_-15px_rgba(65,105,225,0.2)] lg:p-8"
+                className="group rounded-2xl p-[1.5px] transition-transform duration-300 hover:-translate-y-2"
                 style={{
-                  border: "1px solid rgba(0,0,0,0.08) dark:border-transparent",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04)",
+                  background:
+                    "linear-gradient(135deg, rgba(65,105,225,0.55) 0%, rgba(110,140,255,0.22) 45%, rgba(143,176,255,0.30) 100%)",
+                }}
+                initial={{ opacity: 0, y: 20, scale: 0.98 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.08, ease: EASE }}
+                whileHover={{
+                  boxShadow: "0 14px 48px rgba(65,105,225,0.30)",
                 }}
               >
-                {/* Category Badge - Enhanced for Dark Mode */}
-                <div className="mb-4 inline-flex items-center rounded-full bg-[#4169E1]/10 dark:bg-[#4169E1]/20 px-3 py-1.5 lg:mb-5 border border-[#4169E1]/20 dark:border-[#4169E1]/30">
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#4169E1] dark:text-[#60a5fa]">
-                    {service.category}
-                  </span>
+                <div className="relative flex h-full flex-col overflow-hidden rounded-[14.5px] bg-white p-6 dark:bg-[#0a0f1e] lg:p-7">
+                  {/* Ghost icon watermark */}
+                  <Icon
+                    aria-hidden
+                    className="pointer-events-none absolute -right-5 -top-5 h-28 w-28 text-[#4169e1]/[0.06] dark:text-[#6e8cff]/[0.09]"
+                    strokeWidth={1.2}
+                  />
+
+                  {/* Header row: category */}
+                  <div className="relative z-10 mb-5 flex items-start justify-between gap-3">
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#4169e1]/80 dark:text-[#8fb0ff]/80">
+                      {service.category}
+                    </span>
+                  </div>
+
+                  {/* Icon tile */}
+                  <div
+                    className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl shadow-[0_6px_20px_rgba(65,105,225,0.3)] transition-transform duration-300 group-hover:scale-110 dark:shadow-[0_6px_20px_rgba(65,105,225,0.4)]"
+                    style={{ background: "linear-gradient(135deg, #4169e1 0%, #6e8cff 100%)" }}
+                  >
+                    <Icon size={20} className="text-white" strokeWidth={2} />
+                  </div>
+
+                  {/* Title + description */}
+                  <h3
+                    className="text-[18px] font-bold leading-tight text-fg dark:text-white lg:text-[20px]"
+                    style={{ fontFamily: "Hanken Grotesk, sans-serif" }}
+                  >
+                    {service.title}
+                  </h3>
+                  <p className="mt-2.5 text-[14px] leading-relaxed text-fg-2 dark:text-white/60 lg:text-[15px]">
+                    {service.description}
+                  </p>
+
+                  {/* Footer hairline */}
+                  <div className="mt-auto pt-5">
+                    <div className="border-t border-line/60 pt-4 dark:border-white/[0.08]">
+                      <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-fg-2/70 dark:text-white/40">
+                        Sidpin AI
+                      </span>
+                    </div>
+                  </div>
                 </div>
-
-                {/* Icon - Enhanced for Dark Mode */}
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#4169E1] to-[#3b5dbd] shadow-md lg:mb-5">
-                  <Icon size={20} className="text-white" strokeWidth={2} />
-                </div>
-
-                {/* Title - Dark Mode Support */}
-                <h3
-                  className="text-[18px] font-bold leading-tight text-gray-900 dark:text-white lg:text-[20px]"
-                  style={{ fontFamily: "Hanken Grotesk, sans-serif" }}
-                >
-                  {service.title}
-                </h3>
-
-                {/* Description - Dark Mode Support */}
-                <p className="mt-3 text-[14px] leading-relaxed text-gray-600 dark:text-gray-400 lg:mt-4 lg:text-[15px]">
-                  {service.description}
-                </p>
-
-                {/* Decorative gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#4169E1]/5 via-transparent to-blue-600/5 dark:from-[#4169E1]/10 dark:via-transparent dark:to-blue-600/10 pointer-events-none" />
               </motion.div>
             );
           })}
