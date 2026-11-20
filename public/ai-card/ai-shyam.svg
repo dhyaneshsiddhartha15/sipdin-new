@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1400">
+  <defs>
+    <linearGradient id="flame" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#E07B24"/>
+      <stop offset="1" stop-color="#F5C56A"/>
+    </linearGradient>
+    <linearGradient id="shikhara" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#D9952F"/>
+      <stop offset="1" stop-color="#EFC078"/>
+    </linearGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FBF3E3"/>
+      <stop offset="1" stop-color="#F6E3C2"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Base -->
+  <rect width="1400" height="1400" fill="url(#sky)"/>
+
+  <!-- Top-left saffron blob -->
+  <path d="M-60,-40 C240,-60 380,60 360,210 C340,360 180,420 40,380 C-80,345 -140,180 -60,-40 Z" fill="#F0A85A" opacity="0.9"/>
+  <path d="M-40,340 C120,330 210,420 190,530 C170,640 40,690 -60,650 Z" fill="#F6D9AE" opacity="0.7"/>
+
+  <!-- Thin golden circles top-right -->
+  <circle cx="1180" cy="120" r="95" fill="none" stroke="#C9A227" stroke-width="3"/>
+  <circle cx="1265" cy="95" r="60" fill="none" stroke="#C9A227" stroke-width="3"/>
+  <circle cx="130" cy="1245" r="105" fill="none" stroke="#C9A227" stroke-width="3"/>
+
+  <!-- Dotted grids -->
+  <g fill="#C9A227">
+    <g transform="translate(150,300)">
+      <circle cx="0" cy="0" r="4"/><circle cx="28" cy="0" r="4"/><circle cx="56" cy="0" r="4"/><circle cx="84" cy="0" r="4"/>
+      <circle cx="0" cy="28" r="4"/><circle cx="28" cy="28" r="4"/><circle cx="56" cy="28" r="4"/><circle cx="84" cy="28" r="4"/>
+      <circle cx="0" cy="56" r="4"/><circle cx="28" cy="56" r="4"/><circle cx="56" cy="56" r="4"/><circle cx="84" cy="56" r="4"/>
+    </g>
+    <g transform="translate(1220,340)">
+      <circle cx="0" cy="0" r="4"/><circle cx="26" cy="0" r="4"/><circle cx="52" cy="0" r="4"/>
+      <circle cx="0" cy="26" r="4"/><circle cx="26" cy="26" r="4"/><circle cx="52" cy="26" r="4"/>
+      <circle cx="0" cy="52" r="4"/><circle cx="26" cy="52" r="4"/><circle cx="52" cy="52" r="4"/>
+    </g>
+    <g transform="translate(80,760)">
+      <circle cx="0" cy="0" r="4"/><circle cx="26" cy="0" r="4"/><circle cx="52" cy="0" r="4"/><circle cx="78" cy="0" r="4"/>
+      <circle cx="0" cy="26" r="4"/><circle cx="26" cy="26" r="4"/><circle cx="52" cy="26" r="4"/><circle cx="78" cy="26" r="4"/>
+    </g>
+  </g>
+
+  <!-- Leaf sprigs line art -->
+  <g stroke="#B58350" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M300,180 q40,-60 100,-70"/>
+    <path d="M330,150 q-6,-28 8,-44 M355,133 q-4,-26 10,-40 M380,120 q-2,-24 12,-36"/>
+    <path d="M1150,1080 q-50,30 -60,85"/>
+    <path d="M1118,1112 q-26,-6 -38,-26 M1104,1140 q-26,-2 -40,-18"/>
+  </g>
+
+  <!-- ===== Temple illustration (bottom-right) ===== -->
+  <g>
+    <!-- Back skyline: soft gold domes & spires -->
+    <g fill="#F2D9AC" opacity="0.85">
+      <path d="M760,1080 v-140 q0,-60 45,-95 q45,35 45,95 v140 Z"/>
+      <path d="M1010,1060 v-110 q0,-50 38,-80 q38,30 38,80 v110 Z"/>
+      <path d="M1240,1070 v-120 q0,-55 42,-88 q42,33 42,88 v120 Z"/>
+      <circle cx="805" cy="830" r="26"/>
+      <circle cx="1048" cy="856" r="22"/>
+      <circle cx="1282" cy="846" r="24"/>
+    </g>
+
+    <!-- Mid: main temple platform & halls -->
+    <g fill="#E8B45C">
+      <rect x="620" y="1150" width="700" height="34" rx="10"/>
+      <path d="M840,1150 v-150 q0,-42 30,-64 v-6 q0,-10 10,-10 h60 q10,0 10,10 v6 q30,22 30,64 v150 Z"/>
+      <path d="M980,1150 v-120 q0,-36 26,-56 v-5 q0,-9 9,-9 h50 q9,0 9,9 v5 q26,20 26,56 v120 Z"/>
+      <path d="M1120,1150 v-130 q0,-38 27,-59 v-5 q0,-9 9,-9 h48 q9,0 9,9 v5 q27,21 27,59 v130 Z"/>
+    </g>
+
+    <!-- Central shikhara tower -->
+    <path d="M905,930 C905,830 940,750 960,700 C980,750 1015,830 1015,930 L1015,1150 L905,1150 Z" fill="url(#shikhara)"/>
+    <!-- Shikhara ribs -->
+    <g stroke="#C2410C" stroke-width="5" opacity="0.45" fill="none">
+      <path d="M938,940 C938,860 950,780 960,720"/>
+      <path d="M982,940 C982,860 970,780 960,720"/>
+    </g>
+    <!-- Amalaka + kalash + flag -->
+    <rect x="938" y="686" width="44" height="16" rx="7" fill="#C2410C"/>
+    <path d="M960,686 v-46" stroke="#C2410C" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="960" cy="632" r="10" fill="#C2410C"/>
+    <path d="M963,600 q55,10 78,26 q-42,10 -78,10 Z" fill="#E07B24"/>
+    <!-- Temple door arch -->
+    <path d="M925,1150 v-120 q0,-38 35,-58 q35,20 35,58 v120 Z" fill="#6B1F1A"/>
+    <path d="M948,1150 v-95 q0,-20 12,-30 q12,10 12,30 v95 Z" fill="#2b0d0d"/>
+
+    <!-- Side shrine doors -->
+    <path d="M1006,1150 v-84 q0,-26 20,-40 q20,14 20,40 v84 Z" fill="#8a5a20" opacity="0.85"/>
+    <path d="M1152,1150 v-84 q0,-26 20,-40 q20,14 20,40 v84 Z" fill="#8a5a20" opacity="0.85"/>
+
+    <!-- Marigold garland across the platform -->
+    <path d="M640,1170 q100,44 200,0 t200,0 t200,0" fill="none" stroke="#E07B24" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 22"/>
+
+    <!-- Diya row -->
+    <g>
+      <g transform="translate(700,1235)">
+        <path d="M-26,0 q26,20 52,0 q-6,16 -26,16 q-20,0 -26,-16 Z" fill="#8A5514"/>
+        <path d="M0,-4 C-7,-16 -5,-26 0,-34 C5,-26 7,-16 0,-4 Z" fill="url(#flame)"/>
+      </g>
+      <g transform="translate(790,1235)">
+        <path d="M-26,0 q26,20 52,0 q-6,16 -26,16 q-20,0 -26,-16 Z" fill="#8A5514"/>
+        <path d="M0,-4 C-7,-16 -5,-26 0,-34 C5,-26 7,-16 0,-4 Z" fill="url(#flame)"/>
+      </g>
+      <g transform="translate(880,1235)">
+        <path d="M-26,0 q26,20 52,0 q-6,16 -26,16 q-20,0 -26,-16 Z" fill="#8A5514"/>
+        <path d="M0,-4 C-7,-16 -5,-26 0,-34 C5,-26 7,-16 0,-4 Z" fill="url(#flame)"/>
+      </g>
+      <g transform="translate(1180,1235)">
+        <path d="M-26,0 q26,20 52,0 q-6,16 -26,16 q-20,0 -26,-16 Z" fill="#8A5514"/>
+        <path d="M0,-4 C-7,-16 -5,-26 0,-34 C5,-26 7,-16 0,-4 Z" fill="url(#flame)"/>
+      </g>
+      <g transform="translate(1270,1235)">
+        <path d="M-26,0 q26,20 52,0 q-6,16 -26,16 q-20,0 -26,-16 Z" fill="#8A5514"/>
+        <path d="M0,-4 C-7,-16 -5,-26 0,-34 C5,-26 7,-16 0,-4 Z" fill="url(#flame)"/>
+      </g>
+    </g>
+
+    <!-- Ground glow -->
+    <ellipse cx="965" cy="1270" rx="430" ry="26" fill="#E8B45C" opacity="0.35"/>
+  </g>
+
+  <!-- Om-inspired sun disc, subtle -->
+  <g transform="translate(240,1050)" opacity="0.5">
+    <circle r="64" fill="none" stroke="#C9A227" stroke-width="3" stroke-dasharray="4 10"/>
+    <circle r="40" fill="#F6D9AE"/>
+    <circle r="12" fill="#C9A227"/>
+  </g>
+</svg>

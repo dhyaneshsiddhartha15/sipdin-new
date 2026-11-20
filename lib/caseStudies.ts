@@ -20,8 +20,22 @@ export type Section =
   | { type: "image"; heading?: string; intro?: string; align?: "left"; sideImage?: { src: string; alt?: string }; images: { src: string; caption?: string }[] }
   /** Full-bleed shot pinned with `background-attachment: fixed` (see FixedImagePanel). */
   | { type: "fixedImage"; src: string; alt: string; grayscaleUntilHover?: boolean; aspectRatio?: number }
+  /** Visual brand-identity showcase (colour swatches, typography, logo, UI elements). */
+  | {
+      type: "brandIdentity";
+      label: string;
+      title: string;
+      intro?: string;
+      colors: { name: string; hex: string; description?: string }[];
+      logoInitial?: string;
+      logoImage?: string;
+      logoName?: string;
+      logoTagline?: string;
+    }
+  /** Auto-scrolling mobile mockup gallery — phone-framed screens with a centre mirror phone. */
+  | { type: "mobileGallery"; label: string; intro?: string; screens: string[] }
   | { type: "quote"; text: string; name: string; role: string }
-  | { type: "journey"; heading: string; intro: string; steps: JourneyStep[]; conclusion?: string };
+  | { type: "journey"; heading: string; intro: string; steps: JourneyStep[]; conclusion?: string; /** `path` = vertical zigzag pilgrimage layout (JourneyPathSection), default = horizontal timeline */ variant?: "path" };
 
 export type CaseStudy = {
   slug: string;
@@ -198,6 +212,205 @@ const CASE_STUDIES: CaseStudy[] = [
         text: "Sidpin took our 70-year family business online with complete authenticity — customers finally see the exact bead they receive before they buy.",
         name: "Rudradharma",
         role: "Brand Owner",
+      },
+    ],
+  },
+  {
+    slug: "akhil-bhartiya-shri-shyam-akhada-parishad",
+    product: "Akhil Bhartiya Shri Shyam Akhada Parishad",
+    tag: "Spirituality · Website Design & Development",
+    title: "Akhil Bhartiya Shri Shyam Akhada Parishad – Bringing Faith, Devotion & Service to the Digital World",
+    description:
+      "A dedicated digital presence for a spiritual organisation rooted in Sanatan Dharma — bringing its mission, devotion to Shri Khatu Shyam Baba, sacred places, and commitment to social service together in one accessible platform.",
+    accent: "#C2410C",
+    bannerColor: "#F8EFDD",
+    productInitial: "श",
+    logo: "/case-study/shyam/logo.jpg",
+    watchUrl: "#",
+    stats: [
+      { value: "5", label: "Sacred Ashrams" },
+      { value: "8", label: "Dedicated Sections" },
+      { value: "4-Stage", label: "Visitor Journey" },
+    ],
+    sections: [
+      {
+        type: "text",
+        heading: "Project Overview",
+        body: [
+          "Akhil Bhartiya Shri Shyam Akhada Parishad is a spiritual and social-service organisation headquartered in Haridwar, Uttarakhand, with its field of work extending across India.",
+          "Rooted in the values of Sanatan Dharma, devotion, faith, and humanity, the Parishad aims to bring people together through spiritual awareness, religious traditions, and service to society.",
+          "The objective was to create a dedicated digital platform that communicates the Parishad's identity, beliefs, vision, and activities while making essential information accessible to devotees and visitors.",
+          "The website brings together the Parishad's introduction, the story of Lord Barbarik (Shri Khatu Shyam Baba), information about its ashrams, spiritual resources, gallery, and service commitments.",
+          "Rather than functioning as a simple informational website, the platform serves as a central digital presence for the organisation — connecting its spiritual identity with its wider mission of faith and social welfare.",
+          "Industry: Spirituality · Religious Organisation · Social Service | Services: Website Design · UI/UX Design · Website Development · Responsive Web Experience · Content Organisation | Platform: Website",
+        ],
+      },
+      {
+        type: "fixedImage",
+        src: "/case-study/shyam/01.png",
+        alt: "Akhil Bhartiya Shri Shyam Akhada Parishad website — homepage hero",
+        aspectRatio: 1366 / 768,
+      },
+      {
+        type: "list",
+        heading: "The Challenge",
+        intro:
+          "The Parishad needed a digital platform that could represent its spiritual identity while communicating its broader organisational purpose. Several important requirements shaped the project:",
+        items: [
+          { label: "Establishing a Digital Identity", text: "Creating a professional online presence that reflects the Parishad's spiritual roots and organisational identity." },
+          { label: "Communicating Its Mission", text: "Presenting its vision, beliefs, history, and objectives in a structured and understandable format." },
+          { label: "Preserving Spiritual Heritage", text: "Making the story of Lord Barbarik and Shri Khatu Shyam Baba an important part of the digital experience." },
+          { label: "Presenting Multiple Ashrams", text: "Organising information about five sacred locations across Haryana, Uttar Pradesh, and Uttarakhand." },
+          { label: "Showcasing Service Commitments", text: "Communicating initiatives related to langar, cow service, education, healthcare, yoga, and community welfare." },
+          { label: "Creating an Information Hub", text: "Bringing the gallery, activities, events, organisational information, and contact details into one central platform." },
+        ],
+        note:
+          "Core challenge: Build a digital experience that communicates devotion, trust, organisational identity, and social responsibility while keeping information easy to discover and navigate.",
+        solutionHeading: "Our Solution",
+        solutionIntro:
+          "We developed a structured website experience centred around three key principles: Faith, Information, and Accessibility. The website organises the Parishad's identity and information into dedicated sections.",
+        solutionItems: [
+          { label: "Introduce the Parishad", text: "A dedicated homepage and About section communicate the organisation's identity, establishment, vision, mission, and objectives." },
+          { label: "Bring Spiritual Stories Online", text: "A dedicated section presents the story of Lord Barbarik and Shri Khatu Shyam Baba, including his sacrifice, devotion, and spiritual significance." },
+          { label: "Showcase Sacred Locations", text: "Five ashrams are presented through dedicated listings with their names, locations, and introductory information." },
+          { label: "Connect Faith with Service", text: "Dedicated sections communicate the Parishad's service commitments, gallery, activities, and events." },
+          { label: "Make Information Accessible", text: "Clear navigation, structured content, and contact information help visitors explore the organisation and its work." },
+        ],
+      },
+      {
+        type: "list",
+        heading: "Every Important Section in One Digital Platform",
+        hideImage: true,
+        intro: "The website brings together the essential information and experiences visitors need:",
+        items: [
+          { label: "Home", text: "A central introduction to the Parishad, its identity, spiritual values, and key sections." },
+          { label: "About the Parishad", text: "Information about its establishment, history, vision, mission, philosophy, and organisational structure." },
+          { label: "Lord Shri Shyam", text: "A dedicated storytelling experience covering the traditional story of Lord Barbarik and his connection with Shri Khatu Shyam Baba." },
+          { label: "Maharaj Ji", text: "A dedicated section designed to present verified information, spiritual journey, teachings, and contributions once confirmed by the Parishad." },
+          {
+            label: "Our Ashrams",
+            text: "A structured presentation of five sacred places:",
+            sub: [
+              "Chulkana Dham – Panipat, Haryana",
+              "Govansh Kalyan Dham – Palwal, Haryana",
+              "Vijay Janki Vaishnavi Kali Mata Mandir (Madhushala) – Hapur, Uttar Pradesh",
+              "Narayan Swami Ashram – Amroha, Uttar Pradesh",
+              "Shri Shyam Akhada Parishad Ashram – Haridwar, Uttarakhand",
+            ],
+          },
+          { label: "Gallery", text: "A visual section organised around ashrams, Lord Shri Shyam, religious ceremonies, satsang, festivals, and social activities." },
+          { label: "Activities & Events", text: "A dedicated space for sharing upcoming events, past activities, religious festivals, and service-related updates." },
+          { label: "Contact Us", text: "Essential contact information and a direct way for visitors to connect with the Parishad." },
+        ],
+      },
+      {
+        type: "journey",
+        variant: "path",
+        heading: "FROM FAITH TO INFORMATION – THE WEBSITE EXPERIENCE",
+        intro: "The visitor journey is structured into four simple stages:",
+        steps: [
+          {
+            number: "01",
+            title: "Discover the Parishad",
+            description: "Visitors land on the homepage and understand the organisation's identity, spiritual purpose, and core message.",
+            icon: "compass",
+          },
+          {
+            number: "02",
+            title: "Explore Its Spiritual Heritage",
+            description: "Visitors discover the story of Lord Barbarik, Shri Khatu Shyam Baba, and the Parishad's spiritual philosophy.",
+            icon: "search",
+          },
+          {
+            number: "03",
+            title: "Discover Sacred Places and Service",
+            description: "Visitors explore the five ashrams and learn about the Parishad's stated commitments towards social welfare and community service.",
+            icon: "clipboard-check",
+          },
+          {
+            number: "04",
+            title: "Stay Connected",
+            description: "Visitors can explore the gallery, check activities and events, and access contact information.",
+            icon: "check-circle",
+          },
+        ],
+        conclusion: "The result is a connected digital experience that brings the Parishad's identity and information together in one place.",
+      },
+      {
+        type: "list",
+        heading: "A Digital Experience Built Around Trust and Spiritual Identity",
+        hideImage: true,
+        intro: "The website's content and structure focus on:",
+        items: [
+          { label: "Spiritual Identity", text: "A consistent presentation of the Parishad's devotion to Shri Shyam Baba and its Sanatan values." },
+          { label: "Clear Information Architecture", text: "Dedicated sections for the organisation, spiritual stories, ashrams, gallery, and activities." },
+          { label: "Storytelling", text: "A dedicated space for sharing spiritual traditions and the story of Lord Barbarik." },
+          { label: "Organisational Transparency", text: "Separate sections for leadership, structure, vision, mission, and objectives." },
+          { label: "Future-ready Content", text: "Dedicated spaces that can be updated as verified information, authentic photographs, and event details become available." },
+          { label: "Accessibility", text: "A straightforward navigation experience designed to help different visitors find relevant information." },
+        ],
+      },
+      {
+        type: "list",
+        heading: "Results & Impact",
+        hideImage: true,
+        intro: "The website establishes a central digital presence for Akhil Bhartiya Shri Shyam Akhada Parishad:",
+        items: [
+          { label: "Centralised Information", text: "The Parishad's introduction, vision, mission, spiritual information, and contact details are organised in one platform." },
+          { label: "Stronger Digital Presence", text: "The organisation has a dedicated online destination to communicate its identity and purpose." },
+          { label: "Spiritual Storytelling", text: "Lord Barbarik's story and the significance of Shri Khatu Shyam Baba have a dedicated digital space." },
+          { label: "Organised Ashram Information", text: "Five sacred locations are presented through a structured listing." },
+          { label: "Communication-ready Platform", text: "Dedicated gallery and events sections provide a foundation for future updates and community engagement." },
+          { label: "Expandable Digital Foundation", text: "The platform is structured to accommodate additional verified information, photographs, and organisational updates." },
+        ],
+      },
+      {
+        type: "text",
+        heading: "The Outcome",
+        body: [
+          "Akhil Bhartiya Shri Shyam Akhada Parishad now has a dedicated digital platform that brings its spiritual identity, organisational information, sacred places, and service commitments together.",
+          "From introducing the Parishad and communicating its mission to presenting the story of Shri Khatu Shyam Baba, showcasing its five ashrams, and creating dedicated spaces for future updates, the website provides a unified digital experience.",
+          "The platform is designed to grow alongside the Parishad — making its information easier to discover and its message of faith, devotion, and service easier to share.",
+          "“Haare Ka Sahara, Baba Shyam Hamara.” — A digital home for faith, devotion, and service.",
+        ],
+      },
+      {
+        type: "brandIdentity",
+        label: "Brand Identity",
+        title: "A Visual Identity Rooted in Faith and Tradition",
+        intro:
+          "The website's visual direction is centred around the spiritual and cultural identity of the Parishad — devotion, warmth, authenticity, and trust in a clear, modern experience.",
+        colors: [
+          { name: "Saffron", hex: "#E0862C", description: "Devotion, spirituality, and tradition" },
+          { name: "Warm Cream", hex: "#F8EFDD", description: "Calmness, simplicity, and readability" },
+          { name: "Deep Maroon", hex: "#6B1F1A", description: "Heritage, richness, and cultural identity" },
+          { name: "Golden Accent", hex: "#C9A227", description: "Sacredness and a sense of tradition" },
+          { name: "Earthy Neutral", hex: "#8A7968", description: "Balance and visual warmth" },
+        ],
+        logoInitial: "श",
+        logoImage: "/case-study/shyam/logo.jpg",
+        logoName: "Akhil Bhartiya Shri Shyam Akhada Parishad",
+        logoTagline: "Haare Ka Sahara, Baba Shyam Hamara.",
+      },
+      {
+        type: "mobileGallery",
+        label: "Product Gallery",
+        intro:
+          "Explore the Akhil Bhartiya Shri Shyam Akhada Parishad website on mobile — faith, devotion, and service in every scroll.",
+        screens: [
+          "/case-study/shyam/1M.png",
+          "/case-study/shyam/2M.png",
+          "/case-study/shyam/3M.png",
+          "/case-study/shyam/4M.png",
+          "/case-study/shyam/5M.png",
+          "/case-study/shyam/6M.png",
+        ],
+      },
+      {
+        type: "quote",
+        text: "Haare Ka Sahara, Baba Shyam Hamara.",
+        name: "Akhil Bhartiya Shri Shyam Akhada Parishad",
+        role: "Spiritual Organisation · Religious Institution",
       },
     ],
   },
